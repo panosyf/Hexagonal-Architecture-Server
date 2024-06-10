@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: hexagonal-architecture-server
+  profiles:
+    active: '@spring.profiles.active@'
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hexagonal_architecture_server
+    username: postgres
+    password: postgres
+    driverClassName: org.postgresql.Driver
+  sql:
+    init:
+      mode: never
+  flyway:
+    enabled: true
+    locations: classpath:db/migration/schema, classpath:db/migration/data
+    validate-on-migrate: true
+  jpa:
+    defer-datasource-initialization: false
+    hibernate:
+      ddl-auto: none
+
+server:
+  port: 8080

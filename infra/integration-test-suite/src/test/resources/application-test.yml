@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:hexagonal_bank_server;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE;DATABASE_TO_UPPER=FALSE;MODE=PostgreSQL
+    username: admin
+    password: admin
+    driverClassName: org.h2.Driver

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.hexagonal.architecture.server</groupId>
+    <artifactId>hexagonal-architecture-server</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>hexagonal-architecture-server</name>
+    <description>Hexagonal Architecture Server utilizing Modular-Monolith and Clean Architecture Principals</description>
+
+    <modules>
+        <module>core</module>
+        <module>api</module>
+        <module>infra</module>
+        <module>parent-bom</module>
+        <module>app</module>
+    </modules>
+
+</project>
