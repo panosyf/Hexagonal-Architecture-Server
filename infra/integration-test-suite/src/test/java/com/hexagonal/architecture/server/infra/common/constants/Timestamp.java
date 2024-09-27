@@ -1,4 +1,4 @@
-package com.hexagonal.architecture.server.common.constants;
+package com.hexagonal.architecture.server.infra.common.constants;
 
 import java.time.Instant;
 

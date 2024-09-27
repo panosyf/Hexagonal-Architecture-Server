@@ -1,11 +1,11 @@
-package com.hexagonal.architecture.server.config;
+package com.hexagonal.architecture.server.infra.config;
 
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.AccountRepositoryPort;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.TransactionRepositoryPort;
-import com.hexagonal.architecture.server.IntegrationTestSuite;
-import com.hexagonal.architecture.server.config.annotations.EnableTestContainers;
-import com.hexagonal.architecture.server.config.beans.IntegrationTestSuiteBeansConfig;
-import com.hexagonal.architecture.server.config.httptestclient.RestTestClient;
+import com.hexagonal.architecture.server.infra.IntegrationTestSuite;
+import com.hexagonal.architecture.server.infra.config.annotations.EnableTestContainers;
+import com.hexagonal.architecture.server.infra.config.beans.IntegrationTestSuiteBeansConfig;
+import com.hexagonal.architecture.server.infra.config.httptestclient.RestTestClient;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

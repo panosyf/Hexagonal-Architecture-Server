@@ -1,9 +1,11 @@
-package com.hexagonal.architecture.server;
+package com.hexagonal.architecture.server.infra;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(
+        scanBasePackages = "com.hexagonal.architecture.server"
+)
 public class IntegrationTestSuite {
 
     public static void main(String[] args) {

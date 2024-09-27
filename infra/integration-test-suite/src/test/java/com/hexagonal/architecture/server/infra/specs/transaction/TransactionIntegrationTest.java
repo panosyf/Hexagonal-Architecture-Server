@@ -1,8 +1,8 @@
-package com.hexagonal.architecture.server.specs.transaction;
+package com.hexagonal.architecture.server.infra.specs.transaction;
 
-import com.hexagonal.architecture.server.common.constants.Endpoints;
-import com.hexagonal.architecture.server.common.mocks.AccountMocks;
-import com.hexagonal.architecture.server.common.mocks.TransactionCreateRequestMocks;
+import com.hexagonal.architecture.server.infra.common.constants.Endpoints;
+import com.hexagonal.architecture.server.infra.common.mocks.AccountMocks;
+import com.hexagonal.architecture.server.infra.common.mocks.TransactionCreateRequestMocks;
 import com.hexagonal.architecture.server.core.domain.domains.account.Account;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.core.domain.model.constants.Balance;
@@ -10,11 +10,11 @@ import com.hexagonal.architecture.server.core.domain.service.model.requests.Tran
 import com.hexagonal.architecture.server.core.domain.service.model.requests.TransactionUpdateRequest;
 import com.hexagonal.architecture.server.api.model.responses.TransactionCreationResponse;
 import com.hexagonal.architecture.server.api.model.responses.TransactionUpdateResponse;
-import com.hexagonal.architecture.server.config.AbstractIntegrationTest;
+import com.hexagonal.architecture.server.infra.config.AbstractIntegrationTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpMethod;
 
-import static com.hexagonal.architecture.server.common.mocks.TransactionUpdateRequestMocks.generateTransactionUpdateRequest;
+import static com.hexagonal.architecture.server.infra.common.mocks.TransactionUpdateRequestMocks.generateTransactionUpdateRequest;
 import static com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum.COMPLETED;
 import static org.assertj.core.api.Assertions.assertThat;
 

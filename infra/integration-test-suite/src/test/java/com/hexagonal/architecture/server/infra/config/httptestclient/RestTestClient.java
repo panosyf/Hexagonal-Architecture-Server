@@ -1,4 +1,4 @@
-package com.hexagonal.architecture.server.config.httptestclient;
+package com.hexagonal.architecture.server.infra.config.httptestclient;
 
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpHeaders;
@@ -7,8 +7,8 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.reactive.server.WebTestClient.ResponseSpec;
 import reactor.core.publisher.Mono;
 
-import static com.hexagonal.architecture.server.common.constants.Endpoints.LOCALHOST_URL;
-import static com.hexagonal.architecture.server.common.helpers.EndpointHelper.generateUri;
+import static com.hexagonal.architecture.server.infra.common.constants.Endpoints.LOCALHOST_URL;
+import static com.hexagonal.architecture.server.infra.common.helpers.EndpointHelper.generateUri;
 
 public class RestTestClient {
 

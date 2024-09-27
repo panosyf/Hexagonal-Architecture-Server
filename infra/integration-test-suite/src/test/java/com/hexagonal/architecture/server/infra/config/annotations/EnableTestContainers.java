@@ -1,6 +1,6 @@
-package com.hexagonal.architecture.server.config.annotations;
+package com.hexagonal.architecture.server.infra.config.annotations;
 
-import com.hexagonal.architecture.server.config.testcontainers.TestContainersInitializer;
+import com.hexagonal.architecture.server.infra.config.testcontainers.TestContainersInitializer;
 import org.springframework.test.context.ContextConfiguration;
 
 import java.lang.annotation.ElementType;

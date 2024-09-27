@@ -1,4 +1,4 @@
-package com.hexagonal.architecture.server.config.testcontainers;
+package com.hexagonal.architecture.server.infra.config.testcontainers;
 
 import org.springframework.boot.test.util.TestPropertyValues;
 import org.springframework.context.ApplicationContextInitializer;

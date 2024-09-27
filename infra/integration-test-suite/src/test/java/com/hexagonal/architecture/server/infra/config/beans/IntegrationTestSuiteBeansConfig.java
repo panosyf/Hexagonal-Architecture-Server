@@ -1,6 +1,6 @@
-package com.hexagonal.architecture.server.config.beans;
+package com.hexagonal.architecture.server.infra.config.beans;
 
-import com.hexagonal.architecture.server.config.httptestclient.RestTestClient;
+import com.hexagonal.architecture.server.infra.config.httptestclient.RestTestClient;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;

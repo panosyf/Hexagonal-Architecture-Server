@@ -1,4 +1,4 @@
-package com.hexagonal.architecture.server.common.helpers;
+package com.hexagonal.architecture.server.infra.common.helpers;
 
 public class EndpointHelper {
 
