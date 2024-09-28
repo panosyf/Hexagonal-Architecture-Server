@@ -1,6 +1,7 @@
 package com.hexagonal.architecture.server.infra.persistence.adapters.transaction;
 
 import com.hexagonal.architecture.server.core.domain.domains.transaction.Transaction;
+import com.hexagonal.architecture.server.core.domain.exceptions.notfound.TransactionNotFoundException;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.TransactionRepositoryPort;
 import com.hexagonal.architecture.server.infra.persistence.entities.TransactionEntity;
@@ -8,7 +9,6 @@ import jakarta.transaction.Transactional;
 import org.springframework.core.convert.ConversionService;
 
 import java.time.Instant;
-import java.util.Optional;
 
 public class TransactionRepositoryAdapter implements TransactionRepositoryPort {
 
@@ -29,11 +29,11 @@ public class TransactionRepositoryAdapter implements TransactionRepositoryPort {
         return conversionService.convert(persistedTransactionEntity, Transaction.class);
     }
 
-    // TODO THIS IS TEMPORARY SEE TODO ON INTERFACE
     @Override
-    public Optional<Transaction> findById(String id) {
-        Optional<TransactionEntity> optionalTransactionEntity = transactionJpaRepository.findById(id);
-        return optionalTransactionEntity.map(transactionEntity -> conversionService.convert(transactionEntity, Transaction.class));
+    public Transaction findById(String id) {
+        TransactionEntity transactionEntity = transactionJpaRepository.findById(id)
+                .orElseThrow(() -> new TransactionNotFoundException(id));
+        return conversionService.convert(transactionEntity, Transaction.class);
     }
 
     @Override

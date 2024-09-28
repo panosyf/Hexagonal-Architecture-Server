@@ -22,8 +22,7 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public Transaction getTransaction(String id) {
         log.info("TransactionServiceImpl");
-        return transactionRepositoryPort.findById(id)
-                .orElseThrow(() -> new TransactionNotFoundException(id));
+        return transactionRepositoryPort.findById(id);
     }
 
     @Override
@@ -42,8 +41,7 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public void updateTransaction(String id, TransactionUpdateRequest transactionUpdateRequest) {
         TransactionStatusEnum transactionStatusEnum = transactionUpdateRequest.transactionStatusEnum();
-        Transaction transaction = transactionRepositoryPort.findById(id)
-                .orElseThrow(() -> new TransactionNotFoundException(id));
+        Transaction transaction = transactionRepositoryPort.findById(id);
         transaction.updateStatus(transactionStatusEnum);
         transactionRepositoryPort.updateStatus(transaction);
     }
