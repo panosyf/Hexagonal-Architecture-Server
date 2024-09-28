@@ -1,35 +1,32 @@
 package com.hexagonal.architecture.server.api.unit.facades;
 
-import com.hexagonal.architecture.server.api.converters.out.TransactionToDto;
-import com.hexagonal.architecture.server.core.domain.domains.transaction.Transaction;
-import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
-import com.hexagonal.architecture.server.core.domain.exceptions.baddata.InsufficientBalanceException;
-import com.hexagonal.architecture.server.api.facades.transaction.TransactionFacade;
-import com.hexagonal.architecture.server.api.facades.transaction.TransactionFacadeImpl;
 import com.hexagonal.architecture.server.api.common.constants.Ids;
 import com.hexagonal.architecture.server.api.common.mocks.TransactionCreateRequestMocks;
 import com.hexagonal.architecture.server.api.common.mocks.TransactionMocks;
 import com.hexagonal.architecture.server.api.common.mocks.TransactionUpdateRequestMocks;
+import com.hexagonal.architecture.server.api.converters.out.TransactionToDto;
+import com.hexagonal.architecture.server.api.facades.transaction.TransactionFacade;
+import com.hexagonal.architecture.server.api.facades.transaction.TransactionFacadeImpl;
+import com.hexagonal.architecture.server.api.model.responses.TransactionCreationResponse;
+import com.hexagonal.architecture.server.core.domain.domains.transaction.Transaction;
+import com.hexagonal.architecture.server.core.domain.exceptions.baddata.InsufficientBalanceException;
+import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.core.domain.service.model.requests.TransactionCreateRequest;
 import com.hexagonal.architecture.server.core.domain.service.model.requests.TransactionUpdateRequest;
-import com.hexagonal.architecture.server.api.model.responses.TransactionCreationResponse;
-import com.hexagonal.architecture.server.api.model.responses.TransactionUpdateResponse;
-
 import com.hexagonal.architecture.server.core.domain.service.services.account.AccountService;
 import com.hexagonal.architecture.server.core.domain.service.services.transaction.TransactionService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.springframework.core.convert.support.GenericConversionService;
 
 import java.math.BigDecimal;
-
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 class TransactionFacadeTest {
 
@@ -37,6 +34,7 @@ class TransactionFacadeTest {
     private final AccountService accountService = mock(AccountService.class);
     private final GenericConversionService genericConversionService = new GenericConversionService();
     private TransactionFacade transactionFacade;
+    private final ArgumentCaptor<TransactionUpdateRequest> transactionUpdateRequestCaptor = ArgumentCaptor.forClass(TransactionUpdateRequest.class);
 
     @BeforeEach
     void init() {
@@ -76,12 +74,16 @@ class TransactionFacadeTest {
     @Test
     void updateTransactionTest() {
         // given
-        TransactionUpdateRequest transactionCreateRequest = TransactionUpdateRequestMocks.generateTransactionUpdateRequest();
+        TransactionUpdateRequest transactionUpdateRequest = TransactionUpdateRequestMocks.generateTransactionUpdateRequest();
+        Transaction transaction = TransactionMocks.generateTransaction();
+        given(transactionService.updateTransaction(anyString(), any(TransactionUpdateRequest.class)))
+                .willReturn(transaction);
         // when
-        TransactionUpdateResponse transactionUpdateResponse = transactionFacade.updateTransaction(Ids.TRANSACTION_ID_1, transactionCreateRequest);
+        transactionFacade.updateTransaction(Ids.TRANSACTION_ID_1, transactionUpdateRequest);
         // Then
-        assertThat(transactionUpdateResponse.id()).isEqualTo(TransactionStatusEnum.COMPLETED);
-        assertThat(transactionUpdateResponse.status()).isEqualTo(TransactionStatusEnum.COMPLETED);
+        verify(transactionService, times(1))
+                .updateTransaction(anyString(), transactionUpdateRequestCaptor.capture());
+        assertThat(transactionUpdateRequestCaptor.getValue().transactionStatusEnum()).isEqualTo(TransactionStatusEnum.COMPLETED);
     }
 
 }

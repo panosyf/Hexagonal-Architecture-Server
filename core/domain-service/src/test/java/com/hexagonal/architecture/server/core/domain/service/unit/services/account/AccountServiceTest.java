@@ -5,16 +5,15 @@ import com.hexagonal.architecture.server.core.domain.exceptions.notfound.Account
 import com.hexagonal.architecture.server.core.domain.exceptions.utils.messages.ErrorMessageConstants;
 import com.hexagonal.architecture.server.core.domain.model.constants.Amount;
 import com.hexagonal.architecture.server.core.domain.model.constants.Balance;
+import com.hexagonal.architecture.server.core.domain.service.common.constants.Ids;
+import com.hexagonal.architecture.server.core.domain.service.common.constants.Names;
+import com.hexagonal.architecture.server.core.domain.service.common.mocks.AccountCreateRequestMocks;
 import com.hexagonal.architecture.server.core.domain.service.model.requests.AccountCreateRequest;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.AccountRepositoryPort;
 import com.hexagonal.architecture.server.core.domain.service.services.account.AccountService;
 import com.hexagonal.architecture.server.core.domain.service.services.account.AccountServiceImpl;
-import com.hexagonal.architecture.server.core.domain.service.common.constants.Ids;
-import com.hexagonal.architecture.server.core.domain.service.common.constants.Names;
-import com.hexagonal.architecture.server.core.domain.service.common.mocks.AccountCreateRequestMocks;
 import com.hexagonal.architecture.server.core.domain.utils.TimeUtils;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
@@ -34,9 +33,7 @@ import static org.mockito.Mockito.*;
 class AccountServiceTest {
 
     private final AccountRepositoryPort accountRepositoryPort = mock(AccountRepositoryPort.class);
-
     private AccountService accountService;
-
     private final ArgumentCaptor<BigDecimal> balanceCaptor = ArgumentCaptor.forClass(BigDecimal.class);
 
     @BeforeEach
