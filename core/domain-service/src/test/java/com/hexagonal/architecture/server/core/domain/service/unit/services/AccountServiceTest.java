@@ -50,7 +50,7 @@ class AccountServiceTest {
         // given
         Account account = generateAccount();
         given(accountRepositoryPort.findById(anyString()))
-                .willReturn(Optional.of(account));
+                .willReturn(account);
         // when
         Account accountResult = accountService.getAccount(Id.ACCOUNT_ID_1);
         // then
@@ -66,7 +66,7 @@ class AccountServiceTest {
     void getAccountThrowsAccountNotFoundExceptionTest() {
         // given
         given(accountRepositoryPort.findById(anyString()))
-                .willReturn(Optional.empty());
+                .willThrow(new AccountNotFoundException(Id.ACCOUNT_ID_1));
         // then
         assertThatThrownBy(() -> accountService.getAccount(Id.ACCOUNT_ID_1))
                 .isInstanceOf(AccountNotFoundException.class)
@@ -116,7 +116,7 @@ class AccountServiceTest {
         // given
         Account account = generateAccount();
         given(accountRepositoryPort.findById(anyString()))
-                .willReturn(Optional.of(account));
+                .willReturn(account);
         // when
         accountService.increaseBalance(Id.ACCOUNT_ID_1, Amount.AMOUNT_10);
         // then
@@ -129,7 +129,7 @@ class AccountServiceTest {
     void increaseBalanceThrowsAccountNotFoundExceptionTest() {
         // given
         given(accountRepositoryPort.findById(anyString()))
-                .willReturn(Optional.empty());
+                .willThrow(new AccountNotFoundException(Id.ACCOUNT_ID_1));
         // then
         assertThatThrownBy(() -> accountService.increaseBalance(Id.ACCOUNT_ID_1, Amount.AMOUNT_10))
                 .isInstanceOf(AccountNotFoundException.class)
@@ -141,7 +141,7 @@ class AccountServiceTest {
         // given
         Account account = generateAccount(Balance.BALANCE_15);
         given(accountRepositoryPort.findById(anyString()))
-                .willReturn(Optional.of(account));
+                .willReturn(account);
         // when
         accountService.decreaseBalance(Id.ACCOUNT_ID_1, Amount.AMOUNT_10);
         // then
@@ -154,7 +154,7 @@ class AccountServiceTest {
     void decreaseBalanceTestThrowsAccountNotFoundExceptionTest() {
         // given
         given(accountRepositoryPort.findById(anyString()))
-                .willReturn(Optional.empty());
+                .willThrow(new AccountNotFoundException(Id.ACCOUNT_ID_1));
         // then
         assertThatThrownBy(() -> accountService.decreaseBalance(Id.ACCOUNT_ID_1, Amount.AMOUNT_10))
                 .isInstanceOf(AccountNotFoundException.class)

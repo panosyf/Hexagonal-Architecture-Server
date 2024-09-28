@@ -1,13 +1,13 @@
 package com.hexagonal.architecture.server.infra.persistence.adapters.account;
 
 import com.hexagonal.architecture.server.core.domain.domains.account.Account;
+import com.hexagonal.architecture.server.core.domain.exceptions.notfound.AccountNotFoundException;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.AccountRepositoryPort;
 import com.hexagonal.architecture.server.infra.persistence.entities.AccountEntity;
 import jakarta.transaction.Transactional;
 import org.springframework.core.convert.ConversionService;
 
 import java.math.BigDecimal;
-import java.util.Optional;
 
 public class AccountRepositoryAdapter implements AccountRepositoryPort {
 
@@ -22,15 +22,16 @@ public class AccountRepositoryAdapter implements AccountRepositoryPort {
     @Override
     public Account save(Account account) {
         AccountEntity accountEntity = conversionService.convert(account, AccountEntity.class);
+        assert accountEntity != null;
         AccountEntity persistedAccountEntity = accountJpaRepository.save(accountEntity);
         return conversionService.convert(persistedAccountEntity, Account.class);
     }
 
-    // TODO THIS IS TEMPORARY SEE TODO ON INTERFACE
     @Override
-    public Optional<Account> findById(String id) {
-        Optional<AccountEntity> optionalAccountEntity = accountJpaRepository.findById(id);
-        return optionalAccountEntity.map(accountEntity -> conversionService.convert(accountEntity, Account.class));
+    public Account findById(String id) {
+        AccountEntity accountEntity = accountJpaRepository.findById(id)
+                .orElseThrow(() -> new AccountNotFoundException(id));
+        return conversionService.convert(accountEntity, Account.class);
     }
 
     @Override

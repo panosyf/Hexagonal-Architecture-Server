@@ -23,8 +23,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Account getAccount(String id) {
         log.info("AccountServiceImpl");
-        return accountRepositoryPort.findById(id)
-                .orElseThrow(() -> new AccountNotFoundException(id));
+        return accountRepositoryPort.findById(id);
     }
 
     @Override
@@ -47,8 +46,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public void increaseBalance(String id, BigDecimal amount) {
-        Account account = accountRepositoryPort.findById(id)
-                .orElseThrow(() -> new AccountNotFoundException(id));
+        Account account = accountRepositoryPort.findById(id);
         account.increaseBalance(amount);
         BigDecimal newBalance = account.getBalance();
         accountRepositoryPort.updateBalance(id, newBalance);
@@ -57,8 +55,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public void decreaseBalance(String id, BigDecimal amount) {
-        Account account = accountRepositoryPort.findById(id)
-                .orElseThrow(() -> new AccountNotFoundException(id));
+        Account account = accountRepositoryPort.findById(id);
         account.decreaseBalance(amount);
         BigDecimal updatedBalance = account.getBalance();
         accountRepositoryPort.updateBalance(id, updatedBalance);
