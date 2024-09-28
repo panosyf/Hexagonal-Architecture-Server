@@ -2,17 +2,17 @@ package com.hexagonal.architecture.server.core.domain.service.unit.services;
 
 
 import com.hexagonal.architecture.server.core.domain.domains.transaction.Transaction;
-import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
-import com.hexagonal.architecture.server.core.domain.model.enums.TransactionType;
 import com.hexagonal.architecture.server.core.domain.exceptions.notfound.TransactionNotFoundException;
 import com.hexagonal.architecture.server.core.domain.exceptions.utils.messages.ErrorMessageConstants;
 import com.hexagonal.architecture.server.core.domain.model.constants.Amount;
-import com.hexagonal.architecture.server.core.domain.service.model.requests.TransactionCreateRequest;
-import com.hexagonal.architecture.server.core.domain.service.model.requests.TransactionUpdateRequest;
-import com.hexagonal.architecture.server.core.domain.service.ports.driven.TransactionRepositoryPort;
+import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
+import com.hexagonal.architecture.server.core.domain.model.enums.TransactionType;
 import com.hexagonal.architecture.server.core.domain.service.common.constants.Id;
 import com.hexagonal.architecture.server.core.domain.service.common.mocks.TransactionCreateRequestMocks;
 import com.hexagonal.architecture.server.core.domain.service.common.mocks.TransactionUpdateRequestMocks;
+import com.hexagonal.architecture.server.core.domain.service.model.requests.TransactionCreateRequest;
+import com.hexagonal.architecture.server.core.domain.service.model.requests.TransactionUpdateRequest;
+import com.hexagonal.architecture.server.core.domain.service.ports.driven.TransactionRepositoryPort;
 import com.hexagonal.architecture.server.core.domain.service.services.transaction.TransactionService;
 import com.hexagonal.architecture.server.core.domain.service.services.transaction.TransactionServiceImpl;
 import com.hexagonal.architecture.server.core.domain.utils.TimeUtils;
@@ -22,7 +22,6 @@ import org.mockito.ArgumentCaptor;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.util.Optional;
 
 import static com.hexagonal.architecture.server.core.domain.exceptions.utils.ErrorUtils.generateErrorMessage;
 import static com.hexagonal.architecture.server.core.domain.service.common.mocks.TransactionMocks.generatePendingTransaction;
@@ -53,7 +52,7 @@ class TransactionServiceTest {
         Instant now = TimeUtils.now().minus(100, ChronoUnit.NANOS);
         Transaction transaction = generateTransaction();
         given(transactionRepositoryPort.findById(anyString()))
-                .willReturn(Optional.of(transaction));
+                .willReturn(transaction);
         // when
         Transaction transactionResult = transactionService.getTransaction(Id.TRANSACTION_ID_1);
         assertAll(
@@ -72,7 +71,7 @@ class TransactionServiceTest {
     void getTransactionThrowsTransactionNotFoundExceptionTest() {
         // given
         given(transactionRepositoryPort.findById(anyString()))
-                .willReturn(Optional.empty());
+                .willThrow(new TransactionNotFoundException(Id.TRANSACTION_ID_1));
         // then
         assertThatThrownBy(() -> transactionService.getTransaction(Id.TRANSACTION_ID_1))
                 .isInstanceOf(TransactionNotFoundException.class)
@@ -84,7 +83,7 @@ class TransactionServiceTest {
         // given
         TransactionCreateRequest transactionCreateRequest = TransactionCreateRequestMocks.generateTransactionCreateRequest();
         // when
-        Transaction transaction = transactionService.createTransaction(transactionCreateRequest);
+        transactionService.createTransaction(transactionCreateRequest);
         // then
         assertAll(
                 () -> assertEquals(TransactionType.TRANSFER, transactionCreateRequest.transactionType()),
@@ -102,7 +101,7 @@ class TransactionServiceTest {
         TransactionUpdateRequest transactionUpdateRequest = TransactionUpdateRequestMocks.generateTransactionUpdateRequest();
         Transaction transaction = generatePendingTransaction(Id.TRANSACTION_ID_1);
         given(transactionRepositoryPort.findById(anyString()))
-                .willReturn(Optional.of(transaction));
+                .willReturn(transaction);
         // when
         transactionService.updateTransaction(Id.TRANSACTION_ID_1, transactionUpdateRequest);
         // then
@@ -116,7 +115,7 @@ class TransactionServiceTest {
         // given
         TransactionUpdateRequest transactionUpdateRequest = TransactionUpdateRequestMocks.generateTransactionUpdateRequest();
         given(transactionRepositoryPort.findById(anyString()))
-                .willReturn(Optional.empty());
+                .willThrow(new TransactionNotFoundException(Id.TRANSACTION_ID_1));
         // then
         assertThatThrownBy(() -> transactionService.updateTransaction(Id.TRANSACTION_ID_1, transactionUpdateRequest))
                 .isInstanceOf(TransactionNotFoundException.class)
