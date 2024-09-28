@@ -32,16 +32,6 @@ public class AccountServiceImpl implements AccountService {
         account = accountRepositoryPort.save(account);
         log.info(LogInfoMessages.LOG_ACCOUNT_CREATED_INFO, accountCreateRequest);
         return account;
-        // TODO THROW APPROPRIATE EXCEPTION
-//        try {
-//            account = accountRepositoryPort.save(account);
-//            log.info(LogInfoMessages.LOG_ACCOUNT_CREATED_INFO, accountCreateRequest);
-//            return account;
-//        } catch (Exception e) {
-//            log.error(LogErrorMessages.LOG_ACCOUNT_CREATION_FAILED_ERROR, accountCreateRequest);
-//            log.error(e.toString());
-//            return new AccountCreationResponse(AccountCreationStatusEnum.FAILED);
-//        }
     }
 
     @Override

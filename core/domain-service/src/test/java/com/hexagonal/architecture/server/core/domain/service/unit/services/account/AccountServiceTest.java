@@ -93,23 +93,6 @@ class AccountServiceTest {
         );
     }
 
-    // TODO WILL BE UPDATED AN FAILED EXCEPTION IS IMPLEMENTED
-    @Test
-    @Disabled
-    void accountCreationFailedTest() {
-        // given
-        AccountCreateRequest accountCreateRequest = AccountCreateRequestMocks.generateAccountCreateRequest();
-        doThrow(RuntimeException.class)
-                .when(accountRepositoryPort)
-                .save(any(Account.class));
-        // when
-        Account account = accountService.createAccount(accountCreateRequest);
-        // then
-        verify(accountRepositoryPort, times(1))
-                .save(any(Account.class));
-    }
-
-
     @Test
     void increaseBalanceTest() {
         // given
