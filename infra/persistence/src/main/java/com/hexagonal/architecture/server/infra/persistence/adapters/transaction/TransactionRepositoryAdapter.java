@@ -26,28 +26,33 @@ public class TransactionRepositoryAdapter implements TransactionRepositoryPort {
     public Transaction save(Transaction transaction) {
         TransactionEntity transactionEntity = conversionService.convert(transaction, TransactionEntity.class);
         TransactionEntity persistedTransactionEntity = transactionJpaRepository.save(transactionEntity);
-        return conversionService.convert(persistedTransactionEntity, Transaction.class);
+        return transactionToDomain(persistedTransactionEntity);
     }
 
     @Override
     public Transaction findById(String id) {
         TransactionEntity transactionEntity = transactionJpaRepository.findById(id)
                 .orElseThrow(() -> new TransactionNotFoundException(id));
-        return conversionService.convert(transactionEntity, Transaction.class);
+        return transactionToDomain(transactionEntity);
     }
 
     @Override
     @Transactional
-    public void updateStatus(Transaction transaction) {
+    public Transaction updateStatus(Transaction transaction) {
         String id = transaction.getId();
         TransactionStatusEnum status = transaction.getStatus();
         Instant updatedAt = transaction.getUpdatedAt();
         transactionJpaRepository.updateStatus(id, status, updatedAt);
+        return findById(id);
     }
 
     @Override
     public void deleteAll() {
         transactionJpaRepository.deleteAll();
+    }
+
+    private Transaction transactionToDomain(TransactionEntity transactionEntity) {
+        return conversionService.convert(transactionEntity, Transaction.class);
     }
 
 }

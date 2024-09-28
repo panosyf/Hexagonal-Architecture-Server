@@ -2,7 +2,6 @@ package com.hexagonal.architecture.server.core.domain.service.services.transacti
 
 import com.hexagonal.architecture.server.core.domain.domains.transaction.Transaction;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
-import com.hexagonal.architecture.server.core.domain.exceptions.notfound.TransactionNotFoundException;
 import com.hexagonal.architecture.server.core.domain.service.model.requests.TransactionCreateRequest;
 import com.hexagonal.architecture.server.core.domain.service.model.requests.TransactionUpdateRequest;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.TransactionRepositoryPort;
@@ -39,11 +38,11 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public void updateTransaction(String id, TransactionUpdateRequest transactionUpdateRequest) {
+    public Transaction updateTransaction(String id, TransactionUpdateRequest transactionUpdateRequest) {
         TransactionStatusEnum transactionStatusEnum = transactionUpdateRequest.transactionStatusEnum();
         Transaction transaction = transactionRepositoryPort.findById(id);
         transaction.updateStatus(transactionStatusEnum);
-        transactionRepositoryPort.updateStatus(transaction);
+        return transactionRepositoryPort.updateStatus(transaction);
     }
 
 }

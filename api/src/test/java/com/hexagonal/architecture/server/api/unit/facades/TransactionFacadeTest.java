@@ -78,9 +78,10 @@ class TransactionFacadeTest {
         // given
         TransactionUpdateRequest transactionCreateRequest = TransactionUpdateRequestMocks.generateTransactionUpdateRequest();
         // when
-        TransactionUpdateResponse transactionCreateResponse = transactionFacade.updateTransaction(Ids.TRANSACTION_ID_1, transactionCreateRequest);
+        TransactionUpdateResponse transactionUpdateResponse = transactionFacade.updateTransaction(Ids.TRANSACTION_ID_1, transactionCreateRequest);
         // Then
-        assertThat(transactionCreateResponse.status()).isEqualTo(TransactionStatusEnum.COMPLETED);
+        assertThat(transactionUpdateResponse.id()).isEqualTo(TransactionStatusEnum.COMPLETED);
+        assertThat(transactionUpdateResponse.status()).isEqualTo(TransactionStatusEnum.COMPLETED);
     }
 
 }

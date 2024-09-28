@@ -8,7 +8,7 @@ public interface TransactionRepositoryPort {
 
     Transaction findById(String id);
 
-    void updateStatus(Transaction transaction);
+    Transaction updateStatus(Transaction transaction);
 
     void deleteAll();
 

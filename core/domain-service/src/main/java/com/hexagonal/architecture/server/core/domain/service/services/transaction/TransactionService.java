@@ -10,6 +10,6 @@ public interface TransactionService {
 
     Transaction createTransaction(TransactionCreateRequest transactionCreateRequest);
 
-    void updateTransaction(String id, TransactionUpdateRequest transactionUpdateRequest);
+    Transaction updateTransaction(String id, TransactionUpdateRequest transactionUpdateRequest);
 
 }
