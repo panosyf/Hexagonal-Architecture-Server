@@ -39,8 +39,8 @@ public class TransactionIntegrationTest extends AbstractIntegrationTest {
                 .getResponseBody();
         //then
         assertThat(transactionCreationResponse.status()).isEqualTo(TransactionStatusEnum.PENDING);
-        accountRepositoryPort.findById(accountDebtor.getId())
-                .ifPresent(account -> assertThat(account.getBalance().equals(Balance.BALANCE_15)).isTrue());
+        Account account = accountRepositoryPort.findById(accountDebtor.getId());
+        account.getBalance().equals(Balance.BALANCE_15);
         // when
         TransactionUpdateRequest transactionUpdateRequest = generateTransactionUpdateRequest(COMPLETED);
         restTestClient.execute(

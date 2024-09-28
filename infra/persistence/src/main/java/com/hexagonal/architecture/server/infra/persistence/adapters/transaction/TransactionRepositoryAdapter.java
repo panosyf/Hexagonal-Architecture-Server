@@ -25,7 +25,6 @@ public class TransactionRepositoryAdapter implements TransactionRepositoryPort {
     @Override
     public Transaction save(Transaction transaction) {
         TransactionEntity transactionEntity = conversionService.convert(transaction, TransactionEntity.class);
-        assert transactionEntity != null;
         TransactionEntity persistedTransactionEntity = transactionJpaRepository.save(transactionEntity);
         return conversionService.convert(persistedTransactionEntity, Transaction.class);
     }

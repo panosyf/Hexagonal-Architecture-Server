@@ -22,7 +22,6 @@ public class AccountRepositoryAdapter implements AccountRepositoryPort {
     @Override
     public Account save(Account account) {
         AccountEntity accountEntity = conversionService.convert(account, AccountEntity.class);
-        assert accountEntity != null;
         AccountEntity persistedAccountEntity = accountJpaRepository.save(accountEntity);
         return conversionService.convert(persistedAccountEntity, Account.class);
     }
