@@ -9,6 +9,7 @@ public class AccountToDto implements Converter<Account, AccountDto> {
     @Override
     public AccountDto convert(Account account) {
         return new AccountDto(
+                account.getId(),
                 account.getName(),
                 account.getBalance(),
                 account.getCreatedAt(),

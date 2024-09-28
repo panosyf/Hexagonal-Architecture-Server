@@ -5,5 +5,5 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.hexagonal.architecture.server.core.domain.model.enums.AccountCreationStatusEnum;
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public record AccountCreationResponse(AccountCreationStatusEnum status) {
+public record AccountCreationResponse(String id, AccountCreationStatusEnum status) {
 }

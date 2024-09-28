@@ -5,5 +5,5 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public record TransactionUpdateResponse(TransactionStatusEnum status) {
+public record TransactionUpdateResponse(String id, TransactionStatusEnum status) {
 }

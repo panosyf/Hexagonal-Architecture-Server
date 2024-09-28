@@ -10,6 +10,7 @@ import java.time.Instant;
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public record TransactionDto(
+        String id,
         TransactionType type,
         BigDecimal amount,
         String description,

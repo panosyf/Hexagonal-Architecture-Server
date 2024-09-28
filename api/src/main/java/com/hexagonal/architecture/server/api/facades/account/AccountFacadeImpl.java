@@ -2,6 +2,7 @@ package com.hexagonal.architecture.server.api.facades.account;
 
 import com.hexagonal.architecture.server.api.model.dtos.AccountDto;
 import com.hexagonal.architecture.server.api.model.responses.AccountCreationResponse;
+import com.hexagonal.architecture.server.core.domain.domains.account.Account;
 import com.hexagonal.architecture.server.core.domain.model.enums.AccountCreationStatusEnum;
 import com.hexagonal.architecture.server.core.domain.service.model.requests.AccountCreateRequest;
 import com.hexagonal.architecture.server.core.domain.service.services.account.AccountService;
@@ -18,8 +19,8 @@ public class AccountFacadeImpl implements AccountFacade {
     }
 
     public AccountCreationResponse createAccount(AccountCreateRequest accountCreateRequest) {
-        accountService.createAccount(accountCreateRequest);
-        return new AccountCreationResponse(AccountCreationStatusEnum.SUCCESSFUL);
+        Account account = accountService.createAccount(accountCreateRequest);
+        return new AccountCreationResponse(account.getId(), AccountCreationStatusEnum.SUCCESSFUL);
     }
 
     public AccountDto getAccount(String id) {

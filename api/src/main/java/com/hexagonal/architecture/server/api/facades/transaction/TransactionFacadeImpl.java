@@ -44,16 +44,16 @@ public class TransactionFacadeImpl implements TransactionFacade {
             String id = transaction.getId();
             TransactionUpdateRequest transactionUpdateRequest = new TransactionUpdateRequest(TransactionStatusEnum.FAILED);
             transactionService.updateTransaction(id, transactionUpdateRequest);
-            return new TransactionCreationResponse(TransactionStatusEnum.FAILED, null);
+            return new TransactionCreationResponse(null, TransactionStatusEnum.FAILED);
         }
-        return new TransactionCreationResponse(TransactionStatusEnum.PENDING, transaction.getId());
+        return new TransactionCreationResponse(transaction.getId(), TransactionStatusEnum.PENDING);
     }
 
     @Override
     public TransactionUpdateResponse updateTransaction(String id, TransactionUpdateRequest transactionUpdateRequest) {
         TransactionStatusEnum transactionStatusEnum = transactionUpdateRequest.transactionStatusEnum();
         transactionService.updateTransaction(id, transactionUpdateRequest);
-        return new TransactionUpdateResponse(transactionStatusEnum);
+        return new TransactionUpdateResponse(id, transactionStatusEnum);
     }
 
 }

@@ -8,7 +8,6 @@ public interface AccountRepositoryPort {
 
     Account save(Account account);
 
-    // TODO REFACTOR TO RETURN OBJECT OPTIONAL HANDLING SHOULD BE MOVED IN PERSISTENCE
     Account findById(String id);
 
     BigDecimal findBalance(String id);
