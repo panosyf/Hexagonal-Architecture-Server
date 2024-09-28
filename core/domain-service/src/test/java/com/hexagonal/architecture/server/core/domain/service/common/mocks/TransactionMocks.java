@@ -4,7 +4,7 @@ import com.hexagonal.architecture.server.core.domain.domains.transaction.Transac
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionType;
 import com.hexagonal.architecture.server.core.domain.model.constants.Amount;
-import com.hexagonal.architecture.server.core.domain.service.common.constants.Id;
+import com.hexagonal.architecture.server.core.domain.service.common.constants.Ids;
 
 public class TransactionMocks {
 
@@ -16,8 +16,8 @@ public class TransactionMocks {
                 TransactionType.TRANSFER,
                 Amount.AMOUNT_5,
                 "",
-                Id.ACCOUNT_ID_1,
-                Id.ACCOUNT_ID_2,
+                Ids.ACCOUNT_ID_1,
+                Ids.ACCOUNT_ID_2,
                 TransactionStatusEnum.CREATED);
     }
 
@@ -27,8 +27,8 @@ public class TransactionMocks {
                 TransactionType.TRANSFER,
                 Amount.AMOUNT_5,
                 "",
-                Id.ACCOUNT_ID_1,
-                Id.ACCOUNT_ID_2,
+                Ids.ACCOUNT_ID_1,
+                Ids.ACCOUNT_ID_2,
                 TransactionStatusEnum.CREATED);
     }
 

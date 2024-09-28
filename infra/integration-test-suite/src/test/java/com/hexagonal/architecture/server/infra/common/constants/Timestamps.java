@@ -1,10 +1,10 @@
-package com.hexagonal.architecture.server.core.domain.service.common.constants;
+package com.hexagonal.architecture.server.infra.common.constants;
 
 import java.time.Instant;
 
-public class Timestamp {
+public class Timestamps {
 
-    private Timestamp() {
+    private Timestamps() {
     }
 
     public static final Instant TIMESTAMP_1 = Instant.parse("2024-09-08T16:30:000Z");

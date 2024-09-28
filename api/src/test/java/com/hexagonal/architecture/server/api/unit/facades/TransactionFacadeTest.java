@@ -6,7 +6,7 @@ import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStat
 import com.hexagonal.architecture.server.core.domain.exceptions.baddata.InsufficientBalanceException;
 import com.hexagonal.architecture.server.api.facades.transaction.TransactionFacade;
 import com.hexagonal.architecture.server.api.facades.transaction.TransactionFacadeImpl;
-import com.hexagonal.architecture.server.api.common.constants.Id;
+import com.hexagonal.architecture.server.api.common.constants.Ids;
 import com.hexagonal.architecture.server.api.common.mocks.TransactionCreateRequestMocks;
 import com.hexagonal.architecture.server.api.common.mocks.TransactionMocks;
 import com.hexagonal.architecture.server.api.common.mocks.TransactionUpdateRequestMocks;
@@ -78,7 +78,7 @@ class TransactionFacadeTest {
         // given
         TransactionUpdateRequest transactionCreateRequest = TransactionUpdateRequestMocks.generateTransactionUpdateRequest();
         // when
-        TransactionUpdateResponse transactionCreateResponse = transactionFacade.updateTransaction(Id.TRANSACTION_ID_1, transactionCreateRequest);
+        TransactionUpdateResponse transactionCreateResponse = transactionFacade.updateTransaction(Ids.TRANSACTION_ID_1, transactionCreateRequest);
         // Then
         assertThat(transactionCreateResponse.status()).isEqualTo(TransactionStatusEnum.COMPLETED);
     }

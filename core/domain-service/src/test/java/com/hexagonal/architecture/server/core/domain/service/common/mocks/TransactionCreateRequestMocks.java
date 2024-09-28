@@ -3,7 +3,7 @@ package com.hexagonal.architecture.server.core.domain.service.common.mocks;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionType;
 import com.hexagonal.architecture.server.core.domain.model.constants.Amount;
 import com.hexagonal.architecture.server.core.domain.service.model.requests.TransactionCreateRequest;
-import com.hexagonal.architecture.server.core.domain.service.common.constants.Id;
+import com.hexagonal.architecture.server.core.domain.service.common.constants.Ids;
 
 public class TransactionCreateRequestMocks {
 
@@ -15,8 +15,8 @@ public class TransactionCreateRequestMocks {
                 TransactionType.TRANSFER,
                 Amount.AMOUNT_5,
                 "",
-                Id.ACCOUNT_ID_1,
-                Id.ACCOUNT_ID_2);
+                Ids.ACCOUNT_ID_1,
+                Ids.ACCOUNT_ID_2);
     }
 
     public static TransactionCreateRequest generateTransactionCreateRequest(String debtorAccountId, String beneficiaryAccountId) {

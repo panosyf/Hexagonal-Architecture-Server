@@ -1,4 +1,4 @@
-package com.hexagonal.architecture.server.core.domain.service.unit.services;
+package com.hexagonal.architecture.server.core.domain.service.unit.services.transaction;
 
 
 import com.hexagonal.architecture.server.core.domain.domains.transaction.Transaction;
@@ -7,7 +7,7 @@ import com.hexagonal.architecture.server.core.domain.exceptions.utils.messages.E
 import com.hexagonal.architecture.server.core.domain.model.constants.Amount;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionType;
-import com.hexagonal.architecture.server.core.domain.service.common.constants.Id;
+import com.hexagonal.architecture.server.core.domain.service.common.constants.Ids;
 import com.hexagonal.architecture.server.core.domain.service.common.mocks.TransactionCreateRequestMocks;
 import com.hexagonal.architecture.server.core.domain.service.common.mocks.TransactionUpdateRequestMocks;
 import com.hexagonal.architecture.server.core.domain.service.model.requests.TransactionCreateRequest;
@@ -54,13 +54,13 @@ class TransactionServiceTest {
         given(transactionRepositoryPort.findById(anyString()))
                 .willReturn(transaction);
         // when
-        Transaction transactionResult = transactionService.getTransaction(Id.TRANSACTION_ID_1);
+        Transaction transactionResult = transactionService.getTransaction(Ids.TRANSACTION_ID_1);
         assertAll(
                 () -> assertEquals(TransactionType.TRANSFER, transactionResult.getType()),
                 () -> assertEquals(Amount.AMOUNT_5, transactionResult.getAmount()),
                 () -> assertEquals("", transactionResult.getDescription()),
-                () -> assertEquals(Id.ACCOUNT_ID_1, transactionResult.getDebtorAccountId()),
-                () -> assertEquals(Id.ACCOUNT_ID_2, transactionResult.getBeneficiaryAccountId()),
+                () -> assertEquals(Ids.ACCOUNT_ID_1, transactionResult.getDebtorAccountId()),
+                () -> assertEquals(Ids.ACCOUNT_ID_2, transactionResult.getBeneficiaryAccountId()),
                 () -> assertEquals(TransactionStatusEnum.CREATED, transactionResult.getStatus()),
                 () -> assertThat(now).isBefore(transactionResult.getCreatedAt()),
                 () -> assertNull(transactionResult.getUpdatedAt())
@@ -71,11 +71,11 @@ class TransactionServiceTest {
     void getTransactionThrowsTransactionNotFoundExceptionTest() {
         // given
         given(transactionRepositoryPort.findById(anyString()))
-                .willThrow(new TransactionNotFoundException(Id.TRANSACTION_ID_1));
+                .willThrow(new TransactionNotFoundException(Ids.TRANSACTION_ID_1));
         // then
-        assertThatThrownBy(() -> transactionService.getTransaction(Id.TRANSACTION_ID_1))
+        assertThatThrownBy(() -> transactionService.getTransaction(Ids.TRANSACTION_ID_1))
                 .isInstanceOf(TransactionNotFoundException.class)
-                .hasMessage(generateErrorMessage(ErrorMessageConstants.TRANSACTION_NOT_FOUND_EXCEPTION), Id.TRANSACTION_ID_1);
+                .hasMessage(generateErrorMessage(ErrorMessageConstants.TRANSACTION_NOT_FOUND_EXCEPTION), Ids.TRANSACTION_ID_1);
     }
 
     @Test
@@ -89,8 +89,8 @@ class TransactionServiceTest {
                 () -> assertEquals(TransactionType.TRANSFER, transactionCreateRequest.transactionType()),
                 () -> assertEquals(Amount.AMOUNT_5, transactionCreateRequest.amount()),
                 () -> assertEquals("", transactionCreateRequest.description()),
-                () -> assertEquals(Id.ACCOUNT_ID_1, transactionCreateRequest.debtorAccountId()),
-                () -> assertEquals(Id.ACCOUNT_ID_2, transactionCreateRequest.beneficiaryAccountId())
+                () -> assertEquals(Ids.ACCOUNT_ID_1, transactionCreateRequest.debtorAccountId()),
+                () -> assertEquals(Ids.ACCOUNT_ID_2, transactionCreateRequest.beneficiaryAccountId())
         );
 
     }
@@ -99,11 +99,11 @@ class TransactionServiceTest {
     void updateTransactionTest() {
         // given
         TransactionUpdateRequest transactionUpdateRequest = TransactionUpdateRequestMocks.generateTransactionUpdateRequest();
-        Transaction transaction = generatePendingTransaction(Id.TRANSACTION_ID_1);
+        Transaction transaction = generatePendingTransaction(Ids.TRANSACTION_ID_1);
         given(transactionRepositoryPort.findById(anyString()))
                 .willReturn(transaction);
         // when
-        transactionService.updateTransaction(Id.TRANSACTION_ID_1, transactionUpdateRequest);
+        transactionService.updateTransaction(Ids.TRANSACTION_ID_1, transactionUpdateRequest);
         // then
         verify(transactionRepositoryPort, times(1))
                 .updateStatus(transactionCaptor.capture());
@@ -115,11 +115,11 @@ class TransactionServiceTest {
         // given
         TransactionUpdateRequest transactionUpdateRequest = TransactionUpdateRequestMocks.generateTransactionUpdateRequest();
         given(transactionRepositoryPort.findById(anyString()))
-                .willThrow(new TransactionNotFoundException(Id.TRANSACTION_ID_1));
+                .willThrow(new TransactionNotFoundException(Ids.TRANSACTION_ID_1));
         // then
-        assertThatThrownBy(() -> transactionService.updateTransaction(Id.TRANSACTION_ID_1, transactionUpdateRequest))
+        assertThatThrownBy(() -> transactionService.updateTransaction(Ids.TRANSACTION_ID_1, transactionUpdateRequest))
                 .isInstanceOf(TransactionNotFoundException.class)
-                .hasMessage(generateErrorMessage(ErrorMessageConstants.TRANSACTION_NOT_FOUND_EXCEPTION), Id.TRANSACTION_ID_1);
+                .hasMessage(generateErrorMessage(ErrorMessageConstants.TRANSACTION_NOT_FOUND_EXCEPTION), Ids.TRANSACTION_ID_1);
     }
 
 }

@@ -1,8 +1,8 @@
-package com.hexagonal.architecture.server.api.common.constants;
+package com.hexagonal.architecture.server.core.domain.service.common.constants;
 
-public class Id {
+public class Ids {
 
-    private Id() {
+    private Ids() {
     }
 
     public static final String ACCOUNT_ID_1 = "accountId1";
