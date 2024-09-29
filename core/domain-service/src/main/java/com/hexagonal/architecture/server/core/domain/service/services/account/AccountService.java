@@ -11,8 +11,8 @@ public interface AccountService {
 
     Account createAccount(AccountCreateRequest accountCreateRequest);
 
-    void increaseBalance(String id, BigDecimal amount);
+    Account increaseBalance(String id, BigDecimal amount);
 
-    void decreaseBalance(String id, BigDecimal amount);
+    Account decreaseBalance(String id, BigDecimal amount);
 
 }

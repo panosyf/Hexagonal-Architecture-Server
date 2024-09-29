@@ -34,19 +34,21 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void increaseBalance(String id, BigDecimal amount) {
+    public Account increaseBalance(String id, BigDecimal amount) {
         Account account = accountRepositoryPort.findById(id);
         account.increaseBalance(amount);
-        accountRepositoryPort.updateBalance(account);
+        Account updatedAccount = accountRepositoryPort.updateBalance(account);
         log.info(LogInfoMessages.LOG_BALANCE_INCREASED_FOR_ACCOUNT, id);
+        return updatedAccount;
     }
 
     @Override
-    public void decreaseBalance(String id, BigDecimal amount) {
+    public Account decreaseBalance(String id, BigDecimal amount) {
         Account account = accountRepositoryPort.findById(id);
         account.decreaseBalance(amount);
-        accountRepositoryPort.updateBalance(account);
+        Account updatedAccount = accountRepositoryPort.updateBalance(account);
         log.info(LogInfoMessages.LOG_BALANCE_DECREASED_FOR_ACCOUNT, id);
+        return updatedAccount;
     }
 
 }
