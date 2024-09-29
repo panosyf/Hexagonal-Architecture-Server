@@ -52,6 +52,10 @@ public class TransactionFacadeImpl implements TransactionFacade {
     @Override
     public TransactionUpdateResponse updateTransaction(String id, TransactionUpdateRequest transactionUpdateRequest) {
         Transaction updatedTransaction = transactionService.updateTransaction(id, transactionUpdateRequest);
+        // TODO THIS IS TEMPORARY, WILL BE REFACTORED UTILIZING STRATEGY PATTERN
+        if (transactionUpdateRequest.transactionStatusEnum().equals(TransactionStatusEnum.COMPLETED)) {
+            accountService.increaseBalance(updatedTransaction.getBeneficiaryAccountId(), updatedTransaction.getAmount());
+        }
         return new TransactionUpdateResponse(updatedTransaction.getId(), updatedTransaction.getStatus());
     }
 

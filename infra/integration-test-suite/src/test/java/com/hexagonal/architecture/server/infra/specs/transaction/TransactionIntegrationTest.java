@@ -51,9 +51,8 @@ public class TransactionIntegrationTest extends AbstractIntegrationTest {
                 .expectBody(TransactionUpdateResponse.class)
                 .returnResult()
                 .equals(new TransactionUpdateResponse(transactionCreationResponse.id(), TransactionStatusEnum.COMPLETED));
-        // TODO INCLUDE METHOD TO INCREASE THE BALANCE AFTER COMPLETION
-//        accountRepositoryPort.findById(accountBeneficiary.getId())
-//                .ifPresent(account -> assertThat(account.getBalance()).isEqualTo(Balance.BALANCE_10));
+        Account beneficiaryaccount = accountRepositoryPort.findById(accountBeneficiary.getId());
+        assertThat(beneficiaryaccount.getBalance()).isEqualTo(Balance.BALANCE_10);
     }
 
 }
