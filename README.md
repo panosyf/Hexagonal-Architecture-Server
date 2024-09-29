@@ -1,6 +1,13 @@
 # Hexagonal Architecture Server
 ### Hexagonal Architecture Server utilizing Modular-Monolith and Clean Architecture Principals
 
+- Java 21
+- Maven
+- Spring Boot 3.3.0
+- PostgeSQL
+
+![img.png](img.png)
+
 ## Recourses
 The resources that aid me in the development of this project.
 
