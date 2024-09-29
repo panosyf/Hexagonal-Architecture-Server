@@ -12,7 +12,7 @@ public interface AccountRepositoryPort {
 
     BigDecimal findBalance(String id);
 
-    Account updateBalance(String id, BigDecimal amount);
+    Account updateBalance(Account account);
 
     int findTotalEntries();
 

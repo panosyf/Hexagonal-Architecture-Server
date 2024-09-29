@@ -17,7 +17,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
@@ -34,7 +33,7 @@ class AccountServiceTest {
 
     private final AccountRepositoryPort accountRepositoryPort = mock(AccountRepositoryPort.class);
     private AccountService accountService;
-    private final ArgumentCaptor<BigDecimal> balanceCaptor = ArgumentCaptor.forClass(BigDecimal.class);
+    private final ArgumentCaptor<Account> accountCaptor = ArgumentCaptor.forClass(Account.class);
 
     @BeforeEach
     void init() {
@@ -100,8 +99,8 @@ class AccountServiceTest {
         accountService.increaseBalance(Ids.ACCOUNT_ID_1, Amount.AMOUNT_10);
         // then
         verify(accountRepositoryPort, times(1))
-                .updateBalance(anyString(), balanceCaptor.capture());
-        assertThat(balanceCaptor.getValue()).isEqualTo(Balance.BALANCE_10);
+                .updateBalance(accountCaptor.capture());
+        assertThat(accountCaptor.getValue().getBalance()).isEqualTo(Balance.BALANCE_10);
     }
 
     @Test
@@ -125,8 +124,8 @@ class AccountServiceTest {
         accountService.decreaseBalance(Ids.ACCOUNT_ID_1, Amount.AMOUNT_10);
         // then
         verify(accountRepositoryPort, times(1))
-                .updateBalance(anyString(), balanceCaptor.capture());
-        assertThat(balanceCaptor.getValue()).isEqualTo(Balance.BALANCE_5);
+                .updateBalance(accountCaptor.capture());
+        assertThat(accountCaptor.getValue().getBalance()).isEqualTo(Balance.BALANCE_5);
     }
 
     @Test

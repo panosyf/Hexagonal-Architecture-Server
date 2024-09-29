@@ -1,7 +1,6 @@
 package com.hexagonal.architecture.server.core.domain.service.services.account;
 
 import com.hexagonal.architecture.server.core.domain.domains.account.Account;
-import com.hexagonal.architecture.server.core.domain.exceptions.notfound.AccountNotFoundException;
 import com.hexagonal.architecture.server.core.domain.service.logging.LogInfoMessages;
 import com.hexagonal.architecture.server.core.domain.service.model.requests.AccountCreateRequest;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.AccountRepositoryPort;
@@ -38,8 +37,7 @@ public class AccountServiceImpl implements AccountService {
     public void increaseBalance(String id, BigDecimal amount) {
         Account account = accountRepositoryPort.findById(id);
         account.increaseBalance(amount);
-        BigDecimal newBalance = account.getBalance();
-        accountRepositoryPort.updateBalance(id, newBalance);
+        accountRepositoryPort.updateBalance(account);
         log.info(LogInfoMessages.LOG_BALANCE_INCREASED_FOR_ACCOUNT, id);
     }
 
@@ -47,8 +45,7 @@ public class AccountServiceImpl implements AccountService {
     public void decreaseBalance(String id, BigDecimal amount) {
         Account account = accountRepositoryPort.findById(id);
         account.decreaseBalance(amount);
-        BigDecimal updatedBalance = account.getBalance();
-        accountRepositoryPort.updateBalance(id, updatedBalance);
+        accountRepositoryPort.updateBalance(account);
         log.info(LogInfoMessages.LOG_BALANCE_DECREASED_FOR_ACCOUNT, id);
     }
 

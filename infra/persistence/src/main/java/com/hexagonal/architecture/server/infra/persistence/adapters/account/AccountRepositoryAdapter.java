@@ -40,9 +40,9 @@ public class AccountRepositoryAdapter implements AccountRepositoryPort {
 
     @Override
     @Transactional
-    public Account updateBalance(String id, BigDecimal amount) {
-        accountJpaRepository.updateBalance(id, amount);
-        return findById(id);
+    public Account updateBalance(Account account) {
+        accountJpaRepository.updateBalance(account.getId(), account.getBalance());
+        return findById(account.getId());
     }
 
     @Override
