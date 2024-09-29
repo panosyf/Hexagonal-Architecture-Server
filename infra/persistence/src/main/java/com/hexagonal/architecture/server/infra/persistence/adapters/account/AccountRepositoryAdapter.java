@@ -23,14 +23,14 @@ public class AccountRepositoryAdapter implements AccountRepositoryPort {
     public Account save(Account account) {
         AccountEntity accountEntity = conversionService.convert(account, AccountEntity.class);
         AccountEntity persistedAccountEntity = accountJpaRepository.save(accountEntity);
-        return conversionService.convert(persistedAccountEntity, Account.class);
+        return accountToDomain(persistedAccountEntity);
     }
 
     @Override
     public Account findById(String id) {
         AccountEntity accountEntity = accountJpaRepository.findById(id)
                 .orElseThrow(() -> new AccountNotFoundException(id));
-        return conversionService.convert(accountEntity, Account.class);
+        return accountToDomain(accountEntity);
     }
 
     @Override
@@ -40,8 +40,9 @@ public class AccountRepositoryAdapter implements AccountRepositoryPort {
 
     @Override
     @Transactional
-    public void updateBalance(String id, BigDecimal amount) {
+    public Account updateBalance(String id, BigDecimal amount) {
         accountJpaRepository.updateBalance(id, amount);
+        return findById(id);
     }
 
     @Override
@@ -52,6 +53,10 @@ public class AccountRepositoryAdapter implements AccountRepositoryPort {
     @Override
     public void deleteAll() {
         accountJpaRepository.deleteAll();
+    }
+
+    private Account accountToDomain(AccountEntity accountEntity) {
+        return conversionService.convert(accountEntity, Account.class);
     }
 
 }
