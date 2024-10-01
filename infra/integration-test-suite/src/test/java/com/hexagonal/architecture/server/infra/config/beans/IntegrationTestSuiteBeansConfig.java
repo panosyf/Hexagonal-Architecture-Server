@@ -1,6 +1,6 @@
 package com.hexagonal.architecture.server.infra.config.beans;
 
-import com.hexagonal.architecture.server.infra.config.httptestclient.RestTestClient;
+import com.hexagonal.architecture.server.infra.config.crudtestclient.CrudTestClient;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;
@@ -17,8 +17,8 @@ public class IntegrationTestSuiteBeansConfig {
 
     @Lazy
     @Bean
-    public RestTestClient restTestClient() {
-        return new RestTestClient(webTestClient);
+    public CrudTestClient crudTestClient() {
+        return new CrudTestClient(webTestClient);
     }
 
 }

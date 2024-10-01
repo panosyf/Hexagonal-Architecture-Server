@@ -5,7 +5,7 @@ import com.hexagonal.architecture.server.core.domain.service.ports.driven.Transa
 import com.hexagonal.architecture.server.infra.IntegrationTestSuite;
 import com.hexagonal.architecture.server.infra.config.annotations.EnableTestContainers;
 import com.hexagonal.architecture.server.infra.config.beans.IntegrationTestSuiteBeansConfig;
-import com.hexagonal.architecture.server.infra.config.httptestclient.RestTestClient;
+import com.hexagonal.architecture.server.infra.config.crudtestclient.CrudTestClient;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 public abstract class AbstractIntegrationTest {
 
     @Autowired
-    protected RestTestClient restTestClient;
+    protected CrudTestClient crudTestClient;
 
     @Autowired
     protected AccountRepositoryPort accountRepositoryPort;

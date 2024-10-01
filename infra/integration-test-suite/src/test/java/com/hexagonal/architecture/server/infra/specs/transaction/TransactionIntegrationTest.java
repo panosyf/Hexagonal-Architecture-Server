@@ -32,7 +32,7 @@ public class TransactionIntegrationTest extends AbstractIntegrationTest {
                         accountDebtor.getId(),
                         accountBeneficiary.getId());
         // when
-        TransactionCreationResponse transactionCreationResponse = restTestClient.execute(HttpMethod.POST, Endpoints.CREATE_TRANSACTION, transactionCreateRequest)
+        TransactionCreationResponse transactionCreationResponse = crudTestClient.execute(HttpMethod.POST, Endpoints.CREATE_TRANSACTION, transactionCreateRequest)
                 .expectStatus().isCreated()
                 .expectBody(TransactionCreationResponse.class)
                 .returnResult()
@@ -43,7 +43,7 @@ public class TransactionIntegrationTest extends AbstractIntegrationTest {
         assertThat(account.getBalance()).isEqualTo(Balance.BALANCE_15);
         // when
         TransactionUpdateRequest transactionUpdateRequest = generateTransactionUpdateRequest(COMPLETED);
-        restTestClient.execute(
+        crudTestClient.execute(
                         HttpMethod.PUT,
                         Endpoints.UPDATE_TRANSACTION.replace("{id}", transactionCreationResponse.id()),
                         transactionUpdateRequest)

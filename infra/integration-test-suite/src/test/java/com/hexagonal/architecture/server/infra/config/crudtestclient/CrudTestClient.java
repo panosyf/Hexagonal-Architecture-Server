@@ -1,4 +1,4 @@
-package com.hexagonal.architecture.server.infra.config.httptestclient;
+package com.hexagonal.architecture.server.infra.config.crudtestclient;
 
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpHeaders;
@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono;
 import static com.hexagonal.architecture.server.infra.common.constants.Endpoints.LOCALHOST_URL;
 import static com.hexagonal.architecture.server.infra.common.helpers.EndpointHelper.generateUri;
 
-public class RestTestClient {
+public class CrudTestClient {
 
     private final WebTestClient webTestClient;
     private final String url = LOCALHOST_URL;
@@ -18,7 +18,7 @@ public class RestTestClient {
     @LocalServerPort
     private int port;
 
-    public RestTestClient(WebTestClient webTestClient) {
+    public CrudTestClient(WebTestClient webTestClient) {
         this.webTestClient = webTestClient;
     }
 
