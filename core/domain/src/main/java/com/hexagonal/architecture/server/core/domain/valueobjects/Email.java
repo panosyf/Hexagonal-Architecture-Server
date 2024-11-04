@@ -6,11 +6,11 @@ public class Email extends ValueObject {
 
     private String value;
 
-    public Email(String value) {
+    private Email(String value) {
         this.value = value;
     }
 
-    public Email(String name, String mailServer, String domain) {
+    private Email(String name, String mailServer, String domain) {
         this.value = generateValue(name, mailServer, domain);
     }
 

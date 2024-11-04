@@ -6,7 +6,7 @@ public class Username extends ValueObject {
 
     private String value;
 
-    public Username(String value) {
+    private Username(String value) {
         this.value = value;
     }
 

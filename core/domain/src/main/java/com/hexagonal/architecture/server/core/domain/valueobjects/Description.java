@@ -6,7 +6,7 @@ public class Description extends ValueObject {
 
     private String value;
 
-    public Description(String value) {
+    private Description(String value) {
         this.value = value;
     }
 
