@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Description extends ValueObject {
 
-    private String value;
+    private final String value;
 
     private Description(String value) {
         this.value = value;
@@ -16,10 +16,6 @@ public class Description extends ValueObject {
 
     public String getValue() {
         return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
     }
 
     @Override

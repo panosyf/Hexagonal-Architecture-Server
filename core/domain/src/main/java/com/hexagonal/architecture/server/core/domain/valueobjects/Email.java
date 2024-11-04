@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Email extends ValueObject {
 
-    private String value;
+    private final String value;
 
     private Email(String value) {
         this.value = value;
@@ -24,14 +24,6 @@ public class Email extends ValueObject {
 
     public String getValue() {
         return this.value;
-    }
-
-    public void update(String value) {
-        this.value = value;
-    }
-
-    public void update(String name, String mailServer, String domain) {
-        this.value = generateValue(name, mailServer, domain);
     }
 
     private String generateValue(String name, String mailServer, String domain) {

@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Username extends ValueObject {
 
-    private String value;
+    private final String value;
 
     private Username(String value) {
         this.value = value;
@@ -16,10 +16,6 @@ public class Username extends ValueObject {
 
     public String getValue() {
         return value;
-    }
-
-    public void update(String value) {
-        this.value = value;
     }
 
     @Override

@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Timestamp extends ValueObject {
 
-    private Instant time;
+    private final Instant time;
 
     private Timestamp() {
         this.time = Instant.now();
