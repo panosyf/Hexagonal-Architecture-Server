@@ -1,6 +1,6 @@
 package com.hexagonal.architecture.server.infra.rest.controllers;
 
-import com.hexagonal.architecture.server.api.facades.transaction.TransactionFacade;
+import com.hexagonal.architecture.server.api.apis.transaction.TransactionApi;
 import com.hexagonal.architecture.server.api.model.dtos.TransactionDto;
 import com.hexagonal.architecture.server.core.domain.service.model.requests.TransactionCreateRequest;
 import com.hexagonal.architecture.server.core.domain.service.model.requests.TransactionUpdateRequest;
@@ -13,27 +13,27 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class TransactionController {
 
-    private final TransactionFacade transactionFacade;
+    private final TransactionApi transactionApi;
 
-    public TransactionController(TransactionFacade transactionFacade) {
-        this.transactionFacade = transactionFacade;
+    public TransactionController(TransactionApi transactionApi) {
+        this.transactionApi = transactionApi;
     }
 
     @GetMapping(path = "/api/v1/transactions/{id}")
     public ResponseEntity<TransactionDto> getTransaction(@PathVariable(name = "id") String id) {
-        return new ResponseEntity<>(transactionFacade.getTransaction(id), HttpStatus.OK);
+        return new ResponseEntity<>(transactionApi.getTransaction(id), HttpStatus.OK);
     }
 
     @PostMapping(path = "/api/v1/transactions")
     public ResponseEntity<TransactionCreationResponse> createTransaction(@RequestBody TransactionCreateRequest transactionCreateRequest) {
-        return new ResponseEntity<>(transactionFacade.createTransaction(transactionCreateRequest), HttpStatus.CREATED);
+        return new ResponseEntity<>(transactionApi.createTransaction(transactionCreateRequest), HttpStatus.CREATED);
     }
 
     @PutMapping(path = "/api/v1/transactions/{id}")
     public ResponseEntity<TransactionUpdateResponse> updateTransaction(
             @PathVariable(value = "id") String id,
             @RequestBody TransactionUpdateRequest transactionUpdateRequest) {
-        return new ResponseEntity<>(transactionFacade.updateTransaction(id, transactionUpdateRequest), HttpStatus.OK);
+        return new ResponseEntity<>(transactionApi.updateTransaction(id, transactionUpdateRequest), HttpStatus.OK);
     }
 
 }

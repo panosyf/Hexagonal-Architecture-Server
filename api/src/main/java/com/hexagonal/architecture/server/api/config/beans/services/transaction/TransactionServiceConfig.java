@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class TransactionServiceBeanConfig {
+public class TransactionServiceConfig {
     private final TransactionRepositoryPort transactionRepositoryPort;
 
-    public TransactionServiceBeanConfig(
+    public TransactionServiceConfig(
             TransactionRepositoryPort transactionRepositoryPort) {
         this.transactionRepositoryPort = transactionRepositoryPort;
     }

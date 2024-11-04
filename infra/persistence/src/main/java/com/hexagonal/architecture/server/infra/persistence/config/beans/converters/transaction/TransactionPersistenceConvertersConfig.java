@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class TransactionConvertersBeamConfig {
+public class TransactionPersistenceConvertersConfig {
 
     @Bean
     public TransactionToDomain transactionToDomain() {

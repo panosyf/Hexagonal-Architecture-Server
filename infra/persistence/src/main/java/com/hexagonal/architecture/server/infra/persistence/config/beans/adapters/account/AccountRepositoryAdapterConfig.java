@@ -8,12 +8,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.ConversionService;
 
 @Configuration
-public class AccountRepositoryAdapterBeanConfig {
+public class AccountRepositoryAdapterConfig {
 
     private final AccountJpaRepository accountJpaRepository;
     private final ConversionService conversionService;
 
-    public AccountRepositoryAdapterBeanConfig(
+    public AccountRepositoryAdapterConfig(
             AccountJpaRepository accountJpaRepository,
             ConversionService conversionService) {
         this.accountJpaRepository = accountJpaRepository;

@@ -1,4 +1,4 @@
-package com.hexagonal.architecture.server.api.facades.transaction;
+package com.hexagonal.architecture.server.api.apis.transaction;
 
 import com.hexagonal.architecture.server.api.model.dtos.TransactionDto;
 import com.hexagonal.architecture.server.api.model.responses.TransactionCreationResponse;
@@ -13,13 +13,13 @@ import org.springframework.core.convert.ConversionService;
 
 import java.math.BigDecimal;
 
-public class TransactionFacadeImpl implements TransactionFacade {
+public class TransactionApiImpl implements TransactionApi {
 
     private final TransactionService transactionService;
     private final AccountService accountService;
     private final ConversionService conversionService;
 
-    public TransactionFacadeImpl(
+    public TransactionApiImpl(
             TransactionService transactionService,
             AccountService accountService,
             ConversionService conversionService) {

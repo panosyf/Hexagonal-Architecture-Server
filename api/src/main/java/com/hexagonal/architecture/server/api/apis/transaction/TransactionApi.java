@@ -1,4 +1,4 @@
-package com.hexagonal.architecture.server.api.facades.transaction;
+package com.hexagonal.architecture.server.api.apis.transaction;
 
 import com.hexagonal.architecture.server.api.model.dtos.TransactionDto;
 import com.hexagonal.architecture.server.core.domain.service.model.requests.TransactionCreateRequest;
@@ -6,7 +6,7 @@ import com.hexagonal.architecture.server.core.domain.service.model.requests.Tran
 import com.hexagonal.architecture.server.api.model.responses.TransactionCreationResponse;
 import com.hexagonal.architecture.server.api.model.responses.TransactionUpdateResponse;
 
-public interface TransactionFacade {
+public interface TransactionApi {
 
     TransactionDto getTransaction(String id);
 

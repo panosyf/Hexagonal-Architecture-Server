@@ -1,12 +1,12 @@
-package com.hexagonal.architecture.server.api.unit.facades;
+package com.hexagonal.architecture.server.api.unit.apis;
 
 import com.hexagonal.architecture.server.api.common.constants.Ids;
 import com.hexagonal.architecture.server.api.common.mocks.TransactionCreateRequestMocks;
 import com.hexagonal.architecture.server.api.common.mocks.TransactionMocks;
 import com.hexagonal.architecture.server.api.common.mocks.TransactionUpdateRequestMocks;
 import com.hexagonal.architecture.server.api.converters.out.TransactionToDto;
-import com.hexagonal.architecture.server.api.facades.transaction.TransactionFacade;
-import com.hexagonal.architecture.server.api.facades.transaction.TransactionFacadeImpl;
+import com.hexagonal.architecture.server.api.apis.transaction.TransactionApi;
+import com.hexagonal.architecture.server.api.apis.transaction.TransactionApiImpl;
 import com.hexagonal.architecture.server.api.model.responses.TransactionCreationResponse;
 import com.hexagonal.architecture.server.core.domain.domains.transaction.Transaction;
 import com.hexagonal.architecture.server.core.domain.exceptions.baddata.InsufficientBalanceException;
@@ -28,18 +28,18 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 
-class TransactionFacadeTest {
+class TransactionApiTest {
 
     private final TransactionService transactionService = mock(TransactionService.class);
     private final AccountService accountService = mock(AccountService.class);
     private final GenericConversionService genericConversionService = new GenericConversionService();
-    private TransactionFacade transactionFacade;
+    private TransactionApi transactionApi;
     private final ArgumentCaptor<TransactionUpdateRequest> transactionUpdateRequestCaptor = ArgumentCaptor.forClass(TransactionUpdateRequest.class);
 
     @BeforeEach
     void init() {
         genericConversionService.addConverter(new TransactionToDto());
-        transactionFacade = new TransactionFacadeImpl(transactionService, accountService, genericConversionService);
+        transactionApi = new TransactionApiImpl(transactionService, accountService, genericConversionService);
     }
 
     @Test
@@ -50,7 +50,7 @@ class TransactionFacadeTest {
         given(transactionService.createTransaction(any(TransactionCreateRequest.class)))
                 .willReturn(transaction);
         // when
-        TransactionCreationResponse transactionCreationResponse = transactionFacade.createTransaction(transactionCreateRequest);
+        TransactionCreationResponse transactionCreationResponse = transactionApi.createTransaction(transactionCreateRequest);
         // Then
         assertThat(transactionCreationResponse.status()).isEqualTo(TransactionStatusEnum.PENDING);
     }
@@ -66,7 +66,7 @@ class TransactionFacadeTest {
                 .when(accountService)
                 .decreaseBalance(anyString(), any(BigDecimal.class));
         // when
-        TransactionCreationResponse transactionCreationResponse = transactionFacade.createTransaction(transactionCreateRequest);
+        TransactionCreationResponse transactionCreationResponse = transactionApi.createTransaction(transactionCreateRequest);
         // Then
         assertThat(transactionCreationResponse.status()).isEqualTo(TransactionStatusEnum.FAILED);
     }
@@ -79,7 +79,7 @@ class TransactionFacadeTest {
         given(transactionService.updateTransaction(anyString(), any(TransactionUpdateRequest.class)))
                 .willReturn(transaction);
         // when
-        transactionFacade.updateTransaction(Ids.TRANSACTION_ID_1, transactionUpdateRequest);
+        transactionApi.updateTransaction(Ids.TRANSACTION_ID_1, transactionUpdateRequest);
         // Then
         verify(transactionService, times(1))
                 .updateTransaction(anyString(), transactionUpdateRequestCaptor.capture());

@@ -1,13 +1,14 @@
-package com.hexagonal.architecture.server.api.facades.account;
+package com.hexagonal.architecture.server.api.apis.account;
 
 import com.hexagonal.architecture.server.api.model.dtos.AccountDto;
+import com.hexagonal.architecture.server.api.model.responses.AccountResponse;
 import com.hexagonal.architecture.server.core.domain.service.model.requests.AccountCreateRequest;
 import com.hexagonal.architecture.server.api.model.responses.AccountCreationResponse;
 
-public interface AccountFacade {
+public interface AccountApi {
 
     AccountCreationResponse createAccount(AccountCreateRequest accountCreateRequest);
 
-    AccountDto getAccount(String id);
+    AccountResponse getAccount(String id);
 
 }
