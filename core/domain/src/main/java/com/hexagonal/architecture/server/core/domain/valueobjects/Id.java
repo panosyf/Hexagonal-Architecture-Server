@@ -7,8 +7,8 @@ public class Id extends ValueObject {
 
     private final String value;
 
-    private Id(String uuid) {
-        this.value = uuid;
+    private Id(String value) {
+        this.value = value;
     }
 
     public static Id generate() {
@@ -19,19 +19,12 @@ public class Id extends ValueObject {
         return new Id(uuid.toString());
     }
 
-    public static Id generate(String uuid) {
-        return new Id(uuid);
+    public static Id generate(String value) {
+        return new Id(value);
     }
 
     public String getValue() {
         return value;
-    }
-
-    @Override
-    public String toString() {
-        return "Id{" +
-                "value='" + value + '\'' +
-                '}';
     }
 
     @Override
@@ -46,4 +39,12 @@ public class Id extends ValueObject {
     public int hashCode() {
         return Objects.hashCode(value);
     }
+
+    @Override
+    public String toString() {
+        return "Id{" +
+                "value='" + value + '\'' +
+                '}';
+    }
+
 }
