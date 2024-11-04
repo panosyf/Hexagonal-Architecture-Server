@@ -1,14 +1,14 @@
 package com.hexagonal.architecture.server.api.apis.transaction;
 
-import com.hexagonal.architecture.server.api.model.dtos.TransactionDto;
+import com.hexagonal.architecture.server.api.model.responses.TransactionCreationResponse;
+import com.hexagonal.architecture.server.api.model.responses.TransactionResponse;
+import com.hexagonal.architecture.server.api.model.responses.TransactionUpdateResponse;
 import com.hexagonal.architecture.server.core.domain.service.model.requests.TransactionCreateRequest;
 import com.hexagonal.architecture.server.core.domain.service.model.requests.TransactionUpdateRequest;
-import com.hexagonal.architecture.server.api.model.responses.TransactionCreationResponse;
-import com.hexagonal.architecture.server.api.model.responses.TransactionUpdateResponse;
 
 public interface TransactionApi {
 
-    TransactionDto getTransaction(String id);
+    TransactionResponse getTransaction(String id);
 
     TransactionCreationResponse createTransaction(TransactionCreateRequest transactionCreateRequest);
 

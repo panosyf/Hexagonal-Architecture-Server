@@ -9,6 +9,8 @@ import com.hexagonal.architecture.server.core.domain.service.model.requests.Acco
 import com.hexagonal.architecture.server.core.domain.service.services.account.AccountService;
 import org.springframework.core.convert.ConversionService;
 
+import java.math.BigDecimal;
+
 public class AccountApiImpl implements AccountApi {
 
     private final AccountService accountService;
@@ -19,14 +21,26 @@ public class AccountApiImpl implements AccountApi {
         this.conversionService = conversionService;
     }
 
+    @Override
     public AccountCreationResponse createAccount(AccountCreateRequest accountCreateRequest) {
         Account account = accountService.createAccount(accountCreateRequest);
         return new AccountCreationResponse(account.getId(), AccountCreationStatusEnum.SUCCESSFUL);
     }
 
+    @Override
     public AccountResponse getAccount(String id) {
         AccountDto accountDto = conversionService.convert(accountService.getAccount(id), AccountDto.class);
         return new AccountResponse(accountDto);
+    }
+
+    @Override
+    public void increaseBalance(String id, BigDecimal amount) {
+        accountService.increaseBalance(id, amount);
+    }
+
+    @Override
+    public void decreaseBalance(String id, BigDecimal amount) {
+        accountService.decreaseBalance(id, amount);
     }
 
 }

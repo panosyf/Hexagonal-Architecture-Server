@@ -2,6 +2,7 @@ package com.hexagonal.architecture.server.infra.rest.controllers;
 
 import com.hexagonal.architecture.server.api.apis.transaction.TransactionApi;
 import com.hexagonal.architecture.server.api.model.dtos.TransactionDto;
+import com.hexagonal.architecture.server.api.model.responses.TransactionResponse;
 import com.hexagonal.architecture.server.core.domain.service.model.requests.TransactionCreateRequest;
 import com.hexagonal.architecture.server.core.domain.service.model.requests.TransactionUpdateRequest;
 import com.hexagonal.architecture.server.api.model.responses.TransactionCreationResponse;
@@ -20,7 +21,7 @@ public class TransactionController {
     }
 
     @GetMapping(path = "/api/v1/transactions/{id}")
-    public ResponseEntity<TransactionDto> getTransaction(@PathVariable(name = "id") String id) {
+    public ResponseEntity<TransactionResponse> getTransaction(@PathVariable(name = "id") String id) {
         return new ResponseEntity<>(transactionApi.getTransaction(id), HttpStatus.OK);
     }
 

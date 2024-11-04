@@ -1,5 +1,6 @@
 package com.hexagonal.architecture.server.api.unit.apis;
 
+import com.hexagonal.architecture.server.api.apis.account.AccountApi;
 import com.hexagonal.architecture.server.api.common.constants.Ids;
 import com.hexagonal.architecture.server.api.common.mocks.TransactionCreateRequestMocks;
 import com.hexagonal.architecture.server.api.common.mocks.TransactionMocks;
@@ -31,7 +32,7 @@ import static org.mockito.Mockito.*;
 class TransactionApiTest {
 
     private final TransactionService transactionService = mock(TransactionService.class);
-    private final AccountService accountService = mock(AccountService.class);
+    private final AccountApi accountApi = mock(AccountApi.class);
     private final GenericConversionService genericConversionService = new GenericConversionService();
     private TransactionApi transactionApi;
     private final ArgumentCaptor<TransactionUpdateRequest> transactionUpdateRequestCaptor = ArgumentCaptor.forClass(TransactionUpdateRequest.class);
@@ -39,7 +40,7 @@ class TransactionApiTest {
     @BeforeEach
     void init() {
         genericConversionService.addConverter(new TransactionToDto());
-        transactionApi = new TransactionApiImpl(transactionService, accountService, genericConversionService);
+        transactionApi = new TransactionApiImpl(transactionService, accountApi, genericConversionService);
     }
 
     @Test
@@ -63,7 +64,7 @@ class TransactionApiTest {
         given(transactionService.createTransaction(any(TransactionCreateRequest.class)))
                 .willReturn(transaction);
         doThrow(new InsufficientBalanceException(transaction.getDebtorAccountId()))
-                .when(accountService)
+                .when(accountApi)
                 .decreaseBalance(anyString(), any(BigDecimal.class));
         // when
         TransactionCreationResponse transactionCreationResponse = transactionApi.createTransaction(transactionCreateRequest);

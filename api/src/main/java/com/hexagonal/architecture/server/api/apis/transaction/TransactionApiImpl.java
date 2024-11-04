@@ -1,7 +1,9 @@
 package com.hexagonal.architecture.server.api.apis.transaction;
 
+import com.hexagonal.architecture.server.api.apis.account.AccountApi;
 import com.hexagonal.architecture.server.api.model.dtos.TransactionDto;
 import com.hexagonal.architecture.server.api.model.responses.TransactionCreationResponse;
+import com.hexagonal.architecture.server.api.model.responses.TransactionResponse;
 import com.hexagonal.architecture.server.api.model.responses.TransactionUpdateResponse;
 import com.hexagonal.architecture.server.core.domain.domains.transaction.Transaction;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
@@ -16,21 +18,22 @@ import java.math.BigDecimal;
 public class TransactionApiImpl implements TransactionApi {
 
     private final TransactionService transactionService;
-    private final AccountService accountService;
+    private final AccountApi accountApi;
     private final ConversionService conversionService;
 
     public TransactionApiImpl(
             TransactionService transactionService,
-            AccountService accountService,
+            AccountApi accountApi,
             ConversionService conversionService) {
         this.transactionService = transactionService;
-        this.accountService = accountService;
+        this.accountApi = accountApi;
         this.conversionService = conversionService;
     }
 
     @Override
-    public TransactionDto getTransaction(String id) {
-        return conversionService.convert(transactionService.getTransaction(id), TransactionDto.class);
+    public TransactionResponse getTransaction(String id) {
+        TransactionDto transactionDto = conversionService.convert(transactionService.getTransaction(id), TransactionDto.class);
+        return new TransactionResponse(transactionDto);
     }
 
     @Override
@@ -39,7 +42,7 @@ public class TransactionApiImpl implements TransactionApi {
         BigDecimal amount = transactionCreateRequest.amount();
         Transaction transaction = transactionService.createTransaction(transactionCreateRequest);
         try {
-            accountService.decreaseBalance(debtorAccountId, amount);
+            accountApi.decreaseBalance(debtorAccountId, amount);
         } catch (Exception e) {
             String id = transaction.getId();
             TransactionUpdateRequest transactionUpdateRequest = new TransactionUpdateRequest(TransactionStatusEnum.FAILED);
@@ -54,7 +57,7 @@ public class TransactionApiImpl implements TransactionApi {
         Transaction updatedTransaction = transactionService.updateTransaction(id, transactionUpdateRequest);
         // TODO THIS IS TEMPORARY, WILL BE REFACTORED UTILIZING STATE PATTERN
         if (transactionUpdateRequest.transactionStatusEnum().equals(TransactionStatusEnum.COMPLETED)) {
-            accountService.increaseBalance(updatedTransaction.getBeneficiaryAccountId(), updatedTransaction.getAmount());
+            accountApi.increaseBalance(updatedTransaction.getBeneficiaryAccountId(), updatedTransaction.getAmount());
         }
         return new TransactionUpdateResponse(updatedTransaction.getId(), updatedTransaction.getStatus());
     }
