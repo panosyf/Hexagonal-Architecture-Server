@@ -8,6 +8,7 @@ public class Id extends ValueObject {
     private final String value;
 
     private Id(String value) {
+        if (value == null || value.isBlank()) throw new IllegalArgumentException("Id cannot be null");
         this.value = value;
     }
 

@@ -11,6 +11,7 @@ public class Password extends ValueObject {
     }
 
     public static Password valueOf(String value) {
+        if (value == null || value.isBlank()) throw new NullPointerException("Password cannot be null or empty");
         return new Password(value);
     }
 

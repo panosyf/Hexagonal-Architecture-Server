@@ -15,11 +15,19 @@ public class Email extends ValueObject {
     }
 
     public static Email valueOf(String value) {
+        validateValueNotNull(value, "value is null");
         return new Email(value);
     }
 
     public static Email valueOf(String name, String mailServer, String domain) {
+        validateInputs(name, mailServer, domain);
         return new Email(name, mailServer, domain);
+    }
+
+    private static void validateInputs(String name, String mailServer, String domain) {
+        validateValueNotNull(name, "name is null");
+        validateValueNotNull(mailServer, "mailServer is null");
+        validateValueNotNull(domain, "domain is null");
     }
 
     public String getValue() {
@@ -28,6 +36,10 @@ public class Email extends ValueObject {
 
     private String generateValue(String name, String mailServer, String domain) {
         return name + "@" + mailServer + "." + domain;
+    }
+
+    private static void validateValueNotNull(String value, String value_is_null) {
+        if (value == null || value.isBlank()) throw new IllegalArgumentException(value_is_null);
     }
 
     @Override

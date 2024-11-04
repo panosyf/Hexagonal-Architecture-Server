@@ -13,6 +13,7 @@ public class Name extends ValueObject {
     }
 
     public static Name valueOf(final String firstName, final String lastName) {
+        validateInputs(firstName, lastName);
         return new Name(firstName, lastName);
     }
 
@@ -21,19 +22,31 @@ public class Name extends ValueObject {
     }
 
     public void setFirstName(String firstName) {
+        validateValueNotNull(firstName, "firstName cannot be null");
         this.firstName = firstName;
     }
+
 
     public String getLastName() {
         return lastName;
     }
 
     public void setLastName(String lastName) {
+        validateValueNotNull(lastName, "lastName cannot be null");
         this.lastName = lastName;
     }
 
     public String getFullName() {
         return firstName + " " + lastName;
+    }
+
+    private static void validateInputs(String firstName, String lastName) {
+        validateValueNotNull(firstName, "firstName cannot be null");
+        validateValueNotNull(lastName, "lastName cannot be null");
+    }
+
+    private static void validateValueNotNull(String value, String errorMessage) {
+        if (value == null || value.isBlank()) throw new IllegalArgumentException(errorMessage);
     }
 
     @Override

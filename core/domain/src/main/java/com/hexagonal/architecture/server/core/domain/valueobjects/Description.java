@@ -5,13 +5,18 @@ import java.util.Objects;
 public class Description extends ValueObject {
 
     private final String value;
+    private static final String EMPTY_DESCRIPTION = "";
 
     private Description(String value) {
         this.value = value;
     }
 
     public static Description valueOf(String value) {
-        return new Description(value);
+        return new Description(value == null || value.isBlank() ? EMPTY_DESCRIPTION : value);
+    }
+
+    public static Description emptyDescription() {
+        return new Description(EMPTY_DESCRIPTION);
     }
 
     public String getValue() {

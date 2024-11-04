@@ -7,6 +7,7 @@ public class Username extends ValueObject {
     private final String value;
 
     private Username(String value) {
+        if (value == null || value.isBlank()) throw new IllegalArgumentException("Username cannot be null or empty");
         this.value = value;
     }
 

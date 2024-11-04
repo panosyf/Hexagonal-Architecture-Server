@@ -12,6 +12,7 @@ public class Timestamp extends ValueObject {
     }
 
     private Timestamp(Instant time) {
+        if (time == null) throw new IllegalArgumentException("Timestamp cannot be null");
         this.time = Instant.now();
     }
 
