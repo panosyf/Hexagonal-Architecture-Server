@@ -1,4 +1,4 @@
-package com.hexagonal.architecture.server.infra.persistence.entities;
+package com.hexagonal.architecture.server.infra.persistence.daos;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,7 +11,7 @@ import java.util.Objects;
 
 @Entity(name = "account")
 @Table(name = "account")
-public class AccountEntity {
+public class AccountDao extends DaoEntity {
 
     @Id
     @Column(name = "id")
@@ -25,10 +25,10 @@ public class AccountEntity {
     @Column(name = "updated_at")
     private Instant updatedAt;
 
-    private AccountEntity() {
+    protected AccountDao() {
     }
 
-    public AccountEntity(String id, String name, BigDecimal balance, Instant createdAt, Instant updatedAt) {
+    public AccountDao(String id, String name, BigDecimal balance, Instant createdAt, Instant updatedAt) {
         this.id = id;
         this.name = name;
         this.balance = balance;
@@ -80,7 +80,7 @@ public class AccountEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AccountEntity that = (AccountEntity) o;
+        AccountDao that = (AccountDao) o;
         return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(balance, that.balance) && Objects.equals(createdAt, that.createdAt) && Objects.equals(updatedAt, that.updatedAt);
     }
 
@@ -91,7 +91,7 @@ public class AccountEntity {
 
     @Override
     public String toString() {
-        return "AccountEntity{" +
+        return "AccountDao{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", balance=" + balance +

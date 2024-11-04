@@ -4,7 +4,7 @@ import com.hexagonal.architecture.server.core.domain.domains.transaction.Transac
 import com.hexagonal.architecture.server.core.domain.exceptions.notfound.TransactionNotFoundException;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.TransactionRepositoryPort;
-import com.hexagonal.architecture.server.infra.persistence.entities.TransactionEntity;
+import com.hexagonal.architecture.server.infra.persistence.daos.TransactionDao;
 import jakarta.transaction.Transactional;
 import org.springframework.core.convert.ConversionService;
 
@@ -24,16 +24,16 @@ public class TransactionRepositoryAdapter implements TransactionRepositoryPort {
 
     @Override
     public Transaction save(Transaction transaction) {
-        TransactionEntity transactionEntity = conversionService.convert(transaction, TransactionEntity.class);
-        TransactionEntity persistedTransactionEntity = transactionJpaRepository.save(transactionEntity);
-        return transactionToDomain(persistedTransactionEntity);
+        TransactionDao transactionDao = conversionService.convert(transaction, TransactionDao.class);
+        TransactionDao persistedTransactionDao = transactionJpaRepository.save(transactionDao);
+        return transactionToDomain(persistedTransactionDao);
     }
 
     @Override
     public Transaction findById(String id) {
-        TransactionEntity transactionEntity = transactionJpaRepository.findById(id)
+        TransactionDao transactionDao = transactionJpaRepository.findById(id)
                 .orElseThrow(() -> new TransactionNotFoundException(id));
-        return transactionToDomain(transactionEntity);
+        return transactionToDomain(transactionDao);
     }
 
     @Override
@@ -51,8 +51,8 @@ public class TransactionRepositoryAdapter implements TransactionRepositoryPort {
         transactionJpaRepository.deleteAll();
     }
 
-    private Transaction transactionToDomain(TransactionEntity transactionEntity) {
-        return conversionService.convert(transactionEntity, Transaction.class);
+    private Transaction transactionToDomain(TransactionDao transactionDao) {
+        return conversionService.convert(transactionDao, Transaction.class);
     }
 
 }

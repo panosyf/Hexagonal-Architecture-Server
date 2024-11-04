@@ -1,5 +1,6 @@
 package com.hexagonal.architecture.server.core.domain.domains.account;
 
+import com.hexagonal.architecture.server.core.domain.domains.DomainEntity;
 import com.hexagonal.architecture.server.core.domain.exceptions.baddata.InsufficientBalanceException;
 
 import java.math.BigDecimal;
@@ -10,7 +11,7 @@ import java.util.UUID;
 import static com.hexagonal.architecture.server.core.domain.model.constants.Balance.BALANCE_0;
 import static com.hexagonal.architecture.server.core.domain.utils.TimeUtils.now;
 
-public class Account {
+public class Account extends DomainEntity {
 
     private String id;
     private String name;

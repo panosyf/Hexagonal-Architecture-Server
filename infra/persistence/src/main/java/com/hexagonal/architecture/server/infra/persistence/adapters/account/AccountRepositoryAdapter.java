@@ -3,7 +3,7 @@ package com.hexagonal.architecture.server.infra.persistence.adapters.account;
 import com.hexagonal.architecture.server.core.domain.domains.account.Account;
 import com.hexagonal.architecture.server.core.domain.exceptions.notfound.AccountNotFoundException;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.AccountRepositoryPort;
-import com.hexagonal.architecture.server.infra.persistence.entities.AccountEntity;
+import com.hexagonal.architecture.server.infra.persistence.daos.AccountDao;
 import jakarta.transaction.Transactional;
 import org.springframework.core.convert.ConversionService;
 
@@ -21,16 +21,16 @@ public class AccountRepositoryAdapter implements AccountRepositoryPort {
 
     @Override
     public Account save(Account account) {
-        AccountEntity accountEntity = conversionService.convert(account, AccountEntity.class);
-        AccountEntity persistedAccountEntity = accountJpaRepository.save(accountEntity);
-        return accountToDomain(persistedAccountEntity);
+        AccountDao accountDao = conversionService.convert(account, AccountDao.class);
+        AccountDao persistedAccountDao = accountJpaRepository.save(accountDao);
+        return accountToDomain(persistedAccountDao);
     }
 
     @Override
     public Account findById(String id) {
-        AccountEntity accountEntity = accountJpaRepository.findById(id)
+        AccountDao accountDao = accountJpaRepository.findById(id)
                 .orElseThrow(() -> new AccountNotFoundException(id));
-        return accountToDomain(accountEntity);
+        return accountToDomain(accountDao);
     }
 
     @Override
@@ -55,8 +55,8 @@ public class AccountRepositoryAdapter implements AccountRepositoryPort {
         accountJpaRepository.deleteAll();
     }
 
-    private Account accountToDomain(AccountEntity accountEntity) {
-        return conversionService.convert(accountEntity, Account.class);
+    private Account accountToDomain(AccountDao accountDao) {
+        return conversionService.convert(accountDao, Account.class);
     }
 
 }

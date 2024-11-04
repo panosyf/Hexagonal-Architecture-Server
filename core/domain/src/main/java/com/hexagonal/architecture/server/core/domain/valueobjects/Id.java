@@ -1,9 +1,9 @@
-package com.hexagonal.architecture.server.core.domain.domains.valueobjects;
+package com.hexagonal.architecture.server.core.domain.valueobjects;
 
 import java.util.Objects;
 import java.util.UUID;
 
-public class Id {
+public class Id extends ValueObject {
 
     private final String value;
 

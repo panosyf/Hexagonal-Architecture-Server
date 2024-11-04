@@ -1,5 +1,6 @@
 package com.hexagonal.architecture.server.core.domain.domains.transaction;
 
+import com.hexagonal.architecture.server.core.domain.domains.DomainEntity;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionType;
 
@@ -10,7 +11,7 @@ import java.util.UUID;
 
 import static com.hexagonal.architecture.server.core.domain.utils.TimeUtils.now;
 
-public class Transaction {
+public class Transaction extends DomainEntity {
 
     private String id;
     private TransactionType type;

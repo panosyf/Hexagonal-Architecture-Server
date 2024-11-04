@@ -1,4 +1,4 @@
-package com.hexagonal.architecture.server.infra.persistence.entities;
+package com.hexagonal.architecture.server.infra.persistence.daos;
 
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionType;
@@ -10,7 +10,7 @@ import java.util.Objects;
 
 @Entity(name = "transaction")
 @Table(name = "transaction")
-public class TransactionEntity {
+public class TransactionDao extends DaoEntity {
 
     @Id
     @Column(name = "id")
@@ -34,10 +34,10 @@ public class TransactionEntity {
     @Column(name = "updated_at")
     private Instant updatedAt;
 
-    private TransactionEntity() {
+    protected TransactionDao() {
     }
 
-    public TransactionEntity(
+    public TransactionDao(
             String id,
             TransactionType type,
             BigDecimal amount,
@@ -134,7 +134,7 @@ public class TransactionEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TransactionEntity that = (TransactionEntity) o;
+        TransactionDao that = (TransactionDao) o;
         return Objects.equals(id, that.id) && type == that.type && Objects.equals(amount, that.amount) && Objects.equals(description, that.description) && Objects.equals(debtorAccountId, that.debtorAccountId) && Objects.equals(beneficiaryAccountId, that.beneficiaryAccountId) && status == that.status && Objects.equals(createdAt, that.createdAt) && Objects.equals(updatedAt, that.updatedAt);
     }
 
@@ -145,7 +145,7 @@ public class TransactionEntity {
 
     @Override
     public String toString() {
-        return "TransactionEntity{" +
+        return "TransactionDao{" +
                 "id='" + id + '\'' +
                 ", type=" + type +
                 ", amount=" + amount +

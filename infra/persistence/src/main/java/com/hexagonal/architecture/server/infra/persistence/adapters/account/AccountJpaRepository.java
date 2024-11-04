@@ -1,6 +1,6 @@
 package com.hexagonal.architecture.server.infra.persistence.adapters.account;
 
-import com.hexagonal.architecture.server.infra.persistence.entities.AccountEntity;
+import com.hexagonal.architecture.server.infra.persistence.daos.AccountDao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.math.BigDecimal;
 
-public interface AccountJpaRepository extends JpaRepository<AccountEntity, String> {
+public interface AccountJpaRepository extends JpaRepository<AccountDao, String> {
 
     @Query(
             value = "SELECT balance " +

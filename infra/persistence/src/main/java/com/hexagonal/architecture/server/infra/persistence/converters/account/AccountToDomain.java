@@ -1,19 +1,19 @@
 package com.hexagonal.architecture.server.infra.persistence.converters.account;
 
 import com.hexagonal.architecture.server.core.domain.domains.account.Account;
-import com.hexagonal.architecture.server.infra.persistence.entities.AccountEntity;
+import com.hexagonal.architecture.server.infra.persistence.daos.AccountDao;
 import org.springframework.core.convert.converter.Converter;
 
-public class AccountToDomain implements Converter<AccountEntity, Account> {
+public class AccountToDomain implements Converter<AccountDao, Account> {
 
     @Override
-    public Account convert(AccountEntity accountEntity) {
+    public Account convert(AccountDao accountDao) {
         return new Account(
-                accountEntity.getId(),
-                accountEntity.getName(),
-                accountEntity.getBalance(),
-                accountEntity.getCreatedAt(),
-                accountEntity.getUpdatedAt()
+                accountDao.getId(),
+                accountDao.getName(),
+                accountDao.getBalance(),
+                accountDao.getCreatedAt(),
+                accountDao.getUpdatedAt()
         );
     }
 

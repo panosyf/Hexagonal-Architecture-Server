@@ -1,14 +1,14 @@
 package com.hexagonal.architecture.server.infra.persistence.converters.transaction;
 
 import com.hexagonal.architecture.server.core.domain.domains.transaction.Transaction;
-import com.hexagonal.architecture.server.infra.persistence.entities.TransactionEntity;
+import com.hexagonal.architecture.server.infra.persistence.daos.TransactionDao;
 import org.springframework.core.convert.converter.Converter;
 
-public class TransactionToEntity implements Converter<Transaction, TransactionEntity> {
+public class TransactionToEntity implements Converter<Transaction, TransactionDao> {
 
     @Override
-    public TransactionEntity convert(Transaction transaction) {
-        return new TransactionEntity(
+    public TransactionDao convert(Transaction transaction) {
+        return new TransactionDao(
                 transaction.getId(),
                 transaction.getType(),
                 transaction.getAmount(),
