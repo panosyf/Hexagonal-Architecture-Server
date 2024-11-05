@@ -13,5 +13,6 @@ public class ErrorMessageConstants {
     public static final String EMAIL_NAME_CANNOT_BE_NULL_OR_BLANK = "Email name cannot be null or blank";
     public static final String EMAIL_MAIL_SERVER_CANNOT_BE_NULL_OR_BLANK = "Email mail server cannot be null or blank";
     public static final String EMAIL_DOMAIN_CANNOT_BE_NULL_OR_BLANK = "Email domain cannot be null or blank";
+    public static final String ID_CANNOT_BE_NULL_OR_BLANK = "Id cannot cannot be null or blank";
 
 }

@@ -16,9 +16,9 @@ public class EmailTest {
     @Test
     void valueOfTest() {
         String mail = "test@gmail.com";
-        assertThat(Email.valueOf("test", "gmail", "com").getValue())
+        assertThat(mail)
                 .isEqualTo(Email.valueOf(mail).getValue())
-                .isEqualTo(mail);
+                .isEqualTo(Email.valueOf("test", "gmail", "com").getValue());
     }
 
 

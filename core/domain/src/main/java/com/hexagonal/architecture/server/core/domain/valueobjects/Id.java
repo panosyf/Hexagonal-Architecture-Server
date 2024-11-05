@@ -1,5 +1,7 @@
 package com.hexagonal.architecture.server.core.domain.valueobjects;
 
+import com.hexagonal.architecture.server.core.domain.exceptions.utils.messages.ErrorMessageConstants;
+
 import java.util.Objects;
 import java.util.UUID;
 
@@ -8,7 +10,8 @@ public class Id extends ValueObject {
     private final String value;
 
     private Id(String value) {
-        if (value == null || value.isBlank()) throw new IllegalArgumentException("Id cannot be null");
+        if (value == null || value.isBlank())
+            throw new IllegalArgumentException(ErrorMessageConstants.ID_CANNOT_BE_NULL_OR_BLANK);
         this.value = value;
     }
 
