@@ -16,7 +16,8 @@ public class ErrorMessageConstants {
     public static final String ID_CANNOT_BE_NULL_OR_BLANK = "Id cannot cannot be null or blank";
     public static final String FIRST_NAME_CANNOT_BE_NULL_OR_BLANK = "First name cannot be null or blank";
     public static final String LAST_NAME_ID_CANNOT_BE_NULL_OR_BLANK = "Last name cannot be null";
-    public static final String PASSWORD_ID_CANNOT_BE_NULL_OR_BLANK = "Password cannot be null or empty";
+    public static final String PASSWORD_CANNOT_BE_NULL_OR_BLANK = "Password cannot be null or empty";
+    public static final String TIMESTAMP_CANNOT_BE_NULL = "Timestamp cannot be null";
     public static final String USERNAME_ID_CANNOT_BE_NULL_OR_BLANK = "Username cannot be null or empty";
 
 }

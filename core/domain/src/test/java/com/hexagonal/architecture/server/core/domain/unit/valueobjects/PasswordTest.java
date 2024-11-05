@@ -26,7 +26,7 @@ public class PasswordTest {
     void validateValueTest(String value) {
         assertThatThrownBy(() -> Password.valueOf(value))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessageConstants.PASSWORD_ID_CANNOT_BE_NULL_OR_BLANK);
+                .hasMessage(ErrorMessageConstants.PASSWORD_CANNOT_BE_NULL_OR_BLANK);
     }
 
     private static Stream<Arguments> validateValueTestArguments() {

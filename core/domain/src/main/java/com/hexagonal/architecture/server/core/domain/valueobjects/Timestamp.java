@@ -1,5 +1,7 @@
 package com.hexagonal.architecture.server.core.domain.valueobjects;
 
+import com.hexagonal.architecture.server.core.domain.exceptions.utils.messages.ErrorMessageConstants;
+
 import java.time.Instant;
 import java.util.Objects;
 
@@ -12,8 +14,12 @@ public class Timestamp extends ValueObject {
     }
 
     private Timestamp(Instant time) {
-        if (time == null) throw new IllegalArgumentException("Timestamp cannot be null");
-        this.time = Instant.now();
+        if (time == null)
+            throw new IllegalArgumentException(ErrorMessageConstants.TIMESTAMP_CANNOT_BE_NULL);
+        this.time = time;
+    }
+    public static Timestamp now() {
+        return new Timestamp();
     }
 
     public static Timestamp valueOf(Instant time) {

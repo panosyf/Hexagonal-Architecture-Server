@@ -25,14 +25,14 @@ public class IdTest {
     }
 
     @ParameterizedTest
-    @MethodSource("validateValueTestArguments")
-    void validateValueTest(String value) {
+    @MethodSource("validateGenerateTestArguments")
+    void validateGenerateTest(String value) {
         assertThatThrownBy(() -> Id.generate(value))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessageConstants.ID_CANNOT_BE_NULL_OR_BLANK);
     }
 
-    private static Stream<Arguments> validateValueTestArguments() {
+    private static Stream<Arguments> validateGenerateTestArguments() {
         return Stream.of(
                 Arguments.of(""),
                 Arguments.of("         "),
