@@ -18,12 +18,12 @@ public class DescriptionTest {
     }
 
     @ParameterizedTest
-    @MethodSource("nullOrBlankDescriptionHandlingArguments")
-    void nullOrBlankDescriptionHandling(String value) {
+    @MethodSource("nullOrBlankDescriptionHandlingTestArguments")
+    void nullOrBlankDescriptionHandlingTest(String value) {
         assertThat(Description.valueOf(value).getValue()).isEqualTo("");
     }
 
-    private static Stream<Arguments> nullOrBlankDescriptionHandlingArguments() {
+    private static Stream<Arguments> nullOrBlankDescriptionHandlingTestArguments() {
         return Stream.of(
                 Arguments.of(""),
                 Arguments.of("         "),

@@ -1,5 +1,7 @@
 package com.hexagonal.architecture.server.core.domain.valueobjects;
 
+import com.hexagonal.architecture.server.core.domain.exceptions.utils.messages.ErrorMessageConstants;
+
 import java.util.Objects;
 
 public class Email extends ValueObject {
@@ -15,7 +17,7 @@ public class Email extends ValueObject {
     }
 
     public static Email valueOf(String value) {
-        validateValueNotNull(value, "value is null");
+        validateValue(value, ErrorMessageConstants.EMAIL_VALUE_CANNOT_BE_NULL_OR_BLANK);
         return new Email(value);
     }
 
@@ -25,9 +27,9 @@ public class Email extends ValueObject {
     }
 
     private static void validateInputs(String name, String mailServer, String domain) {
-        validateValueNotNull(name, "name is null");
-        validateValueNotNull(mailServer, "mailServer is null");
-        validateValueNotNull(domain, "domain is null");
+        validateValue(name, ErrorMessageConstants.EMAIL_NAME_CANNOT_BE_NULL_OR_BLANK);
+        validateValue(mailServer, ErrorMessageConstants.EMAIL_MAIL_SERVER_CANNOT_BE_NULL_OR_BLANK);
+        validateValue(domain, ErrorMessageConstants.EMAIL_DOMAIN_CANNOT_BE_NULL_OR_BLANK);
     }
 
     public String getValue() {
@@ -38,7 +40,7 @@ public class Email extends ValueObject {
         return name + "@" + mailServer + "." + domain;
     }
 
-    private static void validateValueNotNull(String value, String value_is_null) {
+    private static void validateValue(String value, String value_is_null) {
         if (value == null || value.isBlank()) throw new IllegalArgumentException(value_is_null);
     }
 
