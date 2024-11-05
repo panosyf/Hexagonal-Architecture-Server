@@ -1,5 +1,7 @@
 package com.hexagonal.architecture.server.core.domain.valueobjects;
 
+import com.hexagonal.architecture.server.core.domain.exceptions.utils.messages.ErrorMessageConstants;
+
 import java.util.Objects;
 
 public class Username extends ValueObject {
@@ -7,11 +9,12 @@ public class Username extends ValueObject {
     private final String value;
 
     private Username(String value) {
-        if (value == null || value.isBlank()) throw new IllegalArgumentException("Username cannot be null or empty");
+        if (value == null || value.isBlank())
+            throw new IllegalArgumentException(ErrorMessageConstants.USERNAME_ID_CANNOT_BE_NULL_OR_BLANK);
         this.value = value;
     }
 
-    public static Username create(String value) {
+    public static Username valueOf(String value) {
         return new Username(value);
     }
 

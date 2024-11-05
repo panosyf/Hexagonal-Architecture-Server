@@ -1,5 +1,7 @@
 package com.hexagonal.architecture.server.core.domain.valueobjects;
 
+import com.hexagonal.architecture.server.core.domain.exceptions.utils.messages.ErrorMessageConstants;
+
 import java.util.Objects;
 
 public class Password extends ValueObject {
@@ -11,7 +13,8 @@ public class Password extends ValueObject {
     }
 
     public static Password valueOf(String value) {
-        if (value == null || value.isBlank()) throw new NullPointerException("Password cannot be null or empty");
+        if (value == null || value.isBlank())
+            throw new IllegalArgumentException(ErrorMessageConstants.PASSWORD_ID_CANNOT_BE_NULL_OR_BLANK);
         return new Password(value);
     }
 
