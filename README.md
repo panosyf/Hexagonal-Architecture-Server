@@ -1,5 +1,5 @@
 # Hexagonal Architecture Server
-### Hexagonal Architecture Server utilizing Modular-Monolith and Clean Architecture Principals
+### Hexagonal Architecture Server utilizing Hexagonal Architecture Principals
 
 - Java 21
 - Maven
