@@ -1,5 +1,7 @@
 package com.hexagonal.architecture.server.core.domain.valueobjects;
 
+import com.hexagonal.architecture.server.core.domain.exceptions.utils.messages.ErrorMessageConstants;
+
 import java.util.Objects;
 
 public class Name extends ValueObject {
@@ -22,17 +24,16 @@ public class Name extends ValueObject {
     }
 
     public void setFirstName(String firstName) {
-        validateValueNotNull(firstName, "firstName cannot be null");
+        validateValueNotNull(firstName, ErrorMessageConstants.FIRST_NAME_CANNOT_BE_NULL_OR_BLANK);
         this.firstName = firstName;
     }
-
 
     public String getLastName() {
         return lastName;
     }
 
     public void setLastName(String lastName) {
-        validateValueNotNull(lastName, "lastName cannot be null");
+        validateValueNotNull(lastName, ErrorMessageConstants.LAST_NAME_ID_CANNOT_BE_NULL_OR_BLANK);
         this.lastName = lastName;
     }
 
@@ -41,8 +42,8 @@ public class Name extends ValueObject {
     }
 
     private static void validateInputs(String firstName, String lastName) {
-        validateValueNotNull(firstName, "firstName cannot be null");
-        validateValueNotNull(lastName, "lastName cannot be null");
+        validateValueNotNull(firstName, ErrorMessageConstants.FIRST_NAME_CANNOT_BE_NULL_OR_BLANK);
+        validateValueNotNull(lastName, ErrorMessageConstants.LAST_NAME_ID_CANNOT_BE_NULL_OR_BLANK);
     }
 
     private static void validateValueNotNull(String value, String errorMessage) {
