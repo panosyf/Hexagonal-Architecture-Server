@@ -4,6 +4,7 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.test.web.reactive.server.WebTestClient;
+import org.springframework.test.web.reactive.server.WebTestClient.RequestBodySpec;
 import org.springframework.test.web.reactive.server.WebTestClient.ResponseSpec;
 import reactor.core.publisher.Mono;
 
@@ -23,53 +24,46 @@ public class CrudTestClient {
     }
 
     public ResponseSpec execute(HttpMethod httpMethod, String uri) {
-        return webTestClient
-                .method(httpMethod)
-                .uri(generateUri(url, port, uri))
-                .headers(headers -> headers.addAll(httpHeaders))
-                .exchange();
-    }
-
-    public ResponseSpec execute(HttpMethod httpMethod, String uri, Object body) {
-        return webTestClient
-                .method(httpMethod)
-                .uri(generateUri(url, port, uri))
-                .headers(headers -> headers.addAll(httpHeaders))
-                .body(Mono.just(body), body.getClass())
-                .exchange();
+        return generateResponseRequest(httpMethod, url, port, uri, httpHeaders);
     }
 
     public ResponseSpec execute(HttpMethod httpMethod, String uri, HttpHeaders httpHeaders) {
-        return webTestClient
-                .method(httpMethod)
-                .uri(generateUri(url, port, uri))
-                .headers(headers -> headers.addAll(httpHeaders))
-                .exchange();
+        return generateResponseRequest(httpMethod, url, port, uri, httpHeaders);
+    }
+
+    public ResponseSpec execute(HttpMethod httpMethod, String uri, Object body) {
+        return generateResponseRequest(httpMethod, url, port, uri, httpHeaders, body);
     }
 
     public ResponseSpec execute(HttpMethod httpMethod, String uri, HttpHeaders httpHeaders, Object body) {
-        return webTestClient
-                .method(httpMethod)
-                .uri(generateUri(url, port, uri))
-                .headers(headers -> headers.addAll(httpHeaders))
-                .body(Mono.just(body), body.getClass())
-                .exchange();
+        return generateResponseRequest(httpMethod, url, port, uri, httpHeaders, body);
     }
 
     public ResponseSpec execute(HttpMethod httpMethod, int port, String uri, HttpHeaders httpHeaders, Object body) {
-        return webTestClient
-                .method(httpMethod)
-                .uri(generateUri(url, port, uri))
-                .headers(headers -> headers.addAll(httpHeaders))
-                .body(Mono.just(body), body.getClass())
-                .exchange();
+        return generateResponseRequest(httpMethod, url, port, uri, httpHeaders, body);
     }
 
     public ResponseSpec execute(HttpMethod httpMethod, String url, int port, String uri, HttpHeaders httpHeaders, Object body) {
+        return generateResponseRequest(httpMethod, url, port, uri, httpHeaders, body);
+    }
+
+    private RequestBodySpec generateCommonRequestBodySpec(HttpMethod httpMethod, String url, int port, String uri, HttpHeaders httpHeaders) {
         return webTestClient
                 .method(httpMethod)
                 .uri(generateUri(url, port, uri))
-                .headers(headers -> headers.addAll(httpHeaders))
+                .headers(headers -> headers.addAll(httpHeaders));
+    }
+
+    private ResponseSpec generateResponseRequest(HttpMethod httpMethod, String url, int port, String uri, HttpHeaders httpHeaders) {
+        return generateCommonRequestBodySpec(httpMethod, url, port, uri, httpHeaders)
+                .exchange();
+    }
+
+    private ResponseSpec generateResponseRequest(HttpMethod httpMethod, String url, int port, String uri, HttpHeaders httpHeaders, Object body) {
+        if (HttpMethod.GET.equals(httpMethod)) {
+            throw new IllegalArgumentException(HttpMethod.GET.name() + "cannot have a body");
+        }
+        return generateCommonRequestBodySpec(httpMethod, url, port, uri, httpHeaders)
                 .body(Mono.just(body), body.getClass())
                 .exchange();
     }
