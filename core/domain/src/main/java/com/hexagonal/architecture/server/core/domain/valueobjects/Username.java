@@ -8,13 +8,13 @@ public class Username extends ValueObject {
 
     private final String value;
 
-    private Username(String value) {
+    private Username(final String value) {
         if (value == null || value.isBlank())
             throw new IllegalArgumentException(ErrorMessageConstants.USERNAME_ID_CANNOT_BE_NULL_OR_BLANK);
         this.value = value;
     }
 
-    public static Username valueOf(String value) {
+    public static Username valueOf(final String value) {
         return new Username(value);
     }
 

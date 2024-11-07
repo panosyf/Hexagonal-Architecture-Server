@@ -9,7 +9,7 @@ public class Name extends ValueObject {
     private String firstName;
     private String lastName;
 
-    private Name(String firstName, String lastName) {
+    private Name(final String firstName, final String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -23,7 +23,7 @@ public class Name extends ValueObject {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(final String firstName) {
         validateValueNotNull(firstName, ErrorMessageConstants.FIRST_NAME_CANNOT_BE_NULL_OR_BLANK);
         this.firstName = firstName;
     }
@@ -32,7 +32,7 @@ public class Name extends ValueObject {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(final String lastName) {
         validateValueNotNull(lastName, ErrorMessageConstants.LAST_NAME_ID_CANNOT_BE_NULL_OR_BLANK);
         this.lastName = lastName;
     }
@@ -41,12 +41,12 @@ public class Name extends ValueObject {
         return firstName + " " + lastName;
     }
 
-    private static void validateInputs(String firstName, String lastName) {
+    private static void validateInputs(final String firstName, final String lastName) {
         validateValueNotNull(firstName, ErrorMessageConstants.FIRST_NAME_CANNOT_BE_NULL_OR_BLANK);
         validateValueNotNull(lastName, ErrorMessageConstants.LAST_NAME_ID_CANNOT_BE_NULL_OR_BLANK);
     }
 
-    private static void validateValueNotNull(String value, String errorMessage) {
+    private static void validateValueNotNull(final String value, final String errorMessage) {
         if (value == null || value.isBlank()) throw new IllegalArgumentException(errorMessage);
     }
 

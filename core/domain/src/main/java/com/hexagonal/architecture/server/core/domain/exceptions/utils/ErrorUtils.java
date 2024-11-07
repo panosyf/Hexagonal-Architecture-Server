@@ -4,11 +4,11 @@ public abstract class ErrorUtils {
 
     private ErrorUtils() {}
 
-    public static String generateErrorMessage(String message) {
+    public static String generateErrorMessage(final String message) {
         return message;
     }
 
-    public static String generateErrorMessage(String message, String id) {
+    public static String generateErrorMessage(final String message, final String id) {
         return String.format(message, id);
     }
 

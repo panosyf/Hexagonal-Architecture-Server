@@ -26,7 +26,7 @@ public class Timestamp extends ValueObject {
         return new Timestamp();
     }
 
-    public static Timestamp valueOf(Instant time) {
+    public static Timestamp valueOf(final Instant time) {
         return new Timestamp(time);
     }
 
@@ -34,39 +34,39 @@ public class Timestamp extends ValueObject {
         return this.time;
     }
 
-    public boolean isBefore(Timestamp timestamp) {
+    public boolean isBefore(final Timestamp timestamp) {
         return this.time.isBefore(timestamp.getTime());
     }
 
-    public boolean isAfter(Timestamp timestamp) {
+    public boolean isAfter(final Timestamp timestamp) {
         return this.time.isAfter(timestamp.getTime());
     }
 
-    public Timestamp minusDays(int days) {
+    public Timestamp minusDays(final int days) {
         validateValue(days);
         Instant instant = this.time.atZone(ZoneId.of(UTC)).minusDays(days).toInstant();
         return new Timestamp(instant);
     }
 
-    public Timestamp plusDays(int days) {
+    public Timestamp plusDays(final int days) {
         validateValue(days);
         Instant instant = this.time.atZone(ZoneId.of(UTC)).plusDays(days).toInstant();
         return new Timestamp(instant);
     }
 
-    public Timestamp minusMonths(int months) {
+    public Timestamp minusMonths(final int months) {
         validateValue(months);
         Instant instant = this.time.atZone(ZoneId.of(UTC)).minusMonths(months).toInstant();
         return new Timestamp(instant);
     }
 
-    public Timestamp plusMonths(int months) {
+    public Timestamp plusMonths(final int months) {
         validateValue(months);
         Instant instant = this.time.atZone(ZoneId.of(UTC)).plusMonths(months).toInstant();
         return new Timestamp(instant);
     }
 
-    private void validateValue(int value) {
+    private void validateValue(final int value) {
         if (value < 1) {
             throw new IllegalArgumentException(ErrorMessageConstants.VALUE_MUST_BE_AT_LEAST_ONE);
         }

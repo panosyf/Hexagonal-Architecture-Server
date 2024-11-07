@@ -5,7 +5,7 @@ import static com.hexagonal.architecture.server.core.domain.exceptions.utils.mes
 
 public class TransactionNotFoundException extends NotFoundException {
 
-    public TransactionNotFoundException(String id) {
+    public TransactionNotFoundException(final String id) {
         super(generateErrorMessage(TRANSACTION_NOT_FOUND_EXCEPTION, id));
     }
 }

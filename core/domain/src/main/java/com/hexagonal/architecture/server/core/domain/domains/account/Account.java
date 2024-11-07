@@ -22,7 +22,7 @@ public class Account extends DomainEntity {
     private Account() {
     }
 
-    public Account(String name) {
+    public Account(final String name) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.balance = BALANCE_0;
@@ -30,7 +30,7 @@ public class Account extends DomainEntity {
         this.updatedAt = null;
     }
 
-    public Account(String name, BigDecimal balance) {
+    public Account(final String name, final BigDecimal balance) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.balance = balance;
@@ -38,7 +38,7 @@ public class Account extends DomainEntity {
         this.updatedAt = null;
     }
 
-    public Account(String id, String name, BigDecimal balance) {
+    public Account(final String id, final String name, final BigDecimal balance) {
         this.id = id;
         this.name = name;
         this.balance = balance;
@@ -46,7 +46,12 @@ public class Account extends DomainEntity {
         this.updatedAt = null;
     }
 
-    public Account(String id, String name, BigDecimal balance, Instant createdAt, Instant updatedAt) {
+    public Account(
+            final String id,
+            final String name,
+            final BigDecimal balance,
+            final Instant createdAt,
+            final Instant updatedAt) {
         this.id = id;
         this.name = name;
         this.balance = balance;
@@ -78,25 +83,25 @@ public class Account extends DomainEntity {
         return this.balance.compareTo(BALANCE_0) > 0;
     }
 
-    public boolean isBalanceEligibleForTransaction(BigDecimal transactionAmount) {
+    public boolean isBalanceEligibleForTransaction(final BigDecimal transactionAmount) {
         return hasBalance() && balance.compareTo(transactionAmount) >= 0;
     }
 
-    public boolean notEligibleBalanceForTransaction(BigDecimal transactionAmount) {
+    public boolean notEligibleBalanceForTransaction(final BigDecimal transactionAmount) {
         return !isBalanceEligibleForTransaction(transactionAmount);
     }
 
-    public void validateBalanceEligibleForTransaction(BigDecimal amount) {
+    public void validateBalanceEligibleForTransaction(final BigDecimal amount) {
         if (notEligibleBalanceForTransaction(amount)) {
             throw new InsufficientBalanceException(id);
         }
     }
 
-    public void increaseBalance(BigDecimal amount) {
+    public void increaseBalance(final BigDecimal amount) {
         this.balance = this.balance.add(amount);
     }
 
-    public void decreaseBalance(BigDecimal amount) {
+    public void decreaseBalance(final BigDecimal amount) {
         validateBalanceEligibleForTransaction(amount);
         this.balance = this.balance.subtract(amount);
     }

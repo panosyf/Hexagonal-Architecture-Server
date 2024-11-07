@@ -5,7 +5,7 @@ import static com.hexagonal.architecture.server.core.domain.exceptions.utils.mes
 
 public class AccountNotFoundException extends NotFoundException {
 
-    public AccountNotFoundException(String id) {
+    public AccountNotFoundException(final String id) {
         super(generateErrorMessage(ACCOUNT_NOT_FOUND_EXCEPTION, id));
     }
 

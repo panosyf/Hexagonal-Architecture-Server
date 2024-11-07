@@ -27,12 +27,12 @@ public class Transaction extends DomainEntity {
     }
 
     public Transaction(
-            TransactionType type,
-            BigDecimal amount,
-            String description,
-            String debtorAccountId,
-            String beneficiaryAccountId,
-            TransactionStatusEnum status) {
+            final TransactionType type,
+            final BigDecimal amount,
+            final String description,
+            final String debtorAccountId,
+            final String beneficiaryAccountId,
+            final TransactionStatusEnum status) {
         this.id = UUID.randomUUID().toString();
         this.type = type;
         this.amount = amount;
@@ -45,13 +45,13 @@ public class Transaction extends DomainEntity {
     }
 
     public Transaction(
-            String id,
-            TransactionType type,
-            BigDecimal amount,
-            String description,
-            String debtorAccountId,
-            String beneficiaryAccountId,
-            TransactionStatusEnum status) {
+            final String id,
+            final TransactionType type,
+            final BigDecimal amount,
+            final String description,
+            final String debtorAccountId,
+            final String beneficiaryAccountId,
+            final TransactionStatusEnum status) {
         this.id = id;
         this.type = type;
         this.amount = amount;
@@ -64,15 +64,15 @@ public class Transaction extends DomainEntity {
     }
 
     public Transaction(
-            String id,
-            TransactionType type,
-            BigDecimal amount,
-            String description,
-            String debtorAccountId,
-            String beneficiaryAccountId,
-            TransactionStatusEnum status,
-            Instant createdAt,
-            Instant updatedAt) {
+            final String id,
+            final TransactionType type,
+            final BigDecimal amount,
+            final String description,
+            final String debtorAccountId,
+            final String beneficiaryAccountId,
+            final TransactionStatusEnum status,
+            final Instant createdAt,
+            final Instant updatedAt) {
         this.id = id;
         this.type = type;
         this.amount = amount;

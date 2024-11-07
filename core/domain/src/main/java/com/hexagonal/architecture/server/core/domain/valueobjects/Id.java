@@ -9,7 +9,7 @@ public class Id extends ValueObject {
 
     private final String value;
 
-    private Id(String value) {
+    private Id(final String value) {
         if (value == null || value.isBlank())
             throw new IllegalArgumentException(ErrorMessageConstants.ID_CANNOT_BE_NULL_OR_BLANK);
         this.value = value;
@@ -19,11 +19,11 @@ public class Id extends ValueObject {
         return new Id(UUID.randomUUID().toString());
     }
 
-    public static Id generate(UUID uuid) {
+    public static Id generate(final UUID uuid) {
         return new Id(uuid.toString());
     }
 
-    public static Id generate(String value) {
+    public static Id generate(final String value) {
         return new Id(value);
     }
 

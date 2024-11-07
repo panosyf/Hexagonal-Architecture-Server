@@ -20,6 +20,7 @@ public class DescriptionTest {
     @ParameterizedTest
     @MethodSource("nullOrBlankDescriptionHandlingTestArguments")
     void nullOrBlankDescriptionHandlingTest(String value) {
+        assertThat(Description.valueOf(value).equals(Description.emptyDescription())).isTrue();
         assertThat(Description.valueOf(value).getValue()).isEqualTo("");
     }
 

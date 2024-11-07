@@ -5,7 +5,7 @@ import static com.hexagonal.architecture.server.core.domain.exceptions.utils.mes
 
 public class InsufficientBalanceException extends BadRequestException {
 
-    public InsufficientBalanceException(String id) {
+    public InsufficientBalanceException(final String id) {
         super(generateErrorMessage(INSUFFICIENT_BALANCE_EXCEPTION, id));
     }
 

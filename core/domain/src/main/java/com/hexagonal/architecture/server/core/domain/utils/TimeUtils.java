@@ -9,7 +9,7 @@ public class TimeUtils {
         return Instant.now().truncatedTo(ChronoUnit.NANOS);
     }
 
-    public static Instant time(String time) {
+    public static Instant time(final String time) {
         return Instant.parse(time).truncatedTo(ChronoUnit.NANOS);
     }
 
