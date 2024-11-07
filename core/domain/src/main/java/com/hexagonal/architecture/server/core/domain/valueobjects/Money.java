@@ -1,5 +1,7 @@
 package com.hexagonal.architecture.server.core.domain.valueobjects;
 
+import com.hexagonal.architecture.server.core.domain.exceptions.utils.messages.ErrorMessageConstants;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Currency;
@@ -11,20 +13,23 @@ public class Money extends ValueObject {
     private final Currency currency;
     public static final Money ZERO = new Money(BigDecimal.ZERO);
 
-    private Money(BigDecimal amount) {
+    private Money(final BigDecimal amount) {
         this.amount = Money.setScale(amount);
         this.currency = Currency.getInstance("EUR");
     }
 
-    public static Money of(BigDecimal amount) {
-        return new Money(amount == null ? BigDecimal.ZERO : amount);
+    public static Money of(final BigDecimal amount) {
+        BigDecimal finalAmount = amount == null ? BigDecimal.ZERO : amount;
+        if (finalAmount.compareTo(BigDecimal.ZERO) < 0)
+            throw new IllegalArgumentException(ErrorMessageConstants.MONEY_CANNOT_HAVE_NEGATIVE_VALUE);
+        return new Money(finalAmount);
     }
 
     public static Money zero() {
         return ZERO;
     }
 
-    private static BigDecimal setScale(BigDecimal value) {
+    private static BigDecimal setScale(final BigDecimal value) {
         return value.setScale(2, RoundingMode.HALF_EVEN);
     }
 
@@ -37,11 +42,31 @@ public class Money extends ValueObject {
     }
 
     public Money subtract(final Money money) {
+        if (this.amount.compareTo(money.amount) < 0)
+            throw new IllegalArgumentException(ErrorMessageConstants.SUBTRACTION_OPERATION_BETWEEN_GIVEN_VALUES_RETURNS_NEGATIVE_RESULTS);
         return new Money(this.amount.subtract(money.amount));
     }
 
-    public Money multiply(final int multiplier) {
-        return new Money(this.amount.multiply(new BigDecimal(multiplier)));
+    public boolean isSubtractedResultNegative(final Money money) {
+        return this.amount.compareTo(money.amount) < 0;
+    }
+
+    public Money multiply(final BigDecimal multiplier) {
+        if (multiplier == null) throw new IllegalArgumentException(ErrorMessageConstants.MULTIPLIER_CANNOT_BE_NULL);
+        if (multiplier.compareTo(BigDecimal.ZERO) == 0)
+            throw new IllegalArgumentException(ErrorMessageConstants.MULTIPLIER_CANNOT_BE_ZERO);
+        if (multiplier.compareTo(BigDecimal.ZERO) < 0)
+            throw new IllegalArgumentException(ErrorMessageConstants.MULTIPLIER_CANNOT_BE_NEGATIVE);
+        return new Money(this.amount.multiply(multiplier));
+    }
+
+    public Money divide(final BigDecimal divisor) {
+        if (divisor == null) throw new IllegalArgumentException(ErrorMessageConstants.DIVISOR_CANNOT_BE_NULL);
+        if (divisor.compareTo(BigDecimal.ZERO) == 0)
+            throw new IllegalArgumentException(ErrorMessageConstants.DIVISOR_CANNOT_BE_ZERO);
+        if (divisor.compareTo(BigDecimal.ZERO) < 0)
+            throw new IllegalArgumentException(ErrorMessageConstants.DIVISOR_CANNOT_BE_NEGATIVE);
+        return new Money(this.amount.divide(divisor, 2, RoundingMode.HALF_EVEN));
     }
 
     public boolean isZero() {
@@ -56,8 +81,16 @@ public class Money extends ValueObject {
         return this.amount.compareTo(money.amount) > 0;
     }
 
+    public boolean isGreaterThanOrEqual(final Money money) {
+        return this.amount.compareTo(money.amount) >= 0;
+    }
+
     public boolean isLessThan(final Money money) {
         return this.amount.compareTo(money.amount) < 0;
+    }
+
+    public boolean isLessThanOrEqual(final Money money) {
+        return this.amount.compareTo(money.amount) <= 0;
     }
 
     @Override
