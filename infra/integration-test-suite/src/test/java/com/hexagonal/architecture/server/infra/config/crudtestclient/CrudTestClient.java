@@ -60,8 +60,8 @@ public class CrudTestClient {
     }
 
     private ResponseSpec generateResponseRequest(HttpMethod httpMethod, String url, int port, String uri, HttpHeaders httpHeaders, Object body) {
-        if (HttpMethod.GET.equals(httpMethod)) {
-            throw new IllegalArgumentException(HttpMethod.GET.name() + "cannot have a body");
+        if (HttpMethod.GET.equals(httpMethod) || HttpMethod.DELETE.equals(httpMethod)) {
+            throw new IllegalArgumentException(httpMethod.name() + "cannot have a body");
         }
         return generateCommonRequestBodySpec(httpMethod, url, port, uri, httpHeaders)
                 .body(Mono.just(body), body.getClass())
