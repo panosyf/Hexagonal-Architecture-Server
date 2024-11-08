@@ -2,7 +2,7 @@ package com.hexagonal.architecture.server.core.domain.service.unit.services.tran
 
 
 import com.hexagonal.architecture.server.core.domain.domains.transaction.Transaction;
-import com.hexagonal.architecture.server.core.domain.exceptions.notfound.TransactionNotFoundException;
+import com.hexagonal.architecture.server.core.domain.exceptions.elementnotfound.TransactionNotFoundException;
 import com.hexagonal.architecture.server.core.domain.exceptions.utils.messages.ErrorMessageConstants;
 import com.hexagonal.architecture.server.core.domain.model.constants.Amount;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;

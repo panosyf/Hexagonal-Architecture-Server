@@ -90,3 +90,20 @@ The **Hexagonal Architecture Server** project exemplifies best practices in back
 
 Feel free to explore the repository and contribute to the project. Your feedback and contributions are always welcome!
 
+---
+
+## Trademark & Author Acknowledgment
+
+The **Hexagonal Architecture Server** project is designed, developed, and maintained by **Panagiotis Yfantis**. All rights to the project's design, implementation, and associated content are owned by the author unless otherwise noted.
+
+- **Panagiotis Yfantis** is the sole author of this repository.
+- **Hexagonal Architecture** and **Clean Architecture** are widely recognized design patterns and concepts. The use of these patterns in this project is based on publicly available principles and frameworks, and they are not proprietary to this repository.
+
+This project is licensed under the [MIT License](LICENSE.md). You are free to use, modify, and distribute the code in accordance with the terms of the MIT License, as long as you include the original copyright notice and this license text in all copies or substantial portions of the software.
+
+For more information or to connect with the author, visit [Panagiotis Yfantis on LinkedIn](https://www.linkedin.com/in/panosyf/) or check out the author's GitHub profile at [Panagiotis Yfantis on GitHub](https://github.com/panosyf).
+
+---
+
+© 2024 **Panagiotis Yfantis**. All rights reserved.
+

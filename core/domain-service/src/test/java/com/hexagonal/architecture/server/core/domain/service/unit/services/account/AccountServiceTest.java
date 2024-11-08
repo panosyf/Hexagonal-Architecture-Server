@@ -1,7 +1,7 @@
 package com.hexagonal.architecture.server.core.domain.service.unit.services.account;
 
 import com.hexagonal.architecture.server.core.domain.domains.account.Account;
-import com.hexagonal.architecture.server.core.domain.exceptions.notfound.AccountNotFoundException;
+import com.hexagonal.architecture.server.core.domain.exceptions.elementnotfound.AccountNotFoundException;
 import com.hexagonal.architecture.server.core.domain.exceptions.utils.messages.ErrorMessageConstants;
 import com.hexagonal.architecture.server.core.domain.model.constants.Amount;
 import com.hexagonal.architecture.server.core.domain.model.constants.Balance;

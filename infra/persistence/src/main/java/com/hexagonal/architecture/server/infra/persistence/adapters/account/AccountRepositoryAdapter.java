@@ -1,7 +1,7 @@
 package com.hexagonal.architecture.server.infra.persistence.adapters.account;
 
 import com.hexagonal.architecture.server.core.domain.domains.account.Account;
-import com.hexagonal.architecture.server.core.domain.exceptions.notfound.AccountNotFoundException;
+import com.hexagonal.architecture.server.core.domain.exceptions.elementnotfound.AccountNotFoundException;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.AccountRepositoryPort;
 import com.hexagonal.architecture.server.infra.persistence.daos.AccountDao;
 import jakarta.transaction.Transactional;

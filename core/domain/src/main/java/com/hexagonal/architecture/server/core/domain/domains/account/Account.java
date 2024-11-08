@@ -1,7 +1,7 @@
 package com.hexagonal.architecture.server.core.domain.domains.account;
 
 import com.hexagonal.architecture.server.core.domain.domains.DomainEntity;
-import com.hexagonal.architecture.server.core.domain.exceptions.baddata.InsufficientBalanceException;
+import com.hexagonal.architecture.server.core.domain.exceptions.illegalargument.InsufficientBalanceException;
 
 import java.math.BigDecimal;
 import java.time.Instant;
