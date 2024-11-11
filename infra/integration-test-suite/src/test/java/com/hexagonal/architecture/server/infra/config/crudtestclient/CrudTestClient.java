@@ -23,29 +23,54 @@ public class CrudTestClient {
         this.webTestClient = webTestClient;
     }
 
-    public ResponseSpec execute(HttpMethod httpMethod, String uri) {
-        return generateResponseRequest(httpMethod, url, port, uri, httpHeaders);
+    public ResponseSpec get(String uri) {
+        return generateResponseRequest(HttpMethod.GET, url, port, uri, httpHeaders);
     }
 
-    public ResponseSpec execute(HttpMethod httpMethod, String uri, HttpHeaders httpHeaders) {
-        return generateResponseRequest(httpMethod, url, port, uri, httpHeaders);
+    public ResponseSpec get(String uri, HttpHeaders httpHeaders) {
+        return generateResponseRequest(HttpMethod.GET, url, port, uri, httpHeaders);
     }
 
-    public ResponseSpec execute(HttpMethod httpMethod, String uri, Object body) {
-        return generateResponseRequest(httpMethod, url, port, uri, httpHeaders, body);
+    public ResponseSpec delete(String uri) {
+        return generateResponseRequest(HttpMethod.DELETE, url, port, uri, httpHeaders);
     }
 
-    public ResponseSpec execute(HttpMethod httpMethod, String uri, HttpHeaders httpHeaders, Object body) {
-        return generateResponseRequest(httpMethod, url, port, uri, httpHeaders, body);
+    public ResponseSpec delete(String uri, HttpHeaders httpHeaders) {
+        return generateResponseRequest(HttpMethod.DELETE, url, port, uri, httpHeaders);
     }
 
-    public ResponseSpec execute(HttpMethod httpMethod, int port, String uri, HttpHeaders httpHeaders, Object body) {
-        return generateResponseRequest(httpMethod, url, port, uri, httpHeaders, body);
+    public ResponseSpec post(String uri, Object body) {
+        return generateResponseRequest(HttpMethod.POST, url, port, uri, httpHeaders, body);
     }
 
-    public ResponseSpec execute(HttpMethod httpMethod, String url, int port, String uri, HttpHeaders httpHeaders, Object body) {
-        return generateResponseRequest(httpMethod, url, port, uri, httpHeaders, body);
+    public ResponseSpec post(String uri, HttpHeaders httpHeaders, Object body) {
+        return generateResponseRequest(HttpMethod.POST, url, port, uri, httpHeaders, body);
     }
+
+    public ResponseSpec post(int port, String uri, HttpHeaders httpHeaders, Object body) {
+        return generateResponseRequest(HttpMethod.POST, url, port, uri, httpHeaders, body);
+    }
+
+    public ResponseSpec post(String url, int port, String uri, HttpHeaders httpHeaders, Object body) {
+        return generateResponseRequest(HttpMethod.POST, url, port, uri, httpHeaders, body);
+    }
+
+    public ResponseSpec put(String uri, Object body) {
+        return generateResponseRequest(HttpMethod.PUT, url, port, uri, httpHeaders, body);
+    }
+
+    public ResponseSpec put(String uri, HttpHeaders httpHeaders, Object body) {
+        return generateResponseRequest(HttpMethod.PUT, url, port, uri, httpHeaders, body);
+    }
+
+    public ResponseSpec put(int port, String uri, HttpHeaders httpHeaders, Object body) {
+        return generateResponseRequest(HttpMethod.PUT, url, port, uri, httpHeaders, body);
+    }
+
+    public ResponseSpec put(String url, int port, String uri, HttpHeaders httpHeaders, Object body) {
+        return generateResponseRequest(HttpMethod.PUT, url, port, uri, httpHeaders, body);
+    }
+
 
     private RequestBodySpec generateCommonRequestBodySpec(HttpMethod httpMethod, String url, int port, String uri, HttpHeaders httpHeaders) {
         return webTestClient
@@ -60,9 +85,6 @@ public class CrudTestClient {
     }
 
     private ResponseSpec generateResponseRequest(HttpMethod httpMethod, String url, int port, String uri, HttpHeaders httpHeaders, Object body) {
-        if (HttpMethod.GET.equals(httpMethod) || HttpMethod.DELETE.equals(httpMethod)) {
-            throw new IllegalArgumentException(httpMethod.name() + "cannot have a body");
-        }
         return generateCommonRequestBodySpec(httpMethod, url, port, uri, httpHeaders)
                 .body(Mono.just(body), body.getClass())
                 .exchange();
