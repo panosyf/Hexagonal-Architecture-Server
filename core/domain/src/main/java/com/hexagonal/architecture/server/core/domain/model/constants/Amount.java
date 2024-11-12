@@ -1,5 +1,7 @@
 package com.hexagonal.architecture.server.core.domain.model.constants;
 
+import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -8,12 +10,12 @@ public class Amount {
     private Amount() {
     }
 
-    public static final BigDecimal AMOUNT_0 = BigDecimal.ZERO.setScale(2, RoundingMode.HALF_UP);
-    public static final BigDecimal AMOUNT_1 = BigDecimal.ONE.setScale(2, RoundingMode.HALF_UP);
-    public static final BigDecimal AMOUNT_2 = BigDecimal.TWO.setScale(2, RoundingMode.HALF_UP);
-    public static final BigDecimal AMOUNT_5 = BigDecimal.valueOf(5).setScale(2, RoundingMode.HALF_UP);
-    public static final BigDecimal AMOUNT_10 = BigDecimal.TEN.setScale(2, RoundingMode.HALF_UP);
-    public static final BigDecimal AMOUNT_15 = BigDecimal.valueOf(15).setScale(2, RoundingMode.HALF_UP);
-    public static final BigDecimal AMOUNT_20 = BigDecimal.valueOf(20).setScale(2, RoundingMode.HALF_UP);
+    public static final Money AMOUNT_0 = Money.zero();
+    public static final Money AMOUNT_1 = Money.of(BigDecimal.ONE);
+    public static final Money AMOUNT_2 = Money.of(BigDecimal.TWO);
+    public static final Money AMOUNT_5 = Money.of(BigDecimal.valueOf(5));
+    public static final Money AMOUNT_10 =Money.of( BigDecimal.TEN);
+    public static final Money AMOUNT_15 =Money.of( BigDecimal.valueOf(15));
+    public static final Money AMOUNT_20 =Money.of( BigDecimal.valueOf(20));
 
 }
