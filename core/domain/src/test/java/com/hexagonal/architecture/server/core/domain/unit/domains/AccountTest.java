@@ -5,12 +5,12 @@ import com.hexagonal.architecture.server.core.domain.exceptions.illegalargument.
 import com.hexagonal.architecture.server.core.domain.exceptions.utils.messages.ErrorMessageConstants;
 import com.hexagonal.architecture.server.core.domain.model.constants.Amount;
 import com.hexagonal.architecture.server.core.domain.model.constants.Balance;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.math.BigDecimal;
 import java.util.stream.Stream;
 
 import static com.hexagonal.architecture.server.core.domain.common.mocks.AccountMocks.generateAccount;
@@ -29,7 +29,7 @@ class AccountTest {
 
     @ParameterizedTest(name = "Account with balance {0} eligibility for transaction with amount {1} is {2}")
     @MethodSource("isBalanceEligibleForTransactionTestArguments")
-    void isBalanceEligibleForTransactionTest(BigDecimal balance, BigDecimal amount, boolean result) {
+    void isBalanceEligibleForTransactionTest(Money balance, Money amount, boolean result) {
         Account account = generateAccount(balance);
         assertThat(account.isBalanceEligibleForTransaction(amount)).isEqualTo(result);
     }
@@ -44,7 +44,7 @@ class AccountTest {
 
     @ParameterizedTest
     @MethodSource("notEligibleBalanceForTransactionTestArguments")
-    void notEligibleBalanceForTransactionTest(BigDecimal balance, BigDecimal amount, boolean result) {
+    void notEligibleBalanceForTransactionTest(Money balance, Money amount, boolean result) {
         Account account = generateAccount(balance);
         assertThat(account.notEligibleBalanceForTransaction(amount)).isEqualTo(result);
     }
@@ -62,7 +62,7 @@ class AccountTest {
         Account account = generateAccount();
         assertThatThrownBy(() -> account.validateBalanceEligibleForTransaction(Balance.BALANCE_10))
                 .isInstanceOf(InsufficientBalanceException.class)
-                .hasMessage(generateErrorMessage(ErrorMessageConstants.INSUFFICIENT_BALANCE_EXCEPTION, account.getId()));
+                .hasMessage(generateErrorMessage(ErrorMessageConstants.INSUFFICIENT_BALANCE_EXCEPTION, account.getId().getValue()));
     }
 
     @Test
