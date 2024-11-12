@@ -2,106 +2,134 @@ package com.hexagonal.architecture.server.core.domain.domains.account;
 
 import com.hexagonal.architecture.server.core.domain.domains.DomainEntity;
 import com.hexagonal.architecture.server.core.domain.exceptions.illegalargument.InsufficientBalanceException;
+import com.hexagonal.architecture.server.core.domain.valueobjects.*;
 
-import java.math.BigDecimal;
-import java.time.Instant;
 import java.util.Objects;
-import java.util.UUID;
-
-import static com.hexagonal.architecture.server.core.domain.model.constants.Balance.BALANCE_0;
-import static com.hexagonal.architecture.server.core.domain.utils.TimeUtils.now;
 
 public class Account extends DomainEntity {
 
-    private String id;
-    private String name;
-    private BigDecimal balance;
-    private Instant createdAt;
-    private Instant updatedAt;
+    private Id id;
+    private Email email;
+    private Username username;
+    private Password password;
+    private Name name;
+    private Money balance;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
 
     private Account() {
     }
 
-    public Account(final String name) {
-        this.id = UUID.randomUUID().toString();
+    public Account(
+            final Email email,
+            final Username username,
+            final Password password,
+            final Name name) {
+        this.id = Id.generate();
+        this.email = email;
+        this.username = username;
+        this.password = password;
         this.name = name;
-        this.balance = BALANCE_0;
-        this.createdAt = now();
-        this.updatedAt = null;
-    }
-
-    public Account(final String name, final BigDecimal balance) {
-        this.id = UUID.randomUUID().toString();
-        this.name = name;
-        this.balance = balance;
-        this.createdAt = now();
-        this.updatedAt = null;
-    }
-
-    public Account(final String id, final String name, final BigDecimal balance) {
-        this.id = id;
-        this.name = name;
-        this.balance = balance;
-        this.createdAt = now();
+        this.balance = Money.zero();
+        this.createdAt = Timestamp.now();
         this.updatedAt = null;
     }
 
     public Account(
-            final String id,
-            final String name,
-            final BigDecimal balance,
-            final Instant createdAt,
-            final Instant updatedAt) {
+            final Email email,
+            final Username username,
+            final Password password,
+            final Name name,
+            final Money balance) {
+        this.id = Id.generate();
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.balance = balance;
+        this.createdAt = Timestamp.now();
+        this.updatedAt = null;
+    }
+
+    public Account(
+            final Id id,
+            final Email email,
+            final Username username,
+            final Password password,
+            final Name name,
+            final Money balance) {
         this.id = id;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.balance = balance;
+        this.createdAt = Timestamp.now();
+        this.updatedAt = null;
+    }
+
+    public Account(
+            final Id id,
+            final Email email,
+            final Username username,
+            final Password password,
+            final Name name,
+            final Money balance,
+            final Timestamp createdAt,
+            final Timestamp updatedAt) {
+        this.id = id;
+        this.email = email;
+        this.username = username;
+        this.password = password;
         this.name = name;
         this.balance = balance;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
-    public String getId() {
+    public Id getId() {
         return id;
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
-    public BigDecimal getBalance() {
+    public Money getBalance() {
         return balance;
     }
 
-    public Instant getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public Instant getUpdatedAt() {
+    public Timestamp getUpdatedAt() {
         return updatedAt;
     }
 
     public boolean hasBalance() {
-        return this.balance.compareTo(BALANCE_0) > 0;
+        return this.balance.isGreaterThanZero();
     }
 
-    public boolean isBalanceEligibleForTransaction(final BigDecimal transactionAmount) {
-        return hasBalance() && balance.compareTo(transactionAmount) >= 0;
+    public boolean isBalanceEligibleForTransaction(final Money transactionAmount) {
+        return hasBalance() && balance.isGreaterThanOrEqual(transactionAmount);
     }
 
-    public boolean notEligibleBalanceForTransaction(final BigDecimal transactionAmount) {
+    public boolean notEligibleBalanceForTransaction(final Money transactionAmount) {
         return !isBalanceEligibleForTransaction(transactionAmount);
     }
 
-    public void validateBalanceEligibleForTransaction(final BigDecimal amount) {
+    public void validateBalanceEligibleForTransaction(final Money amount) {
         if (notEligibleBalanceForTransaction(amount)) {
-            throw new InsufficientBalanceException(id);
+            throw new InsufficientBalanceException(id.getValue());
         }
     }
 
-    public void increaseBalance(final BigDecimal amount) {
+    public void increaseBalance(final Money amount) {
         this.balance = this.balance.add(amount);
     }
 
-    public void decreaseBalance(final BigDecimal amount) {
+    public void decreaseBalance(final Money amount) {
         validateBalanceEligibleForTransaction(amount);
         this.balance = this.balance.subtract(amount);
     }
@@ -111,19 +139,22 @@ public class Account extends DomainEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return Objects.equals(id, account.id) && Objects.equals(name, account.name) && Objects.equals(balance, account.balance) && Objects.equals(createdAt, account.createdAt) && Objects.equals(updatedAt, account.updatedAt);
+        return Objects.equals(id, account.id) && Objects.equals(email, account.email) && Objects.equals(username, account.username) && Objects.equals(password, account.password) && Objects.equals(name, account.name) && Objects.equals(balance, account.balance) && Objects.equals(createdAt, account.createdAt) && Objects.equals(updatedAt, account.updatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, balance, createdAt, updatedAt);
+        return Objects.hash(id, email, username, password, name, balance, createdAt, updatedAt);
     }
 
     @Override
     public String toString() {
         return "Account{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
+                "id=" + id +
+                ", email=" + email +
+                ", username=" + username +
+                ", password=" + password +
+                ", name=" + name +
                 ", balance=" + balance +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +

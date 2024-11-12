@@ -11,7 +11,7 @@ public class Money extends ValueObject {
 
     private final BigDecimal amount;
     private final Currency currency;
-    public static final Money ZERO = new Money(BigDecimal.ZERO);
+    private static final Money ZERO = new Money(BigDecimal.ZERO);
 
     private Money(final BigDecimal amount) {
         this.amount = Money.setScale(amount);

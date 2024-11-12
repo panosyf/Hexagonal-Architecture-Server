@@ -27,6 +27,8 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Account createAccount(AccountCreateRequest accountCreateRequest) {
+        // TODO UTILIZE HASHING AND SALT
+        // TODO HIDE PASSWORD FROM LOGS
         Account account = new Account(accountCreateRequest.name());
         account = accountRepositoryPort.save(account);
         log.info(LogInfoMessages.LOG_ACCOUNT_CREATED_INFO, accountCreateRequest);
