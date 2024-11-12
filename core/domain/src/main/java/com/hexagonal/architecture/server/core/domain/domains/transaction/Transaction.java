@@ -1,56 +1,60 @@
 package com.hexagonal.architecture.server.core.domain.domains.transaction;
 
 import com.hexagonal.architecture.server.core.domain.domains.DomainEntity;
+import com.hexagonal.architecture.server.core.domain.model.constants.Amount;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionType;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Description;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Timestamp;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Objects;
-import java.util.UUID;
 
 import static com.hexagonal.architecture.server.core.domain.utils.TimeUtils.now;
 
 public class Transaction extends DomainEntity {
 
-    private String id;
+    private Id id;
     private TransactionType type;
-    private BigDecimal amount;
-    private String description;
-    private String debtorAccountId;
-    private String beneficiaryAccountId;
+    private Money amount;
+    private Description description;
+    private Id debtorAccountId;
+    private Id beneficiaryAccountId;
     private TransactionStatusEnum status;
-    private Instant createdAt;
-    private Instant updatedAt;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
 
     private Transaction() {
     }
 
     public Transaction(
             final TransactionType type,
-            final BigDecimal amount,
-            final String description,
-            final String debtorAccountId,
-            final String beneficiaryAccountId,
+            final Money amount,
+            final Description description,
+            final Id debtorAccountId,
+            final Id beneficiaryAccountId,
             final TransactionStatusEnum status) {
-        this.id = UUID.randomUUID().toString();
+        this.id = Id.generate();
         this.type = type;
         this.amount = amount;
         this.description = description;
         this.debtorAccountId = debtorAccountId;
         this.beneficiaryAccountId = beneficiaryAccountId;
         this.status = status;
-        this.createdAt = now();
+        this.createdAt = Timestamp.now();
         this.updatedAt = null;
     }
 
     public Transaction(
-            final String id,
+            final Id id,
             final TransactionType type,
-            final BigDecimal amount,
-            final String description,
-            final String debtorAccountId,
-            final String beneficiaryAccountId,
+            final Money amount,
+            final Description description,
+            final Id debtorAccountId,
+            final Id beneficiaryAccountId,
             final TransactionStatusEnum status) {
         this.id = id;
         this.type = type;
@@ -59,20 +63,20 @@ public class Transaction extends DomainEntity {
         this.debtorAccountId = debtorAccountId;
         this.beneficiaryAccountId = beneficiaryAccountId;
         this.status = status;
-        this.createdAt = now();
+        this.createdAt = Timestamp.now();
         this.updatedAt = null;
     }
 
     public Transaction(
-            final String id,
+            final Id id,
             final TransactionType type,
-            final BigDecimal amount,
-            final String description,
-            final String debtorAccountId,
-            final String beneficiaryAccountId,
+            final Money amount,
+            final Description description,
+            final Id debtorAccountId,
+            final Id beneficiaryAccountId,
             final TransactionStatusEnum status,
-            final Instant createdAt,
-            final Instant updatedAt) {
+            final Timestamp createdAt,
+            final Timestamp updatedAt) {
         this.id = id;
         this.type = type;
         this.amount = amount;
@@ -84,7 +88,7 @@ public class Transaction extends DomainEntity {
         this.updatedAt = updatedAt;
     }
 
-    public String getId() {
+    public Id getId() {
         return id;
     }
 
@@ -92,19 +96,19 @@ public class Transaction extends DomainEntity {
         return type;
     }
 
-    public BigDecimal getAmount() {
+    public Money getAmount() {
         return amount;
     }
 
-    public String getDescription() {
+    public Description getDescription() {
         return description;
     }
 
-    public String getDebtorAccountId() {
+    public Id getDebtorAccountId() {
         return debtorAccountId;
     }
 
-    public String getBeneficiaryAccountId() {
+    public Id getBeneficiaryAccountId() {
         return beneficiaryAccountId;
     }
 
@@ -112,17 +116,17 @@ public class Transaction extends DomainEntity {
         return status;
     }
 
-    public Instant getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public Instant getUpdatedAt() {
+    public Timestamp getUpdatedAt() {
         return updatedAt;
     }
 
     public void updateStatus(TransactionStatusEnum status) {
         this.status = status;
-        this.updatedAt = now();
+        this.updatedAt = Timestamp.now();
     }
 
     @Override
@@ -141,12 +145,12 @@ public class Transaction extends DomainEntity {
     @Override
     public String toString() {
         return "Transaction{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", type=" + type +
                 ", amount=" + amount +
-                ", description='" + description + '\'' +
-                ", debtorAccountId='" + debtorAccountId + '\'' +
-                ", beneficiaryAccountId='" + beneficiaryAccountId + '\'' +
+                ", description=" + description +
+                ", debtorAccountId=" + debtorAccountId +
+                ", beneficiaryAccountId=" + beneficiaryAccountId +
                 ", status=" + status +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +

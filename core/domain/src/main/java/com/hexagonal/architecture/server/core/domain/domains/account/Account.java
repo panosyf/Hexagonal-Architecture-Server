@@ -153,7 +153,7 @@ public class Account extends DomainEntity {
                 "id=" + id +
                 ", email=" + email +
                 ", username=" + username +
-                ", password=" + password +
+                ", password=" + "[REDACTED]" +
                 ", name=" + name +
                 ", balance=" + balance +
                 ", createdAt=" + createdAt +

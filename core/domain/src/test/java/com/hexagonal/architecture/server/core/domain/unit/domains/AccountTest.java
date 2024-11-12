@@ -69,14 +69,14 @@ class AccountTest {
     void increaseBalanceTest() {
         Account account = generateAccount(Balance.BALANCE_5);
         account.increaseBalance(Balance.BALANCE_15);
-        assertThat(account.getBalance()).isEqualTo(Balance.BALANCE_20);
+        assertThat(account.getBalance().equals(Balance.BALANCE_20)).isTrue();
     }
 
     @Test
     void decreaseBalanceTest() {
         Account account = generateAccount(Balance.BALANCE_15);
         account.decreaseBalance(Balance.BALANCE_10);
-        assertThat(account.getBalance()).isEqualTo(Balance.BALANCE_5);
+        assertThat(account.getBalance().equals(Balance.BALANCE_5)).isTrue();
     }
 
     @Test
