@@ -9,7 +9,7 @@ public interface AccountService {
 
     Account getAccount(String id);
 
-    Account createAccount(AccountCreateRequest accountCreateRequest);
+    Account createAccount(Account account);
 
     Account increaseBalance(String id, BigDecimal amount);
 

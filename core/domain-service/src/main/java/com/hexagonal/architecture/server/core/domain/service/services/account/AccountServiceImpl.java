@@ -4,6 +4,10 @@ import com.hexagonal.architecture.server.core.domain.domains.account.Account;
 import com.hexagonal.architecture.server.core.domain.service.logging.LogInfoMessages;
 import com.hexagonal.architecture.server.core.domain.service.model.requests.AccountCreateRequest;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.AccountRepositoryPort;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Email;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Name;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Password;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Username;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,12 +30,9 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account createAccount(AccountCreateRequest accountCreateRequest) {
-        // TODO UTILIZE HASHING AND SALT
-        // TODO HIDE PASSWORD FROM LOGS
-        Account account = new Account(accountCreateRequest.name());
+    public Account createAccount(Account account) {
         account = accountRepositoryPort.save(account);
-        log.info(LogInfoMessages.LOG_ACCOUNT_CREATED_INFO, accountCreateRequest);
+        log.info(LogInfoMessages.LOG_ACCOUNT_CREATED_INFO, account.getEmail(), account.getUsername());
         return account;
     }
 

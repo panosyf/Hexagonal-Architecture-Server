@@ -3,11 +3,10 @@ package com.hexagonal.architecture.server.infra.persistence.adapters.account;
 import com.hexagonal.architecture.server.core.domain.domains.account.Account;
 import com.hexagonal.architecture.server.core.domain.exceptions.elementnotfound.AccountNotFoundException;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.AccountRepositoryPort;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
 import com.hexagonal.architecture.server.infra.persistence.daos.AccountDao;
 import jakarta.transaction.Transactional;
 import org.springframework.core.convert.ConversionService;
-
-import java.math.BigDecimal;
 
 public class AccountRepositoryAdapter implements AccountRepositoryPort {
 
@@ -34,7 +33,7 @@ public class AccountRepositoryAdapter implements AccountRepositoryPort {
     }
 
     @Override
-    public BigDecimal findBalance(String id) {
+    public Money findBalance(String id) {
         return accountJpaRepository.findBalance(id);
     }
 

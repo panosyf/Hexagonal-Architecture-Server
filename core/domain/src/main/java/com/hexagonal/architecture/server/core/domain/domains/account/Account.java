@@ -91,6 +91,14 @@ public class Account extends DomainEntity {
         return id;
     }
 
+    public Email getEmail() {
+        return email;
+    }
+
+    public Username getUsername() {
+        return username;
+    }
+
     public Name getName() {
         return name;
     }
