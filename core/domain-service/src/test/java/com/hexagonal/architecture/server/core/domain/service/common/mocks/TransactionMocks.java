@@ -1,10 +1,10 @@
 package com.hexagonal.architecture.server.core.domain.service.common.mocks;
 
-import com.hexagonal.architecture.server.core.domain.common.constants.Ids;
 import com.hexagonal.architecture.server.core.domain.domains.transaction.Transaction;
 import com.hexagonal.architecture.server.core.domain.model.constants.Amount;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionType;
+import com.hexagonal.architecture.server.core.domain.service.common.constants.Ids;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Description;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
 
