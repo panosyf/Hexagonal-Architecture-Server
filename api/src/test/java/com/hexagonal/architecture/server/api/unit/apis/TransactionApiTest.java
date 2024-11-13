@@ -12,8 +12,8 @@ import com.hexagonal.architecture.server.api.model.responses.TransactionCreation
 import com.hexagonal.architecture.server.core.domain.domains.transaction.Transaction;
 import com.hexagonal.architecture.server.core.domain.exceptions.illegalargument.InsufficientBalanceException;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
-import com.hexagonal.architecture.server.core.domain.service.model.requests.TransactionCreateRequest;
-import com.hexagonal.architecture.server.core.domain.service.model.requests.TransactionUpdateRequest;
+import com.hexagonal.architecture.server.api.model.requests.TransactionCreateRequest;
+import com.hexagonal.architecture.server.api.model.requests.TransactionUpdateRequest;
 import com.hexagonal.architecture.server.core.domain.service.services.transaction.TransactionService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -76,13 +76,13 @@ class TransactionApiTest {
         // given
         TransactionUpdateRequest transactionUpdateRequest = TransactionUpdateRequestMocks.generateTransactionUpdateRequest();
         Transaction transaction = TransactionMocks.generateTransaction();
-        given(transactionService.updateTransaction(anyString(), any(TransactionUpdateRequest.class)))
+        given(transactionService.updateTransaction(anyString(), , any(TransactionUpdateRequest.class)))
                 .willReturn(transaction);
         // when
         transactionApi.updateTransaction(Ids.TRANSACTION_ID_1, transactionUpdateRequest);
         // Then
         verify(transactionService, times(1))
-                .updateTransaction(anyString(), transactionUpdateRequestCaptor.capture());
+                .updateTransaction(anyString(), , transactionUpdateRequestCaptor.capture());
         assertThat(transactionUpdateRequestCaptor.getValue().transactionStatusEnum()).isEqualTo(TransactionStatusEnum.COMPLETED);
     }
 

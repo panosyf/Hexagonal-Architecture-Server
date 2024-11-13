@@ -1,4 +1,4 @@
-package com.hexagonal.architecture.server.core.domain.service.model.requests;
+package com.hexagonal.architecture.server.api.model.requests;
 
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionType;
 

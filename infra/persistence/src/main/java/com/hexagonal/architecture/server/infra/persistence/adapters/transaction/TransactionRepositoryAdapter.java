@@ -4,6 +4,7 @@ import com.hexagonal.architecture.server.core.domain.domains.transaction.Transac
 import com.hexagonal.architecture.server.core.domain.exceptions.elementnotfound.TransactionNotFoundException;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.TransactionRepositoryPort;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
 import com.hexagonal.architecture.server.infra.persistence.daos.TransactionDao;
 import jakarta.transaction.Transactional;
 import org.springframework.core.convert.ConversionService;
@@ -30,7 +31,7 @@ public class TransactionRepositoryAdapter implements TransactionRepositoryPort {
     }
 
     @Override
-    public Transaction findById(String id) {
+    public Transaction findById(Id id) {
         TransactionDao transactionDao = transactionJpaRepository.findById(id)
                 .orElseThrow(() -> new TransactionNotFoundException(id));
         return transactionToDomain(transactionDao);

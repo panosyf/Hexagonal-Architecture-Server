@@ -7,9 +7,8 @@ import com.hexagonal.architecture.server.api.model.responses.TransactionResponse
 import com.hexagonal.architecture.server.api.model.responses.TransactionUpdateResponse;
 import com.hexagonal.architecture.server.core.domain.domains.transaction.Transaction;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
-import com.hexagonal.architecture.server.core.domain.service.model.requests.TransactionCreateRequest;
-import com.hexagonal.architecture.server.core.domain.service.model.requests.TransactionUpdateRequest;
-import com.hexagonal.architecture.server.core.domain.service.services.account.AccountService;
+import com.hexagonal.architecture.server.api.model.requests.TransactionCreateRequest;
+import com.hexagonal.architecture.server.api.model.requests.TransactionUpdateRequest;
 import com.hexagonal.architecture.server.core.domain.service.services.transaction.TransactionService;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
 import org.springframework.core.convert.ConversionService;
@@ -47,7 +46,7 @@ public class TransactionApiImpl implements TransactionApi {
         } catch (Exception e) {
             Id id = transaction.getId();
             TransactionUpdateRequest transactionUpdateRequest = new TransactionUpdateRequest(TransactionStatusEnum.FAILED);
-            transactionService.updateTransaction(id, transactionUpdateRequest);
+            transactionService.updateTransaction(id, , transactionUpdateRequest);
             return new TransactionCreationResponse(null, TransactionStatusEnum.FAILED);
         }
         return new TransactionCreationResponse(transaction.getId().getValue(), TransactionStatusEnum.PENDING);
@@ -55,7 +54,7 @@ public class TransactionApiImpl implements TransactionApi {
 
     @Override
     public TransactionUpdateResponse updateTransaction(String id, TransactionUpdateRequest transactionUpdateRequest) {
-        Transaction updatedTransaction = transactionService.updateTransaction(Id.generate(id), transactionUpdateRequest);
+        Transaction updatedTransaction = transactionService.updateTransaction(Id.generate(id), , transactionUpdateRequest);
         // TODO THIS IS TEMPORARY, WILL BE REFACTORED UTILIZING STATE PATTERN
         if (transactionUpdateRequest.transactionStatusEnum().equals(TransactionStatusEnum.COMPLETED)) {
             accountApi.increaseBalance(updatedTransaction.getBeneficiaryAccountId().getValue(), updatedTransaction.getAmount().getValue());

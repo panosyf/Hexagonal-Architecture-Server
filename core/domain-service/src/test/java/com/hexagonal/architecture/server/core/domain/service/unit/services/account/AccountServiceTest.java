@@ -7,12 +7,12 @@ import com.hexagonal.architecture.server.core.domain.model.constants.Amount;
 import com.hexagonal.architecture.server.core.domain.model.constants.Balance;
 import com.hexagonal.architecture.server.core.domain.service.common.constants.Ids;
 import com.hexagonal.architecture.server.core.domain.service.common.constants.Names;
-import com.hexagonal.architecture.server.core.domain.service.common.mocks.AccountCreateRequestMocks;
-import com.hexagonal.architecture.server.core.domain.service.model.requests.AccountCreateRequest;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.AccountRepositoryPort;
 import com.hexagonal.architecture.server.core.domain.service.services.account.AccountService;
 import com.hexagonal.architecture.server.core.domain.service.services.account.AccountServiceImpl;
 import com.hexagonal.architecture.server.core.domain.utils.TimeUtils;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Timestamp;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -44,7 +44,7 @@ class AccountServiceTest {
     void getAccountTest() {
         // given
         Account account = generateAccount();
-        given(accountRepositoryPort.findById(anyString()))
+        given(accountRepositoryPort.findById(any(Id.class)))
                 .willReturn(account);
         // when
         Account accountResult = accountService.getAccount(Ids.ACCOUNT_ID_1);
@@ -60,8 +60,8 @@ class AccountServiceTest {
     @Test
     void getAccountThrowsAccountNotFoundExceptionTest() {
         // given
-        given(accountRepositoryPort.findById(anyString()))
-                .willThrow(new AccountNotFoundException(Ids.ACCOUNT_ID_1));
+        given(accountRepositoryPort.findById(any(Id.class)))
+                .willThrow(new AccountNotFoundException(Ids.ACCOUNT_ID_1.getValue()));
         // then
         assertThatThrownBy(() -> accountService.getAccount(Ids.ACCOUNT_ID_1))
                 .isInstanceOf(AccountNotFoundException.class)
@@ -71,21 +71,20 @@ class AccountServiceTest {
     @Test
     void createAccountTest() {
         // given
-        AccountCreateRequest accountCreateRequest = AccountCreateRequestMocks.generateAccountCreateRequest();
         Account account = generateAccount();
-        Instant timestampBeforeAccountCreation = TimeUtils.now().minus(100, ChronoUnit.NANOS);
+        Timestamp timestampBeforeAccountCreation = Timestamp.now().minusNanos(100);
         given(accountRepositoryPort.save(any(Account.class)))
                 .willReturn(account);
         // when
-        Account accountResult = accountService.createAccount(accountCreateRequest);
+        accountService.createAccount(account);
         // then
         verify(accountRepositoryPort, times(1))
-                .save(any(Account.class));
+                .save(accountCaptor.capture());
         assertAll(
-                () -> assertEquals(Names.ACCOUNT_NAME_1, accountResult.getName()),
-                () -> assertEquals(Balance.BALANCE_0, accountResult.getBalance()),
-                () -> assertThat(timestampBeforeAccountCreation).isBefore(accountResult.getCreatedAt()),
-                () -> assertThat(timestampBeforeAccountCreation).isBefore(accountResult.getCreatedAt())
+                () -> assertEquals(Names.ACCOUNT_NAME_1, account.getName()),
+                () -> assertEquals(Balance.BALANCE_0, account.getBalance()),
+                () -> assertThat(timestampBeforeAccountCreation.isBefore(account.getCreatedAt())).isTrue(),
+                () -> assertThat(account.getUpdatedAt()).isNull()
         );
     }
 
@@ -93,7 +92,7 @@ class AccountServiceTest {
     void increaseBalanceTest() {
         // given
         Account account = generateAccount();
-        given(accountRepositoryPort.findById(anyString()))
+        given(accountRepositoryPort.findById(any(Id.class)))
                 .willReturn(account);
         // when
         accountService.increaseBalance(Ids.ACCOUNT_ID_1, Amount.AMOUNT_10);
@@ -106,8 +105,8 @@ class AccountServiceTest {
     @Test
     void increaseBalanceThrowsAccountNotFoundExceptionTest() {
         // given
-        given(accountRepositoryPort.findById(anyString()))
-                .willThrow(new AccountNotFoundException(Ids.ACCOUNT_ID_1));
+        given(accountRepositoryPort.findById(any(Id.class)))
+                .willThrow(new AccountNotFoundException(Ids.ACCOUNT_ID_1.getValue()));
         // then
         assertThatThrownBy(() -> accountService.increaseBalance(Ids.ACCOUNT_ID_1, Amount.AMOUNT_10))
                 .isInstanceOf(AccountNotFoundException.class)
@@ -118,7 +117,7 @@ class AccountServiceTest {
     void decreaseBalanceTest() {
         // given
         Account account = generateAccount(Balance.BALANCE_15);
-        given(accountRepositoryPort.findById(anyString()))
+        given(accountRepositoryPort.findById(any(Id.class)))
                 .willReturn(account);
         // when
         accountService.decreaseBalance(Ids.ACCOUNT_ID_1, Amount.AMOUNT_10);
@@ -131,8 +130,8 @@ class AccountServiceTest {
     @Test
     void decreaseBalanceTestThrowsAccountNotFoundExceptionTest() {
         // given
-        given(accountRepositoryPort.findById(anyString()))
-                .willThrow(new AccountNotFoundException(Ids.ACCOUNT_ID_1));
+        given(accountRepositoryPort.findById(any(Id.class)))
+                .willThrow(new AccountNotFoundException(Ids.ACCOUNT_ID_1.getValue()));
         // then
         assertThatThrownBy(() -> accountService.decreaseBalance(Ids.ACCOUNT_ID_1, Amount.AMOUNT_10))
                 .isInstanceOf(AccountNotFoundException.class)

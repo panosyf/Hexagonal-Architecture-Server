@@ -2,11 +2,10 @@ package com.hexagonal.architecture.server.infra.specs.account;
 
 import com.hexagonal.architecture.server.infra.common.constants.Endpoints;
 import com.hexagonal.architecture.server.core.domain.model.enums.AccountCreationStatusEnum;
-import com.hexagonal.architecture.server.core.domain.service.model.requests.AccountCreateRequest;
+import com.hexagonal.architecture.server.api.model.requests.AccountCreateRequest;
 import com.hexagonal.architecture.server.api.model.responses.AccountCreationResponse;
 import com.hexagonal.architecture.server.infra.config.AbstractIntegrationTest;
 import org.junit.jupiter.api.Test;
-import org.springframework.http.HttpMethod;
 
 import static com.hexagonal.architecture.server.infra.common.mocks.AccountCreateRequestMocks.generateAccountCreateRequest;
 import static org.assertj.core.api.Assertions.assertThat;

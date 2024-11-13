@@ -3,7 +3,7 @@ package com.hexagonal.architecture.server.infra.common.mocks;
 import com.hexagonal.architecture.server.infra.common.constants.Ids;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionType;
 import com.hexagonal.architecture.server.core.domain.model.constants.Amount;
-import com.hexagonal.architecture.server.core.domain.service.model.requests.TransactionCreateRequest;
+import com.hexagonal.architecture.server.api.model.requests.TransactionCreateRequest;
 
 public class TransactionCreateRequestMocks {
 

@@ -2,13 +2,11 @@ package com.hexagonal.architecture.server.core.domain.service.services.account;
 
 import com.hexagonal.architecture.server.core.domain.domains.account.Account;
 import com.hexagonal.architecture.server.core.domain.service.logging.LogInfoMessages;
-import com.hexagonal.architecture.server.core.domain.service.model.requests.AccountCreateRequest;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.AccountRepositoryPort;
-import com.hexagonal.architecture.server.core.domain.valueobjects.*;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.math.BigDecimal;
 
 public class AccountServiceImpl implements AccountService {
 

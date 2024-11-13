@@ -1,7 +1,7 @@
 package com.hexagonal.architecture.server.api.common.mocks;
 
 import com.hexagonal.architecture.server.api.common.constants.Names;
-import com.hexagonal.architecture.server.core.domain.service.model.requests.AccountCreateRequest;
+import com.hexagonal.architecture.server.api.model.requests.AccountCreateRequest;
 
 
 public class AccountCreateRequestMocks {

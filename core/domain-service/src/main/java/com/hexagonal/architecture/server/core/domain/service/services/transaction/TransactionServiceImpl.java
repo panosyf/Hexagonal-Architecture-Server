@@ -25,7 +25,7 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public Transaction createTransaction(TransactionCreateRequest transactionCreateRequest) {
+    public Transaction createTransaction(Transaction transaction) {
         Transaction transaction = new Transaction(
                 transactionCreateRequest.transactionType(),
                 transactionCreateRequest.amount(),

@@ -1,13 +1,15 @@
 package com.hexagonal.architecture.server.core.domain.service.common.constants;
 
+import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
+
 public class Ids {
 
     private Ids() {
     }
 
-    public static final String ACCOUNT_ID_1 = "accountId1";
-    public static final String ACCOUNT_ID_2 = "accountId2";
-    public static final String TRANSACTION_ID_1 = "transactionId1";
-    public static final String TRANSACTION_ID_2 = "transactionId2";
+    public static final Id ACCOUNT_ID_1 = Id.generate("accountId1");
+    public static final Id ACCOUNT_ID_2 = Id.generate("accountId2");
+    public static final Id TRANSACTION_ID_1 = Id.generate("transactionId1");
+    public static final Id TRANSACTION_ID_2 = Id.generate("transactionId2");
 
 }

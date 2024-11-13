@@ -16,6 +16,7 @@ import com.hexagonal.architecture.server.core.domain.service.ports.driven.Transa
 import com.hexagonal.architecture.server.core.domain.service.services.transaction.TransactionService;
 import com.hexagonal.architecture.server.core.domain.service.services.transaction.TransactionServiceImpl;
 import com.hexagonal.architecture.server.core.domain.utils.TimeUtils;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -51,7 +52,7 @@ class TransactionServiceTest {
         // given
         Instant now = TimeUtils.now().minus(100, ChronoUnit.NANOS);
         Transaction transaction = generateTransaction();
-        given(transactionRepositoryPort.findById(anyString()))
+        given(transactionRepositoryPort.findById(any(Id.class)))
                 .willReturn(transaction);
         // when
         Transaction transactionResult = transactionService.getTransaction(Ids.TRANSACTION_ID_1);
@@ -70,7 +71,7 @@ class TransactionServiceTest {
     @Test
     void getTransactionThrowsTransactionNotFoundExceptionTest() {
         // given
-        given(transactionRepositoryPort.findById(anyString()))
+        given(transactionRepositoryPort.findById(any(Id.class)))
                 .willThrow(new TransactionNotFoundException(Ids.TRANSACTION_ID_1));
         // then
         assertThatThrownBy(() -> transactionService.getTransaction(Ids.TRANSACTION_ID_1))
@@ -100,7 +101,7 @@ class TransactionServiceTest {
         // given
         TransactionUpdateRequest transactionUpdateRequest = TransactionUpdateRequestMocks.generateTransactionUpdateRequest();
         Transaction transaction = generatePendingTransaction(Ids.TRANSACTION_ID_1);
-        given(transactionRepositoryPort.findById(anyString()))
+        given(transactionRepositoryPort.findById(any(Id.class)))
                 .willReturn(transaction);
         // when
         transactionService.updateTransaction(Ids.TRANSACTION_ID_1, transactionUpdateRequest);
@@ -114,10 +115,10 @@ class TransactionServiceTest {
     void updateTransactionThrowsTransactionNotFoundExceptionTest() {
         // given
         TransactionUpdateRequest transactionUpdateRequest = TransactionUpdateRequestMocks.generateTransactionUpdateRequest();
-        given(transactionRepositoryPort.findById(anyString()))
+        given(transactionRepositoryPort.findById(any(Id.class)))
                 .willThrow(new TransactionNotFoundException(Ids.TRANSACTION_ID_1));
         // then
-        assertThatThrownBy(() -> transactionService.updateTransaction(Ids.TRANSACTION_ID_1, transactionUpdateRequest))
+        assertThatThrownBy(() -> transactionService.updateTransaction(Ids.TRANSACTION_ID_1, , transactionUpdateRequest))
                 .isInstanceOf(TransactionNotFoundException.class)
                 .hasMessage(generateErrorMessage(ErrorMessageConstants.TRANSACTION_NOT_FOUND_EXCEPTION), Ids.TRANSACTION_ID_1);
     }

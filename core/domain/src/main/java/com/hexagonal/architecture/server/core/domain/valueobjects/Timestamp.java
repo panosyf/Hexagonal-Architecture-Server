@@ -4,6 +4,7 @@ import com.hexagonal.architecture.server.core.domain.exceptions.utils.messages.E
 
 import java.time.Instant;
 import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 import static com.hexagonal.architecture.server.core.domain.model.constants.ZoneId.UTC;
@@ -40,6 +41,18 @@ public class Timestamp extends ValueObject {
 
     public boolean isAfter(final Timestamp timestamp) {
         return this.time.isAfter(timestamp.getTime());
+    }
+
+    public Timestamp minusNanos(final int nanos) {
+        validateValue(nanos);
+        Instant instant = this.time.atZone(ZoneId.of(UTC)).truncatedTo(ChronoUnit.NANOS).minusNanos(nanos).toInstant();
+        return new Timestamp(instant);
+    }
+
+    public Timestamp plusNanos(final int nanos) {
+        validateValue(nanos);
+        Instant instant = this.time.atZone(ZoneId.of(UTC)).truncatedTo(ChronoUnit.NANOS).plusNanos(100).toInstant();
+        return new Timestamp(instant);
     }
 
     public Timestamp minusDays(final int days) {
