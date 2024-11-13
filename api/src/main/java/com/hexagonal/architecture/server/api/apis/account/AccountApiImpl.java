@@ -7,6 +7,8 @@ import com.hexagonal.architecture.server.core.domain.domains.account.Account;
 import com.hexagonal.architecture.server.core.domain.model.enums.AccountCreationStatusEnum;
 import com.hexagonal.architecture.server.core.domain.service.model.requests.AccountCreateRequest;
 import com.hexagonal.architecture.server.core.domain.service.services.account.AccountService;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
 import org.springframework.core.convert.ConversionService;
 
 import java.math.BigDecimal;
@@ -23,24 +25,24 @@ public class AccountApiImpl implements AccountApi {
 
     @Override
     public AccountCreationResponse createAccount(AccountCreateRequest accountCreateRequest) {
-        Account createdAccount = accountService.createAccount(conversionService.convert(accountCreateRequest, Account.class));
-        return new AccountCreationResponse(createdAccount.getId().getValue(), AccountCreationStatusEnum.SUCCESSFUL);
+        Account account = accountService.createAccount(conversionService.convert(accountCreateRequest, Account.class));
+        return new AccountCreationResponse(account.getId().getValue(), AccountCreationStatusEnum.SUCCESSFUL);
     }
 
     @Override
     public AccountResponse getAccount(String id) {
-        AccountDto accountDto = conversionService.convert(accountService.getAccount(id), AccountDto.class);
+        AccountDto accountDto = conversionService.convert(accountService.getAccount(Id.generate(id)), AccountDto.class);
         return new AccountResponse(accountDto);
     }
 
     @Override
     public void increaseBalance(String id, BigDecimal amount) {
-        accountService.increaseBalance(id, amount);
+        accountService.increaseBalance(Id.generate(id), Money.of(amount));
     }
 
     @Override
     public void decreaseBalance(String id, BigDecimal amount) {
-        accountService.decreaseBalance(id, amount);
+        accountService.decreaseBalance(Id.generate(id), Money.of(amount));
     }
 
 }

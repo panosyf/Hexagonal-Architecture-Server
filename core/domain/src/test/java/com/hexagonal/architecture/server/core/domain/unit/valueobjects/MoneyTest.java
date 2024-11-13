@@ -32,7 +32,7 @@ public class MoneyTest {
     void moneyOfTest(BigDecimal value, Money expectedMoney) {
         Money money = Money.of(value);
         assertThat(money.equals(expectedMoney)).isTrue();
-        assertThat(money.getAmount()).isEqualTo(value.setScale(2, RoundingMode.HALF_EVEN));
+        assertThat(money.getValue()).isEqualTo(value.setScale(2, RoundingMode.HALF_EVEN));
     }
 
     private static Stream<Arguments> moneyOfTestArguments() {
@@ -46,7 +46,7 @@ public class MoneyTest {
     void moneyOfNullTest() {
         Money money = Money.of(null);
         assertThat(money.equals(Money.zero())).isTrue();
-        assertThat(money.getAmount())
+        assertThat(money.getValue())
                 .isEqualTo(BigDecimal.ZERO.setScale(2, RoundingMode.HALF_EVEN));
     }
 
@@ -54,7 +54,7 @@ public class MoneyTest {
     void addTest() {
         Money added = MONEY_2.add(MONEY_10);
         assertThat(added.equals(MONEY_12)).isTrue();
-        assertThat(added.getAmount())
+        assertThat(added.getValue())
                 .isEqualTo(BIG_DECIMAL_12.setScale(2, RoundingMode.HALF_EVEN));
     }
 
@@ -62,7 +62,7 @@ public class MoneyTest {
     void subtractTest() {
         Money subtracted = MONEY_10.subtract(MONEY_2);
         assertThat(subtracted.equals(MONEY_8)).isTrue();
-        assertThat(subtracted.getAmount())
+        assertThat(subtracted.getValue())
                 .isEqualTo(BIG_DECIMAL_8.setScale(2, RoundingMode.HALF_EVEN));
     }
 
@@ -84,8 +84,8 @@ public class MoneyTest {
     void multiplyTest(BigDecimal multiplier, Money result) {
         Money multiplied = MONEY_10.multiply(multiplier);
         assertThat(multiplied.equals(result)).isTrue();
-        assertThat(multiplied.getAmount())
-                .isEqualTo(result.getAmount().setScale(2, RoundingMode.HALF_EVEN));
+        assertThat(multiplied.getValue())
+                .isEqualTo(result.getValue().setScale(2, RoundingMode.HALF_EVEN));
     }
 
     private static Stream<Arguments> multiplyTestArguments() {
@@ -116,8 +116,8 @@ public class MoneyTest {
     void divideTest(BigDecimal divisor, Money result) {
         Money divided = MONEY_10.divide(divisor);
         assertThat(divided.equals(result)).isTrue();
-        assertThat(divided.getAmount())
-                .isEqualTo(result.getAmount().setScale(2, RoundingMode.HALF_EVEN));
+        assertThat(divided.getValue())
+                .isEqualTo(result.getValue().setScale(2, RoundingMode.HALF_EVEN));
     }
 
     private static Stream<Arguments> divideTestArguments() {
@@ -149,7 +149,7 @@ public class MoneyTest {
     void isZeroTest() {
         Money money = Money.zero();
         assertThat(money.isZero()).isTrue();
-        assertThat(money.getAmount())
+        assertThat(money.getValue())
                 .isEqualTo(BigDecimal.ZERO.setScale(2, RoundingMode.HALF_EVEN));
     }
 

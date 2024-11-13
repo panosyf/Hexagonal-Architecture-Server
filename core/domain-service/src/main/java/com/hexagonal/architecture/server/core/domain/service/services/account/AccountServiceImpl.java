@@ -4,10 +4,7 @@ import com.hexagonal.architecture.server.core.domain.domains.account.Account;
 import com.hexagonal.architecture.server.core.domain.service.logging.LogInfoMessages;
 import com.hexagonal.architecture.server.core.domain.service.model.requests.AccountCreateRequest;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.AccountRepositoryPort;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Email;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Name;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Password;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Username;
+import com.hexagonal.architecture.server.core.domain.valueobjects.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,7 +21,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account getAccount(String id) {
+    public Account getAccount(Id id) {
         log.info("AccountServiceImpl");
         return accountRepositoryPort.findById(id);
     }
@@ -37,7 +34,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account increaseBalance(String id, BigDecimal amount) {
+    public Account increaseBalance(Id id, Money amount) {
         Account account = accountRepositoryPort.findById(id);
         account.increaseBalance(amount);
         Account updatedAccount = accountRepositoryPort.updateBalance(account);
@@ -46,7 +43,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account decreaseBalance(String id, BigDecimal amount) {
+    public Account decreaseBalance(Id id, Money amount) {
         Account account = accountRepositoryPort.findById(id);
         account.decreaseBalance(amount);
         Account updatedAccount = accountRepositoryPort.updateBalance(account);

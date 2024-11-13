@@ -12,10 +12,10 @@ public interface AccountApi {
 
     AccountCreationResponse createAccount(AccountCreateRequest accountCreateRequest);
 
-    AccountResponse getAccount(Id id);
+    AccountResponse getAccount(String id);
 
-    void increaseBalance(Id id, Money amount);
+    void increaseBalance(String id, BigDecimal amount);
 
-    void decreaseBalance(Id id, Money amount);
+    void decreaseBalance(String id, BigDecimal amount);
 
 }

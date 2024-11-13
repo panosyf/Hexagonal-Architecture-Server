@@ -9,7 +9,8 @@ import java.time.Instant;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public record AccountDto(
         String id,
-        String name,
+        String firstname,
+        String lastname,
         BigDecimal balance,
         Instant createdAt,
         Instant updatedAt) {
