@@ -2,18 +2,17 @@ package com.hexagonal.architecture.server.api.apis.transaction;
 
 import com.hexagonal.architecture.server.api.apis.account.AccountApi;
 import com.hexagonal.architecture.server.api.model.dtos.TransactionDto;
+import com.hexagonal.architecture.server.api.model.requests.TransactionCreateRequest;
+import com.hexagonal.architecture.server.api.model.requests.TransactionUpdateRequest;
 import com.hexagonal.architecture.server.api.model.responses.TransactionCreationResponse;
 import com.hexagonal.architecture.server.api.model.responses.TransactionResponse;
 import com.hexagonal.architecture.server.api.model.responses.TransactionUpdateResponse;
 import com.hexagonal.architecture.server.core.domain.domains.transaction.Transaction;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
-import com.hexagonal.architecture.server.api.model.requests.TransactionCreateRequest;
-import com.hexagonal.architecture.server.api.model.requests.TransactionUpdateRequest;
 import com.hexagonal.architecture.server.core.domain.service.services.transaction.TransactionService;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
 import org.springframework.core.convert.ConversionService;
-
-import java.math.BigDecimal;
 
 public class TransactionApiImpl implements TransactionApi {
 
@@ -32,21 +31,22 @@ public class TransactionApiImpl implements TransactionApi {
 
     @Override
     public TransactionResponse getTransaction(String id) {
-        TransactionDto transactionDto = conversionService.convert(transactionService.getTransaction(Id.generate(id)), TransactionDto.class);
+        TransactionDto transactionDto = conversionService.convert(
+                transactionService.getTransaction(Id.valueOf(id)), TransactionDto.class);
         return new TransactionResponse(transactionDto);
     }
 
     @Override
     public TransactionCreationResponse createTransaction(TransactionCreateRequest transactionCreateRequest) {
-        String debtorAccountId = transactionCreateRequest.debtorAccountId();
-        BigDecimal amount = transactionCreateRequest.amount();
-        Transaction transaction = transactionService.createTransaction(transactionCreateRequest);
+        Transaction transaction = transactionService.createTransaction(
+                conversionService.convert(transactionCreateRequest, Transaction.class));
+        Id debtorAccountId = transaction.getDebtorAccountId();
+        Money amount = transaction.getAmount();
         try {
-            accountApi.decreaseBalance(debtorAccountId, amount);
+            accountApi.decreaseBalance(debtorAccountId.getValue(), amount.getValue());
         } catch (Exception e) {
             Id id = transaction.getId();
-            TransactionUpdateRequest transactionUpdateRequest = new TransactionUpdateRequest(TransactionStatusEnum.FAILED);
-            transactionService.updateTransaction(id, , transactionUpdateRequest);
+            transactionService.updateTransaction(id, TransactionStatusEnum.FAILED);
             return new TransactionCreationResponse(null, TransactionStatusEnum.FAILED);
         }
         return new TransactionCreationResponse(transaction.getId().getValue(), TransactionStatusEnum.PENDING);
@@ -54,9 +54,10 @@ public class TransactionApiImpl implements TransactionApi {
 
     @Override
     public TransactionUpdateResponse updateTransaction(String id, TransactionUpdateRequest transactionUpdateRequest) {
-        Transaction updatedTransaction = transactionService.updateTransaction(Id.generate(id), , transactionUpdateRequest);
+        TransactionStatusEnum transactionStatusEnum = transactionUpdateRequest.transactionStatusEnum();
+        Transaction updatedTransaction = transactionService.updateTransaction(Id.valueOf(id) , transactionStatusEnum);
         // TODO THIS IS TEMPORARY, WILL BE REFACTORED UTILIZING STATE PATTERN
-        if (transactionUpdateRequest.transactionStatusEnum().equals(TransactionStatusEnum.COMPLETED)) {
+        if (transactionStatusEnum.equals(TransactionStatusEnum.COMPLETED)) {
             accountApi.increaseBalance(updatedTransaction.getBeneficiaryAccountId().getValue(), updatedTransaction.getAmount().getValue());
         }
         return new TransactionUpdateResponse(updatedTransaction.getId().getValue(), updatedTransaction.getStatus());

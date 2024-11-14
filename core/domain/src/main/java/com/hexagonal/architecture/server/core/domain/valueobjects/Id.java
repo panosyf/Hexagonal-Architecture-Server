@@ -19,11 +19,11 @@ public class Id extends ValueObject {
         return new Id(UUID.randomUUID().toString());
     }
 
-    public static Id generate(final UUID uuid) {
+    public static Id valueOf(final UUID uuid) {
         return new Id(uuid.toString());
     }
 
-    public static Id generate(final String value) {
+    public static Id valueOf(final String value) {
         return new Id(value);
     }
 

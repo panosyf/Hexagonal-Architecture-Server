@@ -1,7 +1,6 @@
 package com.hexagonal.architecture.server.core.domain.domains.transaction;
 
 import com.hexagonal.architecture.server.core.domain.domains.DomainEntity;
-import com.hexagonal.architecture.server.core.domain.model.constants.Amount;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionType;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Description;
@@ -9,11 +8,7 @@ import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Timestamp;
 
-import java.math.BigDecimal;
-import java.time.Instant;
 import java.util.Objects;
-
-import static com.hexagonal.architecture.server.core.domain.utils.TimeUtils.now;
 
 public class Transaction extends DomainEntity {
 

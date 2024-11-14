@@ -19,15 +19,15 @@ public class IdTest {
     void generateTest() {
         UUID uuid = UUID.randomUUID();
         assertThat(uuid.toString())
-                .isEqualTo(Id.generate(uuid.toString()).getValue())
-                .isEqualTo(Id.generate(uuid).getValue());
+                .isEqualTo(Id.valueOf(uuid.toString()).getValue())
+                .isEqualTo(Id.valueOf(uuid).getValue());
         assertThat(Id.generate().getValue()).isInstanceOf(String.class);
     }
 
     @ParameterizedTest
     @MethodSource("validateGenerateTestArguments")
     void validateGenerateTest(String value) {
-        assertThatThrownBy(() -> Id.generate(value))
+        assertThatThrownBy(() -> Id.valueOf(value))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessageConstants.ID_CANNOT_BE_NULL_OR_BLANK);
     }

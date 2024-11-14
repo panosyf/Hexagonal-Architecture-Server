@@ -86,7 +86,7 @@ class TransactionServiceTest {
         // then
         verify(transactionRepositoryPort, times(1))
                 .save(transactionCaptor.capture());
-        Transaction createdTransaction = transactionCaptor.capture();
+        Transaction createdTransaction = transactionCaptor.getValue();
         assertAll(
                 () -> assertEquals(TransactionType.TRANSFER, createdTransaction.getType()),
                 () -> assertEquals(Amount.AMOUNT_5, createdTransaction.getAmount()),
