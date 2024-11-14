@@ -58,7 +58,7 @@ class TransactionServiceTest {
                 () -> assertEquals(Description.emptyDescription(), transactionResult.getDescription()),
                 () -> assertEquals(Ids.ACCOUNT_ID_1, transactionResult.getDebtorAccountId()),
                 () -> assertEquals(Ids.ACCOUNT_ID_2, transactionResult.getBeneficiaryAccountId()),
-                () -> assertEquals(TransactionStatusEnum.CREATED, transactionResult.getStatus()),
+                () -> assertEquals(TransactionStatusEnum.PENDING, transactionResult.getStatus()),
                 () -> assertThat(now.isBefore(transactionResult.getCreatedAt())).isTrue(),
                 () -> assertNull(transactionResult.getUpdatedAt())
         );

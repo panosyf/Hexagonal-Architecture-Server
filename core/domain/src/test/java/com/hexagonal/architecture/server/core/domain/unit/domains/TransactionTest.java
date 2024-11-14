@@ -17,7 +17,7 @@ class TransactionTest {
     void updateStatusTest() {
         // given
         Transaction transaction = generateTransaction();
-        TransactionStatusEnum newStatus = TransactionStatusEnum.PENDING;
+        TransactionStatusEnum newStatus = TransactionStatusEnum.COMPLETED;
         Timestamp timestampBeforeUpdate = Timestamp.valueOf(Instant.now().minus(10, ChronoUnit.NANOS));
         Timestamp oldUpdatedAt = transaction.getUpdatedAt();
         TransactionStatusEnum oldStatus = transaction.getStatus();

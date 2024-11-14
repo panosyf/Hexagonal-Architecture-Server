@@ -3,7 +3,6 @@ package com.hexagonal.architecture.server.api.config.beans.apis.transaction;
 import com.hexagonal.architecture.server.api.apis.account.AccountApi;
 import com.hexagonal.architecture.server.api.apis.transaction.TransactionApi;
 import com.hexagonal.architecture.server.api.apis.transaction.TransactionApiImpl;
-import com.hexagonal.architecture.server.core.domain.service.services.account.AccountService;
 import com.hexagonal.architecture.server.core.domain.service.services.transaction.TransactionService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

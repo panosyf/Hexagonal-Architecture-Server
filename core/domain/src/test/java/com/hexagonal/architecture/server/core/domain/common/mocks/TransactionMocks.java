@@ -20,7 +20,7 @@ public class TransactionMocks {
                 Description.emptyDescription(),
                 Ids.ACCOUNT_ID_1,
                 Ids.ACCOUNT_ID_2,
-                TransactionStatusEnum.CREATED);
+                TransactionStatusEnum.PENDING);
     }
 
     public static Transaction generateTransaction(Id id) {
@@ -31,7 +31,7 @@ public class TransactionMocks {
                 Description.emptyDescription(),
                 Ids.ACCOUNT_ID_1,
                 Ids.ACCOUNT_ID_2,
-                TransactionStatusEnum.CREATED);
+                TransactionStatusEnum.PENDING);
     }
 
     public static Transaction generatePendingTransaction(Id id) {

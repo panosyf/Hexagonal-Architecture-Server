@@ -1,10 +1,13 @@
 package com.hexagonal.architecture.server.api.common.constants;
 
+import com.hexagonal.architecture.server.core.domain.valueobjects.Name;
+
 public class Names {
 
-    private Names() {}
+    private Names() {
+    }
 
-    public static final String ACCOUNT_NAME_1 = "accountName1";
-    public static final String ACCOUNT_NAME_2 = "accountName2";
+    public static final Name ACCOUNT_NAME_1 = Name.valueOf("accountName1", "accountSurname1");
+    public static final Name ACCOUNT_NAME_2 = Name.valueOf("accountName2", "accountSurname2");
 
 }
