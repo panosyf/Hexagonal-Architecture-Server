@@ -19,6 +19,10 @@ public class Name extends ValueObject {
         return new Name(firstName, lastName);
     }
 
+    public static Name valueOf(final String fullName) {
+        return new Name();
+    }
+
     public String getFirstName() {
         return firstName;
     }
