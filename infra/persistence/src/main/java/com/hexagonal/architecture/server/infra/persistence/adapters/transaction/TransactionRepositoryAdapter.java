@@ -5,11 +5,10 @@ import com.hexagonal.architecture.server.core.domain.exceptions.elementnotfound.
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.TransactionRepositoryPort;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Timestamp;
 import com.hexagonal.architecture.server.infra.persistence.daos.TransactionDao;
 import jakarta.transaction.Transactional;
 import org.springframework.core.convert.ConversionService;
-
-import java.time.Instant;
 
 public class TransactionRepositoryAdapter implements TransactionRepositoryPort {
 
@@ -32,18 +31,18 @@ public class TransactionRepositoryAdapter implements TransactionRepositoryPort {
 
     @Override
     public Transaction findById(Id id) {
-        TransactionDao transactionDao = transactionJpaRepository.findById(id)
-                .orElseThrow(() -> new TransactionNotFoundException(id));
+        TransactionDao transactionDao = transactionJpaRepository.findById(id.getValue())
+                .orElseThrow(() -> new TransactionNotFoundException(id.getValue()));
         return transactionToDomain(transactionDao);
     }
 
     @Override
     @Transactional
     public Transaction updateStatus(Transaction transaction) {
-        String id = transaction.getId();
+        Id id = transaction.getId();
         TransactionStatusEnum status = transaction.getStatus();
-        Instant updatedAt = transaction.getUpdatedAt();
-        transactionJpaRepository.updateStatus(id, status, updatedAt);
+        Timestamp updatedAt = transaction.getUpdatedAt();
+        transactionJpaRepository.updateStatus(id.getValue(), status, updatedAt.getTime());
         return findById(id);
     }
 

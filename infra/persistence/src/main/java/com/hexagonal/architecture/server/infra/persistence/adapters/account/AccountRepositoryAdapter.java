@@ -3,6 +3,7 @@ package com.hexagonal.architecture.server.infra.persistence.adapters.account;
 import com.hexagonal.architecture.server.core.domain.domains.account.Account;
 import com.hexagonal.architecture.server.core.domain.exceptions.elementnotfound.AccountNotFoundException;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.AccountRepositoryPort;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
 import com.hexagonal.architecture.server.infra.persistence.daos.AccountDao;
 import jakarta.transaction.Transactional;
@@ -26,21 +27,21 @@ public class AccountRepositoryAdapter implements AccountRepositoryPort {
     }
 
     @Override
-    public Account findById(String id) {
-        AccountDao accountDao = accountJpaRepository.findById(id)
-                .orElseThrow(() -> new AccountNotFoundException(id));
+    public Account findById(Id id) {
+        AccountDao accountDao = accountJpaRepository.findById(id.getValue())
+                .orElseThrow(() -> new AccountNotFoundException(id.getValue()));
         return accountToDomain(accountDao);
     }
 
     @Override
-    public Money findBalance(String id) {
-        return accountJpaRepository.findBalance(id);
+    public Money findBalance(Id id) {
+        return Money.of(accountJpaRepository.findBalance(id.getValue()));
     }
 
     @Override
     @Transactional
     public Account updateBalance(Account account) {
-        accountJpaRepository.updateBalance(account.getId(), account.getBalance());
+        accountJpaRepository.updateBalance(account.getId().getValue(), account.getBalance().getValue());
         return findById(account.getId());
     }
 
