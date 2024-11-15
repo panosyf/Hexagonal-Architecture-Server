@@ -12,6 +12,7 @@ public interface TransactionApi {
 
     TransactionCreationResponse createTransaction(TransactionCreateRequest transactionCreateRequest);
 
+    // TODO MOVE ID TO UPDATE REQUEST
     TransactionUpdateResponse updateTransaction(String id, TransactionUpdateRequest transactionUpdateRequest);
 
 }

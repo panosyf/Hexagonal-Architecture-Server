@@ -12,8 +12,10 @@ public interface AccountApi {
 
     AccountResponse getAccount(String id);
 
+    // TODO CREATE BALANCE CHANGE REQUEST
     void increaseBalance(String id, BigDecimal amount);
 
+    // TODO CREATE BALANCE CHANGE REQUEST
     void decreaseBalance(String id, BigDecimal amount);
 
 }
