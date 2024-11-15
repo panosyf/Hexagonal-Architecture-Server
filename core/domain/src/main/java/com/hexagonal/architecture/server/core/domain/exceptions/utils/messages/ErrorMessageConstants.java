@@ -24,7 +24,8 @@ public class ErrorMessageConstants {
     public static final String SUBTRACTION_OPERATION_BETWEEN_GIVEN_VALUES_RETURNS_NEGATIVE_RESULTS = "Subtraction operation between given values returns negative result";
     public static final String FIRST_NAME_CANNOT_BE_NULL_OR_BLANK = "First name cannot be null or blank";
     public static final String LAST_NAME_ID_CANNOT_BE_NULL_OR_BLANK = "Last name cannot be null";
-    public static final String FULL_NAME_STRING_ARRAY_MUST_HAVE_AT_LEAST_A_SIZE_OF_TWO = "Full name string array must have at least a size of 2";
+    public static final String FULL_NAME_CANNOT_BE_NULL_OR_BLANK = "Full name cannot be null or blank";
+    public static final String FULL_NAME_ARRAY_MUST_HAVE_AT_LEAST_A_SIZE_OF_TWO = "Full name string array must have at least a size of 2";
     public static final String PASSWORD_CANNOT_BE_NULL_OR_BLANK = "Password cannot be null or empty";
     public static final String TIMESTAMP_CANNOT_BE_NULL = "Timestamp cannot be null";
     public static final String VALUE_MUST_BE_AT_LEAST_ONE = "Value must be at least 1";
