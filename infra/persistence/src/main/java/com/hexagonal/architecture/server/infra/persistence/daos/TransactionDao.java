@@ -15,8 +15,8 @@ public class TransactionDao extends DaoEntity {
     @Id
     @Column(name = "id")
     private String id;
-    @Enumerated(EnumType.STRING)
     @Column(name = "type")
+    @Enumerated(EnumType.STRING)
     private TransactionType type;
     @Column(name = "amount")
     private BigDecimal amount;
@@ -26,8 +26,8 @@ public class TransactionDao extends DaoEntity {
     private String debtorAccountId;
     @Column(name = "beneficiary_account_id")
     private String beneficiaryAccountId;
-    @Enumerated(EnumType.STRING)
     @Column(name = "status")
+    @Enumerated(EnumType.STRING)
     private TransactionStatusEnum status;
     @Column(name = "created_at")
     private Instant createdAt;
