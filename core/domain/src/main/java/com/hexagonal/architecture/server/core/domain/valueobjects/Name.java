@@ -20,7 +20,16 @@ public class Name extends ValueObject {
     }
 
     public static Name valueOf(final String fullName) {
-        return new Name();
+        validateValueNotNull(fullName, ErrorMessageConstants.FULL_NAME_CANNOT_BE_NULL_OR_BLANK);
+        String[] fullNameArray = generateFullNameArray(fullName);
+        return new Name(fullNameArray[0], fullNameArray[1]);
+    }
+
+    private static String[] generateFullNameArray(String fullName) {
+        String[] fullNameArray = fullName.split(" ", 2);
+        if (fullNameArray.length < 2)
+            throw new IllegalArgumentException(ErrorMessageConstants.FULL_NAME_ARRAY_MUST_HAVE_AT_LEAST_A_SIZE_OF_TWO);
+        return fullNameArray;
     }
 
     public String getFirstName() {

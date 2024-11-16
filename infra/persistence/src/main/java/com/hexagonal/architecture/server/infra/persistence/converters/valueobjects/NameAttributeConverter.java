@@ -11,7 +11,7 @@ public class NameAttributeConverter implements AttributeConverter<Name, String> 
     }
 
     @Override
-    public Name convertToEntityAttribute(String s) {
+    public Name convertToEntityAttribute(String fullname) {
         return null;
     }
 
