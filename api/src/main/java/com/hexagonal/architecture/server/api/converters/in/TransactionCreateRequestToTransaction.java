@@ -9,6 +9,7 @@ import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
 import org.springframework.core.convert.converter.Converter;
 
+// TODO CHANGE THIS TO RETURN COMMAND INSTEAD OF DOMAIN OBJECT
 public class TransactionCreateRequestToTransaction implements Converter<TransactionCreateRequest, Transaction> {
 
     @Override

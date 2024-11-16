@@ -6,10 +6,13 @@ import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
 
 public interface TransactionService {
 
+    // TODO USE COMMAND AS INPUT
     Transaction getTransaction(Id id);
 
+    // TODO USE COMMAND AS INPUT
     Transaction createTransaction(Transaction transaction);
 
+    // TODO USE COMMAND AS INPUT
     Transaction updateTransaction(Id id, TransactionStatusEnum transactionStatusEnum);
 
 }

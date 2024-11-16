@@ -8,6 +8,7 @@ import com.hexagonal.architecture.server.core.domain.valueobjects.Password;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Username;
 import org.springframework.core.convert.converter.Converter;
 
+// TODO CHANGE THIS TO RETURN COMMAND INSTEAD OF DOMAIN OBJECT
 public class AccountCreateRequestToAccount implements Converter<AccountCreateRequest, Account> {
 
     @Override
