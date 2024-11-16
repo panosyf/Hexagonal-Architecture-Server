@@ -18,13 +18,13 @@ public class PasswordTest {
     void valueOfTest() {
         String password = "password";
         assertThat(password)
-                .isEqualTo(Password.generate(password).getValue());
+                .isEqualTo(Password.valueOf(password).getValue());
     }
 
     @ParameterizedTest
     @MethodSource("validateValueTestArguments")
     void validateValueTest(String value) {
-        assertThatThrownBy(() -> Password.generate(value))
+        assertThatThrownBy(() -> Password.valueOf(value))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessageConstants.PASSWORD_CANNOT_BE_NULL_OR_BLANK);
     }

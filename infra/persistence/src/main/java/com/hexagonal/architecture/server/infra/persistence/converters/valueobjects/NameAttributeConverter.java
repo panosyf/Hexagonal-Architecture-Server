@@ -2,7 +2,9 @@ package com.hexagonal.architecture.server.infra.persistence.converters.valueobje
 
 import com.hexagonal.architecture.server.core.domain.valueobjects.Name;
 import jakarta.persistence.AttributeConverter;
+import jakarta.persistence.Converter;
 
+@Converter
 public class NameAttributeConverter implements AttributeConverter<Name, String> {
 
     @Override
@@ -11,8 +13,8 @@ public class NameAttributeConverter implements AttributeConverter<Name, String> 
     }
 
     @Override
-    public Name convertToEntityAttribute(String fullname) {
-        return null;
+    public Name convertToEntityAttribute(String fullName) {
+        return Name.valueOf(fullName);
     }
 
 }
