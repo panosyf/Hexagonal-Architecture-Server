@@ -28,7 +28,7 @@ public class Name extends ValueObject {
     private static String[] generateFullNameArray(String fullName) {
         String[] fullNameArray = fullName.split(" ", 2);
         if (fullNameArray.length < 2)
-            throw new IllegalArgumentException(ErrorMessageConstants.FULL_NAME_ARRAY_MUST_HAVE_AT_LEAST_A_SIZE_OF_TWO);
+            throw new IllegalArgumentException(ErrorMessageConstants.FULL_NAME_ARRAY_MUST_HAVE_SIZE_OF_TWO);
         return fullNameArray;
     }
 
