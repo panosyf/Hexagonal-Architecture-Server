@@ -8,6 +8,7 @@ import com.hexagonal.architecture.server.core.domain.model.constants.Amount;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionType;
 import com.hexagonal.architecture.server.core.domain.service.common.constants.Ids;
+import com.hexagonal.architecture.server.core.domain.service.model.commands.CreateTransactionCommand;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.TransactionRepositoryPort;
 import com.hexagonal.architecture.server.core.domain.service.services.transaction.TransactionService;
 import com.hexagonal.architecture.server.core.domain.service.services.transaction.TransactionServiceImpl;
@@ -19,6 +20,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
 import static com.hexagonal.architecture.server.core.domain.exceptions.utils.ErrorUtils.generateErrorMessage;
+import static com.hexagonal.architecture.server.core.domain.service.common.mocks.CreateTransactionCommandMocks.generateCreateTransactionCommand;
 import static com.hexagonal.architecture.server.core.domain.service.common.mocks.TransactionMocks.generatePendingTransaction;
 import static com.hexagonal.architecture.server.core.domain.service.common.mocks.TransactionMocks.generateTransaction;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -78,11 +80,9 @@ class TransactionServiceTest {
     @Test
     void createTransactionTest() {
         // given
-        Transaction transaction = generateTransaction();
-        given(transactionRepositoryPort.save(any(Transaction.class)))
-                .willReturn(transaction);
+        CreateTransactionCommand createTransactionCommand = generateCreateTransactionCommand();
         // when
-        transactionService.createTransaction(transaction);
+        transactionService.createTransaction(createTransactionCommand);
         // then
         verify(transactionRepositoryPort, times(1))
                 .save(transactionCaptor.capture());

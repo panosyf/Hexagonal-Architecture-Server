@@ -6,6 +6,7 @@ import com.hexagonal.architecture.server.api.model.responses.AccountCreationResp
 import com.hexagonal.architecture.server.api.model.responses.AccountResponse;
 import com.hexagonal.architecture.server.core.domain.domains.account.Account;
 import com.hexagonal.architecture.server.core.domain.model.enums.AccountCreationStatusEnum;
+import com.hexagonal.architecture.server.core.domain.service.model.commands.CreateAccountCommand;
 import com.hexagonal.architecture.server.core.domain.service.services.account.AccountService;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
@@ -25,7 +26,7 @@ public class AccountApiImpl implements AccountApi {
 
     @Override
     public AccountCreationResponse createAccount(AccountCreateRequest accountCreateRequest) {
-        Account account = accountService.createAccount(conversionService.convert(accountCreateRequest, Account.class));
+        Account account = accountService.createAccount(conversionService.convert(accountCreateRequest, CreateAccountCommand.class));
         return new AccountCreationResponse(account.getId().getValue(), AccountCreationStatusEnum.SUCCESSFUL);
     }
 

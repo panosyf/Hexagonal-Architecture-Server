@@ -9,6 +9,7 @@ import com.hexagonal.architecture.server.api.model.responses.TransactionResponse
 import com.hexagonal.architecture.server.api.model.responses.TransactionUpdateResponse;
 import com.hexagonal.architecture.server.core.domain.domains.transaction.Transaction;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
+import com.hexagonal.architecture.server.core.domain.service.model.commands.CreateTransactionCommand;
 import com.hexagonal.architecture.server.core.domain.service.services.transaction.TransactionService;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
@@ -39,7 +40,7 @@ public class TransactionApiImpl implements TransactionApi {
     @Override
     public TransactionCreationResponse createTransaction(TransactionCreateRequest transactionCreateRequest) {
         Transaction transaction = transactionService.createTransaction(
-                conversionService.convert(transactionCreateRequest, Transaction.class));
+                conversionService.convert(transactionCreateRequest, CreateTransactionCommand.class));
         Id debtorAccountId = transaction.getDebtorAccountId();
         Money amount = transaction.getAmount();
         try {

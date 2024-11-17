@@ -2,6 +2,7 @@ package com.hexagonal.architecture.server.core.domain.service.services.transacti
 
 import com.hexagonal.architecture.server.core.domain.domains.transaction.Transaction;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
+import com.hexagonal.architecture.server.core.domain.service.model.commands.CreateTransactionCommand;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.TransactionRepositoryPort;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
 import org.slf4j.Logger;
@@ -24,7 +25,15 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public Transaction createTransaction(Transaction transaction) {
+    public Transaction createTransaction(CreateTransactionCommand createTransactionCommand) {
+        Transaction transaction = new Transaction(
+                createTransactionCommand.type(),
+                createTransactionCommand.amount(),
+                createTransactionCommand.description(),
+                createTransactionCommand.debtorAccountId(),
+                createTransactionCommand.beneficiaryAccountId(),
+                TransactionStatusEnum.PENDING
+        );
         return transactionRepositoryPort.save(transaction);
     }
 

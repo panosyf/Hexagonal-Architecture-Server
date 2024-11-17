@@ -7,6 +7,7 @@ import com.hexagonal.architecture.server.core.domain.model.constants.Amount;
 import com.hexagonal.architecture.server.core.domain.model.constants.Balance;
 import com.hexagonal.architecture.server.core.domain.service.common.constants.Ids;
 import com.hexagonal.architecture.server.core.domain.service.common.constants.Names;
+import com.hexagonal.architecture.server.core.domain.service.model.commands.CreateAccountCommand;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.AccountRepositoryPort;
 import com.hexagonal.architecture.server.core.domain.service.services.account.AccountService;
 import com.hexagonal.architecture.server.core.domain.service.services.account.AccountServiceImpl;
@@ -18,6 +19,7 @@ import org.mockito.ArgumentCaptor;
 
 import static com.hexagonal.architecture.server.core.domain.exceptions.utils.ErrorUtils.generateErrorMessage;
 import static com.hexagonal.architecture.server.core.domain.service.common.mocks.AccountMocks.generateAccount;
+import static com.hexagonal.architecture.server.core.domain.service.common.mocks.CreateAccountCommandMocks.generateCreateAccountCommand;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
@@ -67,15 +69,16 @@ class AccountServiceTest {
     @Test
     void createAccountTest() {
         // given
-        Account account = generateAccount();
+        CreateAccountCommand createAccountCommand = generateCreateAccountCommand();
         Timestamp timestampBeforeAccountCreation = Timestamp.now().minusNanos(100);
         given(accountRepositoryPort.save(any(Account.class)))
-                .willReturn(account);
+                .willReturn(generateAccount());
         // when
-        accountService.createAccount(account);
+        accountService.createAccount(createAccountCommand);
         // then
         verify(accountRepositoryPort, times(1))
                 .save(accountCaptor.capture());
+        Account account = accountCaptor.getValue();
         assertAll(
                 () -> assertEquals(Names.ACCOUNT_NAME_1, account.getName()),
                 () -> assertEquals(Balance.BALANCE_0, account.getBalance()),

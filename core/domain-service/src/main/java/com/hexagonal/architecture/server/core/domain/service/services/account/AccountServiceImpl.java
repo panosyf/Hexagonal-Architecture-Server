@@ -2,6 +2,7 @@ package com.hexagonal.architecture.server.core.domain.service.services.account;
 
 import com.hexagonal.architecture.server.core.domain.domains.account.Account;
 import com.hexagonal.architecture.server.core.domain.service.logging.LogInfoMessages;
+import com.hexagonal.architecture.server.core.domain.service.model.commands.CreateAccountCommand;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.AccountRepositoryPort;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
@@ -25,10 +26,16 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account createAccount(Account account) {
-        account = accountRepositoryPort.save(account);
-        log.info(LogInfoMessages.LOG_ACCOUNT_CREATED_INFO, account.getEmail(), account.getUsername());
-        return account;
+    public Account createAccount(final CreateAccountCommand createAccountCommand) {
+        Account account = new Account(
+                createAccountCommand.email(),
+                createAccountCommand.username(),
+                createAccountCommand.password(),
+                createAccountCommand.name()
+        );
+        Account persistedAccount = accountRepositoryPort.save(account);
+        log.info(LogInfoMessages.LOG_ACCOUNT_CREATED_INFO, persistedAccount.getEmail(), persistedAccount.getUsername());
+        return persistedAccount;
     }
 
     @Override

@@ -7,7 +7,7 @@ import com.hexagonal.architecture.server.api.common.constants.Ids;
 import com.hexagonal.architecture.server.api.common.mocks.TransactionCreateRequestMocks;
 import com.hexagonal.architecture.server.api.common.mocks.TransactionMocks;
 import com.hexagonal.architecture.server.api.common.mocks.TransactionUpdateRequestMocks;
-import com.hexagonal.architecture.server.api.converters.in.TransactionCreateRequestToTransaction;
+import com.hexagonal.architecture.server.api.converters.in.TransactionCreateRequestToCommand;
 import com.hexagonal.architecture.server.api.converters.out.TransactionToDto;
 import com.hexagonal.architecture.server.api.model.requests.TransactionCreateRequest;
 import com.hexagonal.architecture.server.api.model.requests.TransactionUpdateRequest;
@@ -15,6 +15,7 @@ import com.hexagonal.architecture.server.api.model.responses.TransactionCreation
 import com.hexagonal.architecture.server.core.domain.domains.transaction.Transaction;
 import com.hexagonal.architecture.server.core.domain.exceptions.illegalargument.InsufficientBalanceException;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
+import com.hexagonal.architecture.server.core.domain.service.model.commands.CreateTransactionCommand;
 import com.hexagonal.architecture.server.core.domain.service.services.transaction.TransactionService;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
 import org.junit.jupiter.api.BeforeEach;
@@ -41,7 +42,7 @@ class TransactionApiTest {
     @BeforeEach
     void init() {
         genericConversionService.addConverter(new TransactionToDto());
-        genericConversionService.addConverter(new TransactionCreateRequestToTransaction());
+        genericConversionService.addConverter(new TransactionCreateRequestToCommand());
         transactionApi = new TransactionApiImpl(transactionService, accountApi, genericConversionService);
     }
 
@@ -50,7 +51,7 @@ class TransactionApiTest {
         // given
         TransactionCreateRequest transactionCreateRequest = TransactionCreateRequestMocks.generateTransactionCreateRequest();
         Transaction transaction = TransactionMocks.generateTransaction();
-        given(transactionService.createTransaction(any(Transaction.class)))
+        given(transactionService.createTransaction(any(CreateTransactionCommand.class)))
                 .willReturn(transaction);
         // when
         TransactionCreationResponse transactionCreationResponse = transactionApi.createTransaction(transactionCreateRequest);
@@ -63,7 +64,7 @@ class TransactionApiTest {
         // given
         TransactionCreateRequest transactionCreateRequest = TransactionCreateRequestMocks.generateTransactionCreateRequest();
         Transaction transaction = TransactionMocks.generateTransaction();
-        given(transactionService.createTransaction(any(Transaction.class)))
+        given(transactionService.createTransaction(any(CreateTransactionCommand.class)))
                 .willReturn(transaction);
         doThrow(new InsufficientBalanceException(transaction.getDebtorAccountId().getValue()))
                 .when(accountApi)
