@@ -28,8 +28,8 @@ public class TransactionIntegrationTest extends AbstractIntegrationTest {
         accountRepositoryPort.save(accountBeneficiary);
         TransactionCreateRequest transactionCreateRequest = TransactionCreateRequestMocks
                 .generateTransactionCreateRequest(
-                        accountDebtor.getId(),
-                        accountBeneficiary.getId());
+                        accountDebtor.getId().getValue(),
+                        accountBeneficiary.getId().getValue());
         // when
         TransactionCreationResponse transactionCreationResponse = crudTestClient.post(Endpoints.CREATE_TRANSACTION, transactionCreateRequest)
                 .expectStatus().isCreated()

@@ -1,7 +1,7 @@
 package com.hexagonal.architecture.server.infra.common.mocks;
 
-import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.api.model.requests.TransactionUpdateRequest;
+import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 
 public class TransactionUpdateRequestMocks {
 
