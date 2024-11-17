@@ -6,6 +6,10 @@ import com.hexagonal.architecture.server.core.domain.valueobjects.Description;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Timestamp;
+import com.hexagonal.architecture.server.infra.persistence.converters.valueobjects.DescriptionAttributeConverter;
+import com.hexagonal.architecture.server.infra.persistence.converters.valueobjects.IdAttributeConverter;
+import com.hexagonal.architecture.server.infra.persistence.converters.valueobjects.MoneyAttributeConverter;
+import com.hexagonal.architecture.server.infra.persistence.converters.valueobjects.TimestampAttributeConverter;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -16,24 +20,39 @@ public class TransactionDao extends DaoEntity {
 
     @jakarta.persistence.Id
     @Column(name = "id")
+    @Convert(converter = IdAttributeConverter.class)
     private Id id;
+
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
     private TransactionType type;
+
     @Column(name = "amount")
+    @Convert(converter = MoneyAttributeConverter.class)
     private Money amount;
+
     @Column(name = "description")
+    @Convert(converter = DescriptionAttributeConverter.class)
     private Description description;
+
     @Column(name = "debtor_account_id")
+    @Convert(converter = IdAttributeConverter.class)
     private Id debtorAccountId;
+
     @Column(name = "beneficiary_account_id")
+    @Convert(converter = IdAttributeConverter.class)
     private Id beneficiaryAccountId;
+
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private TransactionStatusEnum status;
+
     @Column(name = "created_at")
+    @Convert(converter = TimestampAttributeConverter.class)
     private Timestamp createdAt;
+
     @Column(name = "updated_at")
+    @Convert(converter = TimestampAttributeConverter.class)
     private Timestamp updatedAt;
 
     protected TransactionDao() {

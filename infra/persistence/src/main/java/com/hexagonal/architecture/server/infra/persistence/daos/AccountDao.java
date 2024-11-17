@@ -4,7 +4,12 @@ import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Name;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Timestamp;
+import com.hexagonal.architecture.server.infra.persistence.converters.valueobjects.IdAttributeConverter;
+import com.hexagonal.architecture.server.infra.persistence.converters.valueobjects.MoneyAttributeConverter;
+import com.hexagonal.architecture.server.infra.persistence.converters.valueobjects.NameAttributeConverter;
+import com.hexagonal.architecture.server.infra.persistence.converters.valueobjects.TimestampAttributeConverter;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
@@ -16,14 +21,23 @@ public class AccountDao extends DaoEntity {
 
     @jakarta.persistence.Id
     @Column(name = "id")
+    @Convert(converter = IdAttributeConverter.class)
     private Id id;
+
     @Column(name = "name")
+    @Convert(converter = NameAttributeConverter.class)
     private Name name;
+
     @Column(name = "balance")
+    @Convert(converter = MoneyAttributeConverter.class)
     private Money balance;
+
     @Column(name = "created_at")
+    @Convert(converter = TimestampAttributeConverter.class)
     private Timestamp createdAt;
+
     @Column(name = "updated_at")
+    @Convert(converter = TimestampAttributeConverter.class)
     private Timestamp updatedAt;
 
     protected AccountDao() {
