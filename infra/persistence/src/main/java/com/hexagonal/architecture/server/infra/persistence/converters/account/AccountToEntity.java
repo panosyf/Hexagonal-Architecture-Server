@@ -10,6 +10,9 @@ public class AccountToEntity implements Converter<Account, AccountDao> {
     public AccountDao convert(Account account) {
         return new AccountDao(
                 account.getId(),
+                account.getEmail(),
+                account.getUsername(),
+                account.getPassword(),
                 account.getName(),
                 account.getBalance(),
                 account.getCreatedAt(),

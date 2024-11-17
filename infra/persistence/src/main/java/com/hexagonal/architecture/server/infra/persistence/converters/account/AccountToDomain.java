@@ -10,6 +10,9 @@ public class AccountToDomain implements Converter<AccountDao, Account> {
     public Account convert(AccountDao accountDao) {
         return new Account(
                 accountDao.getId(),
+                accountDao.getEmail(),
+                accountDao.getUsername(),
+                accountDao.getPassword(),
                 accountDao.getName(),
                 accountDao.getBalance(),
                 accountDao.getCreatedAt(),

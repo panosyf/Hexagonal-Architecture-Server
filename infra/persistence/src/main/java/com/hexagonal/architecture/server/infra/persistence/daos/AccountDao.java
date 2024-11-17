@@ -1,13 +1,7 @@
 package com.hexagonal.architecture.server.infra.persistence.daos;
 
-import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Name;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Timestamp;
-import com.hexagonal.architecture.server.infra.persistence.converters.valueobjects.IdAttributeConverter;
-import com.hexagonal.architecture.server.infra.persistence.converters.valueobjects.MoneyAttributeConverter;
-import com.hexagonal.architecture.server.infra.persistence.converters.valueobjects.NameAttributeConverter;
-import com.hexagonal.architecture.server.infra.persistence.converters.valueobjects.TimestampAttributeConverter;
+import com.hexagonal.architecture.server.core.domain.valueobjects.*;
+import com.hexagonal.architecture.server.infra.persistence.converters.valueobjects.*;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
@@ -23,6 +17,18 @@ public class AccountDao extends DaoEntity {
     @Column(name = "id")
     @Convert(converter = IdAttributeConverter.class)
     private Id id;
+
+    @Column(name = "email")
+    @Convert(converter = EmailAttributeConverter.class)
+    private Email email;
+
+    @Column(name = "username")
+    @Convert(converter = UsernameAttributeConverter.class)
+    private Username username;
+
+    @Column(name = "password")
+    @Convert(converter = PasswordAttributeConverter.class)
+    private Password password;
 
     @Column(name = "name")
     @Convert(converter = NameAttributeConverter.class)
@@ -43,8 +49,19 @@ public class AccountDao extends DaoEntity {
     protected AccountDao() {
     }
 
-    public AccountDao(Id id, Name name, Money balance, Timestamp createdAt, Timestamp updatedAt) {
+    public AccountDao(
+            final Id id,
+            final Email email,
+            final Username username,
+            final Password password,
+            final Name name,
+            final Money balance,
+            final Timestamp createdAt,
+            final Timestamp updatedAt) {
         this.id = id;
+        this.email = email;
+        this.username = username;
+        this.password = password;
         this.name = name;
         this.balance = balance;
         this.createdAt = createdAt;
@@ -57,6 +74,30 @@ public class AccountDao extends DaoEntity {
 
     public void setId(Id id) {
         this.id = id;
+    }
+
+    public Email getEmail() {
+        return email;
+    }
+
+    public void setEmail(Email email) {
+        this.email = email;
+    }
+
+    public Username getUsername() {
+        return username;
+    }
+
+    public void setUsername(Username username) {
+        this.username = username;
+    }
+
+    public Password getPassword() {
+        return password;
+    }
+
+    public void setPassword(Password password) {
+        this.password = password;
     }
 
     public Name getName() {
@@ -96,23 +137,25 @@ public class AccountDao extends DaoEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AccountDao that = (AccountDao) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(balance, that.balance) && Objects.equals(createdAt, that.createdAt) && Objects.equals(updatedAt, that.updatedAt);
+        return Objects.equals(id, that.id) && Objects.equals(email, that.email) && Objects.equals(username, that.username) && Objects.equals(password, that.password) && Objects.equals(name, that.name) && Objects.equals(balance, that.balance) && Objects.equals(createdAt, that.createdAt) && Objects.equals(updatedAt, that.updatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, balance, createdAt, updatedAt);
+        return Objects.hash(id, email, username, password, name, balance, createdAt, updatedAt);
     }
 
     @Override
     public String toString() {
         return "AccountDao{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
+                "id=" + id +
+                ", email=" + email +
+                ", username=" + username +
+                ", password=" + "[REDACTED]" +
+                ", name=" + name +
                 ", balance=" + balance +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';
     }
-
 }

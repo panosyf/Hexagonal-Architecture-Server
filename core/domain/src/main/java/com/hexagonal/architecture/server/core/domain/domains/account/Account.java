@@ -99,6 +99,10 @@ public class Account extends DomainEntity {
         return username;
     }
 
+    public Password getPassword() {
+        return password;
+    }
+
     public Name getName() {
         return name;
     }

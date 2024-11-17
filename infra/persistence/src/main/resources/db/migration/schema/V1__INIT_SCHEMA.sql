@@ -3,6 +3,9 @@ DROP TABLE IF EXISTS "account";
 
 CREATE TABLE "account" (
    id VARCHAR,
+   email VARCHAR(64) NOT NULL,
+   username VARCHAR(64) NOT NULL,
+   password VARCHAR(64) NOT NULL,
    name VARCHAR(64) NOT NULL,
    balance DECIMAL(19,2) NOT NULL,
    created_at TIMESTAMP NOT NULL,
