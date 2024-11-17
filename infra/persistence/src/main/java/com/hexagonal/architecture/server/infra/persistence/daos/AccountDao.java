@@ -1,34 +1,35 @@
 package com.hexagonal.architecture.server.infra.persistence.daos;
 
+import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Name;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Timestamp;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-import java.math.BigDecimal;
-import java.time.Instant;
 import java.util.Objects;
 
 @Entity(name = "account")
 @Table(name = "account")
 public class AccountDao extends DaoEntity {
 
-    @Id
+    @jakarta.persistence.Id
     @Column(name = "id")
-    private String id;
+    private Id id;
     @Column(name = "name")
-    private String name;
+    private Name name;
     @Column(name = "balance")
-    private BigDecimal balance;
+    private Money balance;
     @Column(name = "created_at")
-    private Instant createdAt;
+    private Timestamp createdAt;
     @Column(name = "updated_at")
-    private Instant updatedAt;
+    private Timestamp updatedAt;
 
     protected AccountDao() {
     }
 
-    public AccountDao(String id, String name, BigDecimal balance, Instant createdAt, Instant updatedAt) {
+    public AccountDao(Id id, Name name, Money balance, Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
         this.name = name;
         this.balance = balance;
@@ -36,43 +37,43 @@ public class AccountDao extends DaoEntity {
         this.updatedAt = updatedAt;
     }
 
-    public String getId() {
+    public Id getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Id id) {
         this.id = id;
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Name name) {
         this.name = name;
     }
 
-    public BigDecimal getBalance() {
+    public Money getBalance() {
         return balance;
     }
 
-    public void setBalance(BigDecimal balance) {
+    public void setBalance(Money balance) {
         this.balance = balance;
     }
 
-    public Instant getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Instant createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Instant getUpdatedAt() {
+    public Timestamp getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Instant updatedAt) {
+    public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
     }
 

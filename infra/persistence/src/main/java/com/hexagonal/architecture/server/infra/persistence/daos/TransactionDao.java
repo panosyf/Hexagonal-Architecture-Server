@@ -2,51 +2,53 @@ package com.hexagonal.architecture.server.infra.persistence.daos;
 
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionType;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Description;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Timestamp;
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
-import java.time.Instant;
 import java.util.Objects;
 
 @Entity(name = "transaction")
 @Table(name = "transaction")
 public class TransactionDao extends DaoEntity {
 
-    @Id
+    @jakarta.persistence.Id
     @Column(name = "id")
-    private String id;
+    private Id id;
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
     private TransactionType type;
     @Column(name = "amount")
-    private BigDecimal amount;
+    private Money amount;
     @Column(name = "description")
-    private String description;
+    private Description description;
     @Column(name = "debtor_account_id")
-    private String debtorAccountId;
+    private Id debtorAccountId;
     @Column(name = "beneficiary_account_id")
-    private String beneficiaryAccountId;
+    private Id beneficiaryAccountId;
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private TransactionStatusEnum status;
     @Column(name = "created_at")
-    private Instant createdAt;
+    private Timestamp createdAt;
     @Column(name = "updated_at")
-    private Instant updatedAt;
+    private Timestamp updatedAt;
 
     protected TransactionDao() {
     }
 
     public TransactionDao(
-            String id,
+            Id id,
             TransactionType type,
-            BigDecimal amount,
-            String description,
-            String debtorAccountId,
-            String beneficiaryAccountId,
+            Money amount,
+            Description description,
+            Id debtorAccountId,
+            Id beneficiaryAccountId,
             TransactionStatusEnum status,
-            Instant createdAt,
-            Instant updatedAt) {
+            Timestamp createdAt,
+            Timestamp updatedAt) {
         this.id = id;
         this.type = type;
         this.amount = amount;
@@ -58,11 +60,11 @@ public class TransactionDao extends DaoEntity {
         this.updatedAt = updatedAt;
     }
 
-    public String getId() {
+    public Id getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Id id) {
         this.id = id;
     }
 
@@ -74,35 +76,35 @@ public class TransactionDao extends DaoEntity {
         this.type = type;
     }
 
-    public BigDecimal getAmount() {
+    public Money getAmount() {
         return amount;
     }
 
-    public void setAmount(BigDecimal amount) {
+    public void setAmount(Money amount) {
         this.amount = amount;
     }
 
-    public String getDescription() {
+    public Description getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Description description) {
         this.description = description;
     }
 
-    public String getDebtorAccountId() {
+    public Id getDebtorAccountId() {
         return debtorAccountId;
     }
 
-    public void setDebtorAccountId(String debtorAccountId) {
+    public void setDebtorAccountId(Id debtorAccountId) {
         this.debtorAccountId = debtorAccountId;
     }
 
-    public String getBeneficiaryAccountId() {
+    public Id getBeneficiaryAccountId() {
         return beneficiaryAccountId;
     }
 
-    public void setBeneficiaryAccountId(String beneficiaryAccountId) {
+    public void setBeneficiaryAccountId(Id beneficiaryAccountId) {
         this.beneficiaryAccountId = beneficiaryAccountId;
     }
 
@@ -114,19 +116,19 @@ public class TransactionDao extends DaoEntity {
         this.status = status;
     }
 
-    public Instant getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Instant createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Instant getUpdatedAt() {
+    public Timestamp getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Instant updatedAt) {
+    public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
     }
 
