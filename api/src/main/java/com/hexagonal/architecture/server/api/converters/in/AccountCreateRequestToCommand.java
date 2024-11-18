@@ -16,7 +16,7 @@ public class AccountCreateRequestToCommand implements Converter<AccountCreateReq
         Username username = Username.valueOf(accountCreateRequest.username());
         // TODO UTILIZE HASHING AND SALT
         // TODO HIDE PASSWORD FROM LOGS
-        Password password = Password.valueOf(accountCreateRequest.username());
+        Password password = Password.valueOf(accountCreateRequest.password());
         Name name = Name.valueOf(accountCreateRequest.firstname(), accountCreateRequest.lastname());
         return new CreateAccountCommand(email, username, password, name);
     }

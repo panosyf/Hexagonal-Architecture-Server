@@ -29,7 +29,8 @@ public class AccountApiImpl implements AccountApi {
 
     @Override
     public AccountCreationResponse createAccount(AccountCreateRequest accountCreateRequest) {
-        Account account = accountService.createAccount(conversionService.convert(accountCreateRequest, CreateAccountCommand.class));
+        CreateAccountCommand createAccountCommand = conversionService.convert(accountCreateRequest, CreateAccountCommand.class);
+        Account account = accountService.createAccount(createAccountCommand);
         return new AccountCreationResponse(account.getId().getValue(), AccountCreationStatusEnum.SUCCESSFUL);
     }
 
