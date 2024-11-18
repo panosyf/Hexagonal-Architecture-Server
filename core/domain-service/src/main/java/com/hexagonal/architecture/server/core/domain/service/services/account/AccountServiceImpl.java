@@ -3,9 +3,11 @@ package com.hexagonal.architecture.server.core.domain.service.services.account;
 import com.hexagonal.architecture.server.core.domain.domains.account.Account;
 import com.hexagonal.architecture.server.core.domain.service.logging.LogInfoMessages;
 import com.hexagonal.architecture.server.core.domain.service.model.commands.CreateAccountCommand;
+import com.hexagonal.architecture.server.core.domain.service.model.commands.DecreaseBalanceCommand;
+import com.hexagonal.architecture.server.core.domain.service.model.commands.GetAccountCommand;
+import com.hexagonal.architecture.server.core.domain.service.model.commands.IncreaseBalanceCommand;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.AccountRepositoryPort;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,9 +22,9 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account getAccount(Id id) {
+    public Account getAccount(final GetAccountCommand getAccountCommand) {
         log.info("AccountServiceImpl");
-        return accountRepositoryPort.findById(id);
+        return accountRepositoryPort.findById(getAccountCommand.id());
     }
 
     @Override
@@ -39,18 +41,20 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account increaseBalance(Id id, Money amount) {
+    public Account increaseBalance(final IncreaseBalanceCommand increaseBalanceCommand) {
+        Id id = increaseBalanceCommand.id();
         Account account = accountRepositoryPort.findById(id);
-        account.increaseBalance(amount);
+        account.increaseBalance(increaseBalanceCommand.amount());
         Account updatedAccount = accountRepositoryPort.updateBalance(account);
         log.info(LogInfoMessages.LOG_BALANCE_INCREASED_FOR_ACCOUNT, id);
         return updatedAccount;
     }
 
     @Override
-    public Account decreaseBalance(Id id, Money amount) {
+    public Account decreaseBalance(final DecreaseBalanceCommand decreaseBalanceCommand) {
+        Id id = decreaseBalanceCommand.id();
         Account account = accountRepositoryPort.findById(id);
-        account.decreaseBalance(amount);
+        account.decreaseBalance(decreaseBalanceCommand.amount());
         Account updatedAccount = accountRepositoryPort.updateBalance(account);
         log.info(LogInfoMessages.LOG_BALANCE_DECREASED_FOR_ACCOUNT, id);
         return updatedAccount;

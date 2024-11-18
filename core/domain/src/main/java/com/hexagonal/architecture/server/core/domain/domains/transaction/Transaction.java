@@ -41,7 +41,7 @@ public class Transaction extends DomainEntity {
         this.status = status;
         Timestamp now = Timestamp.now();
         this.createdAt = now;
-        this.updatedAt = now;;
+        this.updatedAt = now;
     }
 
     public Transaction(
