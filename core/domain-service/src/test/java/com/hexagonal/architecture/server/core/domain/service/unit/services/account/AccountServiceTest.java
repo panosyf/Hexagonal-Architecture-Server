@@ -51,7 +51,7 @@ class AccountServiceTest {
                 () -> assertEquals(Names.ACCOUNT_NAME_1, accountResult.getName()),
                 () -> assertEquals(Balance.BALANCE_0, accountResult.getBalance()),
                 () -> assertEquals(account.getCreatedAt(), accountResult.getCreatedAt()),
-                () -> assertNull(accountResult.getUpdatedAt())
+                () -> assertEquals(account.getUpdatedAt(), accountResult.getUpdatedAt())
         );
     }
 
@@ -83,7 +83,7 @@ class AccountServiceTest {
                 () -> assertEquals(Names.ACCOUNT_NAME_1, account.getName()),
                 () -> assertEquals(Balance.BALANCE_0, account.getBalance()),
                 () -> assertThat(timestampBeforeAccountCreation.isBefore(account.getCreatedAt())).isTrue(),
-                () -> assertThat(account.getUpdatedAt()).isNull()
+                () -> assertThat(timestampBeforeAccountCreation.isBefore(account.getUpdatedAt())).isTrue()
         );
     }
 

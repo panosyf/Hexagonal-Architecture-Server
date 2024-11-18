@@ -31,8 +31,9 @@ public class Account extends DomainEntity {
         this.password = password;
         this.name = name;
         this.balance = Money.zero();
-        this.createdAt = Timestamp.now();
-        this.updatedAt = null;
+        Timestamp now = Timestamp.now();
+        this.createdAt = now;
+        this.updatedAt = now;
     }
 
     public Account(
@@ -47,8 +48,9 @@ public class Account extends DomainEntity {
         this.password = password;
         this.name = name;
         this.balance = balance;
-        this.createdAt = Timestamp.now();
-        this.updatedAt = null;
+        Timestamp now = Timestamp.now();
+        this.createdAt = now;
+        this.updatedAt = now;
     }
 
     public Account(
@@ -64,8 +66,9 @@ public class Account extends DomainEntity {
         this.password = password;
         this.name = name;
         this.balance = balance;
-        this.createdAt = Timestamp.now();
-        this.updatedAt = null;
+        Timestamp now = Timestamp.now();
+        this.createdAt = now;
+        this.updatedAt = now;
     }
 
     public Account(

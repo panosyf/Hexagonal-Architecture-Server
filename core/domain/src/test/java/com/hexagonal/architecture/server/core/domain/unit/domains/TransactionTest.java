@@ -19,7 +19,7 @@ class TransactionTest {
         Transaction transaction = generateTransaction();
         TransactionStatusEnum newStatus = TransactionStatusEnum.COMPLETED;
         Timestamp timestampBeforeUpdate = Timestamp.valueOf(Instant.now().minus(10, ChronoUnit.NANOS));
-        Timestamp oldUpdatedAt = transaction.getUpdatedAt();
+        Timestamp oldUpdatedAt = transaction.getUpdatedAt().minusNanos(100);
         TransactionStatusEnum oldStatus = transaction.getStatus();
         // when
         transaction.updateStatus(newStatus);

@@ -9,7 +9,7 @@ CREATE TABLE "account" (
    name VARCHAR(64) NOT NULL,
    balance DECIMAL(19,2) NOT NULL,
    created_at TIMESTAMP NOT NULL,
-   updated_at TIMESTAMP,
+   updated_at TIMESTAMP NOT NULL,
    PRIMARY KEY (id)
 );
 
@@ -22,7 +22,7 @@ CREATE TABLE "transaction" (
    beneficiary_account_id VARCHAR,
    status VARCHAR(64) NOT NULL,
    created_at TIMESTAMP NOT NULL,
-   updated_at TIMESTAMP,
+   updated_at TIMESTAMP NOT NULL,
    PRIMARY KEY (id),
    CONSTRAINT FK_DebtorAccountTransaction FOREIGN KEY (debtor_account_id) REFERENCES "account"(id) ON DELETE CASCADE,
    CONSTRAINT FK_BeneficiaryAccountTransaction FOREIGN KEY (beneficiary_account_id) REFERENCES "account"(id) ON DELETE CASCADE

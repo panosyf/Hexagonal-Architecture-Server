@@ -39,8 +39,9 @@ public class Transaction extends DomainEntity {
         this.debtorAccountId = debtorAccountId;
         this.beneficiaryAccountId = beneficiaryAccountId;
         this.status = status;
-        this.createdAt = Timestamp.now();
-        this.updatedAt = null;
+        Timestamp now = Timestamp.now();
+        this.createdAt = now;
+        this.updatedAt = now;;
     }
 
     public Transaction(
@@ -58,8 +59,9 @@ public class Transaction extends DomainEntity {
         this.debtorAccountId = debtorAccountId;
         this.beneficiaryAccountId = beneficiaryAccountId;
         this.status = status;
-        this.createdAt = Timestamp.now();
-        this.updatedAt = null;
+        Timestamp now = Timestamp.now();
+        this.createdAt = now;
+        this.updatedAt = now;;
     }
 
     public Transaction(
