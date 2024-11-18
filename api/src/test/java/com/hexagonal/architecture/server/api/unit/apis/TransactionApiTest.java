@@ -16,8 +16,8 @@ import com.hexagonal.architecture.server.core.domain.domains.transaction.Transac
 import com.hexagonal.architecture.server.core.domain.exceptions.illegalargument.InsufficientBalanceException;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.core.domain.service.model.commands.CreateTransactionCommand;
+import com.hexagonal.architecture.server.core.domain.service.model.commands.UpdateTransactionCommand;
 import com.hexagonal.architecture.server.core.domain.service.services.transaction.TransactionService;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -37,7 +37,7 @@ class TransactionApiTest {
     private final AccountApi accountApi = mock(AccountApi.class);
     private final GenericConversionService genericConversionService = new GenericConversionService();
     private TransactionApi transactionApi;
-    private final ArgumentCaptor<TransactionStatusEnum> transactionStatusEnumArgumentCaptor = ArgumentCaptor.forClass(TransactionStatusEnum.class);
+    private final ArgumentCaptor<UpdateTransactionCommand> updateTransactionCommandCaptor = ArgumentCaptor.forClass(UpdateTransactionCommand.class);
 
     @BeforeEach
     void init() {
@@ -80,14 +80,14 @@ class TransactionApiTest {
         // given
         TransactionUpdateRequest transactionUpdateRequest = TransactionUpdateRequestMocks.generateTransactionUpdateRequest();
         Transaction transaction = TransactionMocks.generateTransaction();
-        given(transactionService.updateTransaction(any(Id.class), any(TransactionStatusEnum.class)))
+        given(transactionService.updateTransaction(any(UpdateTransactionCommand.class)))
                 .willReturn(transaction);
         // when
         transactionApi.updateTransaction(Ids.TRANSACTION_ID_1.getValue(), transactionUpdateRequest);
         // Then
         verify(transactionService, times(1))
-                .updateTransaction(any(Id.class), transactionStatusEnumArgumentCaptor.capture());
-        assertThat(transactionStatusEnumArgumentCaptor.getValue()).isEqualTo(TransactionStatusEnum.COMPLETED);
+                .updateTransaction(updateTransactionCommandCaptor.capture());
+        assertThat(updateTransactionCommandCaptor.getValue().transactionStatusEnum()).isEqualTo(TransactionStatusEnum.COMPLETED);
     }
 
 }

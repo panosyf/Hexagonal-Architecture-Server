@@ -9,6 +9,8 @@ import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStat
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionType;
 import com.hexagonal.architecture.server.core.domain.service.common.constants.Ids;
 import com.hexagonal.architecture.server.core.domain.service.model.commands.CreateTransactionCommand;
+import com.hexagonal.architecture.server.core.domain.service.model.commands.GetTransactionCommand;
+import com.hexagonal.architecture.server.core.domain.service.model.commands.UpdateTransactionCommand;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.TransactionRepositoryPort;
 import com.hexagonal.architecture.server.core.domain.service.services.transaction.TransactionService;
 import com.hexagonal.architecture.server.core.domain.service.services.transaction.TransactionServiceImpl;
@@ -21,8 +23,10 @@ import org.mockito.ArgumentCaptor;
 
 import static com.hexagonal.architecture.server.core.domain.exceptions.utils.ErrorUtils.generateErrorMessage;
 import static com.hexagonal.architecture.server.core.domain.service.common.mocks.CreateTransactionCommandMocks.generateCreateTransactionCommand;
+import static com.hexagonal.architecture.server.core.domain.service.common.mocks.GetTransactionCommandMocks.generateGetTransactionCommand;
 import static com.hexagonal.architecture.server.core.domain.service.common.mocks.TransactionMocks.generatePendingTransaction;
 import static com.hexagonal.architecture.server.core.domain.service.common.mocks.TransactionMocks.generateTransaction;
+import static com.hexagonal.architecture.server.core.domain.service.common.mocks.UpdateTransactionCommandMocks.generateUpdateTransactionCommand;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
@@ -47,10 +51,11 @@ class TransactionServiceTest {
         // given
         Timestamp now = Timestamp.now().minusNanos(100);
         Transaction transaction = generateTransaction();
+        GetTransactionCommand getTransactionCommand = generateGetTransactionCommand();
         given(transactionRepositoryPort.findById(any(Id.class)))
                 .willReturn(transaction);
         // when
-        Transaction transactionResult = transactionService.getTransaction(Ids.TRANSACTION_ID_1);
+        Transaction transactionResult = transactionService.getTransaction(getTransactionCommand);
         // then
         verify(transactionRepositoryPort, times(1))
                 .findById(any(Id.class));
@@ -70,10 +75,11 @@ class TransactionServiceTest {
     @Test
     void getTransactionThrowsTransactionNotFoundExceptionTest() {
         // given
+        GetTransactionCommand getTransactionCommand = generateGetTransactionCommand();
         given(transactionRepositoryPort.findById(any(Id.class)))
                 .willThrow(new TransactionNotFoundException(Ids.TRANSACTION_ID_1.getValue()));
         // then
-        assertThatThrownBy(() -> transactionService.getTransaction(Ids.TRANSACTION_ID_1))
+        assertThatThrownBy(() -> transactionService.getTransaction(getTransactionCommand))
                 .isInstanceOf(TransactionNotFoundException.class)
                 .hasMessage(generateErrorMessage(ErrorMessageConstants.TRANSACTION_NOT_FOUND_EXCEPTION, Ids.TRANSACTION_ID_1.getValue()));
     }
@@ -101,11 +107,12 @@ class TransactionServiceTest {
     @Test
     void updateTransactionTest() {
         // given
+        UpdateTransactionCommand updateTransactionCommand = generateUpdateTransactionCommand();
         Transaction transaction = generatePendingTransaction(Ids.TRANSACTION_ID_1);
         given(transactionRepositoryPort.findById(any(Id.class)))
                 .willReturn(transaction);
         // when
-        transactionService.updateTransaction(Ids.TRANSACTION_ID_1, TransactionStatusEnum.COMPLETED);
+        transactionService.updateTransaction(updateTransactionCommand);
         // then
         verify(transactionRepositoryPort, times(1))
                 .updateStatus(transactionCaptor.capture());
@@ -115,10 +122,11 @@ class TransactionServiceTest {
     @Test
     void updateTransactionThrowsTransactionNotFoundExceptionTest() {
         // given
+        UpdateTransactionCommand updateTransactionCommand = generateUpdateTransactionCommand();
         given(transactionRepositoryPort.findById(any(Id.class)))
                 .willThrow(new TransactionNotFoundException(Ids.TRANSACTION_ID_1.getValue()));
         // then
-        assertThatThrownBy(() -> transactionService.updateTransaction(Ids.TRANSACTION_ID_1, TransactionStatusEnum.COMPLETED))
+        assertThatThrownBy(() -> transactionService.updateTransaction(updateTransactionCommand))
                 .isInstanceOf(TransactionNotFoundException.class)
                 .hasMessage(generateErrorMessage(ErrorMessageConstants.TRANSACTION_NOT_FOUND_EXCEPTION, Ids.TRANSACTION_ID_1.getValue()));
     }

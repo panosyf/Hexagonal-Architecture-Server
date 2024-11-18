@@ -3,8 +3,9 @@ package com.hexagonal.architecture.server.core.domain.service.services.transacti
 import com.hexagonal.architecture.server.core.domain.domains.transaction.Transaction;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.core.domain.service.model.commands.CreateTransactionCommand;
+import com.hexagonal.architecture.server.core.domain.service.model.commands.GetTransactionCommand;
+import com.hexagonal.architecture.server.core.domain.service.model.commands.UpdateTransactionCommand;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.TransactionRepositoryPort;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,9 +20,9 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public Transaction getTransaction(Id id) {
+    public Transaction getTransaction(GetTransactionCommand getTransactionCommand) {
         log.info("TransactionServiceImpl");
-        return transactionRepositoryPort.findById(id);
+        return transactionRepositoryPort.findById(getTransactionCommand.id());
     }
 
     @Override
@@ -38,9 +39,9 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public Transaction updateTransaction(Id id, TransactionStatusEnum transactionStatusEnum) {
-        Transaction transaction = transactionRepositoryPort.findById(id);
-        transaction.updateStatus(transactionStatusEnum);
+    public Transaction updateTransaction(UpdateTransactionCommand updateTransactionCommand) {
+        Transaction transaction = transactionRepositoryPort.findById(updateTransactionCommand.id());
+        transaction.updateStatus(updateTransactionCommand.transactionStatusEnum());
         return transactionRepositoryPort.updateStatus(transaction);
     }
 

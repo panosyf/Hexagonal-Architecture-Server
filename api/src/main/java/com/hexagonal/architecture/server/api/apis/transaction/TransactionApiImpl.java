@@ -10,6 +10,8 @@ import com.hexagonal.architecture.server.api.model.responses.TransactionUpdateRe
 import com.hexagonal.architecture.server.core.domain.domains.transaction.Transaction;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.core.domain.service.model.commands.CreateTransactionCommand;
+import com.hexagonal.architecture.server.core.domain.service.model.commands.GetTransactionCommand;
+import com.hexagonal.architecture.server.core.domain.service.model.commands.UpdateTransactionCommand;
 import com.hexagonal.architecture.server.core.domain.service.services.transaction.TransactionService;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
@@ -32,22 +34,23 @@ public class TransactionApiImpl implements TransactionApi {
 
     @Override
     public TransactionResponse getTransaction(String id) {
-        TransactionDto transactionDto = conversionService.convert(
-                transactionService.getTransaction(Id.valueOf(id)), TransactionDto.class);
+        GetTransactionCommand getTransactionCommand = new GetTransactionCommand(Id.valueOf(id));
+        Transaction transaction = transactionService.getTransaction(getTransactionCommand);
+        TransactionDto transactionDto = conversionService.convert(transaction, TransactionDto.class);
         return new TransactionResponse(transactionDto);
     }
 
     @Override
     public TransactionCreationResponse createTransaction(TransactionCreateRequest transactionCreateRequest) {
-        Transaction transaction = transactionService.createTransaction(
-                conversionService.convert(transactionCreateRequest, CreateTransactionCommand.class));
+        CreateTransactionCommand createTransactionCommand = conversionService.convert(transactionCreateRequest, CreateTransactionCommand.class);
+        Transaction transaction = transactionService.createTransaction(createTransactionCommand);
         Id debtorAccountId = transaction.getDebtorAccountId();
         Money amount = transaction.getAmount();
         try {
             accountApi.decreaseBalance(debtorAccountId.getValue(), amount.getValue());
         } catch (Exception e) {
-            Id id = transaction.getId();
-            transactionService.updateTransaction(id, TransactionStatusEnum.FAILED);
+            UpdateTransactionCommand updateTransactionCommand = new UpdateTransactionCommand(transaction.getId(), TransactionStatusEnum.FAILED);
+            transactionService.updateTransaction(updateTransactionCommand);
             return new TransactionCreationResponse(null, TransactionStatusEnum.FAILED);
         }
         return new TransactionCreationResponse(transaction.getId().getValue(), TransactionStatusEnum.PENDING);
@@ -55,10 +58,10 @@ public class TransactionApiImpl implements TransactionApi {
 
     @Override
     public TransactionUpdateResponse updateTransaction(String id, TransactionUpdateRequest transactionUpdateRequest) {
-        TransactionStatusEnum transactionStatusEnum = transactionUpdateRequest.transactionStatusEnum();
-        Transaction updatedTransaction = transactionService.updateTransaction(Id.valueOf(id) , transactionStatusEnum);
+        UpdateTransactionCommand updateTransactionCommand = new UpdateTransactionCommand(Id.valueOf(id), transactionUpdateRequest.transactionStatusEnum());
+        Transaction updatedTransaction = transactionService.updateTransaction(updateTransactionCommand);
         // TODO THIS IS TEMPORARY, WILL BE REFACTORED UTILIZING STATE PATTERN
-        if (transactionStatusEnum.equals(TransactionStatusEnum.COMPLETED)) {
+        if (updateTransactionCommand.transactionStatusEnum().equals(TransactionStatusEnum.COMPLETED)) {
             accountApi.increaseBalance(updatedTransaction.getBeneficiaryAccountId().getValue(), updatedTransaction.getAmount().getValue());
         }
         return new TransactionUpdateResponse(updatedTransaction.getId().getValue(), updatedTransaction.getStatus());

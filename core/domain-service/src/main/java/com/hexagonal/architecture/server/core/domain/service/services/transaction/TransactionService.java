@@ -1,19 +1,16 @@
 package com.hexagonal.architecture.server.core.domain.service.services.transaction;
 
 import com.hexagonal.architecture.server.core.domain.domains.transaction.Transaction;
-import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.core.domain.service.model.commands.CreateTransactionCommand;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
+import com.hexagonal.architecture.server.core.domain.service.model.commands.GetTransactionCommand;
+import com.hexagonal.architecture.server.core.domain.service.model.commands.UpdateTransactionCommand;
 
 public interface TransactionService {
 
-    // TODO USE COMMAND AS INPUT
-    Transaction getTransaction(Id id);
+    Transaction getTransaction(GetTransactionCommand getTransactionCommand);
 
-    // TODO USE COMMAND AS INPUT
     Transaction createTransaction(CreateTransactionCommand createTransactionCommand);
 
-    // TODO USE COMMAND AS INPUT
-    Transaction updateTransaction(Id id, TransactionStatusEnum transactionStatusEnum);
+    Transaction updateTransaction(UpdateTransactionCommand updateTransactionCommand);
 
 }
