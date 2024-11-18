@@ -4,8 +4,7 @@ import com.hexagonal.architecture.server.core.domain.domains.account.Account;
 import com.hexagonal.architecture.server.core.domain.exceptions.elementnotfound.AccountNotFoundException;
 import com.hexagonal.architecture.server.core.domain.exceptions.utils.messages.ErrorMessageConstants;
 import com.hexagonal.architecture.server.core.domain.model.constants.Balance;
-import com.hexagonal.architecture.server.core.domain.service.common.constants.Ids;
-import com.hexagonal.architecture.server.core.domain.service.common.constants.Names;
+import com.hexagonal.architecture.server.core.domain.service.common.constants.*;
 import com.hexagonal.architecture.server.core.domain.service.model.commands.CreateAccountCommand;
 import com.hexagonal.architecture.server.core.domain.service.model.commands.DecreaseBalanceCommand;
 import com.hexagonal.architecture.server.core.domain.service.model.commands.GetAccountCommand;
@@ -55,6 +54,9 @@ class AccountServiceTest {
         Account accountResult = accountService.getAccount(getAccountCommand);
         // then
         assertAll(
+                () -> assertEquals(Emails.EMAIL_1, accountResult.getEmail()),
+                () -> assertEquals(Usernames.USERNAME_1, accountResult.getUsername()),
+                () -> assertEquals(Passwords.PASSWORD_1, accountResult.getPassword()),
                 () -> assertEquals(Names.ACCOUNT_NAME_1, accountResult.getName()),
                 () -> assertEquals(Balance.BALANCE_0, accountResult.getBalance()),
                 () -> assertEquals(account.getCreatedAt(), accountResult.getCreatedAt()),
@@ -89,6 +91,9 @@ class AccountServiceTest {
                 .save(accountCaptor.capture());
         Account persistedAccount = accountCaptor.getValue();
         assertAll(
+                () -> assertEquals(Emails.EMAIL_1, persistedAccount.getEmail()),
+                () -> assertEquals(Usernames.USERNAME_1, persistedAccount.getUsername()),
+                () -> assertEquals(Passwords.PASSWORD_1, persistedAccount.getPassword()),
                 () -> assertEquals(Names.ACCOUNT_NAME_1, persistedAccount.getName()),
                 () -> assertEquals(Balance.BALANCE_0, persistedAccount.getBalance()),
                 () -> assertThat(timestampBeforeAccountCreation.isBefore(persistedAccount.getCreatedAt())).isTrue(),
