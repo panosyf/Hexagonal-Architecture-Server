@@ -3,7 +3,6 @@ package com.hexagonal.architecture.server.infra.persistence.daos;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionType;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Description;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Timestamp;
 import com.hexagonal.architecture.server.infra.persistence.converters.valueobjects.DescriptionAttributeConverter;
@@ -18,10 +17,9 @@ import java.util.Objects;
 @Table(name = "transaction")
 public class TransactionDao extends DaoEntity {
 
-    @jakarta.persistence.Id
     @Column(name = "id")
-    @Convert(converter = IdAttributeConverter.class)
-    private Id id;
+    @Id
+    private String id;
 
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
@@ -36,12 +34,10 @@ public class TransactionDao extends DaoEntity {
     private Description description;
 
     @Column(name = "debtor_account_id")
-    @Convert(converter = IdAttributeConverter.class)
-    private Id debtorAccountId;
+    private String debtorAccountId;
 
     @Column(name = "beneficiary_account_id")
-    @Convert(converter = IdAttributeConverter.class)
-    private Id beneficiaryAccountId;
+    private String beneficiaryAccountId;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
@@ -59,12 +55,12 @@ public class TransactionDao extends DaoEntity {
     }
 
     public TransactionDao(
-            Id id,
+            String id,
             TransactionType type,
             Money amount,
             Description description,
-            Id debtorAccountId,
-            Id beneficiaryAccountId,
+            String debtorAccountId,
+            String beneficiaryAccountId,
             TransactionStatusEnum status,
             Timestamp createdAt,
             Timestamp updatedAt) {
@@ -79,11 +75,11 @@ public class TransactionDao extends DaoEntity {
         this.updatedAt = updatedAt;
     }
 
-    public Id getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Id id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -111,19 +107,19 @@ public class TransactionDao extends DaoEntity {
         this.description = description;
     }
 
-    public Id getDebtorAccountId() {
+    public String getDebtorAccountId() {
         return debtorAccountId;
     }
 
-    public void setDebtorAccountId(Id debtorAccountId) {
+    public void setDebtorAccountId(String debtorAccountId) {
         this.debtorAccountId = debtorAccountId;
     }
 
-    public Id getBeneficiaryAccountId() {
+    public String getBeneficiaryAccountId() {
         return beneficiaryAccountId;
     }
 
-    public void setBeneficiaryAccountId(Id beneficiaryAccountId) {
+    public void setBeneficiaryAccountId(String beneficiaryAccountId) {
         this.beneficiaryAccountId = beneficiaryAccountId;
     }
 

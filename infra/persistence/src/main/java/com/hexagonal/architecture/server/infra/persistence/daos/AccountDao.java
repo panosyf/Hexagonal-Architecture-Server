@@ -1,11 +1,10 @@
 package com.hexagonal.architecture.server.infra.persistence.daos;
 
+
 import com.hexagonal.architecture.server.core.domain.valueobjects.*;
 import com.hexagonal.architecture.server.infra.persistence.converters.valueobjects.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Convert;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import jakarta.persistence.Id;
 
 import java.util.Objects;
 
@@ -13,10 +12,9 @@ import java.util.Objects;
 @Table(name = "account")
 public class AccountDao extends DaoEntity {
 
-    @jakarta.persistence.Id
+    @Id
     @Column(name = "id")
-    @Convert(converter = IdAttributeConverter.class)
-    private Id id;
+    private String id;
 
     @Column(name = "email")
     @Convert(converter = EmailAttributeConverter.class)
@@ -50,7 +48,7 @@ public class AccountDao extends DaoEntity {
     }
 
     public AccountDao(
-            final Id id,
+            final String id,
             final Email email,
             final Username username,
             final Password password,
@@ -68,11 +66,11 @@ public class AccountDao extends DaoEntity {
         this.updatedAt = updatedAt;
     }
 
-    public Id getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Id id) {
+    public void setId(String id) {
         this.id = id;
     }
 

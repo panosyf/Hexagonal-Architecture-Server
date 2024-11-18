@@ -9,7 +9,7 @@ public class AccountToEntity implements Converter<Account, AccountDao> {
     @Override
     public AccountDao convert(Account account) {
         return new AccountDao(
-                account.getId(),
+                account.getId().getValue(),
                 account.getEmail(),
                 account.getUsername(),
                 account.getPassword(),

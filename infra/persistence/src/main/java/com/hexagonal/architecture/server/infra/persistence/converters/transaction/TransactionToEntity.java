@@ -9,12 +9,12 @@ public class TransactionToEntity implements Converter<Transaction, TransactionDa
     @Override
     public TransactionDao convert(Transaction transaction) {
         return new TransactionDao(
-                transaction.getId(),
+                transaction.getId().getValue(),
                 transaction.getType(),
                 transaction.getAmount(),
                 transaction.getDescription(),
-                transaction.getDebtorAccountId(),
-                transaction.getBeneficiaryAccountId(),
+                transaction.getDebtorAccountId().getValue(),
+                transaction.getBeneficiaryAccountId().getValue(),
                 transaction.getStatus(),
                 transaction.getCreatedAt(),
                 transaction.getUpdatedAt()
