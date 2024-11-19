@@ -17,6 +17,7 @@
         <module>parent-bom</module>
         <module>app</module>
         <module>share-kernel</module>
+        <module>share-kernel/common</module>
     </modules>
 
 </project>
