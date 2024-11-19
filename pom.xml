@@ -16,6 +16,7 @@
         <module>infra</module>
         <module>parent-bom</module>
         <module>app</module>
+        <module>share-kernel</module>
     </modules>
 
 </project>
