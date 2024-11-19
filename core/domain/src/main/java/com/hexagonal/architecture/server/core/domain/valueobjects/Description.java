@@ -1,7 +1,7 @@
 package com.hexagonal.architecture.server.core.domain.valueobjects;
 
 import java.util.Objects;
-
+// TODO MOVE TO SHARED KERNEL
 public class Description extends ValueObject {
 
     private final String value;

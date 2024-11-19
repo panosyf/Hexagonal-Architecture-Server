@@ -5,7 +5,7 @@ import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
 import java.math.BigDecimal;
-
+// TODO MOVE TO SHARED KERNEL
 @Converter
 public class MoneyAttributeConverter implements AttributeConverter<Money, BigDecimal> {
 

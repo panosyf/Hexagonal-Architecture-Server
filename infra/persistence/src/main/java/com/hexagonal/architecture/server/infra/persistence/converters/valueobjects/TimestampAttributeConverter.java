@@ -5,7 +5,7 @@ import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
 import java.time.Instant;
-
+// TODO MOVE TO SHARED KERNEL
 @Converter
 public class TimestampAttributeConverter implements AttributeConverter<Timestamp, Instant> {
 

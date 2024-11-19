@@ -3,7 +3,7 @@ package com.hexagonal.architecture.server.infra.persistence.converters.valueobje
 import com.hexagonal.architecture.server.core.domain.valueobjects.Password;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
-
+// TODO MOVE TO SHARED KERNEL
 @Converter
 public class PasswordAttributeConverter implements AttributeConverter<Password, String> {
 

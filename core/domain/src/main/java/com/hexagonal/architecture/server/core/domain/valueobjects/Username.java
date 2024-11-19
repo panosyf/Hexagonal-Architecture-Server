@@ -4,6 +4,7 @@ import com.hexagonal.architecture.server.core.domain.exceptions.utils.messages.E
 
 import java.util.Objects;
 
+// TODO MOVE TO SHARED KERNEL
 public class Username extends ValueObject {
 
     private final String value;

@@ -7,6 +7,7 @@ import java.math.RoundingMode;
 import java.util.Currency;
 import java.util.Objects;
 
+// TODO MOVE TO SHARED KERNEL
 public class Money extends ValueObject {
 
     private final BigDecimal value;

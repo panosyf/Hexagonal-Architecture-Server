@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono;
 
 import static com.hexagonal.architecture.server.infra.common.constants.Endpoints.LOCALHOST_URL;
 import static com.hexagonal.architecture.server.infra.common.helpers.EndpointHelper.generateUri;
-
+// TODO MOVE TO SHARED KERNEL
 public class CrudTestClient {
 
     private final WebTestClient webTestClient;

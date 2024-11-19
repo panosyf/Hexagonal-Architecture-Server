@@ -9,6 +9,7 @@ import java.util.Objects;
 
 import static com.hexagonal.architecture.server.core.domain.model.constants.ZoneId.UTC;
 
+// TODO MOVE TO SHARED KERNEL
 public class Timestamp extends ValueObject {
 
     private final Instant time;
