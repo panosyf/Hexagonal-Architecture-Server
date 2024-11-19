@@ -1,8 +1,10 @@
 package com.hexagonal.architecture.server.api.common.mocks;
 
 import com.hexagonal.architecture.server.api.common.constants.Ids;
-import com.hexagonal.architecture.server.core.domain.model.constants.Amount;
 import com.hexagonal.architecture.server.core.domain.service.model.commands.DecreaseBalanceCommand;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
+
+import java.math.BigDecimal;
 
 public class DecreaseBalanceCommandMocks {
 
@@ -10,7 +12,7 @@ public class DecreaseBalanceCommandMocks {
     }
 
     public static DecreaseBalanceCommand generateDecreaseBalanceCommand() {
-        return new DecreaseBalanceCommand(Ids.ACCOUNT_ID_1, Amount.AMOUNT_10);
+        return new DecreaseBalanceCommand(Ids.ACCOUNT_ID_1, Money.of(BigDecimal.TEN));
     }
 
 }

@@ -4,7 +4,6 @@ package com.hexagonal.architecture.server.core.domain.service.unit.services.tran
 import com.hexagonal.architecture.server.core.domain.domains.transaction.Transaction;
 import com.hexagonal.architecture.server.core.domain.exceptions.elementnotfound.TransactionNotFoundException;
 import com.hexagonal.architecture.server.core.domain.exceptions.utils.messages.ErrorMessageConstants;
-import com.hexagonal.architecture.server.core.domain.model.constants.Amount;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionType;
 import com.hexagonal.architecture.server.core.domain.service.common.constants.Ids;
@@ -16,10 +15,13 @@ import com.hexagonal.architecture.server.core.domain.service.services.transactio
 import com.hexagonal.architecture.server.core.domain.service.services.transaction.TransactionServiceImpl;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Description;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Timestamp;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
+
+import java.math.BigDecimal;
 
 import static com.hexagonal.architecture.server.core.domain.exceptions.utils.ErrorUtils.generateErrorMessage;
 import static com.hexagonal.architecture.server.core.domain.service.common.mocks.CreateTransactionCommandMocks.generateCreateTransactionCommand;
@@ -37,9 +39,8 @@ class TransactionServiceTest {
 
     private final TransactionRepositoryPort transactionRepositoryPort = mock(TransactionRepositoryPort.class);
     private TransactionService transactionService;
-
     private final ArgumentCaptor<Transaction> transactionCaptor = ArgumentCaptor.forClass(Transaction.class);
-
+    private static final Money AMOUNT_5 = Money.of(BigDecimal.valueOf(5));
 
     @BeforeEach
     void init() {
@@ -61,7 +62,7 @@ class TransactionServiceTest {
                 .findById(any(Id.class));
         assertAll(
                 () -> assertEquals(TransactionType.TRANSFER, transactionResult.getType()),
-                () -> assertEquals(Amount.AMOUNT_5, transactionResult.getAmount()),
+                () -> assertEquals(AMOUNT_5, transactionResult.getAmount()),
                 () -> assertEquals(Description.emptyDescription(), transactionResult.getDescription()),
                 () -> assertEquals(Ids.ACCOUNT_ID_1, transactionResult.getDebtorAccountId()),
                 () -> assertEquals(Ids.ACCOUNT_ID_2, transactionResult.getBeneficiaryAccountId()),
@@ -96,7 +97,7 @@ class TransactionServiceTest {
         Transaction createdTransaction = transactionCaptor.getValue();
         assertAll(
                 () -> assertEquals(TransactionType.TRANSFER, createdTransaction.getType()),
-                () -> assertEquals(Amount.AMOUNT_5, createdTransaction.getAmount()),
+                () -> assertEquals(AMOUNT_5, createdTransaction.getAmount()),
                 () -> assertEquals(Description.emptyDescription(), createdTransaction.getDescription()),
                 () -> assertEquals(Ids.ACCOUNT_ID_1, createdTransaction.getDebtorAccountId()),
                 () -> assertEquals(Ids.ACCOUNT_ID_2, createdTransaction.getBeneficiaryAccountId())

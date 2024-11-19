@@ -3,14 +3,13 @@ package com.hexagonal.architecture.server.core.domain.unit.domains;
 import com.hexagonal.architecture.server.core.domain.domains.account.Account;
 import com.hexagonal.architecture.server.core.domain.exceptions.illegalargument.InsufficientBalanceException;
 import com.hexagonal.architecture.server.core.domain.exceptions.utils.messages.ErrorMessageConstants;
-import com.hexagonal.architecture.server.core.domain.model.constants.Amount;
-import com.hexagonal.architecture.server.core.domain.model.constants.Balance;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.math.BigDecimal;
 import java.util.stream.Stream;
 
 import static com.hexagonal.architecture.server.core.domain.common.mocks.AccountMocks.generateAccount;
@@ -21,9 +20,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class AccountTest {
 
+    private static final Money AMOUNT_0 = Money.zero();
+    private static final Money AMOUNT_1 = Money.of(BigDecimal.ONE);
+    private static final Money AMOUNT_10 =Money.of( BigDecimal.TEN);
+    private static final Money BALANCE_0 = Money.zero();
+    private static final Money BALANCE_5 = Money.of(BigDecimal.valueOf(5));
+    private static final Money BALANCE_10 = Money.of(BigDecimal.TEN);
+    private static final Money BALANCE_15 = Money.of(BigDecimal.valueOf(15));
+    private static final Money BALANCE_20 = Money.of(BigDecimal.valueOf(20));
+
     @Test
     void hasBalanceTest() {
-        Account account = generateAccount(Balance.BALANCE_10);
+        Account account = generateAccount(BALANCE_10);
         assertTrue(account.hasBalance());
     }
 
@@ -36,9 +44,9 @@ class AccountTest {
 
     private static Stream<Arguments> isBalanceEligibleForTransactionTestArguments() {
         return Stream.of(
-                Arguments.of(Balance.BALANCE_5, Amount.AMOUNT_10, false),
-                Arguments.of(Balance.BALANCE_0, Amount.AMOUNT_0, false),
-                Arguments.of(Balance.BALANCE_5, Amount.AMOUNT_1, true)
+                Arguments.of(BALANCE_5, AMOUNT_10, false),
+                Arguments.of(BALANCE_0, AMOUNT_0, false),
+                Arguments.of(BALANCE_5, AMOUNT_1, true)
         );
     }
 
@@ -51,38 +59,38 @@ class AccountTest {
 
     private static Stream<Arguments> notEligibleBalanceForTransactionTestArguments() {
         return Stream.of(
-                Arguments.of(Balance.BALANCE_5, Amount.AMOUNT_10, true),
-                Arguments.of(Balance.BALANCE_0, Amount.AMOUNT_0, true),
-                Arguments.of(Balance.BALANCE_5, Amount.AMOUNT_1, false)
+                Arguments.of(BALANCE_5, AMOUNT_10, true),
+                Arguments.of(BALANCE_0, AMOUNT_0, true),
+                Arguments.of(BALANCE_5, AMOUNT_1, false)
         );
     }
 
     @Test
     void validateBalanceEligibleForTransactionTest() {
         Account account = generateAccount();
-        assertThatThrownBy(() -> account.validateBalanceEligibleForTransaction(Balance.BALANCE_10))
+        assertThatThrownBy(() -> account.validateBalanceEligibleForTransaction(BALANCE_10))
                 .isInstanceOf(InsufficientBalanceException.class)
                 .hasMessage(generateErrorMessage(ErrorMessageConstants.INSUFFICIENT_BALANCE_EXCEPTION, account.getId().getValue()));
     }
 
     @Test
     void increaseBalanceTest() {
-        Account account = generateAccount(Balance.BALANCE_5);
-        account.increaseBalance(Balance.BALANCE_15);
-        assertThat(account.getBalance().equals(Balance.BALANCE_20)).isTrue();
+        Account account = generateAccount(BALANCE_5);
+        account.increaseBalance(BALANCE_15);
+        assertThat(account.getBalance().equals(BALANCE_20)).isTrue();
     }
 
     @Test
     void decreaseBalanceTest() {
-        Account account = generateAccount(Balance.BALANCE_15);
-        account.decreaseBalance(Balance.BALANCE_10);
-        assertThat(account.getBalance().equals(Balance.BALANCE_5)).isTrue();
+        Account account = generateAccount(BALANCE_15);
+        account.decreaseBalance(BALANCE_10);
+        assertThat(account.getBalance().equals(BALANCE_5)).isTrue();
     }
 
     @Test
     void decreaseBalanceThrowsInsufficientBalanceExceptionTest() {
-        Account account = generateAccount(Balance.BALANCE_5);
-        assertThatThrownBy(() -> account.decreaseBalance(Balance.BALANCE_10))
+        Account account = generateAccount(BALANCE_5);
+        assertThatThrownBy(() -> account.decreaseBalance(BALANCE_10))
                 .isInstanceOf(InsufficientBalanceException.class);
     }
 

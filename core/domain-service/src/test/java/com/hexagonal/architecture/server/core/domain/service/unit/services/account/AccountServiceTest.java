@@ -3,7 +3,6 @@ package com.hexagonal.architecture.server.core.domain.service.unit.services.acco
 import com.hexagonal.architecture.server.core.domain.domains.account.Account;
 import com.hexagonal.architecture.server.core.domain.exceptions.elementnotfound.AccountNotFoundException;
 import com.hexagonal.architecture.server.core.domain.exceptions.utils.messages.ErrorMessageConstants;
-import com.hexagonal.architecture.server.core.domain.model.constants.Balance;
 import com.hexagonal.architecture.server.core.domain.service.common.constants.*;
 import com.hexagonal.architecture.server.core.domain.service.model.commands.CreateAccountCommand;
 import com.hexagonal.architecture.server.core.domain.service.model.commands.DecreaseBalanceCommand;
@@ -13,10 +12,13 @@ import com.hexagonal.architecture.server.core.domain.service.ports.driven.Accoun
 import com.hexagonal.architecture.server.core.domain.service.services.account.AccountService;
 import com.hexagonal.architecture.server.core.domain.service.services.account.AccountServiceImpl;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
+import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
 import com.hexagonal.architecture.server.core.domain.valueobjects.Timestamp;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
+
+import java.math.BigDecimal;
 
 import static com.hexagonal.architecture.server.core.domain.exceptions.utils.ErrorUtils.generateErrorMessage;
 import static com.hexagonal.architecture.server.core.domain.service.common.mocks.AccountMocks.generateAccount;
@@ -37,6 +39,10 @@ class AccountServiceTest {
     private final AccountRepositoryPort accountRepositoryPort = mock(AccountRepositoryPort.class);
     private AccountService accountService;
     private final ArgumentCaptor<Account> accountCaptor = ArgumentCaptor.forClass(Account.class);
+    private static final Money BALANCE_0 = Money.zero();
+    private static final Money BALANCE_5 = Money.of(BigDecimal.valueOf(5));
+    private static final Money BALANCE_10 = Money.of(BigDecimal.TEN);
+    private static final Money BALANCE_15 = Money.of(BigDecimal.valueOf(15));
 
     @BeforeEach
     void init() {
@@ -58,7 +64,7 @@ class AccountServiceTest {
                 () -> assertEquals(Usernames.USERNAME_1, accountResult.getUsername()),
                 () -> assertEquals(Passwords.PASSWORD_1, accountResult.getPassword()),
                 () -> assertEquals(Names.ACCOUNT_NAME_1, accountResult.getName()),
-                () -> assertEquals(Balance.BALANCE_0, accountResult.getBalance()),
+                () -> assertEquals(BALANCE_0, accountResult.getBalance()),
                 () -> assertEquals(account.getCreatedAt(), accountResult.getCreatedAt()),
                 () -> assertEquals(account.getUpdatedAt(), accountResult.getUpdatedAt())
         );
@@ -95,7 +101,7 @@ class AccountServiceTest {
                 () -> assertEquals(Usernames.USERNAME_1, persistedAccount.getUsername()),
                 () -> assertEquals(Passwords.PASSWORD_1, persistedAccount.getPassword()),
                 () -> assertEquals(Names.ACCOUNT_NAME_1, persistedAccount.getName()),
-                () -> assertEquals(Balance.BALANCE_0, persistedAccount.getBalance()),
+                () -> assertEquals(BALANCE_0, persistedAccount.getBalance()),
                 () -> assertThat(timestampBeforeAccountCreation.isBefore(persistedAccount.getCreatedAt())).isTrue(),
                 () -> assertThat(timestampBeforeAccountCreation.isBefore(persistedAccount.getUpdatedAt())).isTrue()
         );
@@ -113,7 +119,7 @@ class AccountServiceTest {
         // then
         verify(accountRepositoryPort, times(1))
                 .updateBalance(accountCaptor.capture());
-        assertThat(accountCaptor.getValue().getBalance()).isEqualTo(Balance.BALANCE_10);
+        assertThat(accountCaptor.getValue().getBalance()).isEqualTo(BALANCE_10);
     }
 
     @Test
@@ -132,7 +138,7 @@ class AccountServiceTest {
     void decreaseBalanceTest() {
         // given
         DecreaseBalanceCommand decreaseBalanceCommand = generateDecreaseBalanceCommand();
-        Account account = generateAccount(Balance.BALANCE_15);
+        Account account = generateAccount(BALANCE_15);
         given(accountRepositoryPort.findById(any(Id.class)))
                 .willReturn(account);
         // when
@@ -140,7 +146,7 @@ class AccountServiceTest {
         // then
         verify(accountRepositoryPort, times(1))
                 .updateBalance(accountCaptor.capture());
-        assertThat(accountCaptor.getValue().getBalance()).isEqualTo(Balance.BALANCE_5);
+        assertThat(accountCaptor.getValue().getBalance()).isEqualTo(BALANCE_5);
     }
 
     @Test
