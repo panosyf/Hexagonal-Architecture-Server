@@ -11,16 +11,16 @@ import com.hexagonal.architecture.server.core.domain.service.model.commands.Incr
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.AccountRepositoryPort;
 import com.hexagonal.architecture.server.core.domain.service.services.account.AccountService;
 import com.hexagonal.architecture.server.core.domain.service.services.account.AccountServiceImpl;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Timestamp;
+import com.hexagonal.architecture.server.shared.kernel.exception.utils.ErrorUtils;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Id;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Money;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Timestamp;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
 import java.math.BigDecimal;
 
-import static com.hexagonal.architecture.server.core.domain.exceptions.utils.ErrorUtils.generateErrorMessage;
 import static com.hexagonal.architecture.server.core.domain.service.common.mocks.AccountMocks.generateAccount;
 import static com.hexagonal.architecture.server.core.domain.service.common.mocks.CreateAccountCommandMocks.generateCreateAccountCommand;
 import static com.hexagonal.architecture.server.core.domain.service.common.mocks.DecreaseBalanceCommandMocks.generateDecreaseBalanceCommand;
@@ -79,7 +79,7 @@ class AccountServiceTest {
         // then
         assertThatThrownBy(() -> accountService.getAccount(getAccountCommand))
                 .isInstanceOf(AccountNotFoundException.class)
-                .hasMessage(generateErrorMessage(ErrorMessageConstants.ACCOUNT_NOT_FOUND_EXCEPTION, Ids.ACCOUNT_ID_1.getValue()));
+                .hasMessage(ErrorUtils.generateErrorMessage(ErrorMessageConstants.ACCOUNT_NOT_FOUND_EXCEPTION, Ids.ACCOUNT_ID_1.getValue()));
     }
 
     @Test
@@ -131,7 +131,7 @@ class AccountServiceTest {
         // then
         assertThatThrownBy(() -> accountService.increaseBalance(increaseBalanceCommand))
                 .isInstanceOf(AccountNotFoundException.class)
-                .hasMessage(generateErrorMessage(ErrorMessageConstants.ACCOUNT_NOT_FOUND_EXCEPTION, Ids.ACCOUNT_ID_1.getValue()));
+                .hasMessage(ErrorUtils.generateErrorMessage(ErrorMessageConstants.ACCOUNT_NOT_FOUND_EXCEPTION, Ids.ACCOUNT_ID_1.getValue()));
     }
 
     @Test
@@ -158,8 +158,7 @@ class AccountServiceTest {
         // then
         assertThatThrownBy(() -> accountService.decreaseBalance(decreaseBalanceCommand))
                 .isInstanceOf(AccountNotFoundException.class)
-                .hasMessage(generateErrorMessage(ErrorMessageConstants.ACCOUNT_NOT_FOUND_EXCEPTION, Ids.ACCOUNT_ID_1.getValue()));
+                .hasMessage(ErrorUtils.generateErrorMessage(ErrorMessageConstants.ACCOUNT_NOT_FOUND_EXCEPTION, Ids.ACCOUNT_ID_1.getValue()));
     }
-
 
 }

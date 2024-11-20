@@ -13,17 +13,17 @@ import com.hexagonal.architecture.server.core.domain.service.model.commands.Upda
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.TransactionRepositoryPort;
 import com.hexagonal.architecture.server.core.domain.service.services.transaction.TransactionService;
 import com.hexagonal.architecture.server.core.domain.service.services.transaction.TransactionServiceImpl;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Description;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Timestamp;
+import com.hexagonal.architecture.server.shared.kernel.exception.utils.ErrorUtils;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Description;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Id;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Money;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Timestamp;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
 import java.math.BigDecimal;
 
-import static com.hexagonal.architecture.server.core.domain.exceptions.utils.ErrorUtils.generateErrorMessage;
 import static com.hexagonal.architecture.server.core.domain.service.common.mocks.CreateTransactionCommandMocks.generateCreateTransactionCommand;
 import static com.hexagonal.architecture.server.core.domain.service.common.mocks.GetTransactionCommandMocks.generateGetTransactionCommand;
 import static com.hexagonal.architecture.server.core.domain.service.common.mocks.TransactionMocks.generatePendingTransaction;
@@ -31,7 +31,8 @@ import static com.hexagonal.architecture.server.core.domain.service.common.mocks
 import static com.hexagonal.architecture.server.core.domain.service.common.mocks.UpdateTransactionCommandMocks.generateUpdateTransactionCommand;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 
@@ -82,7 +83,7 @@ class TransactionServiceTest {
         // then
         assertThatThrownBy(() -> transactionService.getTransaction(getTransactionCommand))
                 .isInstanceOf(TransactionNotFoundException.class)
-                .hasMessage(generateErrorMessage(ErrorMessageConstants.TRANSACTION_NOT_FOUND_EXCEPTION, Ids.TRANSACTION_ID_1.getValue()));
+                .hasMessage(ErrorUtils.generateErrorMessage(ErrorMessageConstants.TRANSACTION_NOT_FOUND_EXCEPTION, Ids.TRANSACTION_ID_1.getValue()));
     }
 
     @Test
@@ -129,7 +130,7 @@ class TransactionServiceTest {
         // then
         assertThatThrownBy(() -> transactionService.updateTransaction(updateTransactionCommand))
                 .isInstanceOf(TransactionNotFoundException.class)
-                .hasMessage(generateErrorMessage(ErrorMessageConstants.TRANSACTION_NOT_FOUND_EXCEPTION, Ids.TRANSACTION_ID_1.getValue()));
+                .hasMessage(ErrorUtils.generateErrorMessage(ErrorMessageConstants.TRANSACTION_NOT_FOUND_EXCEPTION, Ids.TRANSACTION_ID_1.getValue()));
     }
 
 }

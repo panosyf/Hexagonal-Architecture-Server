@@ -1,10 +1,8 @@
 package com.hexagonal.architecture.server.core.domain.service.ports.driven;
 
 import com.hexagonal.architecture.server.core.domain.domains.account.Account;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
-
-import java.math.BigDecimal;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Id;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Money;
 
 public interface AccountRepositoryPort {
 

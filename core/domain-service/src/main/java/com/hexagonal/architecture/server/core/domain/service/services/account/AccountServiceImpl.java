@@ -7,7 +7,7 @@ import com.hexagonal.architecture.server.core.domain.service.model.commands.Decr
 import com.hexagonal.architecture.server.core.domain.service.model.commands.GetAccountCommand;
 import com.hexagonal.architecture.server.core.domain.service.model.commands.IncreaseBalanceCommand;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.AccountRepositoryPort;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Id;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

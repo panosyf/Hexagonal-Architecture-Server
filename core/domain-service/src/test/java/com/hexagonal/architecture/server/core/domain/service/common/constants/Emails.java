@@ -1,6 +1,6 @@
 package com.hexagonal.architecture.server.core.domain.service.common.constants;
 
-import com.hexagonal.architecture.server.core.domain.valueobjects.Email;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Email;
 
 public class Emails {
 

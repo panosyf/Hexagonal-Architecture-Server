@@ -1,11 +1,12 @@
 package com.hexagonal.architecture.server.core.domain.domains.account;
 
 import com.hexagonal.architecture.server.core.domain.exceptions.illegalargument.InsufficientBalanceException;
+import com.hexagonal.architecture.server.shared.kernel.domain.DomainEntity;
 import com.hexagonal.architecture.server.shared.kernel.valueobjects.*;
 
 import java.util.Objects;
 
-public class Account {
+public class Account extends DomainEntity {
 
     private Id id;
     private Email email;

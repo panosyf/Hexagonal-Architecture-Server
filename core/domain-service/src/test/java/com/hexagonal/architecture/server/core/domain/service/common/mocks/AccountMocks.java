@@ -5,7 +5,7 @@ import com.hexagonal.architecture.server.core.domain.service.common.constants.Em
 import com.hexagonal.architecture.server.core.domain.service.common.constants.Names;
 import com.hexagonal.architecture.server.core.domain.service.common.constants.Passwords;
 import com.hexagonal.architecture.server.core.domain.service.common.constants.Usernames;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Money;
 
 public class AccountMocks {
 
