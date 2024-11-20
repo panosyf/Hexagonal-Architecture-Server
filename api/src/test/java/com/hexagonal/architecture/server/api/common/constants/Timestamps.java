@@ -1,6 +1,6 @@
 package com.hexagonal.architecture.server.api.common.constants;
 
-import com.hexagonal.architecture.server.core.domain.valueobjects.Timestamp;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Timestamp;
 
 import java.time.Instant;
 

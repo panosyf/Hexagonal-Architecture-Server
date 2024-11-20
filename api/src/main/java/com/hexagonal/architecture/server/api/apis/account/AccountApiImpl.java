@@ -11,8 +11,8 @@ import com.hexagonal.architecture.server.core.domain.service.model.commands.Decr
 import com.hexagonal.architecture.server.core.domain.service.model.commands.GetAccountCommand;
 import com.hexagonal.architecture.server.core.domain.service.model.commands.IncreaseBalanceCommand;
 import com.hexagonal.architecture.server.core.domain.service.services.account.AccountService;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Id;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Money;
 import org.springframework.core.convert.ConversionService;
 
 import java.math.BigDecimal;

@@ -13,8 +13,8 @@ import com.hexagonal.architecture.server.core.domain.service.model.commands.Crea
 import com.hexagonal.architecture.server.core.domain.service.model.commands.GetTransactionCommand;
 import com.hexagonal.architecture.server.core.domain.service.model.commands.UpdateTransactionCommand;
 import com.hexagonal.architecture.server.core.domain.service.services.transaction.TransactionService;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Id;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Money;
 import org.springframework.core.convert.ConversionService;
 
 public class TransactionApiImpl implements TransactionApi {
