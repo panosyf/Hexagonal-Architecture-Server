@@ -4,9 +4,9 @@ import com.hexagonal.architecture.server.core.domain.domains.transaction.Transac
 import com.hexagonal.architecture.server.core.domain.exceptions.elementnotfound.TransactionNotFoundException;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.core.domain.service.ports.driven.TransactionRepositoryPort;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Timestamp;
 import com.hexagonal.architecture.server.infra.persistence.daos.TransactionDao;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Id;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Timestamp;
 import jakarta.transaction.Transactional;
 import org.springframework.core.convert.ConversionService;
 

@@ -1,10 +1,9 @@
 package com.hexagonal.architecture.server.infra.persistence.daos;
 
-
-import com.hexagonal.architecture.server.core.domain.valueobjects.*;
 import com.hexagonal.architecture.server.infra.persistence.converters.valueobjects.*;
-import jakarta.persistence.*;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.*;
 import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 

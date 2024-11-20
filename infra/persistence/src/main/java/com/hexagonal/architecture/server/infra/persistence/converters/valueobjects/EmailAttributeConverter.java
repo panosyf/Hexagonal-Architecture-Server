@@ -1,6 +1,6 @@
 package com.hexagonal.architecture.server.infra.persistence.converters.valueobjects;
 
-import com.hexagonal.architecture.server.core.domain.valueobjects.Email;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Email;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 // TODO MOVE TO SHARED KERNEL

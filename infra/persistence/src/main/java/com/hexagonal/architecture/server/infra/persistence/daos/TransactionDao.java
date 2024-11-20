@@ -2,13 +2,12 @@ package com.hexagonal.architecture.server.infra.persistence.daos;
 
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionType;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Description;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Timestamp;
 import com.hexagonal.architecture.server.infra.persistence.converters.valueobjects.DescriptionAttributeConverter;
-import com.hexagonal.architecture.server.infra.persistence.converters.valueobjects.IdAttributeConverter;
 import com.hexagonal.architecture.server.infra.persistence.converters.valueobjects.MoneyAttributeConverter;
 import com.hexagonal.architecture.server.infra.persistence.converters.valueobjects.TimestampAttributeConverter;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Description;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Money;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Timestamp;
 import jakarta.persistence.*;
 
 import java.util.Objects;
