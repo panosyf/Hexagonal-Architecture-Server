@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.hexagonal.architecture.server</groupId>
-    <artifactId>share-kernel</artifactId>
+    <artifactId>shared-kernel</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 

@@ -15,7 +15,7 @@
         <module>api</module>
         <module>infra</module>
         <module>app</module>
-        <module>share-kernel</module>
+        <module>shared-kernel</module>
     </modules>
 
 </project>

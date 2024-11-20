@@ -24,7 +24,7 @@
         <dependencies>
             <dependency>
                 <groupId>com.hexagonal.architecture.server</groupId>
-                <artifactId>share-kernel</artifactId>
+                <artifactId>shared-kernel</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
         </dependencies>
