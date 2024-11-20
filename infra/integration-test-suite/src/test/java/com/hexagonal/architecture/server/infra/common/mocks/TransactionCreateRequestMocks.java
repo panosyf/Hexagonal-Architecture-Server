@@ -2,9 +2,9 @@ package com.hexagonal.architecture.server.infra.common.mocks;
 
 import com.hexagonal.architecture.server.api.model.requests.TransactionCreateRequest;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionType;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Description;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
 import com.hexagonal.architecture.server.infra.common.constants.Ids;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Description;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Money;
 
 import java.math.BigDecimal;
 

@@ -1,11 +1,11 @@
 package com.hexagonal.architecture.server.infra.common.mocks;
 
 import com.hexagonal.architecture.server.core.domain.domains.account.Account;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
 import com.hexagonal.architecture.server.infra.common.constants.Emails;
 import com.hexagonal.architecture.server.infra.common.constants.Names;
 import com.hexagonal.architecture.server.infra.common.constants.Passwords;
 import com.hexagonal.architecture.server.infra.common.constants.Usernames;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Money;
 
 public class AccountMocks {
 

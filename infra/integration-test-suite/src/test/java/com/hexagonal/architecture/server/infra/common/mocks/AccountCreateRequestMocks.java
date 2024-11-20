@@ -6,7 +6,6 @@ import com.hexagonal.architecture.server.infra.common.constants.Names;
 import com.hexagonal.architecture.server.infra.common.constants.Passwords;
 import com.hexagonal.architecture.server.infra.common.constants.Usernames;
 
-
 public class AccountCreateRequestMocks {
 
     private AccountCreateRequestMocks() {

@@ -6,11 +6,11 @@ import com.hexagonal.architecture.server.core.domain.domains.account.Account;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.api.model.requests.TransactionCreateRequest;
 import com.hexagonal.architecture.server.api.model.requests.TransactionUpdateRequest;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
 import com.hexagonal.architecture.server.infra.common.constants.Endpoints;
 import com.hexagonal.architecture.server.infra.common.mocks.AccountMocks;
 import com.hexagonal.architecture.server.infra.common.mocks.TransactionCreateRequestMocks;
 import com.hexagonal.architecture.server.infra.config.AbstractIntegrationTest;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Money;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
