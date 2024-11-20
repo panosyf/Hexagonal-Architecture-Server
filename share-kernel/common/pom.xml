@@ -5,13 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.hexagonal.architecture.server</groupId>
-        <artifactId>share-kernel</artifactId>
+        <groupId>com.hexagonal.architecture.server.shared.kernel</groupId>
+        <artifactId>infra-bom</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <relativePath>../boms/infra-bom/pom.xml</relativePath>
     </parent>
 
-    <groupId>com.hexagonal.architecture.server.shared.kernel</groupId>
     <artifactId>common</artifactId>
 
     <properties>

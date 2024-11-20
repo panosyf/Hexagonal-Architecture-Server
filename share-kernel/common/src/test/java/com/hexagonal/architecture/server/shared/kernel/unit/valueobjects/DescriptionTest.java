@@ -1,6 +1,6 @@
 package com.hexagonal.architecture.server.shared.kernel.unit.valueobjects;
 
-import com.hexagonal.architecture.server.core.domain.valueobjects.Description;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Description;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

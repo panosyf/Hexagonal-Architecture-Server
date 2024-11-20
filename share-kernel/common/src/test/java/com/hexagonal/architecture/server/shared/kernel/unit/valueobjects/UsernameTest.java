@@ -1,7 +1,7 @@
 package com.hexagonal.architecture.server.shared.kernel.unit.valueobjects;
 
-import com.hexagonal.architecture.server.core.domain.exceptions.utils.messages.ErrorMessageConstants;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Username;
+import com.hexagonal.architecture.server.shared.kernel.exception.constants.ErrorMessageConstants;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Username;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

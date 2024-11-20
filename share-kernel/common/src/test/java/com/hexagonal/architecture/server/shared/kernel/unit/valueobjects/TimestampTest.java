@@ -1,7 +1,7 @@
 package com.hexagonal.architecture.server.shared.kernel.unit.valueobjects;
 
-import com.hexagonal.architecture.server.core.domain.exceptions.utils.messages.ErrorMessageConstants;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Timestamp;
+import com.hexagonal.architecture.server.shared.kernel.exception.constants.ErrorMessageConstants;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Timestamp;
 import org.junit.jupiter.api.Test;
 
 import java.time.Instant;

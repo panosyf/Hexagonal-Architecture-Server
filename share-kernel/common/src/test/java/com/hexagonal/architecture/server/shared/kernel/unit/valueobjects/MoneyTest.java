@@ -1,7 +1,7 @@
 package com.hexagonal.architecture.server.shared.kernel.unit.valueobjects;
 
-import com.hexagonal.architecture.server.core.domain.exceptions.utils.messages.ErrorMessageConstants;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
+import com.hexagonal.architecture.server.shared.kernel.exception.constants.ErrorMessageConstants;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Money;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -16,16 +16,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class MoneyTest {
 
-    private final BigDecimal BIG_DECIMAL_5 = BigDecimal.valueOf(5);
     private final BigDecimal BIG_DECIMAL_8 = BigDecimal.valueOf(8);
     private final BigDecimal BIG_DECIMAL_12 = BigDecimal.valueOf(12);
-    private final BigDecimal BIG_DECIMAL_20 = BigDecimal.valueOf(20);
     private final Money MONEY_2 = Money.of(BigDecimal.TWO);
-    private final Money MONEY_5 = Money.of(BIG_DECIMAL_5);
     private final Money MONEY_8 = Money.of(BIG_DECIMAL_8);
     private final Money MONEY_10 = Money.of(BigDecimal.TEN);
     private final Money MONEY_12 = Money.of(BIG_DECIMAL_12);
-    private final Money MONEY_20 = Money.of(BIG_DECIMAL_20);
 
     @ParameterizedTest
     @MethodSource("moneyOfTestArguments")
