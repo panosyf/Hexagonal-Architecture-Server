@@ -14,10 +14,8 @@
         <module>core</module>
         <module>api</module>
         <module>infra</module>
-        <module>parent-bom</module>
         <module>app</module>
         <module>share-kernel</module>
-        <module>share-kernel/common</module>
     </modules>
 
 </project>

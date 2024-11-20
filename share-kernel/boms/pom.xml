@@ -12,7 +12,16 @@
     </parent>
 
     <groupId>com.hexagonal.architecture.server.shared.kernel</groupId>
-    <artifactId>common</artifactId>
+    <artifactId>boms</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>api-bom</module>
+        <module>core-bom</module>
+        <module>infra-bom</module>
+        <module>parent-bom</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

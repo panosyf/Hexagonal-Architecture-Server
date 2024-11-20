@@ -8,8 +8,11 @@
     <artifactId>share-kernel</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Shared kernel</name>
-    <description>Shared Kernel for server</description>
+
+    <modules>
+        <module>boms</module>
+        <module>common</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

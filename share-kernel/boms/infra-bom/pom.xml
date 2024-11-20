@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.hexagonal.architecture.server</groupId>
+        <groupId>com.hexagonal.architecture.server.shared.kernel</groupId>
         <artifactId>parent-bom</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <relativePath>../parent-bom/pom.xml</relativePath>
     </parent>
 
     <artifactId>infra-bom</artifactId>
