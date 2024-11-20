@@ -1,7 +1,5 @@
 package com.hexagonal.architecture.server.infra.rest.exception.handler;
 
-import com.hexagonal.architecture.server.core.domain.exceptions.illegalargument.IllegalArgumentException;
-import com.hexagonal.architecture.server.core.domain.exceptions.elementnotfound.ElementNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

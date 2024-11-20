@@ -1,12 +1,12 @@
 package com.hexagonal.architecture.server.core.domain.domains.transaction;
 
-import com.hexagonal.architecture.server.core.domain.domains.DomainEntity;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.architecture.server.core.domain.model.enums.TransactionType;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Description;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Id;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Money;
-import com.hexagonal.architecture.server.core.domain.valueobjects.Timestamp;
+import com.hexagonal.architecture.server.shared.kernel.domain.DomainEntity;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Description;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Id;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Money;
+import com.hexagonal.architecture.server.shared.kernel.valueobjects.Timestamp;
 
 import java.util.Objects;
 
@@ -61,7 +61,8 @@ public class Transaction extends DomainEntity {
         this.status = status;
         Timestamp now = Timestamp.now();
         this.createdAt = now;
-        this.updatedAt = now;;
+        this.updatedAt = now;
+        ;
     }
 
     public Transaction(
