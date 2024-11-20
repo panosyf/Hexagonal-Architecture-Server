@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.hexagonal.architecture.server.shared.kernel</groupId>
-    <artifactId>boms</artifactId>
+    <artifactId>bom-collection</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
