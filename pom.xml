@@ -3,12 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.hexagonal.architecture.server</groupId>
-    <artifactId>hexagonal-architecture-server</artifactId>
+    <groupId>com.hexagonal.server</groupId>
+    <artifactId>hexagonal-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>hexagonal-architecture-server</name>
-    <description>Hexagonal Architecture Server utilizing Modular-Monolith and Clean Architecture Principals</description>
+    <name>Hexagonal Architecture Server</name>
+    <description>The Hexagonal Architecture Server is a robust backend solution built around the principles of Hexagonal Architecture (also known as Ports and Adapters)</description>
 
     <modules>
         <module>core</module>

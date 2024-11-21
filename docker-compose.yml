@@ -1,13 +1,13 @@
 version: '3.9'
 
 services:
-  hexagonal-architecture-server-db-container:
+  hexagonal-server-db-container:
     image: postgres:14-alpine
-    container_name: hexagonal-architecture-server-db-container
+    container_name: hexagonal-server-db-container
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_DB=hexagonal_bank_server
+      - POSTGRES_DB=hexagonal_server
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     volumes:

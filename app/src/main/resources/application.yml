@@ -1,10 +1,10 @@
 spring:
   application:
-    name: hexagonal-architecture-server
+    name: hexagonal-server
   profiles:
     active: '@spring.profiles.active@'
   datasource:
-    url: jdbc:postgresql://localhost:5432/hexagonal_architecture_server
+    url: jdbc:postgresql://localhost:5432/hexagonal_server
     username: postgres
     password: postgres
     driverClassName: org.postgresql.Driver

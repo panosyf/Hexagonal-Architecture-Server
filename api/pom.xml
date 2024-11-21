@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.hexagonal.architecture.server.shared.kernel.bom.collection</groupId>
+        <groupId>com.hexagonal.server.shared.kernel.bom.collection</groupId>
         <artifactId>api-bom</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../shared-kernel/bom-collection/api-bom/pom.xml</relativePath>
     </parent>
 
-    <groupId>com.hexagonal.architecture.server.api</groupId>
+    <groupId>com.hexagonal.server.api</groupId>
     <artifactId>api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
@@ -24,7 +24,7 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.hexagonal.architecture.server.core</groupId>
+                <groupId>com.hexagonal.server.core</groupId>
                 <artifactId>core</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
@@ -33,7 +33,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.hexagonal.architecture.server.core</groupId>
+            <groupId>com.hexagonal.server.core</groupId>
             <artifactId>domain-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>

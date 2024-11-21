@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.hexagonal.architecture.server.shared.kernel.bom.collection</groupId>
+        <groupId>com.hexagonal.server.shared.kernel.bom.collection</groupId>
         <artifactId>core-bom</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../shared-kernel/bom-collection/core-bom/pom.xml</relativePath>
     </parent>
 
-    <groupId>com.hexagonal.architecture.server.core</groupId>
+    <groupId>com.hexagonal.server.core</groupId>
     <artifactId>core</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
