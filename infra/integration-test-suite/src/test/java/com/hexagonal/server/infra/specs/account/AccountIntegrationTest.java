@@ -2,8 +2,8 @@ package com.hexagonal.server.infra.specs.account;
 
 import com.hexagonal.server.infra.common.constants.Endpoints;
 import com.hexagonal.server.core.domain.model.enums.AccountCreationStatusEnum;
-import com.hexagonal.server.api.model.requests.AccountCreateRequest;
-import com.hexagonal.server.api.model.responses.AccountCreationResponse;
+import com.hexagonal.server.application.service.model.requests.AccountCreateRequest;
+import com.hexagonal.server.application.service.model.responses.AccountCreationResponse;
 import com.hexagonal.server.infra.config.AbstractIntegrationTest;
 import org.junit.jupiter.api.Test;
 

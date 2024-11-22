@@ -1,11 +1,11 @@
 package com.hexagonal.server.infra.rest.controllers;
 
-import com.hexagonal.server.api.apis.transaction.TransactionApi;
-import com.hexagonal.server.api.model.responses.TransactionResponse;
-import com.hexagonal.server.api.model.requests.TransactionCreateRequest;
-import com.hexagonal.server.api.model.requests.TransactionUpdateRequest;
-import com.hexagonal.server.api.model.responses.TransactionCreationResponse;
-import com.hexagonal.server.api.model.responses.TransactionUpdateResponse;
+import com.hexagonal.server.application.service.apis.transaction.TransactionApi;
+import com.hexagonal.server.application.service.model.responses.TransactionResponse;
+import com.hexagonal.server.application.service.model.requests.TransactionCreateRequest;
+import com.hexagonal.server.application.service.model.requests.TransactionUpdateRequest;
+import com.hexagonal.server.application.service.model.responses.TransactionCreationResponse;
+import com.hexagonal.server.application.service.model.responses.TransactionUpdateResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

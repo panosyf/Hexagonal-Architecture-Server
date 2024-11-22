@@ -1,11 +1,11 @@
 package com.hexagonal.server.infra.specs.transaction;
 
-import com.hexagonal.server.api.model.responses.TransactionCreationResponse;
-import com.hexagonal.server.api.model.responses.TransactionUpdateResponse;
+import com.hexagonal.server.application.service.model.responses.TransactionCreationResponse;
+import com.hexagonal.server.application.service.model.responses.TransactionUpdateResponse;
 import com.hexagonal.server.core.domain.domains.account.Account;
 import com.hexagonal.server.core.domain.model.enums.TransactionStatusEnum;
-import com.hexagonal.server.api.model.requests.TransactionCreateRequest;
-import com.hexagonal.server.api.model.requests.TransactionUpdateRequest;
+import com.hexagonal.server.application.service.model.requests.TransactionCreateRequest;
+import com.hexagonal.server.application.service.model.requests.TransactionUpdateRequest;
 import com.hexagonal.server.infra.common.constants.Endpoints;
 import com.hexagonal.server.infra.common.mocks.AccountMocks;
 import com.hexagonal.server.infra.common.mocks.TransactionCreateRequestMocks;
