@@ -1,11 +1,11 @@
-package com.hexagonal.server.infra.persistence.converters.valueobjects;
+package com.hexagonal.server.shared.kernel.valueobjects.converters;
 
 import com.hexagonal.server.shared.kernel.valueobjects.Timestamp;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
 import java.time.Instant;
-// TODO MOVE TO SHARED KERNEL
+
 @Converter
 public class TimestampAttributeConverter implements AttributeConverter<Timestamp, Instant> {
 

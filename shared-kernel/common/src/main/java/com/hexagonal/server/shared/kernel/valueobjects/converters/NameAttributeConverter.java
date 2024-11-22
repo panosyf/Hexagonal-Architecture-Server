@@ -1,9 +1,9 @@
-package com.hexagonal.server.infra.persistence.converters.valueobjects;
+package com.hexagonal.server.shared.kernel.valueobjects.converters;
 
 import com.hexagonal.server.shared.kernel.valueobjects.Name;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
-// TODO MOVE TO SHARED KERNEL
+
 @Converter
 public class NameAttributeConverter implements AttributeConverter<Name, String> {
 
