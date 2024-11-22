@@ -28,20 +28,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.hexagonal.server.api</groupId>
-                <artifactId>application-service</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <dependency>
-            <groupId>com.hexagonal.server.api</groupId>
+            <groupId>com.hexagonal.server.application.service</groupId>
             <artifactId>application-service</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

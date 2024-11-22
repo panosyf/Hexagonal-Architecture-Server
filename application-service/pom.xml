@@ -11,7 +11,7 @@
         <relativePath>../shared-kernel/bom-collection/application-service-bom/pom.xml</relativePath>
     </parent>
 
-    <groupId>com.hexagonal.server.api</groupId>
+    <groupId>com.hexagonal.server.application.service</groupId>
     <artifactId>application-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
@@ -27,6 +27,8 @@
                 <groupId>com.hexagonal.server.core</groupId>
                 <artifactId>core</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
