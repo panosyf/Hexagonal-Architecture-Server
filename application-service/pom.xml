@@ -6,9 +6,9 @@
 
     <parent>
         <groupId>com.hexagonal.server.shared.kernel.bom.collection</groupId>
-        <artifactId>api-bom</artifactId>
+        <artifactId>application-service-bom</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../shared-kernel/bom-collection/api-bom/pom.xml</relativePath>
+        <relativePath>../shared-kernel/bom-collection/application-service-bom/pom.xml</relativePath>
     </parent>
 
     <groupId>com.hexagonal.server.api</groupId>

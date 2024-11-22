@@ -11,7 +11,7 @@
         <relativePath>../parent-bom/pom.xml</relativePath>
     </parent>
 
-    <artifactId>api-bom</artifactId>
+    <artifactId>application-service-bom</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
