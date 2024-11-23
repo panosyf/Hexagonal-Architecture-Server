@@ -1,8 +1,8 @@
 package com.hexagonal.server.infra.persistence.daos;
 
 import com.hexagonal.server.shared.kernel.common.dao.DaoEntity;
+import com.hexagonal.server.shared.kernel.common.infra.valueobjects.converters.*;
 import com.hexagonal.server.shared.kernel.common.valueobjects.*;
-import com.hexagonal.server.shared.kernel.common.valueobjects.converters.*;
 import jakarta.persistence.Id;
 import jakarta.persistence.*;
 

@@ -1,4 +1,4 @@
-package com.hexagonal.server.shared.kernel.common.valueobjects.converters;
+package com.hexagonal.server.shared.kernel.common.infra.valueobjects.converters;
 
 import com.hexagonal.server.shared.kernel.common.valueobjects.Id;
 import jakarta.persistence.AttributeConverter;
