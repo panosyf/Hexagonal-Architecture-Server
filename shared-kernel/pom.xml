@@ -12,6 +12,7 @@
     <modules>
         <module>bom-collection</module>
         <module>common</module>
+        <module>common-infra</module>
     </modules>
 
     <properties>
