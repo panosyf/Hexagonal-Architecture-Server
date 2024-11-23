@@ -4,9 +4,9 @@ import com.hexagonal.server.core.domain.domains.transaction.Transaction;
 import com.hexagonal.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.server.core.domain.model.enums.TransactionType;
 import com.hexagonal.server.core.domain.service.common.constants.Ids;
-import com.hexagonal.server.shared.kernel.valueobjects.Description;
-import com.hexagonal.server.shared.kernel.valueobjects.Id;
-import com.hexagonal.server.shared.kernel.valueobjects.Money;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Description;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Id;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
 
 import java.math.BigDecimal;
 

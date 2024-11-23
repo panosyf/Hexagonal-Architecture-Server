@@ -1,8 +1,8 @@
 package com.hexagonal.server.core.domain.service.ports.driven;
 
 import com.hexagonal.server.core.domain.domains.account.Account;
-import com.hexagonal.server.shared.kernel.valueobjects.Id;
-import com.hexagonal.server.shared.kernel.valueobjects.Money;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Id;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
 
 public interface AccountRepositoryPort {
 

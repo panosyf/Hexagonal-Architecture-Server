@@ -2,7 +2,7 @@ package com.hexagonal.server.core.domain.unit.domains;
 
 import com.hexagonal.server.core.domain.domains.transaction.Transaction;
 import com.hexagonal.server.core.domain.model.enums.TransactionStatusEnum;
-import com.hexagonal.server.shared.kernel.valueobjects.Timestamp;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Timestamp;
 import org.junit.jupiter.api.Test;
 
 import java.time.Instant;

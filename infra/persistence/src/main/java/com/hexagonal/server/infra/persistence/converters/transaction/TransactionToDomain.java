@@ -2,7 +2,7 @@ package com.hexagonal.server.infra.persistence.converters.transaction;
 
 import com.hexagonal.server.core.domain.domains.transaction.Transaction;
 import com.hexagonal.server.infra.persistence.daos.TransactionDao;
-import com.hexagonal.server.shared.kernel.valueobjects.Id;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Id;
 import org.springframework.core.convert.converter.Converter;
 
 public class TransactionToDomain implements Converter<TransactionDao, Transaction> {

@@ -1,6 +1,6 @@
 package com.hexagonal.server.core.domain.common.constants;
 
-import com.hexagonal.server.shared.kernel.valueobjects.Name;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Name;
 
 public class Names {
 

@@ -4,9 +4,9 @@ import com.hexagonal.server.application.service.model.requests.TransactionCreate
 import com.hexagonal.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.server.core.domain.model.enums.TransactionType;
 import com.hexagonal.server.core.domain.service.model.commands.CreateTransactionCommand;
-import com.hexagonal.server.shared.kernel.valueobjects.Description;
-import com.hexagonal.server.shared.kernel.valueobjects.Id;
-import com.hexagonal.server.shared.kernel.valueobjects.Money;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Description;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Id;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
 import org.springframework.core.convert.converter.Converter;
 
 public class TransactionCreateRequestToCommand implements Converter<TransactionCreateRequest, CreateTransactionCommand> {

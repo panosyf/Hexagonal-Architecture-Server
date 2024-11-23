@@ -10,7 +10,7 @@ import com.hexagonal.server.infra.common.constants.Endpoints;
 import com.hexagonal.server.infra.common.mocks.AccountMocks;
 import com.hexagonal.server.infra.common.mocks.TransactionCreateRequestMocks;
 import com.hexagonal.server.infra.config.AbstractIntegrationTest;
-import com.hexagonal.server.shared.kernel.valueobjects.Money;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

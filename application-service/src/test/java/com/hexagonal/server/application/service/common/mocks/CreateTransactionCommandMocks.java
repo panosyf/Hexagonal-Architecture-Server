@@ -4,8 +4,8 @@ import com.hexagonal.server.application.service.common.constants.Ids;
 import com.hexagonal.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.server.core.domain.model.enums.TransactionType;
 import com.hexagonal.server.core.domain.service.model.commands.CreateTransactionCommand;
-import com.hexagonal.server.shared.kernel.valueobjects.Description;
-import com.hexagonal.server.shared.kernel.valueobjects.Money;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Description;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
 
 import java.math.BigDecimal;
 

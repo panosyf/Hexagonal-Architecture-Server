@@ -13,11 +13,11 @@ import com.hexagonal.server.core.domain.service.model.commands.UpdateTransaction
 import com.hexagonal.server.core.domain.service.ports.driven.TransactionRepositoryPort;
 import com.hexagonal.server.core.domain.service.services.transaction.TransactionService;
 import com.hexagonal.server.core.domain.service.services.transaction.TransactionServiceImpl;
-import com.hexagonal.server.shared.kernel.exception.utils.ErrorUtils;
-import com.hexagonal.server.shared.kernel.valueobjects.Description;
-import com.hexagonal.server.shared.kernel.valueobjects.Id;
-import com.hexagonal.server.shared.kernel.valueobjects.Money;
-import com.hexagonal.server.shared.kernel.valueobjects.Timestamp;
+import com.hexagonal.server.shared.kernel.common.exception.utils.ErrorUtils;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Description;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Id;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Timestamp;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;

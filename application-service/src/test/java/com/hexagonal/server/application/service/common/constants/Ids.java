@@ -1,6 +1,6 @@
 package com.hexagonal.server.application.service.common.constants;
 
-import com.hexagonal.server.shared.kernel.valueobjects.Id;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Id;
 
 public class Ids {
 

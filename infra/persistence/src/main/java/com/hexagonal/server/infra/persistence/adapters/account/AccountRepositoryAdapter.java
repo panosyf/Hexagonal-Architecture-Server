@@ -4,8 +4,8 @@ import com.hexagonal.server.core.domain.domains.account.Account;
 import com.hexagonal.server.core.domain.exceptions.elementnotfound.AccountNotFoundException;
 import com.hexagonal.server.core.domain.service.ports.driven.AccountRepositoryPort;
 import com.hexagonal.server.infra.persistence.daos.AccountDao;
-import com.hexagonal.server.shared.kernel.valueobjects.Id;
-import com.hexagonal.server.shared.kernel.valueobjects.Money;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Id;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
 import jakarta.transaction.Transactional;
 import org.springframework.core.convert.ConversionService;
 

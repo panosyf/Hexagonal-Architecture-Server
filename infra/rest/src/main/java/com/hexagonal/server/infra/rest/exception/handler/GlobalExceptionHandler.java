@@ -1,6 +1,6 @@
 package com.hexagonal.server.infra.rest.exception.handler;
 
-import com.hexagonal.server.shared.kernel.exception.types.ElementNotFoundException;
+import com.hexagonal.server.shared.kernel.common.exception.types.ElementNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

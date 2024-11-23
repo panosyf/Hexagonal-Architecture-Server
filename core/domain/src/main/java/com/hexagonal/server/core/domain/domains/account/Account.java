@@ -1,8 +1,8 @@
 package com.hexagonal.server.core.domain.domains.account;
 
 import com.hexagonal.server.core.domain.exceptions.illegalargument.InsufficientBalanceException;
-import com.hexagonal.server.shared.kernel.domain.DomainEntity;
-import com.hexagonal.server.shared.kernel.valueobjects.*;
+import com.hexagonal.server.shared.kernel.common.domain.DomainEntity;
+import com.hexagonal.server.shared.kernel.common.valueobjects.*;
 
 import java.util.Objects;
 

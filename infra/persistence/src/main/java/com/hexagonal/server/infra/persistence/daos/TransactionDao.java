@@ -2,13 +2,13 @@ package com.hexagonal.server.infra.persistence.daos;
 
 import com.hexagonal.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.server.core.domain.model.enums.TransactionType;
-import com.hexagonal.server.shared.kernel.dao.DaoEntity;
-import com.hexagonal.server.shared.kernel.valueobjects.converters.DescriptionAttributeConverter;
-import com.hexagonal.server.shared.kernel.valueobjects.converters.MoneyAttributeConverter;
-import com.hexagonal.server.shared.kernel.valueobjects.converters.TimestampAttributeConverter;
-import com.hexagonal.server.shared.kernel.valueobjects.Description;
-import com.hexagonal.server.shared.kernel.valueobjects.Money;
-import com.hexagonal.server.shared.kernel.valueobjects.Timestamp;
+import com.hexagonal.server.shared.kernel.common.dao.DaoEntity;
+import com.hexagonal.server.shared.kernel.common.valueobjects.converters.DescriptionAttributeConverter;
+import com.hexagonal.server.shared.kernel.common.valueobjects.converters.MoneyAttributeConverter;
+import com.hexagonal.server.shared.kernel.common.valueobjects.converters.TimestampAttributeConverter;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Description;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Timestamp;
 import jakarta.persistence.*;
 
 import java.util.Objects;

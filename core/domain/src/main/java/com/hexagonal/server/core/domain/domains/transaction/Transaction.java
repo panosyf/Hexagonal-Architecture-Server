@@ -2,11 +2,11 @@ package com.hexagonal.server.core.domain.domains.transaction;
 
 import com.hexagonal.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.server.core.domain.model.enums.TransactionType;
-import com.hexagonal.server.shared.kernel.domain.DomainEntity;
-import com.hexagonal.server.shared.kernel.valueobjects.Description;
-import com.hexagonal.server.shared.kernel.valueobjects.Id;
-import com.hexagonal.server.shared.kernel.valueobjects.Money;
-import com.hexagonal.server.shared.kernel.valueobjects.Timestamp;
+import com.hexagonal.server.shared.kernel.common.domain.DomainEntity;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Description;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Id;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Timestamp;
 
 import java.util.Objects;
 

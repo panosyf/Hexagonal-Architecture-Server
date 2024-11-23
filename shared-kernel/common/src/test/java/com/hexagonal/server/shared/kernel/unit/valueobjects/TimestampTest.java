@@ -1,7 +1,7 @@
 package com.hexagonal.server.shared.kernel.unit.valueobjects;
 
-import com.hexagonal.server.shared.kernel.exception.constants.ErrorMessageConstants;
-import com.hexagonal.server.shared.kernel.valueobjects.Timestamp;
+import com.hexagonal.server.shared.kernel.common.exception.constants.ErrorMessageConstants;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Timestamp;
 import org.junit.jupiter.api.Test;
 
 import java.time.Instant;

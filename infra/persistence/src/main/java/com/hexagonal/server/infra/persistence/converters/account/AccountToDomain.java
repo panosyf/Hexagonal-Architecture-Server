@@ -2,7 +2,7 @@ package com.hexagonal.server.infra.persistence.converters.account;
 
 import com.hexagonal.server.core.domain.domains.account.Account;
 import com.hexagonal.server.infra.persistence.daos.AccountDao;
-import com.hexagonal.server.shared.kernel.valueobjects.Id;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Id;
 import org.springframework.core.convert.converter.Converter;
 
 public class AccountToDomain implements Converter<AccountDao, Account> {

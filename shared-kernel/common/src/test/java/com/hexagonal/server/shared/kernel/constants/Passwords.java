@@ -1,6 +1,6 @@
 package com.hexagonal.server.shared.kernel.constants;
 
-import com.hexagonal.server.shared.kernel.valueobjects.Password;
+import com.hexagonal.server.shared.kernel.common.valueobjects.Password;
 
 public class Passwords {
 
