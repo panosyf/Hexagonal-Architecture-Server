@@ -1,4 +1,4 @@
-package com.hexagonal.server.shared.kernel.unit.valueobjects;
+package com.hexagonal.server.shared.kernel.common.unit.valueobjects;
 
 import com.hexagonal.server.shared.kernel.common.exception.constants.ErrorMessageConstants;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Timestamp;
