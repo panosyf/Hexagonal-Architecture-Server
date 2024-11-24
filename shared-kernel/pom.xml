@@ -6,8 +6,8 @@
 
     <groupId>com.hexagonal.server</groupId>
     <artifactId>shared-kernel</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <version>0.0.1-SNAPSHOT</version>
 
     <modules>
         <module>bom-collection</module>

@@ -13,6 +13,7 @@
 
     <groupId>com.hexagonal.server.app.integration.test</groupId>
     <artifactId>integration-test-suite</artifactId>
+    <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>

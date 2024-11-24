@@ -6,8 +6,8 @@
 
     <groupId>com.hexagonal.server.shared.kernel.bom.collection</groupId>
     <artifactId>parent-bom</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <version>0.0.1-SNAPSHOT</version>
     <name>parent-bom</name>
     <description>Parent BOM for centralized dependency management</description>
 

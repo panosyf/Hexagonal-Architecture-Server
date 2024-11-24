@@ -13,6 +13,7 @@
 
     <groupId>com.hexagonal.server.application.service</groupId>
     <artifactId>application-service</artifactId>
+    <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
