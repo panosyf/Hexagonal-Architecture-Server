@@ -1,7 +1,5 @@
 package com.hexagonal.server.infra.config;
 
-import com.hexagonal.server.core.domain.service.ports.driven.AccountRepositoryPort;
-import com.hexagonal.server.core.domain.service.ports.driven.TransactionRepositoryPort;
 import com.hexagonal.server.infra.IntegrationTestSuite;
 import com.hexagonal.server.infra.config.annotations.EnableTestContainers;
 import com.hexagonal.server.infra.config.beans.IntegrationTestSuiteBeansConfig;
@@ -13,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
 // TODO MOVE TO SHARED KERNEL
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(
@@ -26,16 +25,7 @@ public abstract class AbstractIntegrationTest {
     @Autowired
     protected CrudTestClient crudTestClient;
 
-    @Autowired
-    protected AccountRepositoryPort accountRepositoryPort;
-
-    @Autowired
-    protected TransactionRepositoryPort transactionRepositoryPort;
-
     @AfterEach
-    void cleanupRepositories() {
-        accountRepositoryPort.deleteAll();
-        transactionRepositoryPort.deleteAll();
-    }
+    protected abstract void cleanupRepositories();
 
 }

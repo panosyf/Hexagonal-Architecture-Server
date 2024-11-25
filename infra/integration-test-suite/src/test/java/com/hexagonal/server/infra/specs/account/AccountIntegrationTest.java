@@ -5,12 +5,13 @@ import com.hexagonal.server.core.domain.model.enums.AccountCreationStatusEnum;
 import com.hexagonal.server.application.service.model.requests.AccountCreateRequest;
 import com.hexagonal.server.application.service.model.responses.AccountCreationResponse;
 import com.hexagonal.server.infra.config.AbstractIntegrationTest;
+import com.hexagonal.server.infra.config.testcontainers.AppIntegrationTest;
 import org.junit.jupiter.api.Test;
 
 import static com.hexagonal.server.infra.common.mocks.AccountCreateRequestMocks.generateAccountCreateRequest;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class AccountIntegrationTest extends AbstractIntegrationTest {
+class AccountIntegrationTest extends AppIntegrationTest {
 
     @Test
     void userCreatesAccount() {

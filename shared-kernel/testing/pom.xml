@@ -4,18 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.hexagonal.server</groupId>
-    <artifactId>shared-kernel</artifactId>
-    <packaging>pom</packaging>
+    <groupId>com.hexagonal.server.shared.kernel</groupId>
+    <artifactId>testing</artifactId>
+    <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
-
-    <modules>
-        <module>bom-collection</module>
-        <module>common</module>
-        <module>common-infra</module>
-        <module>common-migrations</module>
-        <module>testing</module>
-    </modules>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
