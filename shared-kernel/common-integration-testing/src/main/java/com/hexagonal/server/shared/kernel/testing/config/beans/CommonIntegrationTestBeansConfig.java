@@ -8,11 +8,11 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import com.hexagonal.server.shared.kernel.testing.config.crudtestclient.CrudTestClient;
 
 @TestConfiguration
-public class IntegrationTestSuiteBeansConfig {
+public class CommonIntegrationTestBeansConfig {
 
     private final WebTestClient webTestClient;
 
-    public IntegrationTestSuiteBeansConfig(WebTestClient webTestClient) {
+    public CommonIntegrationTestBeansConfig(WebTestClient webTestClient) {
         this.webTestClient = webTestClient;
     }
 

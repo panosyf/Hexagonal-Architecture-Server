@@ -9,16 +9,15 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.hexagonal.server.shared.kernel.testing.config.annotations.EnableTestContainers;
-import com.hexagonal.server.shared.kernel.testing.config.beans.IntegrationTestSuiteBeansConfig;
+import com.hexagonal.server.shared.kernel.testing.config.beans.CommonIntegrationTestBeansConfig;
 import com.hexagonal.server.shared.kernel.testing.config.crudtestclient.CrudTestClient;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(
-//        classes = IntegrationTestSuite.class,
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 @EnableTestContainers
-@Import(IntegrationTestSuiteBeansConfig.class)
+@Import(CommonIntegrationTestBeansConfig.class)
 public abstract class AbstractIntegrationTest {
 
     @Autowired
