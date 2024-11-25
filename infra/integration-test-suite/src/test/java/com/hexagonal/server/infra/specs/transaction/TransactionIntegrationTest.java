@@ -38,7 +38,7 @@ public class TransactionIntegrationTest extends AppIntegrationTest {
                         accountDebtor.getId().getValue(),
                         accountBeneficiary.getId().getValue());
         // when
-        TransactionCreationResponse transactionCreationResponse = crudTestClient.post(Endpoints.CREATE_TRANSACTION, transactionCreateRequest)
+        TransactionCreationResponse transactionCreationResponse = requestTestClient.post(Endpoints.CREATE_TRANSACTION, transactionCreateRequest)
                 .expectStatus().isCreated()
                 .expectBody(TransactionCreationResponse.class)
                 .returnResult()
@@ -49,7 +49,7 @@ public class TransactionIntegrationTest extends AppIntegrationTest {
         assertThat(account.getBalance()).isEqualTo(BALANCE_15);
         // when
         TransactionUpdateRequest transactionUpdateRequest = generateTransactionUpdateRequest(COMPLETED);
-        crudTestClient.put(
+        requestTestClient.put(
                         Endpoints.UPDATE_TRANSACTION.replace("{id}", transactionCreationResponse.id()),
                         transactionUpdateRequest)
                 .expectStatus().isOk()

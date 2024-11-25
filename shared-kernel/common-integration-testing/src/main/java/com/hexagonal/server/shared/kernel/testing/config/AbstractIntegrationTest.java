@@ -10,7 +10,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.hexagonal.server.shared.kernel.testing.config.annotations.EnableTestContainers;
 import com.hexagonal.server.shared.kernel.testing.config.beans.CommonIntegrationTestBeansConfig;
-import com.hexagonal.server.shared.kernel.testing.config.crudtestclient.CrudTestClient;
+import com.hexagonal.server.shared.kernel.testing.config.requesttestclient.RequestTestClient;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(
@@ -21,7 +21,7 @@ import com.hexagonal.server.shared.kernel.testing.config.crudtestclient.CrudTest
 public abstract class AbstractIntegrationTest {
 
     @Autowired
-    protected CrudTestClient crudTestClient;
+    protected RequestTestClient requestTestClient;
 
     @AfterEach
     protected abstract void cleanupRepositories();

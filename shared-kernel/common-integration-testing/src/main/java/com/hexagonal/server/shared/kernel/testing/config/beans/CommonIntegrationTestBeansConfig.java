@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
-import com.hexagonal.server.shared.kernel.testing.config.crudtestclient.CrudTestClient;
+import com.hexagonal.server.shared.kernel.testing.config.requesttestclient.RequestTestClient;
 
 @TestConfiguration
 public class CommonIntegrationTestBeansConfig {
@@ -18,8 +18,8 @@ public class CommonIntegrationTestBeansConfig {
 
     @Lazy
     @Bean
-    public CrudTestClient crudTestClient() {
-        return new CrudTestClient(webTestClient);
+    public RequestTestClient crudTestClient() {
+        return new RequestTestClient(webTestClient);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.hexagonal.server.shared.kernel.testing.config.crudtestclient;
+package com.hexagonal.server.shared.kernel.testing.config.requesttestclient;
 
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpHeaders;
@@ -12,7 +12,7 @@ import com.hexagonal.server.shared.kernel.testing.common.helpers.EndpointHelper;
 
 import static com.hexagonal.server.shared.kernel.testing.common.constants.Endpoints.LOCALHOST_URL;
 
-public class CrudTestClient {
+public class RequestTestClient {
 
     private final WebTestClient webTestClient;
     private final String url = LOCALHOST_URL;
@@ -20,7 +20,7 @@ public class CrudTestClient {
     @LocalServerPort
     private int port;
 
-    public CrudTestClient(WebTestClient webTestClient) {
+    public RequestTestClient(WebTestClient webTestClient) {
         this.webTestClient = webTestClient;
     }
 

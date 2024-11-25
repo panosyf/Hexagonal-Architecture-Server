@@ -17,7 +17,7 @@ class AccountIntegrationTest extends AppIntegrationTest {
         //given
         AccountCreateRequest accountCreateRequest = generateAccountCreateRequest();
         //when
-        AccountCreationResponse accountCreationResponse = crudTestClient.post(Endpoints.CREATE_ACCOUNT, accountCreateRequest)
+        AccountCreationResponse accountCreationResponse = requestTestClient.post(Endpoints.CREATE_ACCOUNT, accountCreateRequest)
                 .expectStatus().isCreated()
                 .expectBody(AccountCreationResponse.class)
                 .returnResult()
