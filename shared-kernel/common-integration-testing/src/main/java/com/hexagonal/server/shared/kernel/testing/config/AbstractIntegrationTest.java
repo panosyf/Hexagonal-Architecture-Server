@@ -1,9 +1,5 @@
-package com.hexagonal.server.infra.config;
+package com.hexagonal.server.shared.kernel.testing.config;
 
-import com.hexagonal.server.infra.IntegrationTestSuite;
-import com.hexagonal.server.infra.config.annotations.EnableTestContainers;
-import com.hexagonal.server.infra.config.beans.IntegrationTestSuiteBeansConfig;
-import com.hexagonal.server.infra.config.crudtestclient.CrudTestClient;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +8,13 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-// TODO MOVE TO SHARED KERNEL
+import com.hexagonal.server.shared.kernel.testing.config.annotations.EnableTestContainers;
+import com.hexagonal.server.shared.kernel.testing.config.beans.IntegrationTestSuiteBeansConfig;
+import com.hexagonal.server.shared.kernel.testing.config.crudtestclient.CrudTestClient;
+
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(
-        classes = IntegrationTestSuite.class,
+//        classes = IntegrationTestSuite.class,
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 @EnableTestContainers

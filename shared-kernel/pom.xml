@@ -14,7 +14,7 @@
         <module>common</module>
         <module>common-infra</module>
         <module>common-migrations</module>
-        <module>testing</module>
+        <module>common-integration-testing</module>
     </modules>
 
     <properties>

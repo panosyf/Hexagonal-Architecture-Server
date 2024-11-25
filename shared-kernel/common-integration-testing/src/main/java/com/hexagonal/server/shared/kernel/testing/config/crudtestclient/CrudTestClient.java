@@ -1,4 +1,4 @@
-package com.hexagonal.server.infra.config.crudtestclient;
+package com.hexagonal.server.shared.kernel.testing.config.crudtestclient;
 
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpHeaders;
@@ -8,9 +8,10 @@ import org.springframework.test.web.reactive.server.WebTestClient.RequestBodySpe
 import org.springframework.test.web.reactive.server.WebTestClient.ResponseSpec;
 import reactor.core.publisher.Mono;
 
-import static com.hexagonal.server.infra.common.constants.Endpoints.LOCALHOST_URL;
-import static com.hexagonal.server.infra.common.helpers.EndpointHelper.generateUri;
-// TODO MOVE TO SHARED KERNEL
+import com.hexagonal.server.shared.kernel.testing.common.helpers.EndpointHelper;
+
+import static com.hexagonal.server.shared.kernel.testing.common.constants.Endpoints.LOCALHOST_URL;
+
 public class CrudTestClient {
 
     private final WebTestClient webTestClient;
@@ -75,7 +76,7 @@ public class CrudTestClient {
     private RequestBodySpec generateCommonRequestBodySpec(HttpMethod httpMethod, String url, int port, String uri, HttpHeaders httpHeaders) {
         return webTestClient
                 .method(httpMethod)
-                .uri(generateUri(url, port, uri))
+                .uri(EndpointHelper.generateUri(url, port, uri))
                 .headers(headers -> headers.addAll(httpHeaders));
     }
 

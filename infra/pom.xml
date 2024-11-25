@@ -40,6 +40,12 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
+            <groupId>com.hexagonal.server.shared.kernel</groupId>
+            <artifactId>common-integration-testing</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>com.hexagonal.server.application.service</groupId>
             <artifactId>application-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>

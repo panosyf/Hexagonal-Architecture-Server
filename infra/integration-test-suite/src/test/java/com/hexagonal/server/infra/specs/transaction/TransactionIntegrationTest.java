@@ -9,7 +9,7 @@ import com.hexagonal.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.server.infra.common.constants.Endpoints;
 import com.hexagonal.server.infra.common.mocks.AccountMocks;
 import com.hexagonal.server.infra.common.mocks.TransactionCreateRequestMocks;
-import com.hexagonal.server.infra.config.testcontainers.AppIntegrationTest;
+import com.hexagonal.server.infra.config.AppIntegrationTest;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
 import org.junit.jupiter.api.Test;
 

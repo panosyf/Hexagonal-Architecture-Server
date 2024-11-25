@@ -1,10 +1,12 @@
-package com.hexagonal.server.infra.config.testcontainers;
+package com.hexagonal.server.infra.config;
 
 import com.hexagonal.server.core.domain.service.ports.driven.AccountRepositoryPort;
 import com.hexagonal.server.core.domain.service.ports.driven.TransactionRepositoryPort;
-import com.hexagonal.server.infra.config.AbstractIntegrationTest;
+
 import org.junit.jupiter.api.AfterEach;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.hexagonal.server.shared.kernel.testing.config.AbstractIntegrationTest;
 
 public class AppIntegrationTest extends AbstractIntegrationTest {
 

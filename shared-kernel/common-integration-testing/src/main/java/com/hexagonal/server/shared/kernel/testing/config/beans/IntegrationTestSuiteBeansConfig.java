@@ -1,11 +1,12 @@
-package com.hexagonal.server.infra.config.beans;
+package com.hexagonal.server.shared.kernel.testing.config.beans;
 
-import com.hexagonal.server.infra.config.crudtestclient.CrudTestClient;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.test.web.reactive.server.WebTestClient;
-// TODO MOVE TO SHARED KERNEL
+
+import com.hexagonal.server.shared.kernel.testing.config.crudtestclient.CrudTestClient;
+
 @TestConfiguration
 public class IntegrationTestSuiteBeansConfig {
 
