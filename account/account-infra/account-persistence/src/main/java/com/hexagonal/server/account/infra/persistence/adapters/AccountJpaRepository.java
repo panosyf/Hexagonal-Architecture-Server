@@ -1,4 +1,4 @@
-package com.hexagonal.server.account.infra.persistence.adapters.account;
+package com.hexagonal.server.account.infra.persistence.adapters;
 
 import com.hexagonal.server.account.infra.persistence.daos.AccountDao;
 import org.springframework.data.jpa.repository.JpaRepository;

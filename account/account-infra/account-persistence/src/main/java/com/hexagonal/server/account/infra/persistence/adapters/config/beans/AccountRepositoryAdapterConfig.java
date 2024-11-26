@@ -1,8 +1,8 @@
-package com.hexagonal.server.account.infra.persistence.beans.adapters.account;
+package com.hexagonal.server.account.infra.persistence.adapters.config.beans;
 
 import com.hexagonal.server.account.core.domain.service.driven.AccountRepositoryPort;
-import com.hexagonal.server.account.infra.persistence.adapters.account.AccountJpaRepository;
-import com.hexagonal.server.account.infra.persistence.adapters.account.AccountRepositoryAdapter;
+import com.hexagonal.server.account.infra.persistence.adapters.AccountJpaRepository;
+import com.hexagonal.server.account.infra.persistence.adapters.AccountRepositoryAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.ConversionService;

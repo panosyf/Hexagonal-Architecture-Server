@@ -1,4 +1,4 @@
-package com.hexagonal.server.account.infra.persistence.converters.account;
+package com.hexagonal.server.account.infra.persistence.converters;
 
 import com.hexagonal.server.account.core.domain.domains.Account;
 import com.hexagonal.server.account.infra.persistence.daos.AccountDao;

@@ -1,4 +1,4 @@
-package com.hexagonal.server.account.infra.persistence.adapters.account;
+package com.hexagonal.server.account.infra.persistence.adapters;
 
 import com.hexagonal.server.account.core.domain.domains.Account;
 import com.hexagonal.server.account.core.domain.exceptions.elementnotfound.AccountNotFoundException;

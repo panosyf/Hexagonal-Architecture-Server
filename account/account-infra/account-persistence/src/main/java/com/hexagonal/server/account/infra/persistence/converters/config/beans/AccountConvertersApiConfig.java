@@ -1,7 +1,7 @@
-package com.hexagonal.server.account.infra.persistence.beans.converters.account;
+package com.hexagonal.server.account.infra.persistence.converters.config.beans;
 
-import com.hexagonal.server.account.infra.persistence.converters.account.AccountToDomain;
-import com.hexagonal.server.account.infra.persistence.converters.account.AccountToEntity;
+import com.hexagonal.server.account.infra.persistence.converters.AccountToDomain;
+import com.hexagonal.server.account.infra.persistence.converters.AccountToEntity;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
