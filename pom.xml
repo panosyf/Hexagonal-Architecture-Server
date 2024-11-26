@@ -17,6 +17,7 @@
         <module>app</module>
         <module>shared-kernel</module>
         <module>account</module>
+        <module>transaction</module>
     </modules>
 
 </project>
