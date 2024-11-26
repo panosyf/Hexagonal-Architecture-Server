@@ -1,8 +1,8 @@
-package com.hexagonal.server.account.application.service.beans.apis.account;
+package com.hexagonal.server.account.application.service.apis.config.beans;
 
-import com.hexagonal.server.account.application.service.apis.account.AccountApi;
-import com.hexagonal.server.account.application.service.apis.account.AccountApiImpl;
-import com.hexagonal.server.account.core.domain.service.services.account.AccountService;
+import com.hexagonal.server.account.application.service.apis.AccountApi;
+import com.hexagonal.server.account.application.service.apis.AccountApiImpl;
+import com.hexagonal.server.account.core.domain.service.services.AccountService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.ConversionService;

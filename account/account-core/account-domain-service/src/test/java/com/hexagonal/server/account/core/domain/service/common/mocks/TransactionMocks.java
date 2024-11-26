@@ -1,8 +1,6 @@
 package com.hexagonal.server.account.core.domain.service.common.mocks;
 
 import com.hexagonal.server.account.core.domain.domains.transaction.Transaction;
-import com.hexagonal.server.account.core.domain.enums.TransactionStatusEnum;
-import com.hexagonal.server.account.core.domain.enums.TransactionType;
 import com.hexagonal.server.account.core.domain.service.common.constants.Ids;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Description;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Id;

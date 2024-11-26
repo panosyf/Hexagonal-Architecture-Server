@@ -1,7 +1,6 @@
 package com.hexagonal.server.account.core.domain.domains;
 
 
-import com.hexagonal.server.account.core.domain.domains.account.Account;
 import com.hexagonal.server.account.core.domain.exceptions.illegalargument.InsufficientBalanceException;
 import com.hexagonal.server.account.core.domain.exceptions.utils.messages.ErrorMessageConstants;
 import com.hexagonal.server.shared.kernel.common.exception.utils.ErrorUtils;

@@ -1,7 +1,6 @@
 package com.hexagonal.server.account.infra.common.mocks;
 
 import com.hexagonal.server.account.application.service.model.requests.TransactionCreateRequest;
-import com.hexagonal.server.account.core.domain.enums.TransactionType;
 import com.hexagonal.server.account.infra.common.constants.Ids;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Description;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Money;

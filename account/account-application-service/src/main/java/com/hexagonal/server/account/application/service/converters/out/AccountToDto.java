@@ -1,7 +1,7 @@
 package com.hexagonal.server.account.application.service.converters.out;
 
 import com.hexagonal.server.account.application.service.model.dtos.AccountDto;
-import com.hexagonal.server.account.core.domain.domains.account.Account;
+import com.hexagonal.server.account.core.domain.domains.Account;
 import org.springframework.core.convert.converter.Converter;
 
 public class AccountToDto implements Converter<Account, AccountDto> {

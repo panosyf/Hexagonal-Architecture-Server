@@ -1,6 +1,5 @@
 package com.hexagonal.server.account.core.domain.service.common.mocks;
 
-import com.hexagonal.server.account.core.domain.service.commands.GetTransactionCommand;
 import com.hexagonal.server.account.core.domain.service.common.constants.Ids;
 
 public class GetTransactionCommandMocks {

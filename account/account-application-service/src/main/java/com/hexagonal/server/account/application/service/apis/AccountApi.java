@@ -1,4 +1,4 @@
-package com.hexagonal.server.account.application.service.apis.account;
+package com.hexagonal.server.account.application.service.apis;
 
 import com.hexagonal.server.account.application.service.model.requests.AccountCreateRequest;
 import com.hexagonal.server.account.application.service.model.responses.AccountCreationResponse;

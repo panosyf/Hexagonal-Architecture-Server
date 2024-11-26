@@ -1,6 +1,5 @@
 package com.hexagonal.server.account.infra.persistence.adapters.transaction;
 
-import com.hexagonal.server.account.core.domain.enums.TransactionStatusEnum;
 import com.hexagonal.server.account.infra.persistence.daos.TransactionDao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

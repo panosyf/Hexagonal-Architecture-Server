@@ -1,4 +1,4 @@
-package com.hexagonal.server.account.application.service.beans.converters.account;
+package com.hexagonal.server.account.application.service.converters.config.beans;
 
 import com.hexagonal.server.account.application.service.converters.in.AccountCreateRequestToCommand;
 import com.hexagonal.server.account.application.service.converters.out.AccountToDto;

@@ -1,6 +1,6 @@
 package com.hexagonal.server.account.core.domain.service.driven;
 
-import com.hexagonal.server.account.core.domain.domains.account.Account;
+import com.hexagonal.server.account.core.domain.domains.Account;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Id;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
 

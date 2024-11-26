@@ -1,15 +1,8 @@
 package com.hexagonal.server.account.core.domain.service.services.transaction;
 
 import com.hexagonal.server.account.core.domain.domains.transaction.Transaction;
-import com.hexagonal.server.account.core.domain.enums.TransactionStatusEnum;
-import com.hexagonal.server.account.core.domain.enums.TransactionType;
-import com.hexagonal.server.account.core.domain.exceptions.elementnotfound.TransactionNotFoundException;
 import com.hexagonal.server.account.core.domain.exceptions.utils.messages.ErrorMessageConstants;
-import com.hexagonal.server.account.core.domain.service.commands.CreateTransactionCommand;
-import com.hexagonal.server.account.core.domain.service.commands.GetTransactionCommand;
-import com.hexagonal.server.account.core.domain.service.commands.UpdateTransactionCommand;
 import com.hexagonal.server.account.core.domain.service.common.constants.Ids;
-import com.hexagonal.server.account.core.domain.service.driven.TransactionRepositoryPort;
 import com.hexagonal.server.shared.kernel.common.exception.utils.ErrorUtils;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Description;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Id;

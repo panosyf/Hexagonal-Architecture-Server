@@ -1,16 +1,16 @@
-package com.hexagonal.server.account.application.service.apis.account;
+package com.hexagonal.server.account.application.service.apis;
 
 import com.hexagonal.server.account.application.service.model.dtos.AccountDto;
 import com.hexagonal.server.account.application.service.model.requests.AccountCreateRequest;
 import com.hexagonal.server.account.application.service.model.responses.AccountCreationResponse;
 import com.hexagonal.server.account.application.service.model.responses.AccountResponse;
-import com.hexagonal.server.account.core.domain.domains.account.Account;
+import com.hexagonal.server.account.core.domain.domains.Account;
 import com.hexagonal.server.account.core.domain.enums.AccountCreationStatusEnum;
 import com.hexagonal.server.account.core.domain.service.commands.CreateAccountCommand;
 import com.hexagonal.server.account.core.domain.service.commands.DecreaseBalanceCommand;
 import com.hexagonal.server.account.core.domain.service.commands.GetAccountCommand;
 import com.hexagonal.server.account.core.domain.service.commands.IncreaseBalanceCommand;
-import com.hexagonal.server.account.core.domain.service.services.account.AccountService;
+import com.hexagonal.server.account.core.domain.service.services.AccountService;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Id;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
 import org.springframework.core.convert.ConversionService;
