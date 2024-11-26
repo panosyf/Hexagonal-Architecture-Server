@@ -16,6 +16,7 @@
         <module>infra</module>
         <module>app</module>
         <module>shared-kernel</module>
+        <module>account</module>
     </modules>
 
 </project>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.hexagonal.server.shared.kernel.bom.collection</groupId>
+        <artifactId>infra-bom</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../shared-kernel/bom-collection/infra-bom/pom.xml</relativePath>
+    </parent>
+
+    <groupId>com.hexagonal.server.account.infra</groupId>
+    <artifactId>account-infra</artifactId>
+    <packaging>pom</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <modules>
+        <module>account-persistence</module>
+        <module>account-rest</module>
+        <module>account-integration-test</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.hexagonal.server.shared.kernel</groupId>
+            <artifactId>common-infra</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hexagonal.server.shared.kernel</groupId>
+            <artifactId>common-migrations</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hexagonal.server.shared.kernel</groupId>
+            <artifactId>common-integration-testing</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.hexagonal.server.account.application.service</groupId>
+            <artifactId>account-application-service</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+</project>
