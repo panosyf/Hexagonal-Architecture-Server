@@ -8,12 +8,12 @@ import com.hexagonal.server.transaction.application.service.converters.out.Trans
 import com.hexagonal.server.transaction.application.service.model.requests.TransactionCreateRequest;
 import com.hexagonal.server.transaction.application.service.model.requests.TransactionUpdateRequest;
 import com.hexagonal.server.transaction.application.service.model.responses.TransactionCreationResponse;
-import com.hexagonal.server.transaction.core.domain.domains.transaction.Transaction;
+import com.hexagonal.server.transaction.core.domain.domains.Transaction;
 import com.hexagonal.server.transaction.core.domain.enums.TransactionStatusEnum;
 import com.hexagonal.server.transaction.core.domain.exceptions.illegalargument.InsufficientBalanceException;
 import com.hexagonal.server.transaction.core.domain.service.commands.CreateTransactionCommand;
 import com.hexagonal.server.transaction.core.domain.service.commands.UpdateTransactionCommand;
-import com.hexagonal.server.transaction.core.domain.service.services.transaction.TransactionService;
+import com.hexagonal.server.transaction.core.domain.service.services.TransactionService;
 import com.hexagonal.server.transaction.application.service.common.constants.Ids;
 import com.hexagonal.server.transaction.application.service.common.mocks.TransactionCreateRequestMocks;
 import com.hexagonal.server.transaction.application.service.common.mocks.TransactionMocks;

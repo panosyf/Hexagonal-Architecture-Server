@@ -1,7 +1,7 @@
 package com.hexagonal.server.transaction.application.service.converters.out;
 
 import com.hexagonal.server.transaction.application.service.model.dtos.TransactionDto;
-import com.hexagonal.server.transaction.core.domain.domains.transaction.Transaction;
+import com.hexagonal.server.transaction.core.domain.domains.Transaction;
 import org.springframework.core.convert.converter.Converter;
 
 public class TransactionToDto implements Converter<Transaction, TransactionDto> {

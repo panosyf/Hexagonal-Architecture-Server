@@ -2,7 +2,6 @@ package com.hexagonal.server.transaction.infra.specs.account;
 
 import com.hexagonal.server.transaction.application.service.model.requests.AccountCreateRequest;
 import com.hexagonal.server.transaction.application.service.model.responses.AccountCreationResponse;
-import com.hexagonal.server.transaction.core.domain.enums.AccountCreationStatusEnum;
 import com.hexagonal.server.transaction.infra.common.constants.Endpoints;
 import com.hexagonal.server.transaction.infra.config.AppIntegrationTest;
 import org.junit.jupiter.api.Test;

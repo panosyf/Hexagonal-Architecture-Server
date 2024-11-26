@@ -1,4 +1,4 @@
-package com.hexagonal.server.transaction.core.domain.domains.transaction;
+package com.hexagonal.server.transaction.core.domain.domains;
 
 import com.hexagonal.server.shared.kernel.common.domain.DomainEntity;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Description;

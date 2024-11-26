@@ -4,7 +4,7 @@ import com.hexagonal.server.shared.kernel.common.valueobjects.Description;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Id;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
 import com.hexagonal.server.transaction.core.domain.common.constants.Ids;
-import com.hexagonal.server.transaction.core.domain.domains.transaction.Transaction;
+import com.hexagonal.server.transaction.core.domain.domains.Transaction;
 import com.hexagonal.server.transaction.core.domain.enums.TransactionStatusEnum;
 import com.hexagonal.server.transaction.core.domain.enums.TransactionType;
 

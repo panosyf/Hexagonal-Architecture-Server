@@ -12,11 +12,6 @@ import com.hexagonal.server.transaction.application.service.model.requests.Accou
 import com.hexagonal.server.transaction.application.service.model.responses.AccountCreationResponse;
 import com.hexagonal.server.transaction.application.service.model.responses.AccountResponse;
 import com.hexagonal.server.transaction.core.domain.domains.account.Account;
-import com.hexagonal.server.transaction.core.domain.enums.AccountCreationStatusEnum;
-import com.hexagonal.server.transaction.core.domain.service.commands.CreateAccountCommand;
-import com.hexagonal.server.transaction.core.domain.service.commands.DecreaseBalanceCommand;
-import com.hexagonal.server.transaction.core.domain.service.commands.GetAccountCommand;
-import com.hexagonal.server.transaction.core.domain.service.commands.IncreaseBalanceCommand;
 import com.hexagonal.server.transaction.core.domain.service.services.account.AccountService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

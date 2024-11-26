@@ -1,8 +1,8 @@
 package com.hexagonal.server.transaction.application.service.beans.services.transaction;
 
 import com.hexagonal.server.transaction.core.domain.service.driven.TransactionRepositoryPort;
-import com.hexagonal.server.transaction.core.domain.service.services.transaction.TransactionService;
-import com.hexagonal.server.transaction.core.domain.service.services.transaction.TransactionServiceImpl;
+import com.hexagonal.server.transaction.core.domain.service.services.TransactionService;
+import com.hexagonal.server.transaction.core.domain.service.services.TransactionServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

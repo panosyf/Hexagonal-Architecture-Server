@@ -5,7 +5,6 @@ import com.hexagonal.server.shared.kernel.common.valueobjects.Name;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Password;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Username;
 import com.hexagonal.server.transaction.application.service.model.requests.AccountCreateRequest;
-import com.hexagonal.server.transaction.core.domain.service.commands.CreateAccountCommand;
 import org.springframework.core.convert.converter.Converter;
 
 public class AccountCreateRequestToCommand implements Converter<AccountCreateRequest, CreateAccountCommand> {

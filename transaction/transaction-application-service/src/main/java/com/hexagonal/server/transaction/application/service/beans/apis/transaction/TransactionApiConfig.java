@@ -1,6 +1,6 @@
 package com.hexagonal.server.transaction.application.service.beans.apis.transaction;
 
-import com.hexagonal.server.transaction.core.domain.service.services.transaction.TransactionService;
+import com.hexagonal.server.transaction.core.domain.service.services.TransactionService;
 import com.hexagonal.server.transaction.application.service.apis.account.AccountApi;
 import com.hexagonal.server.transaction.application.service.apis.transaction.TransactionApi;
 import com.hexagonal.server.transaction.application.service.apis.transaction.TransactionApiImpl;

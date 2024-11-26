@@ -1,6 +1,6 @@
 package com.hexagonal.server.transaction.infra.persistence.converters.transaction;
 
-import com.hexagonal.server.transaction.core.domain.domains.transaction.Transaction;
+import com.hexagonal.server.transaction.core.domain.domains.Transaction;
 import com.hexagonal.server.transaction.infra.persistence.daos.TransactionDao;
 import org.springframework.core.convert.converter.Converter;
 
