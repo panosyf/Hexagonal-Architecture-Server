@@ -1,4 +1,4 @@
-package com.hexagonal.server.transaction.application.service.apis;
+package com.hexagonal.server.transaction.application.service.apis.external;
 
 
 import java.math.BigDecimal;

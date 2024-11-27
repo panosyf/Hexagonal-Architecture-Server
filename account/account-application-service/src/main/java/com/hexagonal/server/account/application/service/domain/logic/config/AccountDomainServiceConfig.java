@@ -1,4 +1,4 @@
-package com.hexagonal.server.account.application.service.apis.config;
+package com.hexagonal.server.account.application.service.domain.logic.config;
 
 import com.hexagonal.server.account.core.domain.service.driven.AccountRepositoryPort;
 import com.hexagonal.server.account.core.domain.service.logic.AccountDomainService;

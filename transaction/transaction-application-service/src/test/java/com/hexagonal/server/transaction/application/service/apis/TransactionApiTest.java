@@ -1,5 +1,8 @@
 package com.hexagonal.server.transaction.application.service.apis;
 
+import com.hexagonal.server.transaction.application.service.apis.exposed.TransactionApi;
+import com.hexagonal.server.transaction.application.service.apis.exposed.TransactionApiImpl;
+import com.hexagonal.server.transaction.application.service.apis.external.AccountApi;
 import com.hexagonal.server.transaction.application.service.converters.in.TransactionCreateRequestToCommand;
 import com.hexagonal.server.transaction.application.service.converters.out.TransactionToDto;
 import com.hexagonal.server.transaction.application.service.model.requests.TransactionCreateRequest;

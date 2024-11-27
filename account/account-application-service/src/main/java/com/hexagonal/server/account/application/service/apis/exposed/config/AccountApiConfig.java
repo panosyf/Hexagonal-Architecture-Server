@@ -1,7 +1,7 @@
-package com.hexagonal.server.account.application.service.apis.config;
+package com.hexagonal.server.account.application.service.apis.exposed.config;
 
-import com.hexagonal.server.account.application.service.apis.AccountApi;
-import com.hexagonal.server.account.application.service.apis.AccountApiImpl;
+import com.hexagonal.server.account.application.service.apis.exposed.AccountApi;
+import com.hexagonal.server.account.application.service.apis.exposed.AccountApiImpl;
 import com.hexagonal.server.account.core.domain.service.logic.AccountDomainService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

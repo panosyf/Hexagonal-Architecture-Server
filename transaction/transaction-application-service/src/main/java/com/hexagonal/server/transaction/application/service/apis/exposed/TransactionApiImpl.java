@@ -1,7 +1,8 @@
-package com.hexagonal.server.transaction.application.service.apis;
+package com.hexagonal.server.transaction.application.service.apis.exposed;
 
 import com.hexagonal.server.shared.kernel.common.valueobjects.Id;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
+import com.hexagonal.server.transaction.application.service.apis.external.AccountApi;
 import com.hexagonal.server.transaction.application.service.model.dtos.TransactionDto;
 import com.hexagonal.server.transaction.application.service.model.requests.TransactionCreateRequest;
 import com.hexagonal.server.transaction.application.service.model.requests.TransactionUpdateRequest;

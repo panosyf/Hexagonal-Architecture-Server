@@ -1,4 +1,4 @@
-package com.hexagonal.server.transaction.application.service.apis;
+package com.hexagonal.server.transaction.application.service.apis.exposed;
 
 import com.hexagonal.server.transaction.application.service.model.requests.TransactionCreateRequest;
 import com.hexagonal.server.transaction.application.service.model.requests.TransactionUpdateRequest;

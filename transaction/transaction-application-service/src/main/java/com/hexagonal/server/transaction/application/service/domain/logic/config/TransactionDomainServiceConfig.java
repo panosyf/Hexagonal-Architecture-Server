@@ -1,4 +1,4 @@
-package com.hexagonal.server.transaction.application.service.apis.config;
+package com.hexagonal.server.transaction.application.service.domain.logic.config;
 
 import com.hexagonal.server.transaction.core.domain.service.driven.TransactionRepositoryPort;
 import com.hexagonal.server.transaction.core.domain.service.logic.TransactionDomainService;

@@ -1,6 +1,6 @@
 package com.hexagonal.server.account.infra.rest.controllers;
 
-import com.hexagonal.server.account.application.service.apis.AccountApi;
+import com.hexagonal.server.account.application.service.apis.exposed.AccountApi;
 import com.hexagonal.server.account.application.service.model.requests.AccountCreateRequest;
 import com.hexagonal.server.account.application.service.model.responses.AccountCreationResponse;
 import com.hexagonal.server.account.application.service.model.responses.AccountResponse;
