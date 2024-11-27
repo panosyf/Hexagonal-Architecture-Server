@@ -1,6 +1,6 @@
 package com.hexagonal.server.transaction.infra.rest.controllers;
 
-import com.hexagonal.server.transaction.application.service.apis.transaction.TransactionApi;
+import com.hexagonal.server.transaction.application.service.apis.TransactionApi;
 import com.hexagonal.server.transaction.application.service.model.requests.TransactionCreateRequest;
 import com.hexagonal.server.transaction.application.service.model.requests.TransactionUpdateRequest;
 import com.hexagonal.server.transaction.application.service.model.responses.TransactionCreationResponse;

@@ -4,7 +4,6 @@ import com.hexagonal.server.transaction.application.service.common.constants.Ema
 import com.hexagonal.server.transaction.application.service.common.constants.Names;
 import com.hexagonal.server.transaction.application.service.common.constants.Passwords;
 import com.hexagonal.server.transaction.application.service.common.constants.Usernames;
-import com.hexagonal.server.transaction.application.service.model.requests.AccountCreateRequest;
 
 public class AccountCreateRequestMocks {
 

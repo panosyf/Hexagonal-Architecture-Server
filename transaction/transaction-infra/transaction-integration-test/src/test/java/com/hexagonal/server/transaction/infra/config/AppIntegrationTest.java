@@ -8,14 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class AppIntegrationTest extends AbstractIntegrationTest {
 
     @Autowired
-    protected AccountRepositoryPort accountRepositoryPort;
-
-    @Autowired
     protected TransactionRepositoryPort transactionRepositoryPort;
 
     @AfterEach
     protected void cleanupRepositories() {
-        accountRepositoryPort.deleteAll();
         transactionRepositoryPort.deleteAll();
     }
 
