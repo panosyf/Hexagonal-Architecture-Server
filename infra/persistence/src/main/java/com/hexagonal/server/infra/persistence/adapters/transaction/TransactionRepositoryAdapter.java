@@ -1,6 +1,6 @@
 package com.hexagonal.server.infra.persistence.adapters.transaction;
 
-import com.hexagonal.server.core.domain.domains.transaction.Transaction;
+import com.hexagonal.server.core.domain.entities.transaction.Transaction;
 import com.hexagonal.server.core.domain.exceptions.elementnotfound.TransactionNotFoundException;
 import com.hexagonal.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.server.core.domain.service.ports.driven.TransactionRepositoryPort;

@@ -1,6 +1,6 @@
 package com.hexagonal.server.infra.common.mocks;
 
-import com.hexagonal.server.core.domain.domains.account.Account;
+import com.hexagonal.server.core.domain.entities.account.Account;
 import com.hexagonal.server.infra.common.constants.Emails;
 import com.hexagonal.server.infra.common.constants.Names;
 import com.hexagonal.server.infra.common.constants.Passwords;

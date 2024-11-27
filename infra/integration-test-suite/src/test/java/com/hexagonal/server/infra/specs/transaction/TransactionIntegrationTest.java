@@ -4,7 +4,7 @@ import com.hexagonal.server.application.service.model.requests.TransactionCreate
 import com.hexagonal.server.application.service.model.requests.TransactionUpdateRequest;
 import com.hexagonal.server.application.service.model.responses.TransactionCreationResponse;
 import com.hexagonal.server.application.service.model.responses.TransactionUpdateResponse;
-import com.hexagonal.server.core.domain.domains.account.Account;
+import com.hexagonal.server.core.domain.entities.account.Account;
 import com.hexagonal.server.core.domain.model.enums.TransactionStatusEnum;
 import com.hexagonal.server.infra.common.constants.Endpoints;
 import com.hexagonal.server.infra.common.mocks.AccountMocks;
