@@ -4,7 +4,7 @@ import com.hexagonal.server.account.application.service.common.constants.Emails;
 import com.hexagonal.server.account.application.service.common.constants.Names;
 import com.hexagonal.server.account.application.service.common.constants.Passwords;
 import com.hexagonal.server.account.application.service.common.constants.Usernames;
-import com.hexagonal.server.account.core.domain.service.commands.CreateAccountCommand;
+import com.hexagonal.server.account.core.domain.service.model.commands.CreateAccountCommand;
 
 public class CreateAccountCommandMocks {
 

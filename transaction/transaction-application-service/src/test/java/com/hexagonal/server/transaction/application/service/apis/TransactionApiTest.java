@@ -5,12 +5,12 @@ import com.hexagonal.server.transaction.application.service.converters.out.Trans
 import com.hexagonal.server.transaction.application.service.model.requests.TransactionCreateRequest;
 import com.hexagonal.server.transaction.application.service.model.requests.TransactionUpdateRequest;
 import com.hexagonal.server.transaction.application.service.model.responses.TransactionCreationResponse;
-import com.hexagonal.server.transaction.core.domain.domains.Transaction;
+import com.hexagonal.server.transaction.core.domain.entities.Transaction;
 import com.hexagonal.server.transaction.core.domain.enums.TransactionStatusEnum;
 import com.hexagonal.server.transaction.core.domain.exceptions.illegalargument.InsufficientBalanceException;
-import com.hexagonal.server.transaction.core.domain.service.commands.CreateTransactionCommand;
-import com.hexagonal.server.transaction.core.domain.service.commands.UpdateTransactionCommand;
-import com.hexagonal.server.transaction.core.domain.service.services.TransactionService;
+import com.hexagonal.server.transaction.core.domain.service.logic.TransactionDomainService;
+import com.hexagonal.server.transaction.core.domain.service.model.commands.CreateTransactionCommand;
+import com.hexagonal.server.transaction.core.domain.service.model.commands.UpdateTransactionCommand;
 import com.hexagonal.server.transaction.application.service.common.constants.Ids;
 import com.hexagonal.server.transaction.application.service.common.mocks.TransactionCreateRequestMocks;
 import com.hexagonal.server.transaction.application.service.common.mocks.TransactionMocks;
@@ -30,7 +30,7 @@ import static org.mockito.Mockito.*;
 
 class TransactionApiTest {
 
-    private final TransactionService transactionService = mock(TransactionService.class);
+    private final TransactionDomainService transactionDomainService = mock(TransactionDomainService.class);
     private final AccountApi accountApi = mock(AccountApi.class);
     private final GenericConversionService genericConversionService = new GenericConversionService();
     private TransactionApi transactionApi;
@@ -40,7 +40,7 @@ class TransactionApiTest {
     void init() {
         genericConversionService.addConverter(new TransactionToDto());
         genericConversionService.addConverter(new TransactionCreateRequestToCommand());
-        transactionApi = new TransactionApiImpl(transactionService, accountApi, genericConversionService);
+        transactionApi = new TransactionApiImpl(transactionDomainService, accountApi, genericConversionService);
     }
 
     @Test
@@ -48,7 +48,7 @@ class TransactionApiTest {
         // given
         TransactionCreateRequest transactionCreateRequest = TransactionCreateRequestMocks.generateTransactionCreateRequest();
         Transaction transaction = TransactionMocks.generateTransaction();
-        given(transactionService.createTransaction(any(CreateTransactionCommand.class)))
+        given(transactionDomainService.createTransaction(any(CreateTransactionCommand.class)))
                 .willReturn(transaction);
         // when
         TransactionCreationResponse transactionCreationResponse = transactionApi.createTransaction(transactionCreateRequest);
@@ -61,7 +61,7 @@ class TransactionApiTest {
         // given
         TransactionCreateRequest transactionCreateRequest = TransactionCreateRequestMocks.generateTransactionCreateRequest();
         Transaction transaction = TransactionMocks.generateTransaction();
-        given(transactionService.createTransaction(any(CreateTransactionCommand.class)))
+        given(transactionDomainService.createTransaction(any(CreateTransactionCommand.class)))
                 .willReturn(transaction);
         doThrow(new InsufficientBalanceException(transaction.getDebtorAccountId().getValue()))
                 .when(accountApi)
@@ -77,12 +77,12 @@ class TransactionApiTest {
         // given
         TransactionUpdateRequest transactionUpdateRequest = TransactionUpdateRequestMocks.generateTransactionUpdateRequest();
         Transaction transaction = TransactionMocks.generateTransaction();
-        given(transactionService.updateTransaction(any(UpdateTransactionCommand.class)))
+        given(transactionDomainService.updateTransaction(any(UpdateTransactionCommand.class)))
                 .willReturn(transaction);
         // when
         transactionApi.updateTransaction(Ids.TRANSACTION_ID_1.getValue(), transactionUpdateRequest);
         // Then
-        verify(transactionService, times(1))
+        verify(transactionDomainService, times(1))
                 .updateTransaction(updateTransactionCommandCaptor.capture());
         assertThat(updateTransactionCommandCaptor.getValue().transactionStatusEnum()).isEqualTo(TransactionStatusEnum.COMPLETED);
     }

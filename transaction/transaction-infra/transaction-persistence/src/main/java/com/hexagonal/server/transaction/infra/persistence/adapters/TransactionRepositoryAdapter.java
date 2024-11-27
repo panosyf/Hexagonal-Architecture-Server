@@ -2,7 +2,7 @@ package com.hexagonal.server.transaction.infra.persistence.adapters;
 
 import com.hexagonal.server.shared.kernel.common.valueobjects.Id;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Timestamp;
-import com.hexagonal.server.transaction.core.domain.domains.Transaction;
+import com.hexagonal.server.transaction.core.domain.entities.Transaction;
 import com.hexagonal.server.transaction.core.domain.enums.TransactionStatusEnum;
 import com.hexagonal.server.transaction.core.domain.exceptions.elementnotfound.TransactionNotFoundException;
 import com.hexagonal.server.transaction.core.domain.service.driven.TransactionRepositoryPort;

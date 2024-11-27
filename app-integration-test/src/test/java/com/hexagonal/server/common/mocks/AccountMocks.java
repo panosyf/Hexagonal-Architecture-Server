@@ -1,7 +1,7 @@
 package com.hexagonal.server.common.mocks;
 
 import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
-import com.hexagonal.server.transaction.core.domain.domains.account.Account;
+import com.hexagonal.server.transaction.core.domain.entities.account.Account;
 import com.hexagonal.server.transaction.infra.common.constants.Emails;
 import com.hexagonal.server.transaction.infra.common.constants.Names;
 import com.hexagonal.server.transaction.infra.common.constants.Passwords;

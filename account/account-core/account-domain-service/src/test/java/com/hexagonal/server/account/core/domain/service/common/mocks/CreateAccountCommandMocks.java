@@ -1,6 +1,6 @@
 package com.hexagonal.server.account.core.domain.service.common.mocks;
 
-import com.hexagonal.server.account.core.domain.service.commands.CreateAccountCommand;
+import com.hexagonal.server.account.core.domain.service.model.commands.CreateAccountCommand;
 import com.hexagonal.server.account.core.domain.service.common.constants.Emails;
 import com.hexagonal.server.account.core.domain.service.common.constants.Names;
 import com.hexagonal.server.account.core.domain.service.common.constants.Passwords;

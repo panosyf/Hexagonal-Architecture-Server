@@ -1,6 +1,6 @@
 package com.hexagonal.server.account.core.domain.service.common.mocks;
 
-import com.hexagonal.server.account.core.domain.service.commands.IncreaseBalanceCommand;
+import com.hexagonal.server.account.core.domain.service.model.commands.IncreaseBalanceCommand;
 import com.hexagonal.server.account.core.domain.service.common.constants.Ids;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
 

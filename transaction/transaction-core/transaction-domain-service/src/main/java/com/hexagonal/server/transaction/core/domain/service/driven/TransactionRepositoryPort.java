@@ -1,7 +1,7 @@
 package com.hexagonal.server.transaction.core.domain.service.driven;
 
 import com.hexagonal.server.shared.kernel.common.valueobjects.Id;
-import com.hexagonal.server.transaction.core.domain.domains.Transaction;
+import com.hexagonal.server.transaction.core.domain.entities.Transaction;
 
 public interface TransactionRepositoryPort {
 

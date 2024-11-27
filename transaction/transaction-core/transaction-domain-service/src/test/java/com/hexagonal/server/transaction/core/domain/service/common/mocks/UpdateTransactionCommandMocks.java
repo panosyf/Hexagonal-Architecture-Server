@@ -1,7 +1,7 @@
 package com.hexagonal.server.transaction.core.domain.service.common.mocks;
 
 import com.hexagonal.server.transaction.core.domain.enums.TransactionStatusEnum;
-import com.hexagonal.server.transaction.core.domain.service.commands.UpdateTransactionCommand;
+import com.hexagonal.server.transaction.core.domain.service.model.commands.UpdateTransactionCommand;
 import com.hexagonal.server.transaction.core.domain.service.common.constants.Ids;
 
 public class UpdateTransactionCommandMocks {

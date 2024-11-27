@@ -1,23 +1,15 @@
 package com.hexagonal.server.transaction.infra.specs;
 
 import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
-import com.hexagonal.server.transaction.application.service.model.requests.TransactionCreateRequest;
-import com.hexagonal.server.transaction.application.service.model.requests.TransactionUpdateRequest;
-import com.hexagonal.server.transaction.application.service.model.responses.TransactionCreationResponse;
-import com.hexagonal.server.transaction.application.service.model.responses.TransactionUpdateResponse;
-import com.hexagonal.server.transaction.core.domain.enums.TransactionStatusEnum;
-import com.hexagonal.server.transaction.infra.common.constants.Endpoints;
-import com.hexagonal.server.transaction.infra.common.mocks.TransactionCreateRequestMocks;
-import com.hexagonal.server.transaction.infra.config.AppIntegrationTest;
+import com.hexagonal.server.transaction.infra.config.CommonIntegrationTest;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
-import static com.hexagonal.server.transaction.core.domain.enums.TransactionStatusEnum.COMPLETED;
 import static com.hexagonal.server.transaction.infra.common.mocks.TransactionUpdateRequestMocks.generateTransactionUpdateRequest;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class TransactionIntegrationTest extends AppIntegrationTest {
+public class TransactionIntegrationTest extends CommonIntegrationTest {
 
     private static final Money BALANCE_5 = Money.of(BigDecimal.valueOf(5));
     private static final Money BALANCE_10 = Money.of(BigDecimal.TEN);
