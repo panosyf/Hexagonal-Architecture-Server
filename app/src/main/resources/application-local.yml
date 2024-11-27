@@ -10,3 +10,6 @@ spring:
       path: /h2-console
       settings.trace: false
       settings.web-allow-others: false
+logging:
+  level:
+    org.springframework: DEBUG

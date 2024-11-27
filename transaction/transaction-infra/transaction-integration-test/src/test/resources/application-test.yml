@@ -9,3 +9,6 @@ spring:
     locations: classpath:migration/schema, classpath:migration/data
     fail-on-missing-locations: true
     validate-on-migrate: true
+logging:
+  level:
+    org.springframework: DEBUG
