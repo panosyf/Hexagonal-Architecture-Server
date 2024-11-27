@@ -2,7 +2,11 @@ package com.hexagonal.server.transaction.application.service.apis;
 
 import com.hexagonal.server.transaction.application.service.apis.exposed.TransactionApi;
 import com.hexagonal.server.transaction.application.service.apis.exposed.TransactionApiImpl;
-import com.hexagonal.server.transaction.application.service.apis.external.AccountApi;
+import com.hexagonal.server.transaction.application.service.apis.external.AccountExternalApi;
+import com.hexagonal.server.transaction.application.service.common.constants.Ids;
+import com.hexagonal.server.transaction.application.service.common.mocks.TransactionCreateRequestMocks;
+import com.hexagonal.server.transaction.application.service.common.mocks.TransactionMocks;
+import com.hexagonal.server.transaction.application.service.common.mocks.TransactionUpdateRequestMocks;
 import com.hexagonal.server.transaction.application.service.converters.in.TransactionCreateRequestToCommand;
 import com.hexagonal.server.transaction.application.service.converters.out.TransactionToDto;
 import com.hexagonal.server.transaction.application.service.model.requests.TransactionCreateRequest;
@@ -14,10 +18,6 @@ import com.hexagonal.server.transaction.core.domain.exceptions.illegalargument.I
 import com.hexagonal.server.transaction.core.domain.service.logic.TransactionDomainService;
 import com.hexagonal.server.transaction.core.domain.service.model.commands.CreateTransactionCommand;
 import com.hexagonal.server.transaction.core.domain.service.model.commands.UpdateTransactionCommand;
-import com.hexagonal.server.transaction.application.service.common.constants.Ids;
-import com.hexagonal.server.transaction.application.service.common.mocks.TransactionCreateRequestMocks;
-import com.hexagonal.server.transaction.application.service.common.mocks.TransactionMocks;
-import com.hexagonal.server.transaction.application.service.common.mocks.TransactionUpdateRequestMocks;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -34,7 +34,7 @@ import static org.mockito.Mockito.*;
 class TransactionApiTest {
 
     private final TransactionDomainService transactionDomainService = mock(TransactionDomainService.class);
-    private final AccountApi accountApi = mock(AccountApi.class);
+    private final AccountExternalApi accountExternalApi = mock(AccountExternalApi.class);
     private final GenericConversionService genericConversionService = new GenericConversionService();
     private TransactionApi transactionApi;
     private final ArgumentCaptor<UpdateTransactionCommand> updateTransactionCommandCaptor = ArgumentCaptor.forClass(UpdateTransactionCommand.class);
@@ -43,7 +43,7 @@ class TransactionApiTest {
     void init() {
         genericConversionService.addConverter(new TransactionToDto());
         genericConversionService.addConverter(new TransactionCreateRequestToCommand());
-        transactionApi = new TransactionApiImpl(transactionDomainService, accountApi, genericConversionService);
+        transactionApi = new TransactionApiImpl(transactionDomainService, accountExternalApi, genericConversionService);
     }
 
     @Test
@@ -67,7 +67,7 @@ class TransactionApiTest {
         given(transactionDomainService.createTransaction(any(CreateTransactionCommand.class)))
                 .willReturn(transaction);
         doThrow(new InsufficientBalanceException(transaction.getDebtorAccountId().getValue()))
-                .when(accountApi)
+                .when(accountExternalApi)
                 .decreaseBalance(anyString(), any(BigDecimal.class));
         // when
         TransactionCreationResponse transactionCreationResponse = transactionApi.createTransaction(transactionCreateRequest);

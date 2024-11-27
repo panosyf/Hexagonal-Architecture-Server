@@ -2,7 +2,7 @@ package com.hexagonal.server.transaction.application.service.apis.exposed;
 
 import com.hexagonal.server.shared.kernel.common.valueobjects.Id;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
-import com.hexagonal.server.transaction.application.service.apis.external.AccountApi;
+import com.hexagonal.server.transaction.application.service.apis.external.AccountExternalApi;
 import com.hexagonal.server.transaction.application.service.model.dtos.TransactionDto;
 import com.hexagonal.server.transaction.application.service.model.requests.TransactionCreateRequest;
 import com.hexagonal.server.transaction.application.service.model.requests.TransactionUpdateRequest;
@@ -11,24 +11,24 @@ import com.hexagonal.server.transaction.application.service.model.responses.Tran
 import com.hexagonal.server.transaction.application.service.model.responses.TransactionUpdateResponse;
 import com.hexagonal.server.transaction.core.domain.entities.Transaction;
 import com.hexagonal.server.transaction.core.domain.enums.TransactionStatusEnum;
+import com.hexagonal.server.transaction.core.domain.service.logic.TransactionDomainService;
 import com.hexagonal.server.transaction.core.domain.service.model.commands.CreateTransactionCommand;
 import com.hexagonal.server.transaction.core.domain.service.model.commands.GetTransactionCommand;
 import com.hexagonal.server.transaction.core.domain.service.model.commands.UpdateTransactionCommand;
-import com.hexagonal.server.transaction.core.domain.service.logic.TransactionDomainService;
 import org.springframework.core.convert.ConversionService;
 
 public class TransactionApiImpl implements TransactionApi {
 
     private final TransactionDomainService transactionDomainService;
-    private final AccountApi accountApi;
+    private final AccountExternalApi accountExternalApi;
     private final ConversionService conversionService;
 
     public TransactionApiImpl(
             TransactionDomainService transactionDomainService,
-            AccountApi accountApi,
+            AccountExternalApi accountExternalApi,
             ConversionService conversionService) {
         this.transactionDomainService = transactionDomainService;
-        this.accountApi = accountApi;
+        this.accountExternalApi = accountExternalApi;
         this.conversionService = conversionService;
     }
 
@@ -47,7 +47,7 @@ public class TransactionApiImpl implements TransactionApi {
         Id debtorAccountId = transaction.getDebtorAccountId();
         Money amount = transaction.getAmount();
         try {
-            accountApi.decreaseBalance(debtorAccountId.getValue(), amount.getValue());
+            accountExternalApi.decreaseBalance(debtorAccountId.getValue(), amount.getValue());
         } catch (Exception e) {
             UpdateTransactionCommand updateTransactionCommand = new UpdateTransactionCommand(transaction.getId(), TransactionStatusEnum.FAILED);
             transactionDomainService.updateTransaction(updateTransactionCommand);
@@ -62,7 +62,7 @@ public class TransactionApiImpl implements TransactionApi {
         Transaction updatedTransaction = transactionDomainService.updateTransaction(updateTransactionCommand);
         // TODO THIS IS TEMPORARY, WILL BE REFACTORED UTILIZING STATE PATTERN
         if (updateTransactionCommand.transactionStatusEnum().equals(TransactionStatusEnum.COMPLETED)) {
-            accountApi.increaseBalance(updatedTransaction.getBeneficiaryAccountId().getValue(), updatedTransaction.getAmount().getValue());
+            accountExternalApi.increaseBalance(updatedTransaction.getBeneficiaryAccountId().getValue(), updatedTransaction.getAmount().getValue());
         }
         return new TransactionUpdateResponse(updatedTransaction.getId().getValue(), updatedTransaction.getStatus());
     }

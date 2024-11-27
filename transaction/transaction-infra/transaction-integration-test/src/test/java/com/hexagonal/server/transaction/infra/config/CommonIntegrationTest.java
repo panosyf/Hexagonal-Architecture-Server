@@ -1,7 +1,7 @@
 package com.hexagonal.server.transaction.infra.config;
 
 import com.hexagonal.server.shared.kernel.testing.config.AbstractIntegrationTest;
-import com.hexagonal.server.transaction.application.service.apis.external.AccountApi;
+import com.hexagonal.server.transaction.application.service.apis.external.AccountExternalApi;
 import com.hexagonal.server.transaction.core.domain.service.driven.TransactionRepositoryPort;
 import org.junit.jupiter.api.AfterEach;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ public class CommonIntegrationTest extends AbstractIntegrationTest {
     protected TransactionRepositoryPort transactionRepositoryPort;
 
     @MockBean
-    protected AccountApi accountApi;
+    protected AccountExternalApi accountExternalApi;
 
     @AfterEach
     protected void cleanupRepositories() {

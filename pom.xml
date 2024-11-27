@@ -11,7 +11,6 @@
     <description>The Hexagonal Architecture Server is a robust backend solution built around the principles of Hexagonal Architecture (also known as Ports and Adapters)</description>
 
     <modules>
-<!--        TODO TEMPORARY DISABLE-->
 <!--        <module>app</module>-->
         <module>shared-kernel</module>
         <module>account</module>

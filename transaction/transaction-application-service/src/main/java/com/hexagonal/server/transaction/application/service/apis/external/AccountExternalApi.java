@@ -1,9 +1,8 @@
 package com.hexagonal.server.transaction.application.service.apis.external;
 
-
 import java.math.BigDecimal;
 
-public interface AccountApi {
+public interface AccountExternalApi {
 
     void increaseBalance(String id, BigDecimal amount);
 
