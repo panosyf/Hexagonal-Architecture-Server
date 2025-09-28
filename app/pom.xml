@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.hexagonal.server.shared.kernel.bom.collection</groupId>
+        <groupId>com.hexagonal.server.dependency.management</groupId>
         <artifactId>infra-bom</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../dependency-management/infra-bom/pom.xml</relativePath>
@@ -15,12 +15,6 @@
     <artifactId>app</artifactId>
     <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
-
-    <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
     <dependencyManagement>
         <dependencies>

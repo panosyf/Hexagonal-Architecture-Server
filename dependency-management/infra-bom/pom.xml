@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.hexagonal.server.shared.kernel.bom.collection</groupId>
+        <groupId>com.hexagonal.server.dependency.management</groupId>
         <artifactId>parent-bom</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-bom/pom.xml</relativePath>
@@ -14,23 +14,6 @@
     <artifactId>infra-bom</artifactId>
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
-
-    <properties>
-        <java.version>21</java.version>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <springboot.version>3.3.0</springboot.version>
-        <springboot.modulith.version>1.2.0</springboot.modulith.version>
-        <maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
-        <maven.failsafe.plugin.version>3.0.0-M5</maven.failsafe.plugin.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <testcontainers.version>1.20.1</testcontainers.version>
-        <flyway.version>10.17.3</flyway.version>
-        <springdoc.openapi.starter.version>2.6.0</springdoc.openapi.starter.version>
-        <springdoc.openapi.plugin.version>1.4</springdoc.openapi.plugin.version>
-    </properties>
 
     <dependencyManagement>
         <dependencies>
@@ -153,7 +136,6 @@
             <artifactId>jdbc</artifactId>
             <scope>compile</scope>
         </dependency>
-
     </dependencies>
 
     <build>

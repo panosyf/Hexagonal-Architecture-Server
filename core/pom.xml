@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.hexagonal.server.shared.kernel.bom.collection</groupId>
+        <groupId>com.hexagonal.server.dependency.management</groupId>
         <artifactId>core-bom</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../dependency-management/core-bom/pom.xml</relativePath>
@@ -20,11 +20,5 @@
         <module>domain</module>
         <module>domain-service</module>
     </modules>
-
-    <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
 </project>
