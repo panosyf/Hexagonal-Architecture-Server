@@ -1,6 +1,6 @@
 package com.hexagonal.server.application.service.converters.transaction.out;
 
-import com.hexagonal.server.application.service.model.dtos.TransactionDto;
+import com.hexagonal.server.application.service.model.dtos.transaction.TransactionDto;
 import com.hexagonal.server.core.domain.entities.transaction.Transaction;
 import org.springframework.core.convert.converter.Converter;
 

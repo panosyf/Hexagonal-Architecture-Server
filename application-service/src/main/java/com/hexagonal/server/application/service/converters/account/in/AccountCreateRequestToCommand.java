@@ -1,6 +1,6 @@
 package com.hexagonal.server.application.service.converters.account.in;
 
-import com.hexagonal.server.application.service.model.requests.AccountCreateRequest;
+import com.hexagonal.server.application.service.model.requests.account.AccountCreateRequest;
 import com.hexagonal.server.core.domain.service.model.commands.account.CreateAccountCommand;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Email;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Name;

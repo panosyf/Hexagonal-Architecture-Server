@@ -1,9 +1,9 @@
 package com.hexagonal.server.infra.specs.transaction;
 
-import com.hexagonal.server.application.service.model.requests.TransactionCreateRequest;
-import com.hexagonal.server.application.service.model.requests.TransactionUpdateRequest;
-import com.hexagonal.server.application.service.model.responses.TransactionCreationResponse;
-import com.hexagonal.server.application.service.model.responses.TransactionUpdateResponse;
+import com.hexagonal.server.application.service.model.requests.transaction.TransactionCreateRequest;
+import com.hexagonal.server.application.service.model.requests.transaction.TransactionUpdateRequest;
+import com.hexagonal.server.application.service.model.responses.transaction.TransactionCreationResponse;
+import com.hexagonal.server.application.service.model.responses.transaction.TransactionUpdateResponse;
 import com.hexagonal.server.core.domain.entities.account.Account;
 import com.hexagonal.server.core.domain.model.enums.transaction.TransactionStatusEnum;
 import com.hexagonal.server.infra.common.constants.Endpoints;

@@ -1,6 +1,6 @@
 package com.hexagonal.server.application.service.converters.transaction.in;
 
-import com.hexagonal.server.application.service.model.requests.TransactionCreateRequest;
+import com.hexagonal.server.application.service.model.requests.transaction.TransactionCreateRequest;
 import com.hexagonal.server.core.domain.model.enums.transaction.TransactionStatusEnum;
 import com.hexagonal.server.core.domain.model.enums.transaction.TransactionType;
 import com.hexagonal.server.core.domain.service.model.commands.transaction.CreateTransactionCommand;

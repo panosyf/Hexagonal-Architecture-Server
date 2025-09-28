@@ -1,9 +1,9 @@
 package com.hexagonal.server.application.service.apis.account;
 
-import com.hexagonal.server.application.service.model.dtos.AccountDto;
-import com.hexagonal.server.application.service.model.requests.AccountCreateRequest;
-import com.hexagonal.server.application.service.model.responses.AccountCreationResponse;
-import com.hexagonal.server.application.service.model.responses.AccountResponse;
+import com.hexagonal.server.application.service.model.dtos.account.AccountDto;
+import com.hexagonal.server.application.service.model.requests.account.AccountCreateRequest;
+import com.hexagonal.server.application.service.model.responses.account.AccountCreationResponse;
+import com.hexagonal.server.application.service.model.responses.account.AccountResponse;
 import com.hexagonal.server.core.domain.entities.account.Account;
 import com.hexagonal.server.core.domain.model.enums.account.AccountCreationStatusEnum;
 import com.hexagonal.server.core.domain.service.model.commands.account.CreateAccountCommand;
