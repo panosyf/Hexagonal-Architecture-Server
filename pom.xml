@@ -16,6 +16,7 @@
         <module>core</module>
         <module>application-service</module>
         <module>infra</module>
+        <module>account</module>
         <module>app</module>
     </modules>
 
