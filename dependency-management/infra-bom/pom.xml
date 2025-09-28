@@ -35,14 +35,6 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies -->
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${springboot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
                 <groupId>org.springframework.modulith</groupId>
                 <artifactId>spring-modulith-bom</artifactId>
                 <version>${springboot.modulith.version}</version>
