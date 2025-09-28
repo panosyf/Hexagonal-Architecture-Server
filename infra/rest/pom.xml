@@ -11,6 +11,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
+    <groupId>com.hexagonal.server.infra.rest</groupId>
     <artifactId>rest</artifactId>
     <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>

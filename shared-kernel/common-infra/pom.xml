@@ -11,14 +11,14 @@
         <relativePath>../../dependency-management/infra-bom/pom.xml</relativePath>
     </parent>
 
-    <groupId>com.hexagonal.server.shared.kernel</groupId>
+    <groupId>com.hexagonal.server.shared.kernel.common.infra</groupId>
     <artifactId>common-infra</artifactId>
     <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
-            <groupId>com.hexagonal.server.shared.kernel</groupId>
+            <groupId>com.hexagonal.server.shared.kernel.common</groupId>
             <artifactId>common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>

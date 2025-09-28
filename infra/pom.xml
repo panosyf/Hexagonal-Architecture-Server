@@ -24,17 +24,17 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.hexagonal.server.shared.kernel</groupId>
+            <groupId>com.hexagonal.server.shared.kernel.common.infra</groupId>
             <artifactId>common-infra</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.hexagonal.server.shared.kernel</groupId>
+            <groupId>com.hexagonal.server.shared.kernel.common.migrations</groupId>
             <artifactId>common-migrations</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.hexagonal.server.shared.kernel</groupId>
+            <groupId>com.hexagonal.server.shared.kernel.common.integration.testing</groupId>
             <artifactId>common-integration-testing</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>test</scope>

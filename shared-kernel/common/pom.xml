@@ -11,7 +11,7 @@
         <relativePath>../../dependency-management/core-bom/pom.xml</relativePath>
     </parent>
 
-    <groupId>com.hexagonal.server.shared.kernel</groupId>
+    <groupId>com.hexagonal.server.shared.kernel.common</groupId>
     <artifactId>common</artifactId>
     <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>

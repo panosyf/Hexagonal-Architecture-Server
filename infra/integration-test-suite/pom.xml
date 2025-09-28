@@ -11,7 +11,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>com.hexagonal.server.app.integration.test</groupId>
+    <groupId>com.hexagonal.server.integration.test.suite</groupId>
     <artifactId>integration-test-suite</artifactId>
     <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
@@ -30,12 +30,12 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.hexagonal.server.infra</groupId>
+            <groupId>com.hexagonal.server.infra.persistence</groupId>
             <artifactId>persistence</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.hexagonal.server.infra</groupId>
+            <groupId>com.hexagonal.server.infra.rest</groupId>
             <artifactId>rest</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>

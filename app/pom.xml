@@ -11,7 +11,7 @@
         <relativePath>../dependency-management/infra-bom/pom.xml</relativePath>
     </parent>
 
-    <groupId>com.hexagonal.server</groupId>
+    <groupId>com.hexagonal.server.app</groupId>
     <artifactId>app</artifactId>
     <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
@@ -30,13 +30,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.hexagonal.server.infra</groupId>
+            <groupId>com.hexagonal.server.infra.persistence</groupId>
             <artifactId>persistence</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>com.hexagonal.server.infra</groupId>
+            <groupId>com.hexagonal.server.infra.rest</groupId>
             <artifactId>rest</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
