@@ -112,24 +112,48 @@
             <artifactId>spring-modulith-docs</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.testcontainers/junit-jupiter -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-test -->
         <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <scope>test</scope>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+            <scope>compile</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.testcontainers/jdbc -->
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.projectreactor/reactor-core -->
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.testcontainers/testcontainers -->
         <dependency>
             <groupId>org.testcontainers</groupId>
-            <artifactId>jdbc</artifactId>
-            <scope>test</scope>
+            <artifactId>testcontainers</artifactId>
+            <scope>compile</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.testcontainers/postgresql -->
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>postgresql</artifactId>
-            <scope>test</scope>
+            <scope>compile</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.testcontainers/junit-jupiter -->
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.testcontainers/jdbc -->
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>jdbc</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
