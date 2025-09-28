@@ -5,26 +5,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.hexagonal.server.dependency.management</groupId>
-        <artifactId>core-bom</artifactId>
+        <groupId>com.hexagonal.server.account.core</groupId>
+        <artifactId>account-core</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../dependency-management/core-bom/pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>com.hexagonal.server.account.core</groupId>
-    <artifactId>account-core</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>account-core-domain-service</artifactId>
+    <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
-
-    <modules>
-        <module>account-core-domain</module>
-        <module>account-core-domain-service</module>
-    </modules>
 
     <dependencies>
         <dependency>
-            <groupId>com.hexagonal.server.shared.kernel</groupId>
-            <artifactId>common</artifactId>
+            <groupId>com.hexagonal.server.account.core</groupId>
+            <artifactId>account-core-domain</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
