@@ -1,8 +1,8 @@
 package com.hexagonal.server.core.domain.service.unit.services.account;
 
 import com.hexagonal.server.core.domain.entities.account.Account;
-import com.hexagonal.server.core.domain.exceptions.elementnotfound.AccountNotFoundException;
-import com.hexagonal.server.core.domain.exceptions.utils.messages.ErrorMessageConstants;
+import com.hexagonal.server.core.domain.exceptions.elementnotfound.account.AccountNotFoundException;
+import com.hexagonal.server.core.domain.exceptions.utils.messages.account.ErrorMessageConstants;
 import com.hexagonal.server.core.domain.service.common.constants.*;
 import com.hexagonal.server.core.domain.service.logic.account.AccountDomainService;
 import com.hexagonal.server.core.domain.service.logic.account.AccountDomainServiceImpl;

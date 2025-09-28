@@ -1,9 +1,9 @@
-package com.hexagonal.server.core.domain.common.mocks;
+package com.hexagonal.server.core.domain.common.mocks.account;
 
-import com.hexagonal.server.core.domain.common.constants.Emails;
-import com.hexagonal.server.core.domain.common.constants.Names;
-import com.hexagonal.server.core.domain.common.constants.Passwords;
-import com.hexagonal.server.core.domain.common.constants.Usernames;
+import com.hexagonal.server.core.domain.common.constants.account.Emails;
+import com.hexagonal.server.core.domain.common.constants.account.Names;
+import com.hexagonal.server.core.domain.common.constants.account.Passwords;
+import com.hexagonal.server.core.domain.common.constants.account.Usernames;
 import com.hexagonal.server.core.domain.entities.account.Account;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
 

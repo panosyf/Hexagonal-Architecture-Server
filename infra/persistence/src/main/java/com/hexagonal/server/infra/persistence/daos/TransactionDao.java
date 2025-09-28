@@ -1,7 +1,7 @@
 package com.hexagonal.server.infra.persistence.daos;
 
-import com.hexagonal.server.core.domain.model.enums.TransactionStatusEnum;
-import com.hexagonal.server.core.domain.model.enums.TransactionType;
+import com.hexagonal.server.core.domain.model.enums.transaction.TransactionStatusEnum;
+import com.hexagonal.server.core.domain.model.enums.transaction.TransactionType;
 import com.hexagonal.server.shared.kernel.common.dao.DaoEntity;
 import com.hexagonal.server.shared.kernel.common.infra.valueobjects.converters.DescriptionAttributeConverter;
 import com.hexagonal.server.shared.kernel.common.infra.valueobjects.converters.MoneyAttributeConverter;

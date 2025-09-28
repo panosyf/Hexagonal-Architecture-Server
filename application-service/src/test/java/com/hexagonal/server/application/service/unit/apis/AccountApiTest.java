@@ -10,7 +10,7 @@ import com.hexagonal.server.application.service.model.requests.AccountCreateRequ
 import com.hexagonal.server.application.service.model.responses.AccountCreationResponse;
 import com.hexagonal.server.application.service.model.responses.AccountResponse;
 import com.hexagonal.server.core.domain.entities.account.Account;
-import com.hexagonal.server.core.domain.model.enums.AccountCreationStatusEnum;
+import com.hexagonal.server.core.domain.model.enums.account.AccountCreationStatusEnum;
 import com.hexagonal.server.core.domain.service.logic.account.AccountDomainService;
 import com.hexagonal.server.core.domain.service.model.commands.CreateAccountCommand;
 import com.hexagonal.server.core.domain.service.model.commands.DecreaseBalanceCommand;

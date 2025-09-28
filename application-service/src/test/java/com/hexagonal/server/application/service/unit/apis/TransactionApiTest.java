@@ -13,8 +13,8 @@ import com.hexagonal.server.application.service.model.requests.TransactionCreate
 import com.hexagonal.server.application.service.model.requests.TransactionUpdateRequest;
 import com.hexagonal.server.application.service.model.responses.TransactionCreationResponse;
 import com.hexagonal.server.core.domain.entities.transaction.Transaction;
-import com.hexagonal.server.core.domain.exceptions.illegalargument.InsufficientBalanceException;
-import com.hexagonal.server.core.domain.model.enums.TransactionStatusEnum;
+import com.hexagonal.server.core.domain.exceptions.illegalargument.transaction.InsufficientBalanceException;
+import com.hexagonal.server.core.domain.model.enums.transaction.TransactionStatusEnum;
 import com.hexagonal.server.core.domain.service.logic.transaction.TransactionDomainService;
 import com.hexagonal.server.core.domain.service.model.commands.CreateTransactionCommand;
 import com.hexagonal.server.core.domain.service.model.commands.UpdateTransactionCommand;

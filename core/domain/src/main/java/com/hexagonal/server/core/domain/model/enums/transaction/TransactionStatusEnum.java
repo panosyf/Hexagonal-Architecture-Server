@@ -1,4 +1,4 @@
-package com.hexagonal.server.core.domain.model.enums;
+package com.hexagonal.server.core.domain.model.enums.transaction;
 
 public enum TransactionStatusEnum {
 

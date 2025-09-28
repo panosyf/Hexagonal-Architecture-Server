@@ -2,8 +2,8 @@ package com.hexagonal.server.application.service.model.dtos;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.hexagonal.server.core.domain.model.enums.TransactionStatusEnum;
-import com.hexagonal.server.core.domain.model.enums.TransactionType;
+import com.hexagonal.server.core.domain.model.enums.transaction.TransactionStatusEnum;
+import com.hexagonal.server.core.domain.model.enums.transaction.TransactionType;
 
 import java.math.BigDecimal;
 import java.time.Instant;

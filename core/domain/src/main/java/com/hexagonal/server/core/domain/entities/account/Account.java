@@ -1,6 +1,6 @@
 package com.hexagonal.server.core.domain.entities.account;
 
-import com.hexagonal.server.core.domain.exceptions.illegalargument.InsufficientBalanceException;
+import com.hexagonal.server.core.domain.exceptions.illegalargument.transaction.InsufficientBalanceException;
 import com.hexagonal.server.shared.kernel.common.domain.DomainEntity;
 import com.hexagonal.server.shared.kernel.common.valueobjects.*;
 

@@ -1,14 +1,14 @@
-package com.hexagonal.server.core.domain.unit.entities;
+package com.hexagonal.server.core.domain.unit.entities.transaction;
 
 import com.hexagonal.server.core.domain.entities.transaction.Transaction;
-import com.hexagonal.server.core.domain.model.enums.TransactionStatusEnum;
+import com.hexagonal.server.core.domain.model.enums.transaction.TransactionStatusEnum;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Timestamp;
 import org.junit.jupiter.api.Test;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
-import static com.hexagonal.server.core.domain.common.mocks.TransactionMocks.generateTransaction;
+import static com.hexagonal.server.core.domain.common.mocks.transaction.TransactionMocks.generateTransaction;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class TransactionTest {

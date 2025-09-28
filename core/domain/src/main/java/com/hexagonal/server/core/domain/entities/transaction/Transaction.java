@@ -1,7 +1,7 @@
 package com.hexagonal.server.core.domain.entities.transaction;
 
-import com.hexagonal.server.core.domain.model.enums.TransactionStatusEnum;
-import com.hexagonal.server.core.domain.model.enums.TransactionType;
+import com.hexagonal.server.core.domain.model.enums.transaction.TransactionStatusEnum;
+import com.hexagonal.server.core.domain.model.enums.transaction.TransactionType;
 import com.hexagonal.server.shared.kernel.common.domain.DomainEntity;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Description;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Id;

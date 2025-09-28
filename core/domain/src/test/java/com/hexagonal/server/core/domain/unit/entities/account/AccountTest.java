@@ -1,8 +1,8 @@
-package com.hexagonal.server.core.domain.unit.entities;
+package com.hexagonal.server.core.domain.unit.entities.account;
 
 import com.hexagonal.server.core.domain.entities.account.Account;
-import com.hexagonal.server.core.domain.exceptions.illegalargument.InsufficientBalanceException;
-import com.hexagonal.server.core.domain.exceptions.utils.messages.ErrorMessageConstants;
+import com.hexagonal.server.core.domain.exceptions.illegalargument.transaction.InsufficientBalanceException;
+import com.hexagonal.server.core.domain.exceptions.utils.messages.transaction.ErrorMessageConstants;
 import com.hexagonal.server.shared.kernel.common.exception.utils.ErrorUtils;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
 import org.junit.jupiter.api.Test;
@@ -13,7 +13,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.math.BigDecimal;
 import java.util.stream.Stream;
 
-import static com.hexagonal.server.core.domain.common.mocks.AccountMocks.generateAccount;
+import static com.hexagonal.server.core.domain.common.mocks.account.AccountMocks.generateAccount;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertTrue;

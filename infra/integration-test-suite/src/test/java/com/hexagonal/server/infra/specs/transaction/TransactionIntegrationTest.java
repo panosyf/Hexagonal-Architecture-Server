@@ -5,7 +5,7 @@ import com.hexagonal.server.application.service.model.requests.TransactionUpdate
 import com.hexagonal.server.application.service.model.responses.TransactionCreationResponse;
 import com.hexagonal.server.application.service.model.responses.TransactionUpdateResponse;
 import com.hexagonal.server.core.domain.entities.account.Account;
-import com.hexagonal.server.core.domain.model.enums.TransactionStatusEnum;
+import com.hexagonal.server.core.domain.model.enums.transaction.TransactionStatusEnum;
 import com.hexagonal.server.infra.common.constants.Endpoints;
 import com.hexagonal.server.infra.common.mocks.AccountMocks;
 import com.hexagonal.server.infra.common.mocks.TransactionCreateRequestMocks;
@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
-import static com.hexagonal.server.core.domain.model.enums.TransactionStatusEnum.COMPLETED;
+import static com.hexagonal.server.core.domain.model.enums.transaction.TransactionStatusEnum.COMPLETED;
 import static com.hexagonal.server.infra.common.mocks.TransactionUpdateRequestMocks.generateTransactionUpdateRequest;
 import static org.assertj.core.api.Assertions.assertThat;
 

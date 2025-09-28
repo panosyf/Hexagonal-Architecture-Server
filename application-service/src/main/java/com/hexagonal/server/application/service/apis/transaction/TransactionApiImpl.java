@@ -8,7 +8,7 @@ import com.hexagonal.server.application.service.model.responses.TransactionCreat
 import com.hexagonal.server.application.service.model.responses.TransactionResponse;
 import com.hexagonal.server.application.service.model.responses.TransactionUpdateResponse;
 import com.hexagonal.server.core.domain.entities.transaction.Transaction;
-import com.hexagonal.server.core.domain.model.enums.TransactionStatusEnum;
+import com.hexagonal.server.core.domain.model.enums.transaction.TransactionStatusEnum;
 import com.hexagonal.server.core.domain.service.model.commands.CreateTransactionCommand;
 import com.hexagonal.server.core.domain.service.model.commands.GetTransactionCommand;
 import com.hexagonal.server.core.domain.service.model.commands.UpdateTransactionCommand;
