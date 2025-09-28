@@ -3,7 +3,7 @@ package com.hexagonal.server.infra.persistence.adapters.account;
 import com.hexagonal.server.core.domain.entities.account.Account;
 import com.hexagonal.server.core.domain.exceptions.elementnotfound.account.AccountNotFoundException;
 import com.hexagonal.server.core.domain.service.ports.driven.account.AccountRepositoryPort;
-import com.hexagonal.server.infra.persistence.daos.AccountDao;
+import com.hexagonal.server.infra.persistence.daos.account.AccountDao;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Id;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
 import jakarta.transaction.Transactional;

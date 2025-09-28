@@ -1,4 +1,4 @@
-package com.hexagonal.server.infra.rest.controllers;
+package com.hexagonal.server.infra.rest.controllers.account;
 
 import com.hexagonal.server.application.service.apis.account.AccountApi;
 import com.hexagonal.server.application.service.model.responses.account.AccountCreationResponse;

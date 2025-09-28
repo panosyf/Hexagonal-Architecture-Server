@@ -1,4 +1,4 @@
-package com.hexagonal.server.infra.common.constants;
+package com.hexagonal.server.infra.common.constants.transaction;
 
 import com.hexagonal.server.shared.kernel.common.valueobjects.Id;
 

@@ -6,9 +6,9 @@ import com.hexagonal.server.application.service.model.responses.transaction.Tran
 import com.hexagonal.server.application.service.model.responses.transaction.TransactionUpdateResponse;
 import com.hexagonal.server.core.domain.entities.account.Account;
 import com.hexagonal.server.core.domain.model.enums.transaction.TransactionStatusEnum;
-import com.hexagonal.server.infra.common.constants.Endpoints;
-import com.hexagonal.server.infra.common.mocks.AccountMocks;
-import com.hexagonal.server.infra.common.mocks.TransactionCreateRequestMocks;
+import com.hexagonal.server.infra.common.constants.transaction.Endpoints;
+import com.hexagonal.server.infra.common.mocks.account.AccountMocks;
+import com.hexagonal.server.infra.common.mocks.transaction.TransactionCreateRequestMocks;
 import com.hexagonal.server.infra.config.AppIntegrationTest;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 
 import static com.hexagonal.server.core.domain.model.enums.transaction.TransactionStatusEnum.COMPLETED;
-import static com.hexagonal.server.infra.common.mocks.TransactionUpdateRequestMocks.generateTransactionUpdateRequest;
+import static com.hexagonal.server.infra.common.mocks.transaction.TransactionUpdateRequestMocks.generateTransactionUpdateRequest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TransactionIntegrationTest extends AppIntegrationTest {

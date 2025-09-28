@@ -1,4 +1,4 @@
-package com.hexagonal.server.infra.persistence.daos;
+package com.hexagonal.server.infra.persistence.daos.transaction;
 
 import com.hexagonal.server.core.domain.model.enums.transaction.TransactionStatusEnum;
 import com.hexagonal.server.core.domain.model.enums.transaction.TransactionType;

@@ -1,4 +1,4 @@
-package com.hexagonal.server.infra.rest.controllers;
+package com.hexagonal.server.infra.rest.controllers.transaction;
 
 import com.hexagonal.server.application.service.apis.transaction.TransactionApi;
 import com.hexagonal.server.application.service.model.responses.transaction.TransactionResponse;

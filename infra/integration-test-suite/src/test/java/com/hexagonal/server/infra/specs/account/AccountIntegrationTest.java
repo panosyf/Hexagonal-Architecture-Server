@@ -1,13 +1,13 @@
 package com.hexagonal.server.infra.specs.account;
 
-import com.hexagonal.server.infra.common.constants.Endpoints;
+import com.hexagonal.server.infra.common.constants.account.Endpoints;
 import com.hexagonal.server.core.domain.model.enums.account.AccountCreationStatusEnum;
 import com.hexagonal.server.application.service.model.requests.account.AccountCreateRequest;
 import com.hexagonal.server.application.service.model.responses.account.AccountCreationResponse;
 import com.hexagonal.server.infra.config.AppIntegrationTest;
 import org.junit.jupiter.api.Test;
 
-import static com.hexagonal.server.infra.common.mocks.AccountCreateRequestMocks.generateAccountCreateRequest;
+import static com.hexagonal.server.infra.common.mocks.account.AccountCreateRequestMocks.generateAccountCreateRequest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class AccountIntegrationTest extends AppIntegrationTest {

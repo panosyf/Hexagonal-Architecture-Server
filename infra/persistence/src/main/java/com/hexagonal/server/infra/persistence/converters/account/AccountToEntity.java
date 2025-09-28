@@ -1,7 +1,7 @@
 package com.hexagonal.server.infra.persistence.converters.account;
 
 import com.hexagonal.server.core.domain.entities.account.Account;
-import com.hexagonal.server.infra.persistence.daos.AccountDao;
+import com.hexagonal.server.infra.persistence.daos.account.AccountDao;
 import org.springframework.core.convert.converter.Converter;
 
 public class AccountToEntity implements Converter<Account, AccountDao> {

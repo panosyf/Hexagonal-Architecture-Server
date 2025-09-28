@@ -1,4 +1,4 @@
-package com.hexagonal.server.infra.persistence.daos;
+package com.hexagonal.server.infra.persistence.daos.account;
 
 import com.hexagonal.server.shared.kernel.common.dao.DaoEntity;
 import com.hexagonal.server.shared.kernel.common.infra.valueobjects.converters.*;
