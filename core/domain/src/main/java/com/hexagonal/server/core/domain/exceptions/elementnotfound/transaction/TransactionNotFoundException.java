@@ -3,7 +3,7 @@ package com.hexagonal.server.core.domain.exceptions.elementnotfound.transaction;
 import com.hexagonal.server.shared.kernel.common.exception.types.ElementNotFoundException;
 import com.hexagonal.server.shared.kernel.common.exception.utils.ErrorUtils;
 
-import static com.hexagonal.server.core.domain.exceptions.utils.messages.transaction.ErrorMessageConstants.TRANSACTION_NOT_FOUND_EXCEPTION;
+import static com.hexagonal.server.shared.kernel.common.exception.constants.ErrorMessageConstants.TRANSACTION_NOT_FOUND_EXCEPTION;
 
 public class TransactionNotFoundException extends ElementNotFoundException {
 

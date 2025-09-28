@@ -2,7 +2,7 @@ package com.hexagonal.server.core.domain.unit.entities.account;
 
 import com.hexagonal.server.core.domain.entities.account.Account;
 import com.hexagonal.server.core.domain.exceptions.illegalargument.transaction.InsufficientBalanceException;
-import com.hexagonal.server.core.domain.exceptions.utils.messages.transaction.ErrorMessageConstants;
+import com.hexagonal.server.shared.kernel.common.exception.constants.ErrorMessageConstants;
 import com.hexagonal.server.shared.kernel.common.exception.utils.ErrorUtils;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
 import org.junit.jupiter.api.Test;

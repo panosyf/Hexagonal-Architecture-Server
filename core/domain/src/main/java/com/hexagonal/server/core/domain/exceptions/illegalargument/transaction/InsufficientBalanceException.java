@@ -2,7 +2,7 @@ package com.hexagonal.server.core.domain.exceptions.illegalargument.transaction;
 
 import com.hexagonal.server.shared.kernel.common.exception.utils.ErrorUtils;
 
-import static com.hexagonal.server.core.domain.exceptions.utils.messages.transaction.ErrorMessageConstants.INSUFFICIENT_BALANCE_EXCEPTION;
+import static com.hexagonal.server.shared.kernel.common.exception.constants.ErrorMessageConstants.INSUFFICIENT_BALANCE_EXCEPTION;
 
 public class InsufficientBalanceException extends IllegalArgumentException {
 

@@ -2,7 +2,6 @@ package com.hexagonal.server.core.domain.service.unit.services.account;
 
 import com.hexagonal.server.core.domain.entities.account.Account;
 import com.hexagonal.server.core.domain.exceptions.elementnotfound.account.AccountNotFoundException;
-import com.hexagonal.server.core.domain.exceptions.utils.messages.account.ErrorMessageConstants;
 import com.hexagonal.server.core.domain.service.common.constants.account.Emails;
 import com.hexagonal.server.core.domain.service.common.constants.account.Names;
 import com.hexagonal.server.core.domain.service.common.constants.account.Passwords;
@@ -15,6 +14,7 @@ import com.hexagonal.server.core.domain.service.model.commands.account.DecreaseB
 import com.hexagonal.server.core.domain.service.model.commands.account.GetAccountCommand;
 import com.hexagonal.server.core.domain.service.model.commands.account.IncreaseBalanceCommand;
 import com.hexagonal.server.core.domain.service.ports.driven.account.AccountRepositoryPort;
+import com.hexagonal.server.shared.kernel.common.exception.constants.ErrorMessageConstants;
 import com.hexagonal.server.shared.kernel.common.exception.utils.ErrorUtils;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Id;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Money;

@@ -3,7 +3,6 @@ package com.hexagonal.server.core.domain.service.unit.services.transaction;
 
 import com.hexagonal.server.core.domain.entities.transaction.Transaction;
 import com.hexagonal.server.core.domain.exceptions.elementnotfound.transaction.TransactionNotFoundException;
-import com.hexagonal.server.core.domain.exceptions.utils.messages.transaction.ErrorMessageConstants;
 import com.hexagonal.server.core.domain.model.enums.transaction.TransactionStatusEnum;
 import com.hexagonal.server.core.domain.model.enums.transaction.TransactionType;
 import com.hexagonal.server.core.domain.service.common.constants.transaction.Ids;
@@ -13,6 +12,7 @@ import com.hexagonal.server.core.domain.service.model.commands.transaction.Creat
 import com.hexagonal.server.core.domain.service.model.commands.transaction.GetTransactionCommand;
 import com.hexagonal.server.core.domain.service.model.commands.transaction.UpdateTransactionCommand;
 import com.hexagonal.server.core.domain.service.ports.driven.transaction.TransactionRepositoryPort;
+import com.hexagonal.server.shared.kernel.common.exception.constants.ErrorMessageConstants;
 import com.hexagonal.server.shared.kernel.common.exception.utils.ErrorUtils;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Description;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Id;
