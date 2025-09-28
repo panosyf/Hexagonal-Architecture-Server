@@ -1,12 +1,12 @@
 package com.hexagonal.server.core.domain.service.logic.account;
 
 import com.hexagonal.server.core.domain.entities.account.Account;
-import com.hexagonal.server.core.domain.service.logging.LogInfoMessages;
-import com.hexagonal.server.core.domain.service.model.commands.CreateAccountCommand;
-import com.hexagonal.server.core.domain.service.model.commands.DecreaseBalanceCommand;
-import com.hexagonal.server.core.domain.service.model.commands.GetAccountCommand;
-import com.hexagonal.server.core.domain.service.model.commands.IncreaseBalanceCommand;
-import com.hexagonal.server.core.domain.service.ports.driven.AccountRepositoryPort;
+import com.hexagonal.server.core.domain.service.logging.account.LogInfoMessages;
+import com.hexagonal.server.core.domain.service.model.commands.account.CreateAccountCommand;
+import com.hexagonal.server.core.domain.service.model.commands.account.DecreaseBalanceCommand;
+import com.hexagonal.server.core.domain.service.model.commands.account.GetAccountCommand;
+import com.hexagonal.server.core.domain.service.model.commands.account.IncreaseBalanceCommand;
+import com.hexagonal.server.core.domain.service.ports.driven.account.AccountRepositoryPort;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Id;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

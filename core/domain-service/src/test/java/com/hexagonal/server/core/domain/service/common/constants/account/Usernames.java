@@ -1,4 +1,4 @@
-package com.hexagonal.server.core.domain.service.common.constants;
+package com.hexagonal.server.core.domain.service.common.constants.account;
 
 import com.hexagonal.server.shared.kernel.common.valueobjects.Username;
 

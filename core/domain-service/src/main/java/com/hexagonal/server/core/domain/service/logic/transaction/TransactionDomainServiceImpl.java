@@ -2,10 +2,10 @@ package com.hexagonal.server.core.domain.service.logic.transaction;
 
 import com.hexagonal.server.core.domain.entities.transaction.Transaction;
 import com.hexagonal.server.core.domain.model.enums.transaction.TransactionStatusEnum;
-import com.hexagonal.server.core.domain.service.model.commands.CreateTransactionCommand;
-import com.hexagonal.server.core.domain.service.model.commands.GetTransactionCommand;
-import com.hexagonal.server.core.domain.service.model.commands.UpdateTransactionCommand;
-import com.hexagonal.server.core.domain.service.ports.driven.TransactionRepositoryPort;
+import com.hexagonal.server.core.domain.service.model.commands.transaction.CreateTransactionCommand;
+import com.hexagonal.server.core.domain.service.model.commands.transaction.GetTransactionCommand;
+import com.hexagonal.server.core.domain.service.model.commands.transaction.UpdateTransactionCommand;
+import com.hexagonal.server.core.domain.service.ports.driven.transaction.TransactionRepositoryPort;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

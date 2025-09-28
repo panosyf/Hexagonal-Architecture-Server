@@ -6,13 +6,13 @@ import com.hexagonal.server.core.domain.exceptions.elementnotfound.transaction.T
 import com.hexagonal.server.core.domain.exceptions.utils.messages.transaction.ErrorMessageConstants;
 import com.hexagonal.server.core.domain.model.enums.transaction.TransactionStatusEnum;
 import com.hexagonal.server.core.domain.model.enums.transaction.TransactionType;
-import com.hexagonal.server.core.domain.service.common.constants.Ids;
+import com.hexagonal.server.core.domain.service.common.constants.transaction.Ids;
 import com.hexagonal.server.core.domain.service.logic.transaction.TransactionDomainService;
 import com.hexagonal.server.core.domain.service.logic.transaction.TransactionDomainServiceImpl;
-import com.hexagonal.server.core.domain.service.model.commands.CreateTransactionCommand;
-import com.hexagonal.server.core.domain.service.model.commands.GetTransactionCommand;
-import com.hexagonal.server.core.domain.service.model.commands.UpdateTransactionCommand;
-import com.hexagonal.server.core.domain.service.ports.driven.TransactionRepositoryPort;
+import com.hexagonal.server.core.domain.service.model.commands.transaction.CreateTransactionCommand;
+import com.hexagonal.server.core.domain.service.model.commands.transaction.GetTransactionCommand;
+import com.hexagonal.server.core.domain.service.model.commands.transaction.UpdateTransactionCommand;
+import com.hexagonal.server.core.domain.service.ports.driven.transaction.TransactionRepositoryPort;
 import com.hexagonal.server.shared.kernel.common.exception.utils.ErrorUtils;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Description;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Id;
@@ -24,11 +24,11 @@ import org.mockito.ArgumentCaptor;
 
 import java.math.BigDecimal;
 
-import static com.hexagonal.server.core.domain.service.common.mocks.CreateTransactionCommandMocks.generateCreateTransactionCommand;
-import static com.hexagonal.server.core.domain.service.common.mocks.GetTransactionCommandMocks.generateGetTransactionCommand;
-import static com.hexagonal.server.core.domain.service.common.mocks.TransactionMocks.generatePendingTransaction;
-import static com.hexagonal.server.core.domain.service.common.mocks.TransactionMocks.generateTransaction;
-import static com.hexagonal.server.core.domain.service.common.mocks.UpdateTransactionCommandMocks.generateUpdateTransactionCommand;
+import static com.hexagonal.server.core.domain.service.common.mocks.transaction.CreateTransactionCommandMocks.generateCreateTransactionCommand;
+import static com.hexagonal.server.core.domain.service.common.mocks.transaction.GetTransactionCommandMocks.generateGetTransactionCommand;
+import static com.hexagonal.server.core.domain.service.common.mocks.transaction.TransactionMocks.generatePendingTransaction;
+import static com.hexagonal.server.core.domain.service.common.mocks.transaction.TransactionMocks.generateTransaction;
+import static com.hexagonal.server.core.domain.service.common.mocks.transaction.UpdateTransactionCommandMocks.generateUpdateTransactionCommand;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;

@@ -1,9 +1,9 @@
-package com.hexagonal.server.application.service.common.mocks;
+package com.hexagonal.server.core.domain.service.common.mocks.account;
 
-import com.hexagonal.server.application.service.common.constants.Emails;
-import com.hexagonal.server.application.service.common.constants.Names;
-import com.hexagonal.server.application.service.common.constants.Passwords;
-import com.hexagonal.server.application.service.common.constants.Usernames;
+import com.hexagonal.server.core.domain.service.common.constants.account.Emails;
+import com.hexagonal.server.core.domain.service.common.constants.account.Names;
+import com.hexagonal.server.core.domain.service.common.constants.account.Passwords;
+import com.hexagonal.server.core.domain.service.common.constants.account.Usernames;
 import com.hexagonal.server.core.domain.service.model.commands.account.CreateAccountCommand;
 
 public class CreateAccountCommandMocks {

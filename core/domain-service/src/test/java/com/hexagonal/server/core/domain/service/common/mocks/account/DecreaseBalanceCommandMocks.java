@@ -1,7 +1,7 @@
-package com.hexagonal.server.core.domain.service.common.mocks;
+package com.hexagonal.server.core.domain.service.common.mocks.account;
 
-import com.hexagonal.server.core.domain.service.common.constants.Ids;
-import com.hexagonal.server.core.domain.service.model.commands.DecreaseBalanceCommand;
+import com.hexagonal.server.core.domain.service.common.constants.account.Ids;
+import com.hexagonal.server.core.domain.service.model.commands.account.DecreaseBalanceCommand;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
 
 import java.math.BigDecimal;

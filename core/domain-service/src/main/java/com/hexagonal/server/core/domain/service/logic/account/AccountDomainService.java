@@ -1,10 +1,10 @@
 package com.hexagonal.server.core.domain.service.logic.account;
 
 import com.hexagonal.server.core.domain.entities.account.Account;
-import com.hexagonal.server.core.domain.service.model.commands.CreateAccountCommand;
-import com.hexagonal.server.core.domain.service.model.commands.DecreaseBalanceCommand;
-import com.hexagonal.server.core.domain.service.model.commands.GetAccountCommand;
-import com.hexagonal.server.core.domain.service.model.commands.IncreaseBalanceCommand;
+import com.hexagonal.server.core.domain.service.model.commands.account.CreateAccountCommand;
+import com.hexagonal.server.core.domain.service.model.commands.account.DecreaseBalanceCommand;
+import com.hexagonal.server.core.domain.service.model.commands.account.GetAccountCommand;
+import com.hexagonal.server.core.domain.service.model.commands.account.IncreaseBalanceCommand;
 
 public interface AccountDomainService {
 

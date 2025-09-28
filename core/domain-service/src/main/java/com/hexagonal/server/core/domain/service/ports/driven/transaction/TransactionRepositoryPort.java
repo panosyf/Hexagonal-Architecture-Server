@@ -1,4 +1,4 @@
-package com.hexagonal.server.core.domain.service.ports.driven;
+package com.hexagonal.server.core.domain.service.ports.driven.transaction;
 
 import com.hexagonal.server.core.domain.entities.transaction.Transaction;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Id;

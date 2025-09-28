@@ -1,4 +1,4 @@
-package com.hexagonal.server.core.domain.service.ports.driven;
+package com.hexagonal.server.core.domain.service.ports.driven.account;
 
 import com.hexagonal.server.core.domain.entities.account.Account;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Id;

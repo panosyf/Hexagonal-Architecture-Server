@@ -1,4 +1,4 @@
-package com.hexagonal.server.core.domain.service.logging;
+package com.hexagonal.server.core.domain.service.logging.account;
 
 public class LogErrorMessages {
 

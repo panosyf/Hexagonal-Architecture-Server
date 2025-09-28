@@ -1,7 +1,7 @@
 package com.hexagonal.server.infra.config;
 
-import com.hexagonal.server.core.domain.service.ports.driven.AccountRepositoryPort;
-import com.hexagonal.server.core.domain.service.ports.driven.TransactionRepositoryPort;
+import com.hexagonal.server.core.domain.service.ports.driven.account.AccountRepositoryPort;
+import com.hexagonal.server.core.domain.service.ports.driven.transaction.TransactionRepositoryPort;
 
 import org.junit.jupiter.api.AfterEach;
 import org.springframework.beans.factory.annotation.Autowired;
