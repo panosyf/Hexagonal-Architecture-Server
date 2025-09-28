@@ -8,7 +8,7 @@
         <groupId>com.hexagonal.server.shared.kernel.bom.collection</groupId>
         <artifactId>infra-bom</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../shared-kernel/bom-collection/infra-bom/pom.xml</relativePath>
+        <relativePath>../dependency-management/infra-bom/pom.xml</relativePath>
     </parent>
 
     <groupId>com.hexagonal.server</groupId>

@@ -10,7 +10,6 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <modules>
-        <module>bom-collection</module>
         <module>common</module>
         <module>common-infra</module>
         <module>common-migrations</module>

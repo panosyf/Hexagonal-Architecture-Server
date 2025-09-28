@@ -8,7 +8,7 @@
         <groupId>com.hexagonal.server.shared.kernel.bom.collection</groupId>
         <artifactId>application-service-bom</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../shared-kernel/bom-collection/application-service-bom/pom.xml</relativePath>
+        <relativePath>../dependency-management/application-service-bom/pom.xml</relativePath>
     </parent>
 
     <groupId>com.hexagonal.server.application.service</groupId>
