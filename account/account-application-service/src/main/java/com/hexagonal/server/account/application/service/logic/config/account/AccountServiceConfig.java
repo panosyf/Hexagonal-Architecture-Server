@@ -1,8 +1,8 @@
 package com.hexagonal.server.account.application.service.logic.config.account;
 
-import com.hexagonal.server.core.domain.service.logic.account.AccountDomainService;
-import com.hexagonal.server.core.domain.service.logic.account.AccountDomainServiceImpl;
-import com.hexagonal.server.core.domain.service.ports.driven.account.AccountRepositoryPort;
+import com.hexagonal.server.account.core.domain.service.logic.account.AccountDomainService;
+import com.hexagonal.server.account.core.domain.service.logic.account.AccountDomainServiceImpl;
+import com.hexagonal.server.account.core.domain.service.ports.driven.account.AccountRepositoryPort;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

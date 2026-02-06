@@ -1,10 +1,10 @@
 package com.hexagonal.server.account.application.service.common.mocks.account;
 
-import com.hexagonal.server.application.service.common.constants.account.Emails;
-import com.hexagonal.server.application.service.common.constants.account.Names;
-import com.hexagonal.server.application.service.common.constants.account.Passwords;
-import com.hexagonal.server.application.service.common.constants.account.Usernames;
-import com.hexagonal.server.core.domain.entities.account.Account;
+import com.hexagonal.server.account.application.service.common.constants.account.Emails;
+import com.hexagonal.server.account.application.service.common.constants.account.Names;
+import com.hexagonal.server.account.application.service.common.constants.account.Passwords;
+import com.hexagonal.server.account.application.service.common.constants.account.Usernames;
+import com.hexagonal.server.account.core.domain.entities.account.Account;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Money;
 
 public class AccountMocks {

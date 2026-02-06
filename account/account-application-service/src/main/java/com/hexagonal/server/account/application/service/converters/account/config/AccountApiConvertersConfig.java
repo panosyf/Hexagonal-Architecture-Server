@@ -1,7 +1,7 @@
 package com.hexagonal.server.account.application.service.converters.account.config;
 
-import com.hexagonal.server.application.service.converters.account.in.AccountCreateRequestToCommand;
-import com.hexagonal.server.application.service.converters.account.out.AccountToDto;
+import com.hexagonal.server.account.application.service.converters.account.in.AccountCreateRequestToCommand;
+import com.hexagonal.server.account.application.service.converters.account.out.AccountToDto;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

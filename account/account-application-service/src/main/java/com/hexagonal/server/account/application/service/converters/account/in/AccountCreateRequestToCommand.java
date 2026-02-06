@@ -1,7 +1,7 @@
 package com.hexagonal.server.account.application.service.converters.account.in;
 
-import com.hexagonal.server.application.service.model.requests.account.AccountCreateRequest;
-import com.hexagonal.server.core.domain.service.model.commands.account.CreateAccountCommand;
+import com.hexagonal.server.account.application.service.model.requests.account.AccountCreateRequest;
+import com.hexagonal.server.account.core.domain.service.model.commands.account.CreateAccountCommand;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Email;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Name;
 import com.hexagonal.server.shared.kernel.common.valueobjects.Password;

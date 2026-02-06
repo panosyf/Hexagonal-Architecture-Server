@@ -1,8 +1,8 @@
-package com.hexagonal.server.application.service.model.responses.account;
+package com.hexagonal.server.account.application.service.model.responses.account;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.hexagonal.server.application.service.model.dtos.account.AccountDto;
+import com.hexagonal.server.account.application.service.model.dtos.account.AccountDto;
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public record AccountResponse(AccountDto accountDto) {

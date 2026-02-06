@@ -1,4 +1,4 @@
-package com.hexagonal.server.application.service.model.dtos.account;
+package com.hexagonal.server.account.application.service.model.dtos.account;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;

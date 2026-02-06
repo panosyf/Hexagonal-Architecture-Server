@@ -1,8 +1,8 @@
 package com.hexagonal.server.account.application.service.common.mocks.account;
 
 
-import com.hexagonal.server.application.service.common.constants.account.Ids;
-import com.hexagonal.server.core.domain.service.model.commands.account.GetAccountCommand;
+import com.hexagonal.server.account.application.service.common.constants.account.Ids;
+import com.hexagonal.server.account.core.domain.service.model.commands.account.GetAccountCommand;
 
 public class GetAccountCommandMocks {
 
