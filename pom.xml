@@ -13,9 +13,6 @@
     <modules>
         <module>dependency-management</module>
         <module>shared-kernel</module>
-        <module>core</module>
-        <module>application-service</module>
-        <module>infra</module>
         <module>account</module>
         <module>app</module>
     </modules>

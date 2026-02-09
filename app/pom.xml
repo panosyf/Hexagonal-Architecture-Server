@@ -18,14 +18,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.hexagonal.server.infra.persistence</groupId>
-            <artifactId>persistence</artifactId>
+            <groupId>com.hexagonal.server.account.infra.persistence</groupId>
+            <artifactId>account-persistence</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>com.hexagonal.server.infra.rest</groupId>
-            <artifactId>rest</artifactId>
+            <groupId>com.hexagonal.server.account.infra.rest</groupId>
+            <artifactId>account-rest</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
