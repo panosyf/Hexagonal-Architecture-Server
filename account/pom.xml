@@ -11,7 +11,7 @@
 
     <modules>
         <module>account-core</module>
-        <module>account-application-service</module>
+        <module>account-application</module>
         <module>account-infra</module>
     </modules>
 

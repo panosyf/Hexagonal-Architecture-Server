@@ -40,8 +40,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.hexagonal.server.account.application.service</groupId>
-            <artifactId>account-application-service</artifactId>
+            <groupId>com.hexagonal.server.account.application</groupId>
+            <artifactId>account-application</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>

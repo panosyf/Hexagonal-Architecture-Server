@@ -1,4 +1,4 @@
-package com.hexagonal.server.infra.common.mocks.transaction;
+package com.hexagonal.server.account.application.common.mocks.transaction;
 
 import com.hexagonal.server.account.application.model.requests.transaction.TransactionUpdateRequest;
 import com.hexagonal.server.account.core.domain.model.enums.transaction.TransactionStatusEnum;

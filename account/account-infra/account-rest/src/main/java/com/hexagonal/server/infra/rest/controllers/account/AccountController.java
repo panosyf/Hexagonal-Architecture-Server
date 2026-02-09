@@ -1,9 +1,9 @@
 package com.hexagonal.server.infra.rest.controllers.account;
 
-import com.hexagonal.server.account.application.service.apis.account.AccountApi;
-import com.hexagonal.server.account.application.service.model.responses.account.AccountCreationResponse;
-import com.hexagonal.server.account.application.service.model.responses.account.AccountResponse;
-import com.hexagonal.server.account.application.service.model.requests.account.AccountCreateRequest;
+import com.hexagonal.server.account.application.apis.account.AccountApi;
+import com.hexagonal.server.account.application.model.responses.account.AccountCreationResponse;
+import com.hexagonal.server.account.application.model.responses.account.AccountResponse;
+import com.hexagonal.server.account.application.model.requests.account.AccountCreateRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
