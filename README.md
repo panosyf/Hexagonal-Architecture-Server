@@ -84,6 +84,64 @@ The following resources have been instrumental in the development of this projec
 
 ---
 
+# Hexagonal Server
+
+## Running the Application
+
+### Prerequisites
+- Java 17 or higher
+- Maven 3.6+
+- MongoDB running on localhost:27018 (or configured port)
+
+### Quick Start
+```bash
+# Make the script executable (first time only)
+chmod +x app-run.sh
+
+# Run the application
+./app-run.sh
+```
+
+The script will:
+1. Build all modules (including account-app)
+2. Install dependencies to local Maven repository
+3. Start the application on port 8080 with 'local' profile
+
+### Manual Build & Run
+
+If you prefer to run commands manually:
+```bash
+# Build all modules
+mvn clean install
+
+# Run the application
+cd app
+mvn spring-boot:run -Dspring-boot.run.profiles=local
+```
+
+### Run with Different Profiles
+
+Edit `app-run.sh` and change the profile:
+```bash
+# For dev profile
+mvn spring-boot:run -Dspring-boot.run.profiles=dev
+
+# For production profile
+mvn spring-boot:run -Dspring-boot.run.profiles=prod
+```
+
+### Run on Different Port
+```bash
+cd app
+mvn spring-boot:run -Dspring-boot.run.arguments="--server.port=8081"
+```
+
+### Application URLs
+
+- Application: http://localhost:8080
+
+---
+
 ## Conclusion
 
 The **Hexagonal Architecture Server** project exemplifies best practices in backend development, showcasing the use of modern software architecture principles to create clean, scalable, and maintainable systems. By utilizing **Hexagonal Architecture**, **Clean Architecture**, and **Test-Driven Development**, this project highlights my skills in building flexible and extensible backend systems with a focus on high code quality.
