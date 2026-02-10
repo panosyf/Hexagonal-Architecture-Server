@@ -4,8 +4,8 @@ set -e
 
 echo "Building all modules..."
 #mvn clean install -DskipTests
-./mvnw clean install -DskipTests
-
+#./mvnw clean install -DskipTests
+./mvnw clean install
 echo ""
 echo "Starting application..."
 cd app
