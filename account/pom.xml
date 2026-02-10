@@ -13,6 +13,7 @@
         <module>account-core</module>
         <module>account-application</module>
         <module>account-infra</module>
+        <module>account-app</module>
     </modules>
 
 </project>

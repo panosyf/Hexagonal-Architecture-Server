@@ -13,7 +13,8 @@
         <module>common</module>
         <module>common-infra</module>
         <module>common-migrations</module>
-        <module>common-integration-testing</module>
+        <module>common-testing</module>
+        <module>contract</module>
     </modules>
 
 </project>

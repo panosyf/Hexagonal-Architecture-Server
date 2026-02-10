@@ -4,13 +4,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.hexagonal.server.dependency.management</groupId>
-        <artifactId>infra-bom</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../dependency-management/infra-bom/pom.xml</relativePath>
-    </parent>
-
     <groupId>com.hexagonal.server.account.infra</groupId>
     <artifactId>account-infra</artifactId>
     <packaging>pom</packaging>
@@ -21,29 +14,5 @@
         <module>account-rest</module>
         <module>account-integration-test-suite</module>
     </modules>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.hexagonal.server.shared.kernel.common.infra</groupId>
-            <artifactId>common-infra</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.hexagonal.server.shared.kernel.common.migrations</groupId>
-            <artifactId>common-migrations</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.hexagonal.server.shared.kernel.common.integration.testing</groupId>
-            <artifactId>common-integration-testing</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.hexagonal.server.account.application</groupId>
-            <artifactId>account-application</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
 
 </project>

@@ -5,27 +5,22 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.hexagonal.server.dependency.management</groupId>
-        <artifactId>infra-bom</artifactId>
+        <groupId>com.hexagonal.server</groupId>
+        <artifactId>parent-bom</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../dependency-management/infra-bom/pom.xml</relativePath>
+        <relativePath>../parent-bom/pom.xml</relativePath>
     </parent>
 
-    <groupId>com.hexagonal.server.app</groupId>
+    <groupId>com.hexagonal.server</groupId>
     <artifactId>app</artifactId>
     <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
 
     <dependencies>
+        <!-- account-app module-->
         <dependency>
-            <groupId>com.hexagonal.server.account.infra.persistence</groupId>
-            <artifactId>account-persistence</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.hexagonal.server.account.infra.rest</groupId>
-            <artifactId>account-rest</artifactId>
+            <groupId>com.hexagonal.server.account</groupId>
+            <artifactId>account-app</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
