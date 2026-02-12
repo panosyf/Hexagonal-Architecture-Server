@@ -37,12 +37,12 @@
         </dependency>
         <dependency>
             <groupId>com.hexagonal.server.shared.kernel</groupId>
-            <artifactId>common-migrations</artifactId>
+            <artifactId>common-migration</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.hexagonal.server.shared.kernel</groupId>
-            <artifactId>common-testing</artifactId>
+            <artifactId>common-test</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>

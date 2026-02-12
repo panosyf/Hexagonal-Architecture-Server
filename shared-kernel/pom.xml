@@ -12,9 +12,9 @@
     <modules>
         <module>common</module>
         <module>common-infra</module>
-        <module>common-migrations</module>
-        <module>common-testing</module>
-        <module>contract</module>
+        <module>common-migration</module>
+        <module>common-test</module>
+        <module>common-contract</module>
     </modules>
 
 </project>
