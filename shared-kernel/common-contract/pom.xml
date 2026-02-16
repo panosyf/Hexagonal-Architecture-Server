@@ -5,13 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.hexagonal.server</groupId>
-        <artifactId>parent-bom</artifactId>
+        <groupId>com.hexagonal.server.shared.kernel</groupId>
+        <artifactId>shared-kernel</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-bom/pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>com.hexagonal.server.shared.kernel</groupId>
     <artifactId>common-contract</artifactId>
     <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
