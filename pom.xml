@@ -15,6 +15,9 @@
         <module>shared-kernel</module>
         <module>account</module>
         <module>app</module>
+        <module>base-parent</module>
+        <module>boot-build-parent</module>
+        <module>dependency-bom</module>
     </modules>
 
 </project>
