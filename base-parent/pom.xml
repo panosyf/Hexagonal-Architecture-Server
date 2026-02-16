@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>base-parent</name>
-    <description>Build plugins, Java version, CI, release profile.</description>
+    <description>Build plugins, Java version, CI, release profile</description>
 
     <properties>
         <java.version>21</java.version>

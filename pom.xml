@@ -16,7 +16,7 @@
         <module>account</module>
         <module>app</module>
         <module>base-parent</module>
-        <module>boot-build-parent</module>
+        <module>service-parent</module>
         <module>dependency-bom</module>
     </modules>
 
