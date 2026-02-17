@@ -9,13 +9,6 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <modules>
-        <module>account-core</module>
-        <module>account-application</module>
-        <module>account-infra</module>
-        <module>account-boot</module>
-    </modules>
-
     <properties>
         <java.version>21</java.version>
         <maven.compiler.source>21</maven.compiler.source>
@@ -26,12 +19,18 @@
         <maven.failsafe.plugin.version>3.0.0-M5</maven.failsafe.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <account.domain.version>0.0.1-SNAPSHOT</account.domain.version>
         <springboot.version>3.3.0</springboot.version>
         <springdoc.openapi.plugin.version>1.4</springdoc.openapi.plugin.version>
         <dependency.bom.version>0.0.1-SNAPSHOT</dependency.bom.version>
         <shared.kernel.bom.version>0.0.1-SNAPSHOT</shared.kernel.bom.version>
     </properties>
+
+    <modules>
+        <module>account-core</module>
+        <module>account-application</module>
+        <module>account-infra</module>
+        <module>account-boot</module>
+    </modules>
 
     <dependencyManagement>
         <dependencies>

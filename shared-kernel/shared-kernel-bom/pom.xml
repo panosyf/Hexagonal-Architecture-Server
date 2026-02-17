@@ -10,11 +10,10 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-
     <groupId>com.hexagonal.server</groupId>
     <artifactId>shared-kernel-bom</artifactId>
     <packaging>pom</packaging>
-    <version>${shared.kernel.version}</version>
+    <version>0.0.1-SNAPSHOT</version>
     <name>shared-kernel-bom</name>
     <description>Shared Kernel BOM for centralized dependency management</description>
 
@@ -39,27 +38,27 @@
             <dependency>
                 <groupId>com.hexagonal.server.shared.kernel</groupId>
                 <artifactId>common</artifactId>
-                <version>${shared.kernel.version}</version>
+                <version>0.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.hexagonal.server.shared.kernel</groupId>
                 <artifactId>common-contract</artifactId>
-                <version>${shared.kernel.version}</version>
+                <version>0.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.hexagonal.server.shared.kernel</groupId>
                 <artifactId>common-infra</artifactId>
-                <version>${shared.kernel.version}</version>
+                <version>0.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.hexagonal.server.shared.kernel</groupId>
                 <artifactId>common-migration</artifactId>
-                <version>${shared.kernel.version}</version>
+                <version>0.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.hexagonal.server.shared.kernel</groupId>
                 <artifactId>common-test</artifactId>
-                <version>${shared.kernel.version}</version>
+                <version>0.0.1-SNAPSHOT</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

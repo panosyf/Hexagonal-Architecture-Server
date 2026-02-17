@@ -13,14 +13,14 @@
 
     <artifactId>common-infra</artifactId>
     <packaging>jar</packaging>
-    <version>${shared.kernel.version}</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <dependencies>
         <!-- shared-kernel dependencies-->
         <dependency>
             <groupId>com.hexagonal.server.shared.kernel</groupId>
             <artifactId>common</artifactId>
-            <version>${shared.kernel.version}</version>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
         <dependency>

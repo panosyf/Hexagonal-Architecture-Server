@@ -7,7 +7,7 @@
     <groupId>com.hexagonal.server</groupId>
     <artifactId>monolith-boot</artifactId>
     <packaging>jar</packaging>
-    <version>${monolith.boot.version}</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <properties>
         <java.version>21</java.version>
@@ -19,7 +19,6 @@
         <maven.failsafe.plugin.version>3.0.0-M5</maven.failsafe.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <monolith.boot.version>0.0.1-SNAPSHOT</monolith.boot.version>
         <springboot.version>3.3.0</springboot.version>
         <springdoc.openapi.plugin.version>1.4</springdoc.openapi.plugin.version>
     </properties>
