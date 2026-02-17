@@ -7,7 +7,7 @@
     <groupId>com.hexagonal.server</groupId>
     <artifactId>dependency-bom</artifactId>
     <packaging>pom</packaging>
-    <version>${dependency.bom.version</version>
+    <version>${dependency.bom.version}</version>
     <name>dependency-bom</name>
     <description>BOM for centralized dependency management</description>
 
