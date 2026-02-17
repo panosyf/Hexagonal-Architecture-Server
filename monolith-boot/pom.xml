@@ -5,11 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.hexagonal.server</groupId>
-    <artifactId>base-parent</artifactId>
-    <packaging>pom</packaging>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>base-parent</name>
-    <description>Build plugins, Java version, CI, release profile</description>
+    <artifactId>monolith-boot</artifactId>
+    <packaging>jar</packaging>
+    <version>${monolith.boot.version</version>
 
     <properties>
         <java.version>21</java.version>
@@ -21,8 +19,56 @@
         <maven.failsafe.plugin.version>3.0.0-M5</maven.failsafe.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <monolith.boot.version>0.0.1-SNAPSHOT</monolith.boot.version>
+        <springboot.version>3.3.0</springboot.version>
+        <springdoc.openapi.plugin.version>1.4</springdoc.openapi.plugin.version>
     </properties>
 
+    <dependencies>
+        <!-- account-app module-->
+        <dependency>
+            <groupId>com.hexagonal.server.account</groupId>
+            <artifactId>account-boot</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <spring.profiles.active>local</spring.profiles.active>
+            </properties>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <spring.profiles.active>dev</spring.profiles.active>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <spring.profiles.active>test</spring.profiles.active>
+            </properties>
+        </profile>
+        <profile>
+            <id>staging</id>
+            <properties>
+                <spring.profiles.active>staging</spring.profiles.active>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <spring.profiles.active>prod</spring.profiles.active>
+            </properties>
+        </profile>
+    </profiles>
 
     <build>
         <pluginManagement>
@@ -55,6 +101,24 @@
                             <goals>
                                 <goal>integration-test</goal>
                                 <goal>verify</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${springboot.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.springdoc</groupId>
+                    <artifactId>springdoc-openapi-maven-plugin</artifactId>
+                    <version>${springdoc.openapi.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <phase>integration-test</phase>
+                            <goals>
+                                <goal>generate</goal>
                             </goals>
                         </execution>
                     </executions>

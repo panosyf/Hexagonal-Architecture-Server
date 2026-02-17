@@ -13,7 +13,7 @@
 
     <artifactId>common-test</artifactId>
     <packaging>jar</packaging>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${shared.kernel.version}</version>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->

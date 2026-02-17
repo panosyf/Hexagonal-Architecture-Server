@@ -5,13 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.hexagonal.server</groupId>
-        <artifactId>parent-bom</artifactId>
+        <groupId>com.hexagonal.server.account.infra</groupId>
+        <artifactId>account-infra</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../../parent-bom/pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>com.hexagonal.server.account.infra</groupId>
     <artifactId>account-persistence</artifactId>
     <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
@@ -21,12 +20,10 @@
         <dependency>
             <groupId>com.hexagonal.server.shared.kernel</groupId>
             <artifactId>common-infra</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.hexagonal.server.shared.kernel</groupId>
             <artifactId>common-migration</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <!-- application dependencies-->
         <dependency>
@@ -49,14 +46,12 @@
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
-            <version>${flyway.version}</version>
             <scope>runtime</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-database-postgresql -->
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-database-postgresql</artifactId>
-            <version>${flyway.version}</version>
             <scope>runtime</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->

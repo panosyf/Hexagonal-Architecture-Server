@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.hexagonal.server</groupId>
-        <artifactId>parent-bom</artifactId>
+        <groupId>com.hexagonal.server.account</groupId>
+        <artifactId>account</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-bom/pom.xml</relativePath>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>com.hexagonal.server.account.core</groupId>
@@ -21,7 +21,6 @@
         <dependency>
             <groupId>com.hexagonal.server.shared.kernel</groupId>
             <artifactId>common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
