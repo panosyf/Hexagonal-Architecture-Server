@@ -45,10 +45,9 @@ This project leverages the following technologies:
 
 The application is organized into several distinct layers:
 
-- **Domain Layer**: Contains the core business logic, independent of any external systems.
+- **Core Layer**: Contains the core business logic, independent of any external systems.
 - **Application Layer**: Acts as the intermediary between the domain logic and the outer layers.
-- **Adapters**: External systems such as databases, APIs, and other services interact with the core system through well-defined adapters.
-- **Ports**: Interfaces that define the contracts for interactions with external services, ensuring loose coupling and scalability.
+- **Infra**: External systems such as databases, API Controllers, and other services interact with the core system through well-defined adapters.
 
 This separation enables testing and evolving each component independently while maintaining a well-organized system architecture.
 
@@ -85,6 +84,99 @@ The following resources have been instrumental in the development of this projec
 ---
 
 # Hexagonal Server
+
+## Multi-Module Build & Versioning Guide
+
+This repository contains multiple bounded contexts in the same mono-repo:
+```bash
+hexagonal-server/
+├── monolith-boot
+├── dependency-bom
+├── shared-kernel/
+│ ├── common
+│ ├── common-contract
+│ ├── common-infra
+│ ├── common-migration
+│ ├── common-test
+│ └── shared-kernel-bom
+├── account/
+  ├── account-core
+  ├── account-application
+  └── account-infra/
+    ├── account-persistence
+    ├── account-rest
+    └── account-boot
+```
+
+Each bounded context is:
+
+- Independently versioned
+- Independently releasable
+- Architecturally isolated
+- Built using Maven Reactor
+
+All commands are executed from the **repository root** and use the Maven Wrapper:
+## Selective Module Builds
+
+### Maven Reactor allows building specific modules using:
+
+-pl → select module(s)
+
+-am → also build required dependencies
+
+```bash
+### Build Entire Account Context
+mvn clean verify -pl account/account-boot -am
+```
+
+```bash
+### Build Only account-core
+mvn clean verify -pl account/account-core -am
+```
+
+```bash
+### Build Entire shared-kernel
+mvn clean verify -pl shared-kernel -am
+```
+
+```bash
+### Build Only shared-kernel/common
+mvn clean verify -pl shared-kernel/common -am
+```
+
+```bash
+### Install Account to Local Maven Repository
+mvn clean install -pl account/account-boot -am
+```
+
+```bash
+### Install shared-kernel to Local Repository
+mvn clean install -pl shared-kernel -am
+```
+
+```bash
+### Resume Failed Build
+mvn -rf :account-core
+```
+
+```bash
+### Upgrade shared-kernel Version
+mvn versions:set -DnewVersion=1.3.0
+mvn clean install
+```
+
+## Handle versioning upgrades
+
+```bash
+### Upgrade shared-kernel Dependency in account
+mvn versions:use-dep-version \
+  -Dincludes=com.hexagonal.server.shared.kernel:* \
+  -DdepVersion=1.3.0 \
+  -DforceVersion=true \
+  -pl account
+### Then verify:
+mvn clean verify -pl account/account-boot -am
+```
 
 ## Running the Application
 
