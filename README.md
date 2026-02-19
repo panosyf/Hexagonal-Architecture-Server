@@ -188,14 +188,14 @@ mvn clean verify -pl account/account-boot -am
 ### Quick Start
 ```bash
 # Make the script executable (first time only)
-chmod +x app-run.sh
+chmod +x monolith-run.sh
 
 # Run the application
-./app-run.sh
+./monolith-run.sh
 ```
 
 The script will:
-1. Build all modules (including account-app)
+1. Build all modules (including account-boot)
 2. Install dependencies to local Maven repository
 3. Start the application on port 8080 with 'local' profile
 
@@ -207,13 +207,13 @@ If you prefer to run commands manually:
 mvn clean install
 
 # Run the application
-cd app
+cd monolith-boot
 mvn spring-boot:run -Dspring-boot.run.profiles=local
 ```
 
 ### Run with Different Profiles
 
-Edit `app-run.sh` and change the profile:
+Edit `monolith-run.sh` and change the profile:
 ```bash
 # For dev profile
 mvn spring-boot:run -Dspring-boot.run.profiles=dev
@@ -224,7 +224,7 @@ mvn spring-boot:run -Dspring-boot.run.profiles=prod
 
 ### Run on Different Port
 ```bash
-cd app
+cd monolith-boot
 mvn spring-boot:run -Dspring-boot.run.arguments="--server.port=8081"
 ```
 
